@@ -1,0 +1,171 @@
+-vemos l capitulo 7. CORE del ucontrolador.
+
+CPU se froma de - ALU, 32 REGISTROS, REGISTRO DE STATUS DE CONTRO, STACK POINTER,PC, REGISTRO DE INTRUCCION
+
+ 
+los 32 registros estan nombrados desde R0 - R31. 
+
+los ultimos 6 registros, representan los registros especiales X,Y y Z. estos se usan para direccionamineto indirecto. 
+
+
+1 - representa numero negativos
+0 - representa numero positivos, con numero con signo. 
+
+diferencia entre signo y negativo, S representa cunato vale el bit mas significativo, va a ser la representacion de un numero si es verdaderamente negativo, si hubo overflow
+
+N - repesenta si una operacion aritmetica o logica es dio un numero negativo.
+
+el micro ejecuta una instruccion anterior, siempre y cunado no se utilicen los brincos. 
+
+
+mapas de memoria. 
+
+application flash, es donde esta el programa, solo se puede leer, pero sin escribir, el bootloader es el que escribe sobre el. 
+
+bootloader. cuando se inicia el micro lo que hace primero es ir al bootloader y ver si se escribre algo o se va a leer para ejecutar el programa 
+
+la direccion indirecta, es la del mapa completo, es con la direccion 
+
+
+la direccion indirecta es la que esta en parentesis, esta se acumula dado ue esta sobre la direcciones en memoria  y la que esta fuera es la directa. esta es la direccion que afecta directamente en el bloque donde esta los registros o los I/O.  
+
+
+
+
+
+----------------------------------------------------
+
+lab
+
+para no tener ambiguedades obre el tamanio de los tipos de datos, para esto, podemos usarlos son signo o sin signo pero para asegurarnos  midan exactamnte 8, 16, 32 y 64 bits. podemos especificar que xactamente los bits como 
+
+int -> int8_t - representa un int con signo 
+
+unsigned int uint8_t - un int de 8 bits 2 bytes sin signo, ais mismo se peude con char, short. 
+los tipos de datos de tipo flotante no es bueno usarlo. 
+
+
+
+---------------
+
+apuntadores. 
+
+char c ='X';
+int n =10;
+
+void* ptr = &c;
+
+como saber si el micro es bilinear o tiene ordenados las partes altas y bajas en su orden. 
+
+uint16_t a =1;
+
+uint8_t *ptr = &a;
+
+if(ptr ==1){
+	printf("little endian");
+}
+else{
+	printf("big endian.");
+}
+
+
+--------------
+corrimientos 
+
+
+0001 0000
+-> se van 5 posiciones a la derecha
+corriminetos a la derecha es division entre 2
+
+
+0x10 >> 5 = 0;
+
+
+corrimientos a la izquierda e smultiplicacion entre 2
+
+
+si se tiene el valor 
+
+
+0101 1010
+
+si quremos hacere el bit 1 en 0
+
+  0101 1010
+& ~(1<<1)
+
+los corrimientos ingresan 0's
+
+togglear bits. 
+
+
+ xxxx xxxx
+^0001 0000  (1<<4) 
+xxxx'xxxx
+
+
+----------------------------
+
+estrucutruas 
+
+
+typedef struct {
+
+	uint8_t miembro8;
+	uint8_t miembro16;
+
+	podemos asignar el tamanio el bits, usando la siguiente sintaxis
+	uint8_t miembro2 : 2;
+	uint8_t miembro3 : 3; -> estos se van creando hasta que se llene el byte, pero siempre y cunado estos quepan dentro el byte
+
+}myStrunct; <- esto es lo terminamso llamndo, se crea el alias para llamar a estra estrucutura 	
+
+
+
+
+typedef union {
+
+	uint8_t miembro8;
+	uint8_t miembro16;
+
+	podemos asignar el tamanio el bits, usando la siguiente sintaxis
+	uint8_t miembro2 : 2;
+	uint8_t miembro3 : 3; -> estos se van creando hasta que se llene el byte, pero siempre y cunado estos quepan dentro el byte
+
+}myStrunct; <- esto es lo terminamso llamndo, se crea el alias para llamar a estra estrucutura 	
+
+en la union todos terminan comparitnedo el mismo spacio de memoria, solo se puede usar una a la vez.
+
+
+
+const char a='X'; un const no puede cambiar de valor. 
+
+
+#define A 'X', este es otra alternativa.su defecto es que no se define que tipo de dato es. 
+
+
+
+//si solo queremos crear etiqeutas ue crean un valor, es con enum
+typedef enum{
+	se empieza con e, como una buena practica para indicar 
+	e_verde =23, 
+	e_amarrillo,
+	e_rojo=40
+
+	si no se define el numeor se autoincrementa, si queremos brincar tan solo volvemos a indicar
+	aqui podemos forzar el tipo
+	
+
+}misColores_t
+
+
+
+-----------------------------
+
+static char a, lo que dice es que ese elemento se va mantener estatico, si una vriable en una function es estatica esta siempre se va mantener porque una variable sin eso se destrulle, 
+
+
+
+volatile: se le dice que lo que contieinen n por ejemplo puede cambiar de valor. 
+
+parte baja siempre lo lee primero en 

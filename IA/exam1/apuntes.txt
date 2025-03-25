@@ -1,0 +1,261 @@
+la inteligencia artificial es el campo de pretende simular la capacidad humana, entre las que se encuentra el aprendizaje, el razonamineto, la lógica, la compresión del lenguaje natural, la toma de dciciones.
+
+etapas de la inteligenica artificial. 
+
+inteligencia estrecha: este tipo de inteligencia esta hecha para realizar tareas especificas también conocidas como débiles, esto porque están lejos de tener el entendimiento o conciencia humana que asociamos a una verdadera IA, como puede ser el ejemplo de las aspiradora que tan solo su trabajo es aspirar y no atorarse en alguna pared. 
+
+inteligencia artificial general o IA fuerte: este tipo de IA serian capaces de realizar con éxito cualquier tarea intelectual que un humano o incluso mejor. esta IA seria capaz de aprender de la experiencia y detectar patrones como lo hace un humano, esta IA en la actualidad no existe aunque es el proximo paso a llegar 
+
+IA superinteligente: esta IA tendría consiencia sobre si misma, sobre su existencia. estas IA's podrías ser capaces de mejorarse a si mimsas y tomar su propias decisiones ya no imitando las conductas humanas, estas podrian supererar nustras habilidades en todo el sentido, seria otra especie con todo el sentido de la palabra, estas podrian revolucionar la historia humana, actualemnte solo se pueden representar en ciencia ficcion.
+
+modelos de entrenaminetos 
+
+-aprendizaje supervisado: es una tecnida de ML, donde un modelo se entrena con datos etiqeutados, para predecri salidas desconocidad en nuevos datos. 
+Los datos etiquetados son un conjunto de información en el que cada ejemplo (entrada) tiene asociada una etiqueta o resultado esperado (salida). Esta etiqueta indica la respuesta correcta o la categoría a la que pertenece el ejemplo.
+
+-aprendizaje no supervisado:
+son modelos que se entrenan con datos sin etiqeutas, esto puede ayudar a descubrir patrones, los modelos reciben datos sin procesar y sin etiequetar por lo que tiene quen inferir su propias reglas y estrucuturuar la infromacion en funciones de similitudes, diferencias y patrones sin instrucciones explicitas sobre como trabajar con cada dato, en otras palabras dejarla hacerse bolas.
+
+-aprenidzaje por refuerzo:
+es una tecnica de ML, que entrena al software y tome decisiones y logre los mejores resultados. imita el proceso de fallo y error de los humanos, los esfuerzos del algoritmos tratan de alcanzar sus objetivos mientras que las acciones que lo alejan los ignora. estos sulene usan un paradigma de recomensa. 
+
+los topicos de la IA tenemos, en el ML a los modelos de aprenizaje supervisado, no supervisado y por refuerzo, al Deep Learning que hacen uso de multiples capas para resolver problemas, el procesaminto el lenguaje natural con la cual las maquinas entienden el lenguaje humano, la capacidad e interpretar imagenes y videos, robotica, sistemas expertos Programas que replican el conocimiento de expertos humanos para tomar decisiones.
+
+
+-tipos de neuronas: 
+neuronas recurrentes: suelen usar datos se series temporales o datos que involucran ecuencias 
+
+prealimentadas: los datos fluyen en una direccion a traves de capas de neuronas artificiales hasta que ae obtiene el resultado 
+
+memoria a largo/ corto plazo: puede usar memoria para "recordar" lo que sucedio en capas anteriores. 
+
+convolucionales: suelen usarse en el reconocimineto de imagenes
+
+generativas adversarias: se usan dos redes neuronales que compiten entre si en un juego que mejora la exactitud del resultado.  
+
+
+paradigma simbolico: El objetivo de la IA simbólica es construir sistemas inteligentes que puedan razonar y pensar como los humanos, representar y manipular el conocimiento y el razonamiento en función de reglas lógicas. esta funciona mediante el procesamineto e simbolos, que representan objetos o conceptos del mundo y sus relaciones. el enfoque principal es utilizar la programacion basada en la logica. entre uno de sus aplicaciones sta en procesmineto del lenguaje natural. 
+
+las llamadas LLM's modeos de lenguaje gram tamanio, estas se preentrenan on grandes cantidades e datos, el trasnformador subyacente es un conjunto de redes neuronlaes que cnonsta de un codificador y un decodificador, son capaces de entrenarse in supervicion aunque una explicacion mas precisa es que los transformadroes llevan a cabo un autoaprendizaje. 
+
+paradigma situado: es un enfoque en la Inteligencia Artificial (IA) que enfatiza la importancia de la interacción directa entre un agente inteligente y su entorno físico o social. Se centra en el ciclo percepción-acción, donde los agentes toman decisiones y actúan en tiempo real basándose en datos sensoriales, sin necesidad de modelos internos complejos o representaciones simbólicas abstractas.
+
+paradigma conexionista: es un enfoque en la Inteligencia Artificial (IA) inspirado en el funcionamiento del cerebro humano, donde se modelan sistemas inteligentes mediante redes de nodos interconectados (neuronas artificiales) que procesan y aprenden de datos a través de la experiencia. Su evolución ha sido clave en la revolución del aprendizaje profundo (deep learning) en las últimas décadas.
+
+paradigma hibrida: es un enfoque que combina diferentes metodologías y técnicas de IA para aprovechar sus fortalezas y mitigar sus debilidades. Integra elementos de aprendizaje automático (machine learning), IA simbólica (basada en reglas y lógica), y enfoques conexionistas (redes neuronales) para resolver problemas complejos de manera más eficiente y adaptable. 
+
+
+-machine learning ML:
+permite a los sietmas aprender y mejorar en tareas soficistadas la autonoma medinte la aplicacion e algoritmos de analisis de datos,identificacion e patrones y toma de decisiones
+
+algoritmos mas utilizasos para el aprendizaje supervisado nos enceontramos redes neuronales, los arboles de decision, regression inear, SVMs (Supperot-Vector-Machines). 
+
+algoritmos para el aprendizaje no supervisado tenemos a K-means, modelos ocultos de Markov, agrupamietno jerarquico, GMM (Gaussian mixture model)
+
+algoritmos de aprendizaje pro refuerzo emos a Q-learning, aprenidzaje por diferencias temporales, redes generativas ntagonicas. 
+
+las redes neuronales: 
+son modelos computacionales inspirados en el funcionamiento del cerebro humano, diseñados para procesar información y resolver problemas complejos mediante la interconexión de nodos (neuronas artificiales) en capas. Aquí te presento una explicación detallada, son estrucuturas matematicas compuestas por capas de nodos interconectados que transforman datos de entrada en salidas mediante funciones de activacion y pesos ajustables. entre sus componentes se encuentra:
+
+-la neurona, la unidad de procesamineto que recibe señales de entrada, las podmnera, las suma y aplica una function de activacion para determinar su salida
+
+las redes constan de diferentes capas de podremos definir como 
+capa de entrada: donde se reciben datos brutos
+capas ocultas: donde se procesan los datos mediante combinacion lineales y no lineales, este es el proceso el cual no se sabe como es que el modelo genera la salida, 
+capa de salida: genera la prediccion final. 
+
+pesos y sesgos: el peso es la fortaleza de la conexion de neuronales, y el sesgo permite desplazar la activacion de una neurona. 
+
+
+arboles de decision:  
+
+son modelos de aprendizaje supervisado no paramétricos que representan decisiones y sus consecuencias en una estructura jerárquica similar a un diagrama de flujo. Estos algoritmos se utilizan para resolver problemas de clasificación (ej: predecir si un email es spam) y regresión (ej: estimar el precio de una casa). Aquí te presento una explicación detallada
+
+estos constan de Nodos, nodos raiz, el inicio del arbol, nodos internos que represnetan casacteristicas  nodos hojas que contienen la prediccion final. 
+
+
+bosques aleatorios: 
+son una técnica de aprendizaje automático supervisado que combina múltiples árboles de decisión para mejorar la precisión y la robustez de las predicciones. Pertenece a la familia de aprendizaje de conjuntos (ensemble learning), específicamente a la técnica de Bagging (Bootstrap Aggregating), donde se entrenan modelos en subconjuntos aleatorios de datos y se combinan sus resultados 
+
+algoritmos de regression lineal: 
+
+La regresión lineal es un algoritmo de aprendizaje supervisado utilizado para predecir variables continuas (numéricas) a partir de una o más variables predictoras. Tiene aplicaciones amplias enMachine Learning (ML) y se basa en asumir una relación lineal entre las características (variables independientes) y la variable objetivo (dependiente).
+
+exisiten varios tipos entre los mas comunes tenemos la regression lineal simple, la regression lineal multiple, ride regression, lasso regression, elastic net. 
+
+
+-deep learnig
+
+es un subcampo del ML, que se basa en el uso de redes neuronales artificiales con muchas capas. estas redes estan inspiradas en la estrucutura del cerebro humano. son capaces de aprender y tomas decisiones basadas en grandes volumenes de datos. -> entonces el deep learning trata de simular lo mas posible el proceso del aprenidizaje humano, el cual se le da un gran volumen de datos, estos pueden ser etiquetados o no etiqeutados. 
+
+-funcionamineto: 
+
+fase e propagacion hacia adelante, se presentan los datos de entrada a la res y se calcula la salida utilizando los pesos de las conexiones actuales. la salida se compara con la salida deseada y se calcula el error cometido -> esta calcula un error en conjunto, priermo saco el resultado y mide que tanto estuvo de obtener el resultado deseado
+
+
+fase de retopropagacion: se propagan los errores hacia atras en la red. calculado la contribucion de cada neurona al error total y ajustando los pesos de las conexiones en function de esta contribucion -> en este mira como cada neurona contribuye a ese error, para ajustar neuronoa a neurona para poder obtener el resultado deseado. 
+
+
+
+-> agentes: un agente es una entidad que persibe su entorno a traves de sensores y actua sobre ese entorno medinate actuadores, con el objetivo de alcanzar objetivos o maximizar alguna function de utilidad. 
+
+un agente esta compuesto de 
+-sensores, que son la parte que les permite comunicarse su entorno, por este medio son capaces de saber lo que esta ocurrion en su entorno. 
+
+-el procesador: son el medio que ayuda a la IA a procesar la infromacion 
+
+-actuadores: son componentes que permiten al agente interactuar con el mundo 
+
+-sistemas de conocimineto y aprendizaje: son el medio por el cual pueden almacenar datos para poder realizar su tarea. 
+
+existen varios tipos de agentes entre los que podemos encontrar a los 
+
+agentes simples, basados en modelos, de aprendizaje, de utilidad, basados en objetivos y jerarquicos.
+
+el entorno, es el mundo en el que el agente opera. puede ser tanto fisico como virtual. el entorno le dara al agente la informacion necesario para que este tome decisiones y realice las acciones.  
+
+
+-especificaciones del entorno: 
+estados: representan las posibles configuraciones del entorno. 
+
+percepcion: es la iformacion que el agente recibe del entorno a traves de sus sentores o entradas de datos
+
+acciones: son las operaciones ue el agente puede realizar para influir en el entorno 
+
+function de transicion: se define como el cambio del entorno de un estado a otro en respuesta a las acciones del agente 
+
+function de recompensa: especifica la retroaliemnteacion que recibe el agente por sus acciones 
+
+
+la racionalidad, es la capacidad de un agente para tomar decisiones optimas que maximicen su capacidad de alcanzar sus objetivos o maximizar una function de utilidad, dada la ifnromacion disponible y las restricciones del entorno. 
+
+omnisciencias: e refiere a la capacidad de un sistema para tener un conocimiento completo y detallado de su entorno, incluyendo datos, contextos y posibles resultados.
+
+aprendizaje: es la capacidad de un sistema para mejorar su rendimiento con el tiempo al procesar y analizar datos. este se puede adquirir a traves de manera supervisada, no supervisada o atraves de refuerzo. 
+
+autonomia: se refiere a la capacidad de un agente para tomar decisiones y actuar de manera independiente sin intervención humana.
+
+diferencias entre el enfoque orientado a objetos y orientado a agentes: 
+
+orientado a objetos: son entidades que encapsulan datos (atributis) y comportamientos (metodos). 
+clases: Son plantillas que definen los atributos y métodos de los objetos
+
+Herencia: Permite la creación de jerarquías de clases, donde una clase hereda propiedades y métodos de otra clase.
+
+Encapsulamiento: Oculta los detalles internos de un objeto y expone solo una interfaz pública.
+
+Polimorfismo: Permite que objetos de diferentes clases respondan a un mismo mensaje de diferentes maneras.
+
+orientada a agentes:
+Agentes: Son entidades autónomas que perciben su entorno a través de sensores y actúan sobre él mediante actuarios
+
+Autonomía: Los agentes toman decisiones de manera independiente sin intervención humana.
+
+Interacción: Los agentes interactúan con otros agentes y con el entorno mediante mensajes y acciones.
+
+Aprendizaje: Los agentes pueden aprender y adaptarse a cambios en el entorno mediante técnicas de aprendizaje automático.
+
+estrucutura: 
+
+la programacion orientada a objetos, estos sistemas estan compuesto por objetos que interactuan entre si. los objetos responden a llamados de metodos y realizan acciones especificas. mientras que los orientados a agentes, estan compuesto de agentes que interactual con un entorno y con otros agentes, estos toman decisiones basados en su modelo interno y en la infromacion percibida. 
+
+la orientada a objetos puede ser aplicada a software tradicional, juegos, ES. 
+
+los agentes a sistemas inteligentes, robotica, simulaciones.  
+
+
+los tipos de agentes: 
+
+agente reactivo simple: en pocas palabras este tipo de agente reacciona al instante con una serie de reglas o tablas de que es lo que hacer, reaccion a las percepciones actuales ignorando percepciones historicas, esto porque no tiene memoria, funciona con tipo de algoritmo si-condicion-entonces-accion
+su  estrucutura es muy simple, pero carece de inteligencia. 
+
+agente reactivo basado en modelos: este tipo de agente incorporan un modelo interno que evalua el resultado y las consecuencias probables antes de hacer alguna accion en el mundo real, estos contienen un estado actual y anterior para poder calcular su accion. aunque Tambien pueden responder a reglas predefinidas estas suelen ser mas complejas que de un agente simple. 
+
+
+agentes asados en objetivos: 
+es un tipo de agente que toma decisiones con el proposito especifico de alcanzar uno o mas objetivos predefinidos. son capaces de evaluar diferentes enfoques y seleccionar el mas eficiente para lograr sus metas. utiliza infromacion recopilada y un modelo del entorno para determinar la mejor manera de alcanzar sus objetivos a largo plazo. son capaces de planificar secuencias de acciones antes de actuar. algunos ejemplos puede ser un GPS, robots industruales, asistentes virtuales. aunque pueden tener problemas en entornos donde los objetivos no estan claramente definidos o cambian constantemente. 
+
+
+agentes basados en utilidad: 
+son tipo de agentes que toma decisiones basados en la maximizacion de una function de utilidad. Esta función evalúa la deseabilidad de diferentes estados o resultados, permitiendo al agente seleccionar la acción que ofrezca la mayor utilidad o beneficio esperado. -> evluara diferentes resultados para seleccionar aquella que se acerque mas al resultado deseado. 
+
+la function de utilidaden una function matematica que representa la preferencia o satifaccion que obtendria el agente al alcanzar un estado determinado. 
+
+puede evaluar diferentes escenario y sus concecuencias a largo plazo no solo el resultado inmediato esto les permite tomas decisiones mas infromadas. 
+
+
+agentes que aprenden: 
+
+sonagentes capaes de mejorar su rendimineto  el tiempo al aprender de sus experiencias e interacciones con el entorno. estos comienzan con un nivel basico de conocimineto y adaptan su comportamiento a traves de mecanismos de aprendizaje, refinando sus estrategias y decisiones basadsn en retroaliemnteacion. 
+
+utiliza tecnicas como el aprenidzaje supervisado, reforzado y no supervisado para adaptar y actualizar su comportamiento 
+
+evalua acciones realizadas por el elmento de rendimineto y proporciona retroalimentacion. este feedback ayuda al elemento de aprendizaje a identificar lo que ha funcionado bien y lo que necesita mejorar. 
+
+
+
+
+-aprendizaje por refuerzo: 
+
+es una rama del ML en donde la maquina guia su propio aprendizaje a traves de recompensas y castigos, mediante prueba y error. un agente puede hacerse experto en un entorno desconocido unicamente a partir de sus propias percepciones y recompensas. 
+
+la estrucutra seria:
+
+entorno: el mundo en el que le agente de aprendizaje por refuerzo opera. 
+
+agente: el aprendiz que interactua con el entorno 
+
+estados: estos representan el estado actual del entorno
+
+acciones: son las posibles operaciones que el agente puede realizar en un determinado estado.
+
+recopensa: el retorno inmediado ue recibe el agente tras relaizar una accion 
+
+politica: es la estrategia que el agente sigue para decidir que accion tomar en cada estado 
+
+function de valor: especifica el valor de un estado, en la cantidad total de recompesan esperada a partir de ese estado. 
+
+
+
+
+
+
+links:
+https://www.sap.com/latinamerica/products/artificial-intelligence/what-is-artificial-intelligence.html#:~:text=IA%20estrecha%20(tambi%C3%A9n%20conocida%20como,utiliza%20en%20las%20aplicaciones%20actuales.
+
+https://www.ibm.com/mx-es/topics/supervised-learning
+
+https://cloud.google.com/discover/what-is-unsupervised-learning?hl=es-419
+
+https://aws.amazon.com/es/what-is/reinforcement-learning/
+
+https://www.datacamp.com/es/blog/what-is-symbolic-ai
+
+
+
+
+preguntas: pg 93 pdf:
+
+1- Defina con sus propias palabras los siguientes términos: 
+agente, función de agente, programa de agente, racionalidad, autonomía, agente reactivo, agente basado en modelo, agente basado en objetivos, agente basado en utilidad, agente que aprende.
+
+agente: un agente es un sistema que percibe su entorno mediante sensores y es capaz de interactuar con es entorno mediante actuadores, esas decisiones son tomadas por algoritmos internos, de modelos los cuales decieden que accion se debe de tomar 
+
+function de agente: es la accion que debe tomar el agente en respuesta a un estado o percepcion especifica del entorno. 
+
+programa de agente: 
+
+racionalidad: es la capacidad de tomar decisiones optimas basadas en objetivos, infromacion disponible y modelos del entorno. 
+
+autonomia: es la capaidad de un agente de realizar acciones on la necesidad de interaccion humnaa. 
+
+agente reactivo: es un tipo de agente simple el cual reacciona al instante con su entorno, no guarda memoria, no analiza para futuros escenarios, es el tipo de agentes de si-condion-entonces-accion. sigue una serie de reglas ya establecidas
+
+agente basado en modelos: es un agente el cual Tambien reacciona al instante con su entorno, la diferencia radica en que este contiene un modelo interno en el cual analiza las concecuencias en el mundo real de realizar cierta accion, por lo que analiza una serie de escenarios por lo que optma por que tenga mejor recompensa, es decir piensa antes de actuar este contiene un modelo anterior y un mdoelo actual de su entorno. 
+
+agente basado en objetivos: este topo de modelo su unico proposito es alcanzar un o una serie de objetivos, esto sin importar si el metodo es el mas eficiente o no, su meta es alcanzar sus objetivos. 
+
+agente basdo en utilidad: estos agentes buscan maximizar la function de utilidad, busca las acciones que nos generen la maxima utilidad o beneficio esperado.
+
+
+agentes que aprenden: son agentes capaces de mejorar su rendimineto con el tiempo que aprenden sus expericneias e interacciones on el entorno. estos utilian tecnicad de aprendizaje supervisado, no supervisado o por refuerzo.

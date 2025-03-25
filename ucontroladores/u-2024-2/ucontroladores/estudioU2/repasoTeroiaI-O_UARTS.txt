@@ -1,0 +1,112 @@
+
+I/O
+
+los puertos son pines del ucontrolador por donde s epuden entrar o sacar infocmacion en froma binairia, para 
+representar un 1 o un 0 estos van entre un valor logico de voltaje, por ejemplo un 0 logico va de 0 a 0.8V y un
+1 logico va de 2V a 5V pero entre 0.8V a 2V es un estaod de alta impedancia. 
+
+para los bits cunado se manda de salida, un 0 logico va de 0V a 0.4V y un 1 logico va de 2.4V a 5V, al igual que para
+datos de entrada de 0.4v a 2.4V esta en estaod de alta impedancia. 
+
+como sabemos que el ucontorlador es un chip que sus datos son de 8 bits. los puertos van de A -J (creo)
+el puerto esta representado por el registro < PORTxn > donde (x) es el puerto y (n) es el pin, por lo que 
+
+PORTA1 -> presentacia el bit 1 del registro
+
+ppero se tiene (Pxn) que es el registro PIN
+
+------------
+
+registros de configuracion 
+
+los pines tenen 3 registros < DDRXn PORTXn PINxn >
+
+DDRXn -> se configura al puerto X como entrada o salida (0-entrada) (1-salida)
+
+PORTXn -> tiene diferentes funciones dependiendo si es de entrada o salida 
+
+PINXn -> solo tiene funcion cunado PORTXn esta configurado como entrada. 
+
+
+
+--------------------
+
+ejemplos 
+
+#include<avr/io.h>
+
+
+
+void main(void){
+
+	//para establecer que quermeoa mandar ponmoes el bit 0 del puerto, en este caso en 0
+	DDRB= 0x01;
+	//para amndar ponemos el bit 0 en 0 logico para estabekcer que se va a mandar,. 
+	PORTB=0x00;
+
+
+
+
+}
+
+
+
+----------------------------
+
+configurar todo el puerto B como salida. 
+
+#include<avr/io.h>
+
+
+
+void main(void){
+
+	//para establecer que quermeoa mandar ponmoes el bit 0 del puerto, en este caso en 0
+	DDRB= 0xFF;
+	//para amndar ponemos el bit 0 en 0 logico para estabekcer que se va a mandar,. 
+	PORTB=0x33;
+
+
+0011 0011 
+
+}
+
+
+----------------------------
+
+configuracion del nibble alto del puerto B en salida y el nibble bajo del puerto B en entrada 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------

@@ -1,0 +1,37 @@
+-regla de la cadena. para redes neuronales. parte matematica. 
+
+-LTMs para pronosticos
+
+-redes profundas. 2006, el boom. 
+
+
+
+el prenidzaje reforzado es teniendo una base de lo que se aprendera. 
+
+-IA generatima, es basandose en algo que esta bien hecho y se basa en eso. 
+
+-aprenizaje no supervisado: se va aprender de los propios errores.
+
+pg7.
+-algoritmos en machine learling 
+
+--modelos pequenios 
+
+
+--modelos de deep learning
+
+
+pg.8
+
+modelo que como se hace el modelo de aprenidzaje supervisado
+
+
+p.9 
+freamework para paython 
+
+-pytorch
+-tenserflow - no hay soporte 
+-keras
+
+
+TPU

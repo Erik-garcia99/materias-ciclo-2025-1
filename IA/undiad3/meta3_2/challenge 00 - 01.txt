@@ -1,0 +1,18 @@
+challenge 00 - 01 
+
+2 entradas 2 salidas 
+
+predictores - entradas 
+
+respuestas - salida 
+
+Xp,i - p datos, q= tuplas, j=respuetas
+
+termino independiente, ese parametron vale 1. 
+
+matriz de cobadiansa, 
+
+Y-sombrero, hipotesis 
+
+
+X|1_4x1 -> quiere decir que agrega una columna de puros 1 de tamanio 4 

@@ -1,0 +1,105 @@
+
+
+INTERRUPCIONES 
+
+-vector de interrupciones -> espacio en memoria en donde se encuentras alamcenedas las direcciones de las rutinas de dichas 
+	interrupcioes
+
+-que pasa cuando ocurre una interrupcion? 
+	-debe de guardar banderas y direccion (PC + 1)
+-que hay en el vector de interrupciones-> brinca al vector de interrupciones, brinca ala direccion del vector x y ese es el 
+nuevo PC
+
+-PC=ISR <-nueva PC
+
+-lectura de interrupcioens seccion 14
+-el vector de interrupciones en uControlador atmega ->  
+-hay 58 interrupciones 
+-la interrupcion prioritaria enre todas es la que sea primera y la ultima es la menos prioritaria
+-el vector se encuentra en la primera parte de la memoria.
+
+-requisistos para habilitar ISR: hay 2 partes, el CPU debe escuchar interrupciones y el periferico debe estar mandando interrupciones
+	-definir la ISR -> escribir la direccion del ISR en el vector de interrupciones.
+
+
+
+->codigo
+
+agregamos 
+
+#include<avr/interrupt.h>
+
+dentro de UART_Init
+
+	sei() -> habilita las interrupciones del cpo 
+
+
+	USCRB0 |= (1<<RXTE0) | (1<<UDRIE0) -> UART habilita interripcion TX
+
+	UBR0 = 3921;
+
+
+ISR es una macro que 
+
+//hay una direccion en un vecto
+ISR(n_vect){
+
+
+
+}
+
+importante marcarle al Uc que si no hya nada que mandar desahabilitar al interrupcion.
+
+uint8_t idx
+
+
+-----------------------------------------
+
+3 de octubre 2024
+
+
+buffer circulares
+
+-el buffer esta vacio cunado ambos indices apuntan a la misa direccion 
+
+-buffer esta lleno, un indice esta adelantado 1 respecto al otro. 
+
+
+--la operacion correcta 
+
+una macro es una parte de codigo que se pega en memoria. 
+
+
+
+#define BUFFER_SIZE 4
+#define MOD(n) ((n) & (BUFFER_SIZE-1))
+
+
+typedef struct{
+
+	char buffer[4];
+	uint8_t in_idx=0;
+	uint8_t out_idx=0;	
+
+}CircularBuffer_t;
+
+//no ocupo iniziliazar mi buffer, porque cunado ambos apnutan al mismo lugar el buffer esta vacio.
+CircularBuffer_t txtBuffer;
+
+
+
+int main(void){
+
+
+	txBuffer.in_idx=0;
+	txBuffer.out_idx=0;
+
+
+--el tamanio del buffer debe ser potencia de 2
+
+
+}
+
+
+
+

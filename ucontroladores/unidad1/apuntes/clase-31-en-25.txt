@@ -1,0 +1,22 @@
+en la ROM se tiene el programa, en la RAM end onde se alamcena el stack, los datos. 
+
+-los microcontroladoes tiene su puertos mapeados en memoria. los ucontroladors seran mas rapidos para operar por puertos pero mas lentos en memoria 
+
+-temporizador
+
+-es una cascada de flip-flop en donde se divide en 2. 
+
+
+-comunicacion serie. 
+
+
+-lenguajes para programar en uC
+
+se programasn en su mayoria en C aveces en Assembly
+
+
+
+-----------------------------------------
+
+laboratorio
+

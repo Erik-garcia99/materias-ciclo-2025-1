@@ -1,0 +1,53 @@
+--clase 7 de marzo del 2025 microcontroladores
+
+5+5+ 1 + 1x +3x  + 1xy +1xy +1xyz +4xyz + xy(2z-1) + 1xy +  x(2y-1) +  1x + (2x-1)
+
+5x + 5xy + 3xyz + 10
+
+x(6+4y +7yz) + 10 = 16, 000, 000
+
+
+retardo_1S: 
+
+
+;utilizaremos igual 3 ciclos para facilitarnos el manejo de un numero tan grande de ciclos 
+
+; 1S = 16,000,000 de ciclos 
+
+	; de primera instancia tenemos 4 y 5 ciclos de entrada y salida, tendremos 1 para el ciclo superior
+
+
+	; 4 + 5 + 1
+
+	ldi r20, 240 ; 1 
+
+	nxt_S:
+
+	ldi r21, 48 ; 1x
+	nop
+	nop
+	nop
+	
+	nxt2_S:
+
+	ldi r22, 197 ; 1xy
+	nop
+	nxt3_S: 
+	dec r22 ;1xyz
+	nop
+	nop
+	nop
+	nop
+	brne nxt3_S ;xy(2z-1)
+
+	; y
+	dec r21 ; 1xy
+	brne nxt2_S ; x(2y-1)
+
+	; X
+	dec r20 ; 1x
+	brne nxt_S ; 2x-1
+
+
+
+	ret

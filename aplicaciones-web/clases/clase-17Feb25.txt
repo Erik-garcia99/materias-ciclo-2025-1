@@ -1,0 +1,28 @@
+disenio  paginas
+
+composicion y cuadricula: 
+
+la composicion es la colocacion o disposiciond  elementos visuales
+
+cuadriculas, conjunto de lineas que nos ayudan a organizar los elementos dentro de una pagina. 
+
+regla de los tercios. 
+
+-gutter, es necesario un espacio enre comulnas para el texto o imagenes, este espacio es para que el contenido sea mas legible. 
+
+-scetching, 
+
+	jeraruqia visual
+
+-wireframe. 
+
+una vez bien definido de como estara estrucuturada la pagina desde un inicio, se procede a insertar ls imagenes y texto, como estara esto acomodado. 
+
+cualquier infromacion que aparezca en mas de una pagina debe tener coherencia. 
+
+
+-encabezados, tienden a estar en la aprte superior, y por lo general contienen el logotipo, este esta en todas la paginas del sitio
+
+-el pie de apgina, contieeni infromacion legal y datos de contacto, este igual debe de estar igual en todas las paginas. 
+
+

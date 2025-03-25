@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página Personal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Barra lateral -->
+    <aside class="sidebar">
+        <div class="profile">
+            <img src="perfil.jpg" alt="Foto de perfil" class="profile-img">
+            <h1>Juan Pérez</h1>
+            <p>Desarrollador Web | Diseñador</p>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="#about"><i class="fas fa-user"></i>Acerca de</a></li>
+                <li><a href="#skills"><i class="fas fa-code"></i>Habilidades</a></li>
+                <li><a href="#projects"><i class="fas fa-laptop"></i>Proyectos</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i>Contacto</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <!-- Sección Acerca de -->
+        <section id="about" class="section">
+            <h2><i class="fas fa-user"></i> Acerca de mí</h2>
+            <p>
+                Hola, soy Juan Pérez, un apasionado desarrollador web con experiencia en HTML, CSS, JavaScript y frameworks como React. Me encanta crear experiencias digitales únicas y funcionales.
+            </p>
+        </section>
+
+        <!-- Sección Habilidades -->
+        <section id="skills" class="section">
+            <h2><i class="fas fa-code"></i> Habilidades</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fab fa-html5"></i>
+                    <h3>HTML5</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-css3-alt"></i>
+                    <h3>CSS3</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-js"></i>
+                    <h3>JavaScript</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-react"></i>
+                    <h3>React</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Proyectos -->
+        <section id="projects" class="section">
+            <h2><i class="fas fa-laptop"></i> Proyectos</h2>
+            <div class="projects-grid">
+                <article class="project-card">
+                    <img src="proyecto1.jpg" alt="Proyecto 1">
+                    <h3>Proyecto 1</h3>
+                    <p>Descripción breve del proyecto.</p>
+                    <a href="#" class="btn">Ver más</a>
+                </article>
+                <article class="project-card">
+                    <img src="proyecto2.jpg" alt="Proyecto 2">
+                    <h3>Proyecto 2</h3>
+                    <p>Descripción breve del proyecto.</p>
+                    <a href="#" class="btn">Ver más</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Sección Contacto -->
+        <section id="contact" class="section">
+            <h2><i class="fas fa-envelope"></i> Contacto</h2>
+            <form action="#" method="POST" class="contact-form">
+                <input type="text" placeholder="Nombre" required>
+                <input type="email" placeholder="Correo electrónico" required>
+                <textarea placeholder="Mensaje" required></textarea>
+                <button type="submit" class="btn">Enviar</button>
+                
+            </form>
+        </section>
+    </main>
+</body>
+</html>

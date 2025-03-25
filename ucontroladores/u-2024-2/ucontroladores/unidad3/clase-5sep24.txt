@@ -1,0 +1,160 @@
+-perifericos
+avr gpio 
+
+
+infromacion en el capitulo 13
+
+-cada pin puede funcionar como pullup
+-controlasdor de dirección por pin, como en oac, se puede estabalcer cada pin si entrada o salida.
+
+parameros 
+
+-ddrx : la x se sustituye por la letra del puerto. (a-k) (dirección si es entrada o salida
+-portx : registro de salida, es el registro de salía, 
+-pinx : 
+
+Schmitt trigger-> manera en como digitaliza seniales análogas. 
+
+este circuito tiene 2 limites, un superior y uno inferior que indica cunado se hacen 1 o 0, cunado cruza esos limites cambia de valor, siguie valiendo igual siempre y cuando no cruce alguno de los 2 limites. 
+
+-caracterisiticas eléctricas: establece los rangos, para que la entrada valga 0, 
+
+el micro no debe de alimentarse a mas de 5.5 v. 
+
+portx habilida el pull up. 
+
+pull up resitencia a vcc. 
+si tuviera un pull up externo, no es necesario habilidat el interno. 
+
+
+ejm 
+
+donde a es el pureto 
+
+
+ddra &=~(1<<pa0); //pa0 es entrada (pa0 indica que el pin 0 es entrada)
+porta  &=~(1<<pa0);  //se quiere apagar el mismo bit, para que al inicio sea 0, porque port controla el pull up, pero como yta hay uno afuera, no es necesario que se active 
+
+uint8_t ReadButton(void){
+
+	if(!(pina &(1<<pa0)){
+
+	//se esta buscando que es diferente a 0. 
+		return 1;
+
+	}
+	else{
+		return 0;
+
+	}
+
+
+}
+
+para un pull down solo no se niega la condifcion. 
+
+
+prender ujn les 
+
+
+void ledInit(void){
+//ahora 2 bits de salida en el puerto b
+	// xxxx xx11
+
+	DRRB |=3<<PB0;
+	PORTB |= 1<<PB0;
+	PORTB &=~(1<<PB1);
+	
+	
+
+}
+#define ON 1 
+#define OFF 0
+
+unit8_t turnLed0(unit8_t state){
+
+	if(state ==ON){
+	//on
+		PORTB &= ~(1<<PB0);
+		
+	}
+	else{
+
+	//off
+
+	PORTB |= (1<<PB0);
+	}
+
+}
+
+
+unit8_t turnLed1(unit8_t state){
+
+	if(state ==ON){
+	//on
+		PORTB &= ~(1<<PB1);
+		
+	}
+	else{
+
+	//off
+
+	PORTB |= (1<<PB1);
+	}
+
+}
+
+
+
+
+
+display de 7 segmentos 
+
+//inicializacion
+void boardInit(void){
+	
+	
+	DDRC &=~(3 << PC0);
+	PORTC=&=~(3 << PC0); //deshabilitando los pull ups internos 
+
+	DDRA = 0xFF;
+	PORTA =0xFF;
+
+	 
+	
+
+}
+
+
+void display7segmentos(uint8_t value){
+
+	switch(value){
+
+		case 0:
+		{
+			//para que aparezca el numero 0 tendríamos que apagar PA1 y PA0
+
+			PORTA =3;
+
+		}
+		
+		case 1:
+			PORTA = ~(3<< PA5);  //'1'
+	}
+
+}
+
+o se peude hacer una tabal con los valores de cada valor que saldrá en los 
+
+
+uint8_t seg7value[]={
+
+	PORTA =3,
+	PORTA = ~(3<< PA5)
+
+	
+
+
+}
+
+

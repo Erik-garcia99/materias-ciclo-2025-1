@@ -1,0 +1,78 @@
+instrucciones AVR
+
+
+
+en ADIW
+
+complemento a 2 
+invierte el valor y le da + 1, 
+
+NEG 1 -> -1 
+
+0000 0001 -> 1111 1110 + 1 -> 1111 1111
+
+con el complemento a1 se invierte todos los bits, se le aplica un NOT.
+
+
+SBRI
+
+SBRI Rd, k, este pone unos en un registro, el bit se establece n K, K representara la posicion en odne se pondra un 1 
+
+aplica solo en lso registros de 16 - 31, y K puede ir de 0 hasta 255
+
+SBR R16,0x10 ;1 << 4 -> este solo e sun alias para ORI un OR con un valor inmediato. 
+
+
+CBR, este aplica ceros, hace un AND pero tiene un ajuste, lo que hace primero aplica un complemento a 2, al dato indemdiato. 
+
+
+COM R16
+CBR R16, 10; 1<<4 -> 
+
+
+TST Rd, este loq ue hace es que el registro sea cero o negativo. 
+
+
+
+multiplicacion 
+
+sin singo, 
+
+MUL
+
+
+	ldi r17, 23
+	ldi r16, 15
+	MUL R15, R16
+
+	; R0=01 , R1=59
+
+
+
+MULS aplica  una multiplicacion con signo, entonces sera de 7 bits, el primer bit representa el signo. 
+
+en este solo aplican del 16 - 31
+
+
+
+fraccional, el micro no puede hacer operaciones con numeros flotantes, 
+
+---notacion Q---, el bit mas significativo representa la parte entero y el resto el resto del numero. 
+la parte entera vale 0 o vale 1. 
+
+000 0000 = 0 
+
+100 0000 = 1/2 
+010 0000 = 1/4 
+
+111 1111 = 
+
+
+LDI R17, 1
+LDI R16, 0x40 ; -> 0.5  
+FMUL R17,R16
+
+
+PC -> 22 bits.  3 bytes para el 2560. 
+
+

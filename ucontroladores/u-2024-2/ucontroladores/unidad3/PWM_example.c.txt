@@ -1,0 +1,35 @@
+#include <avr/io.h>
+
+void delay(void)
+{
+    volatile uint16_t counter = 5000;
+    while(counter--)
+        ;
+}
+
+int main(void)
+{
+    int8_t direction = 1;
+    // Configure PB7 as output
+    DDRB |= 1 << PB7;
+    // Initilize Timer0 for OC0A (PB7) output
+    TCCR0A = (2 << COM0A0) | (3 << WGM00); // Non-inverted PWM on OC0A, Fast PWM enabled
+    OCR0A = 25; // ~10% start
+    TCCR0B = 3 << CS00; // Timer enabled
+
+    while(1)
+    {
+        if (OCR0A == 0) //0%
+        {
+            direction = 1;
+        }
+        if (OCR0A == 255) // 100%
+        {
+            direction = -1;
+        }        
+
+        OCR0A += direction;
+        delay();
+    }
+    return 0;
+}

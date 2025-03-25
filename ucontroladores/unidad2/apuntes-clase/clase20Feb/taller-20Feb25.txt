@@ -1,0 +1,79 @@
+retardo por software es medinate un bucle, en C seria un while o un for, el ASM simulamos la fucnion del while. 
+
+un retardo depende de: las veces que se realiza el ciclo, codigo que genera el compilador, la velocidad del procesador, la univa variante que
+tenemos control es sobre las veces que se repite el ciclo. 
+
+# ciclos = 20
+
+Tt ->  tempo total = #ciclos * T -> 20 * (1/8MHz) = 2.5 uS
+
+T -> periodo = 
+
+
+
+-> queremos un delay de 200uS 
+
+Fcpu = 12 MHz 
+
+T -> periodo
+
+#ciclos = Tt / T= 200uS * 12MHz = 480 * 12 -> 5760 ticks = ciclos
+
+
+codigo semilla 
+
+--------------------------------
+ldi Rx , value
+
+nxt: 
+
+	nop
+	dec Rx
+	brne nxt
+
+------------------------------
+
+200uS
+
+Ldi R24, n ; 1
+nxt: nop ; n
+	NOP
+	nop
+	nop
+	nop
+	nop
+	nop
+ 	dec r24 ; n
+	brne nxt ; 2n-1
+
+
+
+
+
+# =5n = 2400 -> n = 2400 / 10
+
+------------
+
+delay 480uS
+
+Ldi R24, 10 ; 1
+nxt: 
+
+	ldi r25, 191 ; 1 * n
+	nxt2:
+		dec r25 ; m* n
+		brne nxt2 ; (2m-1) * n
+
+ 	dec r24 ; n
+	brne nxt ; 2n-1
+
+
+# = 1 + n (1 + m + 2m-1) + n + 2n - 1 -> n (m + 2m) + n + 2n -> 3m*n + 3n = n(3m+3) 
+
+
+n(3m+3) =  5760 ->   n = 10 -> 3m + 3 = 5760 /10 -> 3m+ 3 = 576 -3 -> m = 573 / 3 = 191 -> n=10 m=191
+
+
+
+
+

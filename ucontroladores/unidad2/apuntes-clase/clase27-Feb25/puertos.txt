@@ -1,0 +1,107 @@
+con el diagrama sigueinte tan solo se quita el negado y se modifica l diagrama del Arduino para que sea pull-down
+
+
+led y buttom
+
+
+#include<avr/io.h>
+
+//PC0 out 
+
+//PA0 in
+
+int main(void){
+
+  DDRC |= (1<<PC0); //CONTROLA SI ES DE ENTRADA O DE SALIDA
+    // PORTC |=(1<<PC0);
+    
+  DDRA &=~(1<<PA0); // buttom como entrada
+  uint8_t buttom_press=!(PINA & (1<<PA0))
+
+  while(1){
+
+ 
+    if(buttom_press){
+      // EL CIRCUITO ESTA EN SU FORMA PULL UP, POR LO QUE SI APARECE UN 0 SE PRENDE EL LED
+
+      PORTC |= (1<< PC0);
+    }
+
+    else{
+      //LED APAGADO
+      PORTC &= ~(1<< PC0);
+
+
+    }
+
+  }
+
+
+}
+
+
+
+
+
+
+
+activacion del led 
+
+#include<avr/io.h>
+
+
+int main(void){
+
+	// PB0 y PB1 como salida -> 0000 0011
+	DDRB |= (1<< PB0) | (1<< PB1);
+	
+	PORTB &= ~(1<<PB0);
+	
+	PORTB |=(1<< PB1);
+
+
+	while(1){
+	
+	
+	}
+
+}
+
+
+---DISPLAY DE 7 SEGMENTOS 
+
+#include<avr/io.h>
+
+
+//tabla 
+
+uint8_t value7Seg[] ={
+
+	3, //0
+	1,// 0x9F
+	//.. SUSECIBAMENTE LOS valorees en hexadecimal del valor que tendria cada uno
+}
+
+
+//funcion 
+
+void display7Seg(uint8_t value){
+
+	PORTA = value7Seg[VALUE];
+}
+
+
+
+int main(void){
+
+
+	DDRA=0xFF; // todo el puerto A es de salida.  PA0 - PA7 
+	
+	PORTA = 0X7F; // 0111 1111 salida del display  
+	
+	//se despiega el 0 0000 0011
+	
+	//despegar el 1 -> 1001 1111 -> 0x9F 
+
+
+}

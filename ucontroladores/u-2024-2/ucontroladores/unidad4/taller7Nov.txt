@@ -1,0 +1,236 @@
+a la frecuencia de nuestro oscilador internom debemos aplicara un prescalador para que el resultado de el
+
+FSCPU / prescalaor, me debe de dar entre 50kHz a 200kHz.
+
+void ADC8_Init(void){
+
+        ADMUX= 1<< REFS0; //vref = AVCC, AD8
+        ADCSRA=(1<<ADEN) | (7<<ADPS0); //Freq = 125kHz
+        ADCSRB=1<<MUX5;
+
+}
+
+//como es de 10 bits, regresada 16 bits
+
+uint16_t ADC8_Read(void){
+
+        //el bajo cunado se pone en bajo se pone un candado y no se quita gasta que lee alto
+
+
+
+
+        //uint16_t result;
+        //inicar una conversion
+
+        ACSRA |= 1<< ADSC;
+
+	//comk saber 
+	while(ADSCRA & (1<<ADSC)){
+	} //wait hasta termine la conversion 
+
+
+	//xx xxxx xxxx
+	//result = ADCL //passar la parte baja a result
+
+	//result |=ADCH << 8; 
+	
+	result = ADC;
+	return (result)
+	
+
+}
+
+
+
+-------------------------------------
+
+
+void itoa(uint16_t, char *str,uint8_t strLen){
+
+
+	uint8_t offset=0, idx=0;
+	char[16] invertedStr;
+
+	do{	
+		offset = valie %10;
+		invertedStr[idx++] = offset + '0';
+		value/=10;
+	}while(value)
+
+	for(uint8_t idxInvert=0; idInvert<idx;idxInvert++){
+
+
+		str[idxInvert]=invertStr[idx-1]
+	}
+
+	str[idx]=0;
+
+}
+
+
+--------------------------------------------------------------------------------
+
+clase 13 de noviembre 2024 
+
+ADC =(Vin *1024)/Vref - offset
+
+electronic component indetifier
+
+
+
+---------------------------------------------------------------------------------
+
+como sacar ADC a un pinn
+
+taller 14 de noviembre del 2024 
+
+void ACD14_Ini(void){
+
+	ADMUX= (1<<REFS0); //Vref = 5V
+	ADCSRA =(1<<ADEN) | (7<<ADPS0); //Freq = 125Khz
+
+}
+
+
+
+uint16_t ADC_Read(uint8_t channel){
+
+	uint16_t result =0;
+
+
+	
+	//start conversion
+	//  0100 0000
+	//& 1110 0000
+	//  0100 0000
+	ADMUX &= ~(0X1F); //CLEAR MUX
+	
+	ADCSRB &=~(1<<MUX5);
+	if(channel > 7){
+		ADCSRB |= (1<<MUX5);
+		
+		//en el caso que llega el 8 para leer, el ADC 8, si channel el mayor a 7, tenemos que setear el el registro b donde esta 8 y pasar todo a 0. 
+		channel -=8;
+	}
+	
+	ADMUX |= 1<< MUX0;
+
+	while(ADCSRA && (1<< ADSC))
+		;
+	return ADC; 
+}
+
+
+---------------------------------------------------------------------
+
+TIMER 
+
+TIMER PWM 
+
+como calcular el valor 
+
+0 a 100% 
+el 100% es 255 (FF). 
+
+
+puertos de PWM - en el pin configuración esta 
+
+para el PIN de PWM el registro o el pin esta llamado como OCnA o OCnB, donde n->numero. 
+
+
+--sacar un PWM con PA6
+
+
+----------------------------------------------------
+
+LOAD y STORE se puede modificar de modo directo e indirecto. 
+
+
+como decirle al compilador como mandar datos de a flash. 
+
+
+include<progmen.h> -> con esta librería podremos escribir datos en la flash. 
+
+const struct note ImperailMarch[] PROGMEM 
+
+
+-----------------------------------------------------
+
+declarar una cade 
+
+
+//incliimos el promem 
+#inlcude<avr/pgmspace.h>
+
+//en donde se pone progmem es en los datos que no se van a cambiar
+
+char str[] PROGMEM="Esta es la cadena de ddfs";
+char strFig[] PROGMEM="Faltaron los corchetes";
+char strTep[] PROGMEM="le pones la tres"
+char cadOrantes[] PROGMEM="un gran poder conlleva una gran responsabilidad";
+
+
+//si quisiera hacer un arreglo de estas cadenas. 
+
+
+char* strTable[][]={str, strFig, strTep, cadOrantes};
+
+
+
+int main(void){
+	
+
+	uint8_t strIdx=0;
+	ADC14_ini();
+	UART_getchar();
+	
+
+	
+	while(1){
+
+		//como recuperar los valores de la flash 
+		UART_puts(strTable[Idx]);
+		UART_puts("\n\r");
+		UART_getchar();
+		strIdx =(strIdx +1) & 3;
+
+		//recuperando de la flash 
+		for(uint8_t charIdx =0;pgm_read_byte(strTable[strIdx]+charIdx;!=0;charIdx++ ){
+			UART_putchar(pgm_read_byte(strTable[strIdx]+charIdx));
+
+		}
+			//se tiene ir a donde esta str pero de flash.	
+		UART_puts("\n\r");
+		UART_getchar();
+		strIdx =(strIdx +1) & 3; 
+
+				
+		
+
+	}
+
+}
+
+------------------------------------------------------
+guardar datos que esten persistenes pero se puedan cambiar durante la ejecucion del porgrama. 
+
+para eso tenemos la EEPROM, por lo que podemos escribir y leer dede la EEPROM. 
+
+son 12 bits de dirección en el registro de la EEPROM. 
+
+-registro del dato de EEPROM EEDR 
+
+-reigstro de control EECR
+
+termial que podmeos uasr en 
+
+REALTerm 
+
+ 
+
+
+
+
+
+
+

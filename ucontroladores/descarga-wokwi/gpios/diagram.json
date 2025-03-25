@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "author": "erik garcia",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-mega", "id": "mega", "top": 0.6, "left": -3.6, "attrs": {} },
+    { "type": "wokwi-7segment", "id": "sevseg1", "top": 72.18, "left": 475.48, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 275,
+      "left": 460.8,
+      "attrs": { "color": "green", "xray": "1" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn2",
+      "top": 207.8,
+      "left": 460.8,
+      "attrs": { "color": "green", "xray": "1" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 215.15,
+      "left": 384,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 282.35,
+      "left": 393.6,
+      "attrs": { "value": "1000" }
+    }
+  ],
+  "connections": [
+    [ "sevseg1:DP", "mega:22", "green", [ "v19.2", "h-86.4", "v-134.4" ] ],
+    [ "sevseg1:G", "mega:23", "red", [ "v0" ] ],
+    [ "sevseg1:F", "mega:24", "orange", [ "v0" ] ],
+    [ "sevseg1:E", "mega:25", "gold", [ "v9.6", "h-28.8", "v-115.2" ] ],
+    [ "sevseg1:D", "mega:26", "#8f4814", [ "v9.6", "h-67.2", "v-115.2" ] ],
+    [ "sevseg1:C", "mega:27", "red", [ "v28.8", "h-67.2", "v-134.4" ] ],
+    [ "sevseg1:A", "mega:29", "magenta", [ "v-27.96", "h-115.2" ] ],
+    [ "sevseg1:B", "mega:28", "blue", [ "v-18.36", "h-115.2" ] ],
+    [ "sevseg1:COM.2", "mega:5V.2", "red", [ "h0", "v-66.36" ] ],
+    [ "r2:1", "r1:1", "green", [ "v0" ] ],
+    [ "r1:2", "btn2:1.l", "green", [ "v0" ] ],
+    [ "r2:2", "btn1:1.l", "green", [ "v0" ] ],
+    [ "btn2:1.r", "mega:GND.5", "green", [ "v0", "h0.2", "v-28.8" ] ],
+    [ "btn1:1.r", "btn2:1.r", "green", [ "v-9.6", "h19.4", "v-57.6" ] ],
+    [ "btn2:1.l", "mega:37", "green", [ "h-9.6", "v-38.4", "h-38.4", "v-96" ] ],
+    [ "btn1:1.l", "mega:36", "green", [ "h0", "v-28.8", "h-19.2", "v-67.2", "h-48", "v-86.4" ] ],
+    [ "r1:1", "mega:5V", "green", [ "v0", "h-201.6" ] ]
+  ],
+  "dependencies": {}
+}

@@ -1,0 +1,1 @@
+en caso de tener problemas con gotoxy usar: https://www.putty.org/

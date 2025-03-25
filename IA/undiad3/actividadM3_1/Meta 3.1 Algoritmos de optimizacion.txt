@@ -1,0 +1,23 @@
+
+Meta 3.1 Implementar los siguientes algoritmos de optimización numérica en python para la función de Rosenbrock para n par.
+
+a. Función de Rosenbrock para n par, dado aleatoriamente un punto inicial en el rango de [-10,10] para cada variable y n = 10
+
+b. Función de Rosenbrock para n par, dado aleatoriamente un punto inicial en el rango de [-10,10] para cada variable y n = 100
+
+c. Función de Rosenbrock para n par, dado aleatoriamente un punto inicial en el rango de [-10,10] para cada variable y n = 1000
+
+d. Función de Rosenbrock para n par, dado aleatoriamente un punto inicial en el rango de [-100,100] para cada variable y n = 1000
+
+
+Fecha de presentación y entrega: 13 Marzo 2024
+
+1  ALCARAZ DELGADO JESUS MAURICIO		Adam, SGD with U-Clip 																											
+2  FIGUEROA ROMERO CARLOS			Adamax, RMSprop 																											
+3  GARCÍA CHÁVEZ ERIK			Levenberg-Marquardt, Variable Learning Rate Gradient Descent 																											
+4  LEYVA GUTIERREZ BRYAN GIOVANI		AdamW, RAdam 																											
+5  MACHADO MERAZ ULISES JOEL		Lion, Adagrad 																											
+6  ROBLERO ESCALANTE SANDI GUILMA		SMORMS3, SGD 	
+
+
+																										

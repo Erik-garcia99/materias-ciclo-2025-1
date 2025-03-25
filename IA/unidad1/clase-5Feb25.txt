@@ -1,0 +1,62 @@
+algoritmos de deep learning 
+
+-CNN
+
+-RNN
+
+-LSTM. 
+
+-GRU. 
+
+-GAN. 
+
+-autoencoders : sperse - stacking - contractive - denoising  
+
+
+-------------------------------
+
+6 de feb 25 IA
+
+Machin learning
+
+-supervisado
+
+-no supervisado
+
+-aprendizaje reforzado
+
+
+------ diciplinas, topicos de la IA
+
+-las diciplinas es donde la IA toma sus bases para poder desarrollar los modelos. 
+
+diciplinas de la IA: 
+aperndizaje automatico, vision por computadora, NLP, robotica inteligente, sistemas expertos, simbolica y conectivista
+
+-principales topicos
+
+redes neuronales y deep learnig:
+modelos inspirados en el cerbro humano, 
+
+IA generativa:
+la IA mas tipoca, es la que nosotros le damos un orden que gener y lo hace
+
+akgoritmos evolutivos y optimizacion:
+
+Etica y sesgo:
+
+
+desafios y tendecias
+
+los modelos actuales tienden a usar grandes cantidades e datos, entre mas datos, mas caros llegan a ser los costos de uso de ests computadoras.
+
+
+
+IA general vs estrecha 
+
+el fin de la IA general es que lleve a cabo todo lo que puede hacer un humano. replicar la mente humana en una maquina 
+
+la estrecha desarrolla tareas muy especificas.
+
+
+

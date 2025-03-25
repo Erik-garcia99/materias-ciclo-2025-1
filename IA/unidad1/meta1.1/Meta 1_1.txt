@@ -1,0 +1,35 @@
+Meta 1.1 Diferenciar los conceptos básicos de la inteligencia artificial, sus disciplinas, tópicos, técnicas y paradigmas, mediante la distinción del origen de cada uno de ellos.
+
+Temas:
+
+ALCARAZ DELGADO JESUS MAURICIO
+1. Qué es la Inteligencia Artificial (Estrecha o Débil, General, Superinteligencia)
+   Historia (linea de tiempo)
+
+FIGUEROA ROMERO CARLOS
+2. Disciplinas de la Inteligencia Artificial
+   Tópicos de la Inteligencia Artificial
+   Aplicaciones de las técnicas de Inteligencia Artificial (Global, Nacional y Local)
+
+GARCÍA CHÁVEZ ERIK
+3. Paradigmas actuales de la Inteligencia Artificial
+    El paradigma simbólico (lenguaje natural, llm's, ...)
+    El paradigma situado
+    El paradigma conexionista (llm's, ...)
+    El paradigma híbrido
+
+LEYVA GUTIERREZ BRYAN GIOVANI
+4. Impacto ético, social y legal de la aplicación de la Inteligencia Artificial
+   Oportunidades y desafíos laborales en la era de la inteligencia artificial 2025
+
+MACHADO MERAZ ULISES JOEL
+5. Que es el machine learning?.
+   Algoritmos
+   Aplicaciones
+
+ROBLERO ESCALANTE SANDI GUILMA
+6. Que es el Deep Learning?.
+   Algoritmos
+   Aplicaciones
+
+Fecha de presentación (máximo 25 min) y entrega 4-5 Febrero 2025

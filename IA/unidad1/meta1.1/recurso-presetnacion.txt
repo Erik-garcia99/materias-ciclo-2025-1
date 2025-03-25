@@ -1,0 +1,97 @@
+paradigma simbolico (lenguaje natural, llms,...)
+
+-el paradigma simbolico se centra en sistemas ue sean capaceces de razonar, tomar decisiones y resolver problemas utilizando representaciones simbolicas del conocimiento. por lo que se centra en la manipulacion de simboloes y conceptos de lugar de grandes datos numericos. 
+
+por lo que su enfoque esta en crear sistemas capces de razonar, tomas decisiones y resolver problemas utilizando represetnaciones simbolicas el conocimineto.
+
+este paradigma, el conocimiento se representa de forma explicita mediante simbolos y reglas, lo que permite la manipulacion y el entender la informacionde una manera mas transparente.
+
+los sietmas simbolicos tienen la capacidad de aprender a trabes de la adquisicion y modiciacion e las reglas y simbolos que componen su base de conocimiento. 
+
+
+paradigma simbolico - lenguaje natural
+
+es la capacidad que tienen las computadoras gracias al machine learning de poder comprender el lenguaje humano. esta es conocida como NLP. las grandes companias tienen un gran volumen de datos tanto texto, autio, correos electronicos, etc.. por lo que utilizan un algoritmos de NLP para poder procesar los datos y tratar de interpretar la intension o el sentimineto del mensaje y poder responder el tiempo real la cominicacion humana. 
+
+El procesamiento de lenguaje natural (NLP) es fundamental para analizar los datos de texto y voz de manera eficiente y en profundidad. Puede resolver las diferencias en dialectos, jerga e irregularidades gramaticales típicas en las conversaciones cotidianas.
+
+las NLP se pueden aplicar en aplicaciones orientadas liente para comunicarse de manera mas eficaz con ellos. como un chatbot. 
+
+la investigacion n este campo ha ayudado a habilitar la era de la IA generativa, desde las habilidades de comunicacion de los modelos de lenguaje de gran tamanio (LLM) hasta la capacidad e modelos de generacion de imagenes. estos tipos de modelos ya forman parte de  nuestra vida coditdiana desde los chatbots de pagins web asi como asistentes virtuales como puede ser siri y alexa.
+
+El PLN facilita que los humanos se comuniquen y colaboren con las máquinas, al permitirles hacerlo en el lenguaje humano natural que usan todos los días. ofreciendo muchas ventajas como: automatizacion de tareas repetitivas, analisisde datos e insight mejoradas, bisqueda mejorada, generacion de contenido.
+
+("Insights" se refiere a percepciones profundas o comprensiones claras acerca de un tema específico. En el contexto empresarial, "insights" se suelen usar para describir conocimientos obtenidos a partir del análisis de datos, lo que puede ayudar a tomar decisiones más informadas. Estos pueden derivarse de patrones en el comportamiento de los consumidores, tendencias del mercado, o cualquier otra fuente de información útil.
+
+¿Hay algún área en particular donde estés buscando obtener insights, como en marketing, tecnología, o algo más?)
+
+este paradigma permite la extraccion de datos de texto no estrucuturado. como opiniones de clientes, publicaciones y articulos de noticas. mediate el uso de tecnicas de mineria de texto, 
+
+
+-paragigma simbolica LLMs(modelos de lenguaje de gran tmanaio)
+
+Los modelos de lenguaje de gran tamaño, también conocidos como LLM, son modelos de aprendizaje profundo muy grandes que se preentrenan con grandes cantidades de datos para proporcionar las capacidades fundamentales necesarias para impulsar multiples casos de uso y aplicaciones. 
+
+Los transformadores LLM son capaces de entrenarse sin supervisión, aunque una explicación más precisa es que los transformadores llevan a cabo un autoaprendizaje. Es a través de este proceso que los transformadores aprenden a entender la gramática, los idiomas y los conocimientos básicos.
+
+a diferencias e las redes neurolaes recurrentes, anteriores que preoesaban 
+los datos de forma secuencial, los transformadores procesan secuencias enteras en parelo. esto permito a los cientificos e datos utilizar las GPU para entrenas LLM basados en transformadores, lo que redice el tiempo de entrenamineto.
+
+La arquitectura de las redes neuronales del transformador permite el uso de modelos muy grandes, a menudo con cientos de miles de millones de parámetros
+
+las LLM estan diseniadas para comprender y genrear texto como humano, ademas de otras fromas de contenido basandose en una gran cantidad de datos utilizados para entrenar. 
+
+un ejemplo puede ser chatGPT el cual genera ensayos, poemas y otras formas textuales en respuesta a las entradas del usuario
+
+
+
+-paradigma situado:
+
+es una perpectiva teorica y metodologica que enfatiza la importancia del contexto fisico, social y ambiental en el que un sistema de IA opera. En lugar de simplemente recibir y procesar información de manera estática, un agente situado se adapta y responde a cambios en su entorno en tiempo real.
+
+este paradigma es especialmente relevante en la robotica. 
+
+algunos de los ejemplos pueden ser robots que navegan por entornos impredecibles, vehiculos autonomas que integran sensores. 
+
+
+-paradigma conexionista
+
+la inteligenicar artificial conexionista busca replicar la capacidad de aprenidzaje. suprincipalrepreentante actual es el machine learning o el aprendizaje automatico. estas estan compuestas por unidades de procesamineto interconectadas que semejan a las neuronas del cerebro humano. 
+
+uno de princpales limitaciones es la gran cantidad de datos que esta requiere para aprender. asi como una cierta dificultad para entender que hace que un modelo tome una desicion llamando a estas cajas negras. 
+
+
+
+-paradigma hibirda
+
+la IA hibirda combiba diferentes algoritmos y tecnicas de aprendizaje automatico con conocimineto y logica humana. esta combina ambos enfoques ya sea basado en datos y en reglas esto con el objetivo de brindar un rendimineto superior en la toma de decisiones y resolucion e problemas. 
+
+esta IA puede ser usada con analisi de datos, el aprenidzaje automatico, la automatizacion, la robotica, etc.
+
+en otras palabras su objetivo es el simplificar las tareas diarias de las personas con el fin de ayudar a la evolucion de la sociedad.  
+
+este enfoque se inspire en como funciona nuestro cerebro, que no solo identifica patrones si no que Tambien comprende reglas. un ejemplo de este tipo de paradigma puede ser un asistente virtualq ue identifica los patrones de la voz, asi como sigue reglas para responder a lo que se le pregunto o solicito. 
+
+aplicaciones: se puede implemnetar en el sector salud, como en el diagnostico, incluso la cirugia asistida por robots. 
+finanzas, con esta IA se pueden detectar fraudes.
+atrncion cliente, con un chatbot hibrido que pueda responder preguntas frecuentes utilizando reglas predefinidas
+
+referencias:
+
+https://www.datacamp.com/es/blog/what-is-symbolic-ai
+https://iccsi.com.ar/paradigma-simbolico-inteligencia-artificial/
+
+https://aws.amazon.com/es/what-is/nlp/
+https://www.ibm.com/mx-es/topics/natural-language-processing
+
+https://aws.amazon.com/es/what-is/large-language-model/
+https://www.cloudflare.com/es-es/learning/ai/what-is-large-language-model/
+https://www.ibm.com/mx-es/topics/large-language-models
+
+https://www.media.thiga.co/es/glosario/inteligencia-artificial
+https://iccsi.com.ar/inteligencia-artificial-simbolica-e-conexionista/
+
+https://immune.institute/blog/inteligencia-artificial-hibrida/
+https://wwwhatsnew.com/2023/01/25/que-es-la-inteligencia-artificial-hibrida-y-para-que-puede-servir/
+https://comunicagenia.com/blog/ia-hibrida-futuro-inteligencia-artificial/
+

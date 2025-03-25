@@ -1,0 +1,7 @@
+codigo para compilar wokwi desde linea de comando
+
+ejempñlo: 
+
+E:\J_\Documents\Code\TestApp\default>avr-gcc -mmcu=atmega1280 ../TestApp.c -o TestApp.out
+
+E:\J_\Documents\Code\TestApp\default>objcopy -O ihex TestApp.out TestApp.hex

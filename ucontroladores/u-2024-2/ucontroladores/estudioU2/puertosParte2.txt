@@ -1,0 +1,89 @@
+
+#configurar el pin PB0 como salida y enviar 1 y después 0 
+
+#include<avr/io.h>
+
+
+
+
+int main(void){
+
+
+
+	DDRB= 0b00000001;
+	PORTB=0b00000001;
+
+	//pin cunado port es de salida, no tiene función dado que pin solo
+	//funciona para entrada de datos. 
+	
+	while(1){
+		
+
+		
+	}
+
+}
+
+
+----------------------------------------------
+
+PCO como entrada desactvando y actuvando su pull up interno 
+
+#incude<stdio.h>
+
+int main(void){
+
+
+	DDRC= 0x00; //<- confiurando el PC0 como entrada en el bit de 
+		//la posición 0 debe estar en 0 para eso 
+	
+	PORTC= 0x00; //su pull-up interno esta desactivado 
+			//si cambiamos 0 a 1, activaremos el pull up interno 
+
+	while(1){}
+
+
+}
+
+
+
+----------------------------------------------------------
+
+todo el puerto D como enrada con los puertos desactivados. 
+y todo el puerto B como salida 
+
+los niveles logios que entren en D salgan por B 
+
+input -> D -> B -> output 
+
+
+#include<avr/io.h>
+
+
+int main(void){
+
+	DDRD =0x00; //->configurando D como entrada 
+
+	PORTD = 0xFF; //<- activando todos sus pull-up's
+
+
+	DDRB= 0xFF; 
+	
+	PORTB=0x00; //como queremos que PORTB saque lo que hay en PORTD
+		//primeor debemos configurar el inicio del puerto, porque 
+		//lo otro es una instrucción de accion. 
+		
+	//PIND tiene los datos que entran por PORTD por lo que hay que 
+	//igualar lo que hay en PIND con PORTB
+
+
+	while(1){
+
+		PORTB=PIND;
+	} 
+	
+	
+
+
+}
+

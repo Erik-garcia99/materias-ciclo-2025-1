@@ -1,0 +1,60 @@
+CSS se usa para darle estilo a las paginas de HTML. 
+
+breanchmark -> pirtatear jjjj
+
+JPG -> si se agranda se pixelea la imagen. 
+
+CSS se basa en reglas, los elemento sde CSS se aplican en las etiquetas de HTML. 
+
+las maneras de integrar CSS dentro de HTML hay varias formas entre las que se ceuncuentra, interno 
+
+se agrega edntro del head la etiqeuta <style> 
+
+otro dentro de las etiqeutas se agrega la etiqeuta style=""
+
+la manera mejor y la adecuada en tener una archivo separado el cual solo tiene contenido CSS 
+
+style.css, el cual se manda a llamar desde <head> con la etiqeuta <link rel="stylesheet" type="text/css" href="styles.css">
+
+una regla en CSS rqyuere un selectror y las declaraciones
+
+EJMP:
+
+<slector> header{
+    -esto afectara a todos los elemntos dentro del header 
+    backgroud-color: red;
+    padding: 2px; 
+    <propiedades>: <valores>; 
+}
+
+(*) selector universal 
+
+(.) selectror class
+
+(#) selectror ID
+
+(>) herencias de hijos 
+
+selectror decendiente, permite aplicar estilos a elementos contenido dentro de otros elementos. 
+
+las clases se pueden reutilizar y el ID solo se puede usar una vez, para una sola etiqueta. 
+
+en HTML para asignar una clase a una etiqeuta esta tiene la propiedad < h1 class="<nombre-class>">
+
+
+en CSS se manda a allamar con (.<nombre-clase>)
+
+para asignar el ID a una etiqueta es de la misma forma que las clase 
+
+<h1 ID="<nombre-ID> ..</h1>"
+
+en CSS para mandar a allamar es con (#<nombre-ID>)
+
+el selectro universal (*) selecciona a todos los elementos. 
+
+
+<div> es un conteendor generico que se usa para agrupar contenido. 
+
+el div es una etiqeuta de bloque 
+
+el sapn es tan ancho como el texto que contiene. 

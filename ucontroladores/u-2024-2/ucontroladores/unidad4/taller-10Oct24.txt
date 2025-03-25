@@ -1,0 +1,146 @@
+--timers/counter 
+
+se puede ver como una seuencia de flip-flips conectados en froma serial
+
+-dos unidades de salida independinte comparador 
+-auto-carga 
+-pre-escalador de 10 bita a
+-PWM con periordo varibales 
+-generador de frecuencia 
+-tres fuentes de interrupcion (TOV0, OCF0A y OCF0B) 
+
+
+de pueden llamar de una manera o de otra dependiendo de lo que esta contando si el tiempo con la frecuencia o Tn 
+(evento fisico) 
+
+
+para controlar todo el timer hay 2 registros (TCCRnA y TCCRnB ), 
+
+bloques de comparacion 
+
+-OCRnx (n numero y x letra) - TCNTn estas se comparan entre si si sin iguales de manda a la interrupcion
+
+para que el timer pueda escrirbir 
+
+DDR -> debe tener 1 para poder escribir en el pin fisico.
+
+para poder habiliar una pin de salida, estaran asociado a cada pin de cada salida, por ejemplo la salida del t0, que esta 
+a PG5 por lo que debemos habilidat ese pin
+
+el pre-escalador indicara cuntos tics del oscilador interno de 16MHZ equivalen a timer
+
+
+el registro A, A solo puede ser el tope. 
+
+
+-registros 
+
+TCCR0A  - 8 bits
+
+modo normal conta de 255 y pasa a 0 
+
+CTC el tope dera OCRA 
+
+
+
+TCCR0B 
+
+
+
+
+-TCNT0
+
+
+
+
+
+ 
+
+registro de conteo
+
+
+banderas
+-TIMSK0 <- mascara 
+
+TIFR0
+
+
+
+
+------------------------------------------------------------
+code:
+
+
+//queremos contar 200mS
+t-> periodo que queiro lograr 
+TCPU -> periodo del timer
+PS -> prscalador
+//esto con el 8 bits
+
+//ticks = t/T => 200uS/ (1/16MHz/ PS -> 64)) = 50 
+
+
+//ahora con 1mS
+//ticks = t/T => 1mS/ (1/16MHz/ PS -> 64)) = 250
+
+1mS * 16M -> 16,000 / 64 <- prescalador
+
+static uint16_t msec_cnt = 0;
+static uint8_t secFlag=0;
+
+void Timer0_Ini(void){
+
+	TCNTO=0;//inicializarlo en 0
+	TCCR0A = 2 << WGM00; //inidca la posicion en el bit -> CTC
+	//OCR0A = 50-1;
+	OCR0A = 250-1;
+	TCCR0B = 3<< CS00; //timer enable 
+
+
+	sei();// <- inicia las insterrupciones
+	TIMSK0 = 1 << OCIE00A; //el procesaador habienta la interrupcion 
+	
+
+	//------------------------------
+
+	//modo normal
+
+	TCNTO= 6; // 6
+        TCCR0A = 0; //modo nomral 0000 0000
+
+	 TCCR0B = 3<< CS00; //timer enable
+
+
+        sei();// <- inicia las insterrupciones
+        TIMSK0 = 1 << OCIE00A; //el procesaador habienta la interrupcion
+	
+
+} 
+
+
+//el vector de la interrupcom 
+
+
+ISR((modo noirmal ) TIMER0_OVF_vect  //(CTC)TIMER0_COMPA_vect){
+
+	TCNT0 += 6; 
+	//flag=1; // se limpa la bandera
+
+	msec_cnt++;
+
+	if(msec_cnt>=1000){
+		secFlag=1;
+		msec_cnt=0;
+	}
+}
+
+
+
+
+
+
+----------------------------------------------------------
+
+
+
+

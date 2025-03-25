@@ -1,0 +1,95 @@
+TIMER2 AVR 
+
+
+el timer 2 tiene un pin de salida.
+
+el timer2 permite una funte de oscilador externa de 32KHz. 
+
+EXCLK -> es cunado se le conecta un reloj 
+
+AS2 -> trabaja con un oscilador de 32KHz 
+
+son mutuamnete exclusivos. 
+
+registro ASSR: 
+
+
+---------------------------
+code 
+
+1-
+calcular los ticks 
+1S
+PS -> prescalador
+#ticks = 1s/(1/(32768/PS)) = 32762/128 = 256 ticks
+
+//AGREGAR las interrupcione 
+
+#include<avr/interrupt.h>
+
+
+void Timer2_Ini(void){
+	
+	//pasos para ahbilitar con los 32K
+
+	TIMSK2 =0; 
+	ASSR = 1 << AS2;
+
+	TCNT = 0; //CLEAR COUNT
+	TCCR2A= 0; //MODO NORMAL
+	TCCR2B= 5<<CS20; // ps = 128
+
+	while(ASSR & (1<<TCRBUB) | (1<<OCR2AUB) | (1<<OCR2BUB) | (1<<TCR2AUB) | (1<<TCN2UB))
+
+	/*while( (ASSR & (1 << TCR2BUB))==1
+
+		|| (ASSR & (1 << TCR2AUB)) ==1
+		|| (ASSR & (1 << TCN2UB))==1)*
+
+	TFR2 = 7  << TOV2;
+	
+	sei();
+	TIMSK2=1<<TOIE2; //Enbale TOV int
+
+	
+
+	
+
+
+} 
+
+volatile static uint8_t secFlag=0;
+
+ISR(TIMER2_OVF_vect){
+
+	//base de configutacion el tiempo
+	//secFlag+=base; 
+
+	PINB |=(1<<PB7);
+
+
+}
+
+
+int main(void){
+
+
+
+	Timer2_Ini();
+	DDRB |=1<<PB7;
+	
+	PORTB &=~(1<<PB7)
+
+
+}
+
+
+
+
+
+
+
+
+
+
+

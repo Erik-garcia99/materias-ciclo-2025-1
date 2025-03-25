@@ -1,0 +1,69 @@
+-requeriminteos principales para la app de control de inventario para tiendas EPyM. 
+
+-Registro y autenticación de usuarios
+
+-Roles diferenciados: administrador, gerente, empleado (con permisos específicos).
+	-administrador: Configuración inicial del sistema (ej: definir sucursales, categorías de productos, políticas de inventario).
+		-Gestión de usuarios (crear, editar, eliminar cuentas de gerentes y empleados).
+		-Definir permisos y roles para cada usuario
+		-Mantenimiento de la aplicación (actualizaciones, integraciones con otros sistemas).
+		-Modificar parámetros globales (ej: porcentaje de IVA, umbral de stock mínimo).
+		-Eliminar registros históricos (ventas, compras, productos).(no se eliminan de la BD solo se  ocultan)
+		-Acceso limitado a una o pocas personas (ej: dueño del negocio o TI de confianza).
+		
+	-gerente:
+		-Supervisar operaciones diarias (ventas, compras, inventario).
+		-Supervisar operaciones diarias (ventas, compras, inventario).
+		-Gestionar promociones o descuentos especiales.
+		-Acceder a reportes detallados de ventas e inventario.
+		-Modificar precios de venta o descripciones de productos.
+		-No puede crear o eliminar usuarios.
+		-No puede cambiar configuraciones globales (ej: impuestos, roles).
+		-Generar un reporte mensual de ganancias para presentar al dueño.
+		-Autorizar una devolución de mercancía defectuosa a un proveedor.
+		
+	-empleado: 
+		-Registrar ventas en el punto de venta (POS).
+		-Escanear productos y actualizar el stock en tiempo real.
+		-Atender consultas básicas de clientes (ej: precios, disponibilidad).
+
+-gestion de productos: 
+	-Campos: SKU, nombre, categoría, descripción, precio unitario, costo, proveedor, fecha de caducidad, ubicación en almacén.
+	-Actualización automática de stock al realizar ventas o compras.
+	-Alertas: stock minimo,productos proximos a caducas.(fecha de alerta puede ser ajustada a los cunatos dias antes de su caducacion que quiere reliazar la alerta)
+	-Historial de movimientos (entradas, salidas, ajustes manuales
+	-----------------------------------------------------------------------
+	-Soporte para múltiples sucursales (si aplica).(esta puede o no entrar)
+	-----------------------------------------------------------------------
+	
+-ventas y compras:
+
+	-Registro de ventas con generación de tickets/recibos.
+	-Devoluciones y cancelaciones. (registro del producto devuelto y cual se cancelo y registrarlo en una tabla por separado)
+	-modulo de compras(encargado del gerente):  
+
+-Reportes y Análisis:
+	-Dashboard con métricas clave: Inventario actualizado (valor total, productos más vendidos).
+		-Ventas diarias/semanales/mensuales.
+		-Margen de ganancia por producto.
+	-Inventario por categoría, proveedor o fecha de caducidad.
+	-Exportación de datos a formatos como Excel, PDF o CSV.
+	
+-proveedores: 
+	-Información de contacto, productos suministrados, plazos de entrega.
+	-Alertas para reordenar productos según la frecuencia de compra.
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

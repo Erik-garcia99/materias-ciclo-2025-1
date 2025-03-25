@@ -1,0 +1,69 @@
+delay por harware
+
+//ticks = t /T = 104us /(1/(ft)) =104us /(1/(Fcpu/PS))
+
+//ticks = t /T = 104us /(1/(ft)) =104us /(1/(F16MHz/8))
+
+//TICKS = 208
+
+
+void Timer0_Deleay104us(){
+
+	TCCR0B & = ~(7<<CS00);
+	OCR0A= 208 -1;
+	TIFR0 |= (1 << OCF0A); //LIMPAMOS LAS BANDERA
+	TCCR0A= 2 << WGM00;
+	TCCR0B= 2 << CS00;//CTC PS=8, TIMER ENABLED
+
+	while(!(TIFR0 & (1 << OCF0A)))
+		;
+
+		
+
+}
+
+
+----------------------------------------------------------------------------------
+preguntas/ repaso del examen U1
+
+describa una secuencia par limpiar todos los registros de prorposito gernela 
+
+R0:R31 =0 <- que queden clean, rechinando de limpiar 
+
+//con el modo indifrecto se puede direccionar a todos los elementos de la memoria, incluidos los 32 registro
+que están en los primeros 32 bytes de la memoria 
+
+
+Z=r30:r31
+
+ldi R30,29 <-cnairdad de registros
+clr r31
+Z=0x001D <- 0 
+
+next:
+	st Z, R31
+
+	dec r30
+	brne next
+clr R0
+nop
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,37 @@
+Meta 2.1 Identificar la aplicación del enfoque de diseño orientado a agentes, para implementar un sistema inteligente, mediante agentes de software como unidades de abstracción principales, con honestidad, actitud creativa y propositiva.
+
+ALCARAZ DELGADO JESUS MAURICIO						
+2.1. Definición de Agentes Inteligentes.
+     Agentes y su entorno
+     Especificación del entorno de trabajo
+     Propiedades de los entornos de trabajo
+
+FIGUEROA ROMERO CARLOS
+     Buen comportamiento: el concepto de racionalidad
+          Medidas de rendimiento
+          Racionalidad
+          Omnisciencia, aprendizaje y autonomía
+2.2. Diferencias entre el Enfoque Orientado a Objetos y Orientado a Agentes
+
+GARCÍA CHÁVEZ ERIK						
+2.3. Estructura y Comportamiento de los Agentes Inteligentes.
+     Programas de los agentes
+     Agentes reactivos simples
+     Agentes reactivos basados en modelos
+
+LEYVA GUTIERREZ BRYAN GIOVANI
+     Agentes basados en objetivos
+     Agentes basados en utilidad
+     Agentes que aprenden
+
+MACHADO MERAZ ULISES JOEL						
+2.4. Plataformas para desarrollar Agentes Inteligentes
+2.5. Aplicaciones de sistemas de Agentes Inteligentes
+
+ROBLERO ESCALANTE SANDI GUILMA
+2.6 Aprendizaje por refuerzo
+    Aprendizaje de refuerzo profundo (Deep reinforcement learning)
+
+
+
+Fecha de presentación (máximo 25 min) y entrega 18-19 Febrero

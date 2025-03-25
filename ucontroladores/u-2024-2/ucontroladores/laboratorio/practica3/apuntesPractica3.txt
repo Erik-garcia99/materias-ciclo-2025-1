@@ -1,0 +1,15 @@
+para esta madre, de primero se necesitan los 3 ciclos 
+
+segundos X frecuencia 
+
+(103x10^-6)s * (16x10^6)MHz -> 1648 ciclos. 
+
+
+tenemos al inicio del ciclo 
+
+rcall -> 4 ciclos
+
+
+ret -> 5 ciclos
+
+clr -> 1 cilo 

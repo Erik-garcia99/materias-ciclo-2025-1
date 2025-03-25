@@ -1,0 +1,43 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.1.42</VERSION>
+ <DEVICE>ATmega2560</DEVICE>
+ <WORKING_DIR>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\practica2</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:\Program Files (x86)\Atmel\AVR Tools\AvrAssembler2\Appnotes</DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\practica2\practica2.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:\Program Files (x86)\Atmel\AVR Tools\AvrAssembler2\Appnotes\m2560def.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\practica2\practica2.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\practica2\practica2.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\practica2\practica2.map</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <main><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\practica2\practica2.asm</FILE><LINE>11</LINE></main>
+  <es_uno><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\practica2\practica2.asm</FILE><LINE>34</LINE></es_uno>
+  <es_cero><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\practica2\practica2.asm</FILE><LINE>194</LINE></es_cero>
+  <termina_programa><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\practica2\practica2.asm</FILE><LINE>27</LINE></termina_programa>
+  <parte_externa_31><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\practica2\practica2.asm</FILE><LINE>77</LINE></parte_externa_31>
+  <parte_externa_28><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\practica2\practica2.asm</FILE><LINE>95</LINE></parte_externa_28>
+  <parte_centro_30><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\practica2\practica2.asm</FILE><LINE>110</LINE></parte_centro_30>
+  <parte_centro_29><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\practica2\practica2.asm</FILE><LINE>126</LINE></parte_centro_29>
+  <comprobacion_extremos><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\practica2\practica2.asm</FILE><LINE>135</LINE></comprobacion_extremos>
+  <intercambio_extremos><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\practica2\practica2.asm</FILE><LINE>175</LINE></intercambio_extremos>
+  <comparacion_medio><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\practica2\practica2.asm</FILE><LINE>164</LINE></comparacion_medio>
+  <intercambio_medio><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\practica2\practica2.asm</FILE><LINE>183</LINE></intercambio_medio>
+  <parte_extremo_29><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\practica2\practica2.asm</FILE><LINE>225</LINE></parte_extremo_29>
+  <parte_extremo_26><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\practica2\practica2.asm</FILE><LINE>239</LINE></parte_extremo_26>
+  <parte_medio_28><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\practica2\practica2.asm</FILE><LINE>252</LINE></parte_medio_28>
+  <parte_medio_27><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\practica2\practica2.asm</FILE><LINE>266</LINE></parte_medio_27>
+  <comparacion_extremos><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\practica2\practica2.asm</FILE><LINE>281</LINE></comparacion_extremos>
+  <intercambio_extremos_0><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\practica2\practica2.asm</FILE><LINE>301</LINE></intercambio_extremos_0>
+  <comparacion_medios><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\practica2\practica2.asm</FILE><LINE>291</LINE></comparacion_medios>
+  <intercambio_medios><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\practica2\practica2.asm</FILE><LINE>309</LINE></intercambio_medios>
+ </LABELS>
+</ASSEMBLER_INFO>

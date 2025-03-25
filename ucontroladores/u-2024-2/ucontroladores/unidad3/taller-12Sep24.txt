@@ -1,0 +1,87 @@
+
+en la imagen, el or que se puso es porque se quiere, es poder poner 1 los demás pines, esto para que, para que se pueda recorrer y leerlos.
+
+
+
+si no se pone el nop, no nos mostrara el valor que se quier escribir en pinc, porque este no se ve reflejado al instante, si no que toma un retraso de ciclo, 
+
+
+
+uint8_t ReadKeyboard(void){
+
+
+
+
+	for(uint8_t rowOffset =0; rowOffset < NUM_ROWS; rowOffset++){
+
+		PORTC &= ()
+
+	}
+
+
+
+}
+
+
+
+----------------------------------------------------------\
+
+siguiente periferiso 
+
+USART: 
+
+
+(surgue como sustituo del estándar RS232)
+
+comunicación full duplex, es tener un cable para mandar y otro para recibir 
+
+micros actulaes con ATMEGA2560 soporta RXD, TXD, CTS. 
+
+
+en USART, siempre se inicia en 1, es el start bit, en cunado hay un 0, empieza la comunicación,
+
+un bout != bit 
+
+
+el bit extra nos funciona, como bit de comando, si viene setiado es un comonado si no es información, 
+
+este es nuestro único periferico para la comunicación con nuestra computadora. 
+
+para que funciona el concepto de paridad, esto es una manera muy cruda para verificar los datos, que estos vengan integros, para verificar, no sirve tanto, porque solo funciona cunado se corrupte un bit no cunado se corrupen mas de 1 bit : 
+
+tenemos <05> -> 0000 0101
+
+esta invertido. para USART 
+
+UART-> 1010 000, E=1 o O=0,  
+
+
+stop bit, es el retardo es el diferenciar la comunidacion entre 1 y el otro dispositivo conectado.
+
+
+
+ tarea: el porque las velocidades de las tabla 22-12 se pueden dividir entre 300 
+
+-300 fue lo máximo que se puede mandar, 300 boud, quiere decir cuandots bits por segundo se puede mandar.
+
+
+es este periferico la comunicación es 1 a 1, en otros periféricos se pueden comunicar entre mas dispositivos.
+
+-operaciones asíncrona y síncrona
+
+-síncrona ambas tiene el mismo reloj, tiene que tener la misma comunicación
+-asíncrona, cada uno va a su tiempo
+
+USART -> TRANSMISOR RECEPCION ASINCRONO SINCRONO UNIVERSAR = UART -> nos birncamos el síncrono.
+
+
+-UDR depende si se va a escribir o leer eso dira que es de transmisión o de recepción. 
+
+
+
+
+UCSRnC -> esta setiadao para comunicación asíncrona.
+
+
+
+ejercicios -> imprementar los demos, la de matriz de botones y display 

@@ -1,0 +1,63 @@
+estructura semantica 
+
+un elemento vacio solo tiene una etiqueta. 
+
+como pueden ser las etiquetsa <br> o <hr> <- pone una linea horizontal. 
+
+listas de definciion 
+
+estas abren con <dl>, <dt> se utiliza para contener el termino, <dd> contiene la defincion, esta se usan para una serie de terminus y sus definciones. 
+
+acronimos y abreviacion, esto se usan con <abr> o <acronym>
+
+citas y definciiones, la cita se usa con <cite> hace referencia a un libro, pelicula, pintura, etc. 
+
+<dfn> esta se usa para indicar la instancia definitorio e un nuevo termino. 
+
+<strong> este es apra marcar un termino que es importante 
+
+<em> es para darle enfasis que cambia simultaneamente el significadod  una oracion. 
+
+
+<ins> se utiliza pra mostrar contenido que se ha inserfado n un documento, tachado 
+
+<del> tiene un linea atravesada en l elemento 
+
+<s> indica que ya no es relevante l contenido 
+
+<u> se usa comunmente para sunrayar nombres propios.
+
+
+tenemso las tablas, esto ya lo tegno explicado
+
+la etiqeuta (colspan) indica las columnas que este va a abarcar, al igual que esta la etiqeuta (rowspan) que idnca los renglones que este va a abarcar
+
+
+la estrucutra del folder del proyecto lo recomendable es tener los archivos por serparados, CSS en uan carpetas, JS en otra, imgagenes organizadas en uno, si la pagina es de secciones cada seccion con su carpeta y asi. 
+
+
+url absoluta, inicia con el nombre del dominio e ir seguido a una pagina 
+
+url relativo, se puede apuntar  archivos dentro del midmo proyecto 
+
+para poder enlazar dentro e la misma pagina, para eso usamos ID's usando igualemnte los links <a>. con la cual se anclmna primero <a href="#ID"> 
+
+
+
+elemetos graficos 
+
+<img>
+<map><area> 
+<picture><source>
+<svg>, mejor buscarlos los que hay
+
+
+donde colocar una imagen esta va, antes de un parrafo, dentro del inicio de un parrafo o en medio de un parrafo.
+
+
+buenos fmroatos, como svg son ideales para presentar imagenes en la web. otro igual s PNG. debemos cuidar que la imagen lo se distorcione. 
+
+
+<iframe> es una pequenia ventana que se hace cortando en una pagina y en esa ventada puede ser otra 
+
+esta tiene una propiedad de src="" en dodne se pone la direccion. 

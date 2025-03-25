@@ -1,0 +1,114 @@
+USART
+
+4 registros 
+
+UBRR 12 bits-> divide la freceucnia del oscilador.
+
+
+ejemplos: 
+1-boud 2-bit 3-paridad 4-stop bits
+// UART0 7570 , 7 , E ,2
+
+//TXD 
+//TRX
+//udr para escribir o leer datos 
+
+//bits 
+//el bit 2 -> U2X depende del boud, ese se tiene que establecer.
+
+ 
+
+//UCSRnA
+void UART_Init(void){
+
+//frecuencia / 16 -> /boud -> solo se reciben números enteros de 12 bits y los decimanles el el porcentaje de error
+
+//redondear de preferencia hacia arriba
+//el biud se selecciona con el que da el menor porcentaje de error
+//U2X:0 =132.1 -1 = 131 , boud = 757.75
+//u2x:1 = 264.2 -1 =263 , boud = 757.75 -> este es el boud real que se esta logrando
+	  //  |
+	UCSR0A = 1<< U2X0;
+	//lo que esta haceindo con el corrimiento es poner 1 o 0 en el bit al que llega al corirmeinto
+	UCSR0B = (1<<RXEN0) | (1<<TXE0 );
+
+	//selecciona el modo
+
+	UCSR0C = (2<< UMP00) | (2<<USCZ00) | (1<<USBS0); //0010 1100
+	//   0000 0110 <- valor incial
+	// | 0010 1100 <- mascara
+
+	//doble velocidad
+	UBRR0 = 263;
+	
+
+	
+
+}
+
+
+void UART0_putchar(char data){
+	
+	//verificar si esta vacia, para esto se tiene una bandera 
+	//estas banderas se ecientran en el A
+
+	//mientras no esta vacia entra aqui
+	while (!(UCSRA0 & 1<< UDRE0)){
+		
+	}
+	
+	UDR0 = data;
+		
+
+}
+
+void UART0_getchar(void){
+
+	//revisar si tiene un dato
+
+	//mientras no hemos recibido un dato
+	while(!(UCSR0A & (1<<RXC0)))
+		;
+	
+	return UDR0;
+
+}
+
+
+int main(void){
+
+	//cuanto tarda el enviar la infromacion al periferico 
+
+	//se calcual mediante: 
+	//es necesario saber cunado baud se van a mandar?
+	//para transmitir todo el dato son 11 boud 
+
+	// boud con con 757.75
+
+	//(1/frecuencia x boud) x 11
+
+	void UART_Init();
+	UART0_putchar('U');
+	UART0_putchar('A');
+	UART0_putchar('B');
+	UART0_putchar('C');
+	//debe haber algo que lo atora.
+	while(1)
+	;
+
+	
+	
+
+}
+
+
+//cargar en el Arduino
+//primero compilar
+//se carga con XLOADER
+//cunado se manda un dato hay led RTX y TRX
+
+//en un sistema envebiod 
+
+
+//usar una terminarl TERA TERM
+//prog 36  <>

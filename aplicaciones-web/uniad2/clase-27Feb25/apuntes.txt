@@ -1,0 +1,56 @@
+formularios con HTML
+
+-tipos de formularios 
+
+-formularios de contacto
+-encuentras
+-registro en sitio web
+-libros de visita
+-formulario de pedidos
+-funciones de busqueda
+-adicion y carga de datos y mas
+
+estrucutura basica 
+
+<form></form> -> metodos post y get
+
+parametros, la accion es a donde se va a conectar. 
+
+etiquetas para ingresar informacion
+
+<input/> este solo tiene una de apertura, tiene varios atributos entre los que se encuentra el (type="") que le direa a la pagina de que tipo sera, si para ingresar texto, archivos, raiod, chechbox, etc., name="", el didentificador de la etiqueta. 
+
+entre los tipos podrmeos encotrar, text, password, file,date, submit -> este es par ya mandar el fomrulario,email, search, ,etc.
+
+el placeholder es un texto que le dice al usuario lo que se espera qeui ingrese, como un ejemplo
+
+etiqeuta <textarea></textarea>,  
+
+
+tipo radio button este solo se puede seleccionar una a la vez y por lo general se establece uno por defecto. con el atributo checked
+
+
+con el for en label, es un atributo de asocia la etiqeuta con el tipo de datos a ingresar como el de radio, si se le pica en el texto se selecciona esa opcion, y no es estrictamente seleccionar en el circulito. 
+
+
+una lista de opciones 
+<select name=">
+	<option value"">...</option>
+</select>
+
+
+hay tipode de botones 
+hidden
+
+
+agrupar formularios 
+
+fieldset -> este agrega un marco donde se limita el fomrulario. 
+
+
+required -> si se le pone este atributo a una etiqeuta de input, obligaria al usuario a ingresar el dato. 
+
+
+
+
+

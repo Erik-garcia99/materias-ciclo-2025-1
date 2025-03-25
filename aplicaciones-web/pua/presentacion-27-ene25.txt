@@ -1,0 +1,10 @@
+-primero miraremos historia de la web
+
+-despues miraremos HTML-CSS- JS
+
+-react - boostrap.
+
+-proyecto individual.
+
+
+excentar con un 70% para el ordi - se entregara el proyecto porque se centra mas alli.

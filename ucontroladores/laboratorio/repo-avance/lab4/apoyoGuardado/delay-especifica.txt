@@ -1,0 +1,98 @@
+
+
+-- contar los retardos para un delay a peticion 
+
+-este delay va a durar de 0 a 255 mS
+
+0 y 1 son un caso especial, si se manda un 0 quiere decir que no hay delay 0 ms, por lo que este regresara
+al instante 
+
+
+--para el delay de 1ms que ser para el regreso 
+1 ms =  16,000 ciclos 
+
+utilizaremos 3 ciclos - primero el mas sencillo que sera el de 1 ms exacto 
+
+5 + 5 + 2 + 1 + 2 + 1 + 1x + 1xy + 1xyz + xy(2z-1) + 1xy + x(2y-1) + 1x + (2x-1)
+
+-> 4x + 3xy + 3xyz + 15
+
+x(4 + 3y + 3yz) + 15
+
+valors para delay_general: 
+
+six = 115, y = 1, z = 44
+x = 115, y = 3, z = 14
+x = 115, y = 5, z = 8
+x = 115, y = 9, z = 4
+x = 115, y = 15, z = 2
+x = 139, y = 1, z = 36
+
+4ms -> 64,000 cycles}
+
+
+de C - ASM con 16 bits con 7 ciclos
+
+
+
+-para el delay de 1mS para volver
+
+7 + 3 + 1 + 2x +1xy + 1xyz + xy(2z-1)+ 1xy  +x(2y-1) + 1x +(2x-1) + 2 +1 + 2 + 5
+
+-> 4x + 3xy + 3xyz + 20
+
+x(4 + 3y + 3yz)+20
+
+combinaciones para el ultimo dlay: 
+six = 2, y = 11, z = 241
+x = 2, y = 22, z = 120
+x = 2, y = 121, z = 21
+x = 2, y = 242, z = 10
+x = 5, y = 7, z = 151
+x = 5, y = 8, z = 132
+x = 5, y = 14, z = 75
+x = 5, y = 19, z = 55
+x = 5, y = 28, z = 37
+x = 5, y = 38, z = 27
+x = 5, y = 56, z = 18
+x = 5, y = 76, z = 13
+x = 5, y = 133, z = 7
+x = 5, y = 152, z = 6
+x = 17, y = 2, z = 155
+x = 17, y = 3, z = 103
+x = 17, y = 4, z = 77
+x = 17, y = 6, z = 51
+x = 17, y = 8, z = 38
+x = 17, y = 12, z = 25
+x = 17, y = 13, z = 23
+x = 17, y = 24, z = 12
+x = 17, y = 26, z = 11
+x = 17, y = 39, z = 7
+x = 17, y = 52, z = 5
+x = 17, y = 78, z = 3
+x = 17, y = 104, z = 2
+x = 17, y = 156, z = 1
+x = 20, y = 5, z = 52
+x = 20, y = 53, z = 4
+x = 47, y = 1, z = 111
+x = 47, y = 2, z = 55
+x = 47, y = 4, z = 27
+x = 47, y = 7, z = 15
+x = 47, y = 8, z = 13
+x = 47, y = 14, z = 7
+x = 47, y = 16, z = 6
+x = 47, y = 28, z = 3
+x = 47, y = 56, z = 1
+x = 68, y = 1, z = 76
+x = 68, y = 7, z = 10
+x = 68, y = 11, z = 6
+x = 170, y = 1, z = 29
+x = 170, y = 2, z = 14
+x = 170, y = 3, z = 9
+x = 170, y = 5, z = 5
+x = 170, y = 6, z = 4
+x = 170, y = 10, z = 2
+x = 170, y = 15, z = 1
+x = 188, y = 1, z = 26
+x = 188, y = 3, z = 8
+x = 188, y = 9, z = 2

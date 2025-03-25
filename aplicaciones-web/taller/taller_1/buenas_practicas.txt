@@ -1,0 +1,75 @@
+los estandares web, son normas cuando se hace referencia a un aspecto de la web o sitios, ayudan a hacer de la web una experiencia mas consistente para todos. 
+
+los estandares son establecidos por la W3C, el cual comenzo en 1998, para hacer a la web las accesible, segura y optimizada. 
+
+cubren areas como la accesibilidad, la comptablilidad, la privacidad y los estandares de codificacion hacia atras y hacia adelante. 
+
+cundo se crean sirios web, existen estandares de disenio 
+
+con estos estandares y convenios, los sitios se disenian de cierta manera para que los usuarios puedan saber desde un inicio como se comportara cada elemento dentro de la pagina, porque siempre han funcionado asi, por lo que el ponerlo de una manera diferente traera mas controversia al sitio. 
+
+los estandes de disenio web pueden conducirnos de algunas buenas practicas
+
+ errores al diseniar un sitio web. 
+
+tener muchas animaciones hacen que el sitio carge muy lento. 
+
+el salir del estandar no siempre es lo mas conveniente pude ser mas contraproducente en lugar de sobre salir. 
+
+dejar de usar mensaje de apertura, consumen mucho tiempo y mas si no deja omitirlo o hacer algo sin que esta animacion acabe. 
+
+si se va hacer uso de fomrularios procurar que tener los campos e texto minimo. 
+
+no hacer paginas pequenias, las paginas deben de ser infromativas, si no se les da la sificeinte infromacion al usuario de la pagina este quedara con mas dudas que respuestas. 
+
+los fomrularios sin etiquetas, no son los correctos, dado que si se escribe sobre el campo el placeholder se borra y la memoria de mucha gentes es de muy a corto plazo y se le olvidadara lo que va en el campo
+
+
+si hay un carrusel por ejemplo, se imagenes pero yo quiero ir hacia abajo, poder seguir que no me interrumpa recorriendo todo el rollo de imagenes. eso suele ser molesto. 
+
+unos de los princpales motivos que los UI freacasan o son malos es el estilo PowerPoint, donde la gente piensa que sera divertido y creativo hacer una pagina de inicio sin desplazamineto con un control deslizante de pantalla completa, esto no es bueno porque solo cabe una cierta cantidad de infromacion en un par de dispositivas. 
+
+otro error es la falta de infromacion, muchas paginas apenas y tienen infroacion relevante del sitio
+
+lo que hace un buen disenio, es que en la pagina de inciio en parte superior deben de contestar a 3 prguntas, quien eres?, que haces? y como puede ayudarme?, 
+
+la pagina debe de tener un ciclo, en donde primero de debe de presntar la empresa duenia de la pagina y luego pase a lo bueno que son y porque deberian de contratar los servicios/productos, despues prestar un apartado en donde el usuario se pondra en contacto. 
+
+
+las alineaciones  texto
+
+la alineacion a la izquierda es la mas populas y las predeterminada. esta esta asociada principalmete a texto de parrafo largo, lo que lo hace mucho mas facil de leer. este formato es el que comunmnete se debe de usar para la gran mayoria de los texto en linea
+
+la alieacion entrada, es mas usada para atractivo visual. este no se debe de usar si el parrafo tiene mas de 3 lineas.
+
+la alineacion a la derecha, rara vez se usa, esta agrega algo de estilo visual a un disenio, esta rara vez se usa pero si se usa esta no puede exeder mas de una linea de texto.
+
+justificado, se usa mas comunmente cone stilos de disenio minimalistas  lo lujosos para darle un poco mas de gusto visual. este no se debe de usar en fromatos digitales a menos que sea contenido static como infografias o un poster. 
+
+la navegacion en un sitio web esta en cada pagina y es bastante imporante y no es algo que se quiera arruinar. 
+
+la navegacion tiene 3 prinicpales usos, uno de esos es vinculas 2 o mas paginas desadas del sitio, el otro es la identidad del sitio web, el otro elemento es para conversaciones. pueden ser acciones importantes que se quiera que relaicen los usuario, agregando botones o elementos a su navegacion. otras funciones pueden incluir una barra de busqueda con infromacion util o un carrito de comprar si el sitio es de comercio. 
+
+existen varios de tipos de estilo de navegadores, pueden ser estaticos que siempre se muentran duranto toda la pagina, dinamicos que pueden desaparecer cunado e le baja a la pagina. 
+
+estos deben de responder a las preguntas de quine es usted y que paginas improtantes en el sitio hay.  
+
+el estilo de los nav's, pueden ir en muchas maneras, unso esan del lado izquierdo otros tienen iconos opueden star detras de un icono.  
+
+
+el disenio estandar para una barra de navegacion es en la parte izquierda se enceunra un logo, en la parte central de manera llamativa todos los apartados importantes de la pagina.
+
+el menu ocultado detras e un icono solo debe hacerse para dispositivos moviles, dado que estos cuentan con una pantalla mucho mas chica es el unico sistema en donde este es completamente valido. 
+
+el usar pequenia flechas para indicar en donde hay un menu. 
+
+
+es muy impoprtantes antes de empezar a triar codigo por ejemplo, tener un lienzo, usar plataformas que nos pueden ayudar a tener un boseto de como va a quedar nuestro sitio antes de ir a al programacion. 
+
+al momento de diseniar es bueno tener en mente el concpeto de que cada apgina se compone de fias y cada fila es una idea separada, esto nos hace que el disenio de los sitios web sean mucho ma faciles de hacer y entender 
+
+el color de estas filas no debe ser igual en 2 filas seguidas, si se hace esto, lo unico que se hace es confundir al usuario. 
+
+lo que se busca es separar la ideas. 
+
+es importantes primero tener la infroacion, que voy a plasmar antes de diseniar, porque si diseniamos y adpatamos la infromacion al disenio lo mas probable es que este no encaje y todo se vea feo.  

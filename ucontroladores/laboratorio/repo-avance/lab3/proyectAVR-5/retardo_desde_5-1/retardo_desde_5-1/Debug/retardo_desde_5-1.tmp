@@ -1,0 +1,39 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.1.57</VERSION>
+ <DEVICE>"ATmega2560"</DEVICE>
+ <WORKING_DIR>C:\Users\erikG\OneDrive\Documents\ciclo2025-1\ucontroladores2025-1\u-2024-2\laboratorio\repo-avance\lab3\proyectAVR-5\retardo_desde_5-1\retardo_desde_5-1\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR Assembler\Native\2.1.1175\avrassembler\Include</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\AVR Tools\AvrAssembler2\Appnotes</DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\erikG\OneDrive\Documents\ciclo2025-1\ucontroladores2025-1\u-2024-2\laboratorio\repo-avance\lab3\proyectAVR-5\retardo_desde_5-1\retardo_desde_5-1\retardo_desde_5-1.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR Assembler\Native\2.1.1175\avrassembler\Include\m2560def.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\erikG\OneDrive\Documents\ciclo2025-1\ucontroladores2025-1\u-2024-2\laboratorio\repo-avance\lab3\proyectAVR-5\retardo_desde_5-1\retardo_desde_5-1\Debug/retardo_desde_5-1.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>retardo_desde_5-1.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>retardo_desde_5-1.map</FILE>
+  <FILE>retardo_desde_5-1.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <retardo_1S><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2025-1\ucontroladores2025-1\u-2024-2\laboratorio\repo-avance\lab3\proyectAVR-5\retardo_desde_5-1\retardo_desde_5-1\retardo_desde_5-1.asm</FILE><LINE>150</LINE></retardo_1S>
+  <retardo1mS><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2025-1\ucontroladores2025-1\u-2024-2\laboratorio\repo-avance\lab3\proyectAVR-5\retardo_desde_5-1\retardo_desde_5-1\retardo_desde_5-1.asm</FILE><LINE>99</LINE></retardo1mS>
+  <miRetardo><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2025-1\ucontroladores2025-1\u-2024-2\laboratorio\repo-avance\lab3\proyectAVR-5\retardo_desde_5-1\retardo_desde_5-1\retardo_desde_5-1.asm</FILE><LINE>50</LINE></miRetardo>
+  <arriba><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2025-1\ucontroladores2025-1\u-2024-2\laboratorio\repo-avance\lab3\proyectAVR-5\retardo_desde_5-1\retardo_desde_5-1\retardo_desde_5-1.asm</FILE><LINE>32</LINE></arriba>
+  <abajo><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2025-1\ucontroladores2025-1\u-2024-2\laboratorio\repo-avance\lab3\proyectAVR-5\retardo_desde_5-1\retardo_desde_5-1\retardo_desde_5-1.asm</FILE><LINE>39</LINE></abajo>
+  <nxt0><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2025-1\ucontroladores2025-1\u-2024-2\laboratorio\repo-avance\lab3\proyectAVR-5\retardo_desde_5-1\retardo_desde_5-1\retardo_desde_5-1.asm</FILE><LINE>60</LINE></nxt0>
+  <nxt1><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2025-1\ucontroladores2025-1\u-2024-2\laboratorio\repo-avance\lab3\proyectAVR-5\retardo_desde_5-1\retardo_desde_5-1\retardo_desde_5-1.asm</FILE><LINE>68</LINE></nxt1>
+  <nxt2><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2025-1\ucontroladores2025-1\u-2024-2\laboratorio\repo-avance\lab3\proyectAVR-5\retardo_desde_5-1\retardo_desde_5-1\retardo_desde_5-1.asm</FILE><LINE>76</LINE></nxt2>
+  <nxt_mS><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2025-1\ucontroladores2025-1\u-2024-2\laboratorio\repo-avance\lab3\proyectAVR-5\retardo_desde_5-1\retardo_desde_5-1\retardo_desde_5-1.asm</FILE><LINE>120</LINE></nxt_mS>
+  <nxt1_mS><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2025-1\ucontroladores2025-1\u-2024-2\laboratorio\repo-avance\lab3\proyectAVR-5\retardo_desde_5-1\retardo_desde_5-1\retardo_desde_5-1.asm</FILE><LINE>126</LINE></nxt1_mS>
+  <nxt2_mS><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2025-1\ucontroladores2025-1\u-2024-2\laboratorio\repo-avance\lab3\proyectAVR-5\retardo_desde_5-1\retardo_desde_5-1\retardo_desde_5-1.asm</FILE><LINE>130</LINE></nxt2_mS>
+  <nxt_S><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2025-1\ucontroladores2025-1\u-2024-2\laboratorio\repo-avance\lab3\proyectAVR-5\retardo_desde_5-1\retardo_desde_5-1\retardo_desde_5-1.asm</FILE><LINE>167</LINE></nxt_S>
+  <nxt2_S><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2025-1\ucontroladores2025-1\u-2024-2\laboratorio\repo-avance\lab3\proyectAVR-5\retardo_desde_5-1\retardo_desde_5-1\retardo_desde_5-1.asm</FILE><LINE>172</LINE></nxt2_S>
+  <nxt3_S><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2025-1\ucontroladores2025-1\u-2024-2\laboratorio\repo-avance\lab3\proyectAVR-5\retardo_desde_5-1\retardo_desde_5-1\retardo_desde_5-1.asm</FILE><LINE>177</LINE></nxt3_S>
+ </LABELS>
+</ASSEMBLER_INFO>

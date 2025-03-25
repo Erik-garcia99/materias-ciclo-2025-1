@@ -1,0 +1,211 @@
+la web 1.0 se trata de las primeras pagins web en donde se se buscaba y se leia informacion 
+
+las paginas en su mayoria eran estativas alojadas n servidiores web grstionados por ISP o servicios de alojamineto web gratuitos 
+
+entre sus caracterisiticas e encunetras que era facil el conocer paginas estaticas esto con la ayuda de los hipervinuclos, menor interaccion entre el usuario y el servidor. se podria encviar formulacios HTML por mail. proporciona un medio publicitario unidireccional, es decir solo se muestra al usuario. 
+
+-web 2.0 este hace referencia a los sitios web que destaca el contenido por el usuario, la usabilidad y la interoperabilidad para lso usuarios finales. 
+
+permitia la integracion y colaboracion entre si en un dialogo de redes socuales. se incluian tecnologias web incluyendo marcos AJAX y JS
+
+entre sus caracterisiticas podemos encontrar infromacion que permite a los usuarios recuperar y clasificar lak ifnromacion de forma colectiva. 
+
+desarrollo we API's para permitir el uso propio. 
+
+en esta evolucion de la web el usuario esta teniendo un mayor peso a la hora del desarrollo de los sistemas entre los que podremos encontrar los blogs, marcadores sociales, redes sociales, votaciones de contenido, etc. 
+
+
+web 3.0, este timo de web se caracterisita por tener una vision de una web descentralizada. 
+
+Se refiere a la evolución de la utilización y la interacción de la Web, que incluye la transformación de la Web en una base de datos, con la integración DLT (la cadena de bloques de tecnología de contabilidad distribuida es un ejemplo) y esos datos pueden ayudar a crear contratos inteligentes basados en las necesidades del individuo.
+
+
+los datos no son propiedad sino que se comparten 
+
+entre sus caracterisiticas tenemos la 
+
+web semantica: la web semantica estrucutrua infromacion de manera que los sistemas puedan interpretarla y relaiocnarla de manera mas inteligente. se apoya mucho mas en los metadatos, utiliza tecnologias de estandarizacion como RDF, OWL y SPARQL
+
+
+IA: con las capcidades de procesaminto del lenguaje natural, las computadoras pueden distinguri infromacion como los humanos para proporcional resultados mas rapidos y relevantes, 
+
+graficos 3D: el disenio 3D se esta usando ampliamnete para sitio web y servicios como pueden ser guias de museos, juegos de compuadoras, e-commerce, etc.s
+
+conectividad: infromacion mas conectada gracias a los metadatos semanticos. 
+
+ubiciudad: multipes aplicaciones pueden acceder al contenido, todos los dispositivos estan conectados a la web y los servicios se pueden utilizar en todas partes. 
+
+DLT (Distributed ledger technology): estas tecnologias nos permite disenias una estructrua de sistemas que permite funcionar como una base de datos NO centralizada. esto ayuda a que la infromacion este un poco mas seguro dado que no hay un servidor central, tipo bitorrent 
+
+
+-------------------------------------------------------------------------
+tipo de aplicaciones y arquitectura
+
+
+una aplicacion web necesita autenticacion. 
+
+las aplicaciones utilizan una combinacion de secuencias de comandos del lado del servidor y secuencias de comandos del lado del cliente para presetnar la infromacion, 
+
+
+- un sitio web 
+
+un sitio web es una coleccion de paginas relacionadas que contienen imagenes, texto, audio, video, etc. 
+
+este puede constar de 1, 2 o n numeros de paginas. 
+
+hay varios tispo de sitios web como pueden ser de archivos, blogs, foros, sitios web comunitarios, etc. 
+
+estos pueden dividirse en 2 tipos y sibtipos, el estaitoco y dinamico y el individual y grupal. 
+
+
+-diferencias
+
+-una aplicacion esta diseniada para la interaccion con el usuario final meintras que el sitio en su mayoria de veces es contenido estatico. 
+
+-el usuario puede manipular los datos mientras que en el sitio web no es posible
+
+-la aplicacion debe de estar precompilado antes de su implementacion dado que pueden ser escritos en otros lenguajes como python o java, mientras que el sitio web no es necesario este paso
+
+-la function de la aplicacion es bastante conpleja meintras que la del sitio no lo es. 
+
+--arquitectura web 
+
+la arquitectura sienta las bases de sus aplicaciones web y deterniminan su calidad y caracterisiticas. el elegir una arquitectura adecuada s fundamental para desarrollar aplicaciones eb de vanguardia. la arquitectria web define las interacciones entre diferentes interfaces de usuarios, bases de datos, componentes y middlewere, porporciona la estructrua esqueltica que tetermina las relaciones logicas entre varios puntos finales.
+
+una buena arquitectrua asegura que la aplicacione ssea mas segura, flexible y escalable lo que le beneficia a largo plazo. 
+
+la tarea principal es garantrizar que todos estos componentes funcionen todos juntos y existan como una base solida para desarrollar y arreglar todo posteriormente
+
+la arquitectrua de aplicaciones web proporciona un conjunto de reglar para que la infromacion pase de un extremo a otro. 
+
+la aquitectura de un sitio web consta de 3 componentes: 
+
+-servidor web 
+-una conexion de red
+-uno o mas clientes 
+
+hay varios modelos de arquitectura de web entre los que podemos encoentrar
+
+-modelo cliente-servidor: este es mas comun para acceder a paginas estaticas el cual se hacen los pedidos mediante HTTP
+
+
+-modelo de 3 capas
+
+introduce una capa intermedio 
+
+-capa de cliente
+-capa de servidor de aplicaciones 
+-capa de servidor de base de datos. 
+
+
+--pagina web 
+
+una pagina web es un documento escrito en HTML y al que pueden acceder los navegadores web para que puedan cargar o descargar contenido. 
+
+si esta en linea se accede a ella mediante una URL. 
+
+este URL esta compuesto por varios componentes que son: 
+
+https:// -> protocolo de comunicacion 
+
+www. subdominio -> dejamos claro que estamos haciendo referencia hacua un servidor de internet en red que aloja un documento con formato especial 
+
+dominio -> dominio, es como se identifica la institucion o grupo partocular
+
+.com -> TLD
+
+/zapatos -> subcarpeta -> una pagina web puede estar divida en siubcarpetas
+
+/zpatillas-de-correr-hombre ->slug
+
+?color=negro&short=recientes -> parametros 
+
+
+-disenio  una pagina web 
+
+una vez que se sabe que componentes y cuantas paginas seran, es momento de empezar a trabajar n el disenio este se trabaja mediante cuadricula y organizan los elementos que Debden aparecen pagina segun la cuadricula, es como una calca en donde nosotros vamos a alinear los diferentes compinentes de nuestra pagina. 
+
+
+jerarqui visual: 
+
+esto es hacer resaltar algunos omponentes mas que otros algunas tecnicas para lograr esto es que ocupen mas espacio, dejar mas espacio entre ellos y otros elementos, utilizar encabezados mas grandes
+
+entre los elementos mas importes por lo general sera la marca/logotipo, la nevegacion principal, navegacion cundario, encabezados de pagina, contendio, bisqueda,
+
+-estructrua e docuementos para web: 
+
+se debe de dar estrucutura a un docuemnto para que los navegadores web puedan presentar la pagina a las personas que visituan el sitio de una manera que puedan entender. 
+
+
+mapa del sitio: 
+
+muestra cada una de las paginas l sitio, como se relacionan entre si y que debe eparecer en ellas. debes de traducir tus disenios a codigo comunmente n HTML, CSS y JS. 
+
+la estrucutura basica de una pagina web coneitne las etiqeutas 
+
+
+<html> 
+
+<head></head>
+
+<body>
+
+<header></header>
+
+<footer></footer>
+
+</body>
+</html> 
+
+en donde en el body va todo el contenido de la pagina, enlaces, imagenes,videos, audios, texto, archivos para descargar, fomrularios, etc.
+
+el lenguaje HTML no es codigo en el sentido de la palabra de un lenguaje de programacion, lo que es, ayuda a estrucuturar las paginas web, por lo que las etiqeutas son abreviaciones de palabras en ingles una gran mayoria de estas contienen una etiqueta de apertura representada como <tag> y de cierro </tag> 
+
+casi todoas contienen atributos que son datos especificos que se le da al navegador sobre esa etiqueta, como puede ser tamanio, que quiere que se haga cunado se le da click, hasta el color del elemento. 
+
+
+-metadatos: 
+son información adicional que proporciona contexto, estructura o detalles sobre un conjunto de datos, un archivo, una base de datos o cualquier otro tipo de información
+El código HTML incluye metadatos en etiquetas <meta> con información como la descripción del sitio, palabras clave y el autor de la página.
+
+
+una pagina web consta de 3 partes del body, heat y title 
+
+el <head>: contiene informacion sobre la pagina. esta no es visible para el usuario pero es importante tener bien estrucutrada esta seccion, porque es muy relevante para los navegadores, aqui pueden ir etiqeutas como la de <meta> para introducir metadatos como palabras claves, infromacion del autor de la pagina, el lenguaje, etc. link para archivos de JS o de CSS o CDN para boostrap, react, etc. 
+
+
+<body>: contiene toda la infromacion que sera visible para el usuario 
+
+<title>: contiene el nombre de la pagina que se muestra en la parte superior del navegador.
+
+
+elementos <section> permite dividir el conteido de un documentos en secciones tematicas,es decir agrupa contenido de un solo tema. 
+
+elemento <article> este es el opuesto, se usa para reprentar contenido autocontenido, donde cada aricle no tiene conexion con algun otro. este se puede usar mas como en blogs o paginas de noticias. 
+
+
+<aside> se usa comunmente para agregar contenido adicionar, en una barra lateral comunete es como se trabaja el contenido 
+
+
+<nav> : es el elemento con el cual se puede contruir una barra de navegadcion, es una lista de enlaces para un mapa del sitio. 
+
+encabezados: estos van del H1 - h6, el H1 es el titulo o lo mas improtante en una pagina, se recomienda que solo se use un solo H1 por pagina para la semantica y H2 pueden haber varios y los demas cuantos sean necesarios. 
+
+
+<header> se debe de utilizar para elementos introductorios omo un encabezado de pagina, el nombre de la pagina qweb o una barra de navegacion del docuemnto HTML. 
+
+
+<footer> este suele contener infromacion legal, notales legales, terminus y condiciones o infromacion de contacto sobre los duenios de la pagina web. 
+
+<div> esta etiqeuta e suele emplear para definir secciones de disenio. lo que hace el div es agrupar contenido. 
+
+
+lista de definicion: <dl>
+es una seria de termino y sus definiciones. <dt> contiene el termino y <dd> la defincion
+
+citas y definiciones: 
+
+<cite> se usa cunado e hace referencia  un trabajo como un libro, pelicula, pintura, pieza musical o un trabajo de investigacion. 
+
+<dfn> cunado se explica una terminolocia en un documentos. 
+

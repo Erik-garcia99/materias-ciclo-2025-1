@@ -1,0 +1,21 @@
+clase IA 4 de marzo 2025 
+
+
+teta puede ser cualquier valor, puede ser una variable, matriz, tensores. 
+
+punto producto, es el punto. 
+
+
+
+g0 es un vector , 
+
+j' -> jacobiana de rosembock - transpuesta
+
+despues del while la F es la funcion Z, el vector de todas las funciones. 
+
+
+vamos a usar el algoritmos de la ultima imagen. para la segunda operacion del nombre de algun wey. 
+
+
+
+

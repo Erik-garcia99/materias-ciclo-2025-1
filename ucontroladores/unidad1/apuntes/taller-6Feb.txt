@@ -1,0 +1,98 @@
+sistemas embebidos. 
+
+un sistemas empotrado, es un sistema computacional que s parte de un sistema mayor o maquina
+-tipicamente esta construido en una tarjeta basda en un procesador o microprocesador. con programas alamcendas de forma permanente, ROM, FLASH. 
+
+-algunos sisetmas empotrados incluyen un sistema operativo. es algo que administra los recursos de un sitema. 
+oferece un sistema de calendatizacion, con el qeu se puede tener multiples procesos. no todos los SE, van a ocupar un sistema operativo, va a depender el chip o a que se quiere llegar con el producto. 
+
+SE
+-sistemas de computudo basado n ucontroladores, funciones especificas, pre-definidas, recursos limitados (memoria, potencia), aplicacion ejecutada esde ROM. solo le de dota los recursos para que peuda ejecutar la aplicacion para que fue construida. 
+
+
+
+categorias de sistemas embediso
+
+-autonomo: puede operar por si solo
+
+-sistema empotrado de tiempo real (real team) -duros y sueves: tienen un accion en un tiempo corto
+
+-dispositivo en red (networking appliances): se refeire que tenga salida TCP/IP. 
+
+-dispositivo movil: cualquier que s movil, si tiene bateria es movil
+
+(lectura de la unidad 1)
+
+
+
+
+reuerimineto de un sistema empotrado 
+
+-confiabilidad
+-costo-eficiencia
+-bajo consulo
+-eficietne uso de poder de procesamiento
+-eficiente uso de memoria
+-apropiado tiempo de ejecucion. 
+
+
+retos de dienios de SE
+
+-co-disenio. tanto el hardware como el software hay a la par, esto se logra si hay una simulacion del hardware final. en cambio el tradicional se tiene que completar el hardware para poder programar.
+
+
+-SO, un SO es una parte ocpional en un SE. 
+si lo tiene se dota de otras cosas 
+
+-modular
+-encalabre
+-configurable : poder habilitar o deshabilitar procesos
+-uso de poca memoria : se busca que el SO no ocupe gran parte de memoria.
+-soporte para CPUs : soportar multiples ucontradoes
+-manejo de dispositiovs : rara vez se vez
+-etc
+
+
+
+----------------------------------------------------------------------------------------
+
+ya empezo a weno, AVR
+
+
+la numeracion de los AVR indica la capacidad de memoria de flash en KBytes
+
+la mayoria de las instrucciones, pueden ejecutarse en un solo ciclo de reloj la mayoria de estas (135 instrucciones).
+
+ instrucciones de 8 bits, son 32 registros de R0- R31. 
+
+DRAM: son mas abaratas, ocupa reflescar la informacion, porque contiene capacitores
+
+SRAM: tienen menos capacidad e memoria, la infromacion siempre esta dispoible mienstras coentiene Vcc. 
+
+el toma 2 tiempos hacer multiplicaciones
+
+-memoria no volatil. 
+
+las flash pude borrarse y escribirse 10,000 veces. esto lo hace por paginas. 
+
+la EEPROM se escribe y borra byte, a byte
+
+-el boot loader, es la que pude hacer la programacion de la flash. 
+
+el JTAG es un estndar para poder poder programar del micro, 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

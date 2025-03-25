@@ -1,0 +1,65 @@
+estandar RS232 - periferico en serie - UART
+
+el start bit siempre va a  inicar un 0 que es donde va inicar la palabra. cunado se suelta la linea 
+se mantiene en alto, puede ser de 5 bits a 8 bits. 
+
+-voltajes TTL, 
+
+
+USART - UART
+sincrono hay una linea extra para sincronizar los datos. 
+
+asincrono, 
+
+hay 3 puertos para UART, uart0 - PE, uart1 - D , uart2
+
+
+lectura en el capitulo 22 para UART
+
+la forma se saber si un frame esta mal es si es que el bit del stop bit no esta en alto, porque
+sabemos que el stop bit debe de estar en alto. 
+
+boud - cambio 
+
+baudage es la velocidad del cambio que queremos lograr. 
+
+
+trama - soporta diferente configuracion fijo tiene 5 bits, hasta 8 bits y hatsa el 9no bit,   puede
+ir hats 2 stop bits, un 1 bit de paridad, paridad par o paridad impar. 
+
+
+generacion del reloj, en UBRR se le ingresa el prescalador. 
+
+el bit de U2X es que hbailita si sera el de doble velocidad, en donde se hacen 16 muestras
+
+16,000,000 / 1,000,000)
+
+ calculo, fomrulas en la pagina 203 
+ 
+ REGISTROS 
+ 
+ UCSRA : 
+ 
+ paridad par xor con todoslos valores xor con 0
+ 
+ paridad impar xor con todos los vlaores xor con 1
+ 
+ UBRR y U2X controlan si el mciro va a estar a la doble velcidad 
+ 
+ 
+ pagina : 218 los registros de USART
+ 
+ 
+ UCSRnB : 
+ 
+ RXEn - TXEn, por lo general lo escribimos en 1 porque queremos recibir y trasmitir
+ 
+ 
+ en UCSRnC tiene la configuracion del UART, este registro ya tiene valores iniciles. 
+ 
+ el bit UCSZn2 es el character size,  lo que dice el tamanio del frame que se va a trasmitir. 
+ 
+ 
+ UBRR son de 12 bits. se puede referir como parte alta o parte baja, o un solo registro UBRR de 16 bits. 
+ 
+ 

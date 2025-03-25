@@ -1,0 +1,4 @@
+
+- I/O
+- USART
+-interrupciones C14

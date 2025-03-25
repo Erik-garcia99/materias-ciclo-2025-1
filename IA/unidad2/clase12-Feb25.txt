@@ -1,0 +1,6 @@
+-agentes
+
+-vimos los apuntes e los tipos de agentes de la unidad 2.
+
+actuadores s algo que le de la orden, como mover un motor, una palaquita,etc.
+

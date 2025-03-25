@@ -1,0 +1,34 @@
+a la frecuencia de nuestro oscilador internom debemos aplicara un prescalador para que el resultado de el 
+
+FSCPU / prescalaor, me debe de dar entre 50kHz a 200kHz.
+
+void ADC8_Init(void){
+
+	ADMUX= 1<< REFS0; //vref = AVCC, AD8
+	ADCSRA=(1<<ADEN) | (7<<ADPS0); //Freq = 125kHz
+	ADCSRB=1<<MUX5;
+
+}
+
+//como es de 10 bits, regresada 16 bits 
+
+uint16_t ADC8_Read(void){
+
+	//el bajo cunado se pone en bajo se pone un candado y no se quita gasta que lee alto 
+	
+
+	
+
+	uint16_t result;
+	//inicar una conversion 
+
+	ACSRA |= 1<< ADSC;
+
+
+	//esperar hasta que ternmine la conversion, por lo que tenemos que esperar a que termine. 
+
+	 
+
+}
+
+

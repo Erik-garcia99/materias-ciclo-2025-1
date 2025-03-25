@@ -1,0 +1,125 @@
+estrucutra e documentos para la web 
+
+-para dar estrucutra a un documento y poder acceder a traves de la web es necesario saber HTML.
+
+-antes de realizar una pagina es necesario o se suguiere cerar un bostejo de la pagina. 
+
+-mapa del sitio. 
+
+crear la estrucutra en HTML. para dar un formato utilizar el CSS. cunado se tiene el mapa del sitio donde ira cada componente, crear el disenio del sitio.
+
+
+-HTML
+
+html es un lenguaje de tipado. se usa etiquetas para dar el cuerpo a la pagina. 
+
+HTML no se programa se escribe.  
+
+se utiliza para estrucutrar semnaticamente lo ue va  contener el documento. 
+
+IDE - VS
+
+el onteindo ue se va a ver en la web estara dentro de la etiqueta :
+<body></body>
+
+-estrucutra de una pagina web en HTML (este puede estar en internet, de manera visual de como se va a ver.)
+
+<header></header> es la parte mas arriba de la pagina, donde puede ponerse un icono, un menu <nav>, 
+
+<aside></aside>: es un menu a un lado, puede ser tanto izquerdo como derecha
+
+<footer><footer>: por lo general contieen informacion sobre la empresa o persona que creo la pagina, para su contacto.
+
+
+el modelo de objetos se le conoce como DOM (modelo de objetos del docuemtnos)
+
+-etiquetas
+
+una gran mayoria de etiqeutas de HTML constan de apertura y de cierrte <target>content</target> 
+
+las que solo tienen de apertura se els concoe como "herfanas"??.
+
+las etiquetas actuan como contenedores sobre el conteido ue stas 
+
+existe la anidacion y la estrucutra jerarquica. 
+
+
+
+-metadatos
+
+las etiquetas son una forma de metadatos y estas se utilizan para aplicar estrucura al ontenido con la pagina. 
+
+-atributos:
+
+algunos elementos pueden ontener atributos, se utilizan para especificar infromacion adicional sobre el elemento. 
+
+algunos atributos se pueden utilizar en varias etiquetas, pero hay algunos los cuales son especificos para ciertas etiquetas.
+
+-estrucutrua basica
+
+la estrucutra basica de un docuemnto HTML nos lo da por defecto VS code. 
+
+
+
+-body, head y title
+
+<head> contiene infromacion sobre la pagina, como paquetes de JS, CSS, boostrap etc. 
+
+body: va todo el conteido que se va a mostrar al usuario
+
+
+elemtos del head:
+
+base : establece URL/ destino base para las URL relativas
+
+link : establece enlaces logicos del documento HTML
+
+style : establece las relgas de la hoja de estulo local para el docuento HTML
+
+script : integra scripts del lado del cliente, van al final del body
+
+meta : establece metadatos, como palabras clasve, descripciones o el conjunto de caracteres para el docuemnto HTML
+
+
+
+metadatos:
+
+permite escribir informacion o datos adicionaels sobre el docuemnto HTML. 
+
+pueden ser instrucciones para el navgador, el servido o un rastreador web
+
+
+-section: este elemento permite dividir el contenido de un docuemnto en secciones tematicas.
+
+las secciones deben tener sentido con sus contenidos.
+
+
+-article:
+
+se utiliza para resumir un fragmento de contieod en un bloque independo especifico e un tema
+
+el article contiene un formato de como se estrucutra el cual contiene header, contenido, footer. en veces puede contener nav.
+
+-aside: se utiliza en una barra lateral. por lo regular el aside son enlaces, es un navegador
+
+
+
+-nav: permite dividir los enlaces en diferentes bloques.
+
+-heading: son los encabezados de texto h1-h6, 
+
+-header-footer, son elemntos semanticos adiciones para implmentar en un encabezado o un pie de pajina. 
+
+-header, contiene barras de navegacion, un titulo
+
+en el footer se sule poner infromacion legal
+
+hay elementos en linea y en bloque. 
+
+
+-addresss
+contiene datos de contacto del autor del documento HTML. 
+
+
+-div's
+

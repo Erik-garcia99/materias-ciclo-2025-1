@@ -1,0 +1,25 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.1.42</VERSION>
+ <DEVICE>ATmega2560</DEVICE>
+ <WORKING_DIR>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\prueba</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:\Program Files (x86)\Atmel\AVR Tools\AvrAssembler2\Appnotes</DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\prueba\prueba.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:\Program Files (x86)\Atmel\AVR Tools\AvrAssembler2\Appnotes\m2560def.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\prueba\prueba.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\prueba\prueba.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\prueba\prueba.map</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <arriba><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\prueba\prueba.asm</FILE><LINE>6</LINE></arriba>
+  <abajo><FILE>C:\Users\erikG\OneDrive\Documents\ciclo2024-2\ucontroladores\laboratorio\practica2\prueba\prueba.asm</FILE><LINE>12</LINE></abajo>
+ </LABELS>
+</ASSEMBLER_INFO>

@@ -1,0 +1,27 @@
+tecnicas  orden lineal o superlinal. 
+
+tecnica de orden cuadratica
+
+un alagoritmo  orden cuadratica tiene un mayor coste de uso de computo, pero son mas rapidos que los de orden lienal. 
+
+
+function para su gradiente o en su defecto para su jacobiano
+
+cunado la F este en negrita quiere decir que son vectores o matrices. 
+
+los rengloles vana  depender de las funciones y las columnas de las variables.
+
+la jabociana es un vector transpuesto. 
+
+-hessiana
+
+tr- traza, es la suma de la diagonal principal de una matriz. 
+
+ne la hassiana para calcular su segunda derivada el primer indice nos indica lo que ya etsa derivada y el seugno a lo que voy a derivar. 
+
+los criterios para encontrar los riterios a la maximizacion o la minimacion es con al segunda derivada nos indica, si se hacerca a 0 nos lo da negativo en caso contrario n positivo. 
+
+en el algoritmo 14 de gradieten decendente la segunda linea si se quiere el expremo que tiende a cero sera negativo o un maximo sera positivo. 
+
+
+optimizacion libre, por objetivo y multi objetivo.

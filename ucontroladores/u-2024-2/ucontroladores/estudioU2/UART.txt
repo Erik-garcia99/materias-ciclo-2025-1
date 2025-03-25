@@ -1,0 +1,112 @@
+UART
+
+comunicación serial entre dispositivos. 
+
+
+MODO ASINCRONO es el que vimos en u 
+
+
+existen 3 partes básicas 
+
+-TRANSMISOR (TX)
+-RECEPTOR (RX)
+-MEDIO DE COMUNICACION 
+
+
+reglas para entender la comunicación entre ellos, como el cuando uno debe 
+de estuchar y otro debe de hablar y visecerva 
+
+para empezar a "hablar" podmeos empezar con un saludo y si la otra parte lo acepta es que se peude entablecer la comunicación 
+
+
+el lenguaje que utilizara nuestro ucontrolador es lenguaje lógico, en binario 
+
+utiliza protocolos de comunicion 
+
+memoria utiliza buffer de Tx y Rx
+
+ 
+nuestro dispoitivio tiene un medio de recepción y transmicion, por lo que puede recibir y transmitir al mismo tiempo, full duplex. 
+
+
+
+comunicación entre dispitivos 
+
+ambos ucontroladores deben de tener la velocidad configurada de manera igual. 
+esto se hace para que cada ucontrolador sepa cunato dirara cada bit  
+
+REGISTROS DE CONFIGURACION 
+
+tenemos el registro 
+
+UDR0 (TXB/RXB)
+ 
+registro con el mismo nombre que almacenra los bits de datos recibidos o por enviar. 
+
+
+UCSR0A
+
+registro en su mayoría contiene banderas, 
+
+RXC0 - se pone en 1 cunado RXB tiene datos sin leer y 0 cuando todos los datos han sido leidos 
+
+TXC0 - se pone en 1 cunado no hay datos nuevos por enviar en TXB
+
+UDRE0 - tiene un 1 cunado UDR0 se encuentra vacio. 
+
+FE0 - se pone en 1 cunado el frame recibido tiene un error con los bits de parada 
+
+DOR0 se pone en 1 cunado existe desbordamiento en TXB 
+
+UPE0 - se pone en 1 cunado el frame recibido tiene algún error en su bit de paridad 
+
+
+U2X0 - configura el modo asíncrono de velocidad doble 
+
+
+MPCM0 - habilita el modo de comunicación de multiprocesador.  
+
+
+REGISTROS UCSR0B 
+
+sus primero 3 bits mas signifificatios habilitan interrupciones por envió (TXCIE0) y recepción (RXCIE0) de datos, al estado del buffer transmisión (UDRIE0) obedecen a sus repectivas banderas y vectores de interrupción 
+
+sus siguientes 2 bits habilitan los pines PD0 y PD1 que son los pines para relaziar los acciones de transmicion y recepción respectivamente junto con sus bloques. 
+
+bit UCSZ02 configura el tamanio de oalabra junto con los bits UCSZ01 y UCSZ00 
+
+RXB80 - funciona como el noveno bit del buffer de recepción si se necsita. 
+
+TXB80 - funciona como el noveno bit de buffer de transmicion 
+
+
+
+REGISTRO UCSR0C 
+
+los primeros 2 bits mas singificatuvos (UMSEL01 - UMSEL00) configuran el modmo de operación Asincrono, síncrono o master SPI 
+
+(nosotros nos enfoncaremos en el modelo asincrono)
+
+esto se hace mediante una tabla (la cual esta en al datasheet en 221 )
+
+el asincrono es 00 
+
+los otros 2 bits que siguine (UPM01 - UPM00) establecen el tipo de paridad que lleva nuestra trama 
+
+USBS0 estabelce la cantidad de bits de parada para nuestra trama. 
+
+los bits UCSZP01 - UCSZ00 fijan el numero de bits de datos a neviar, estan en una tabala igual 
+
+el bit menos singnificatios configura la pilaridad de reloj en el moso sincrono 
+
+
+registro UBRR0 
+nod funciona para configurar la velocidad en tasa de boud, 
+
+
+---------------------------------------------------
+
+ejercicios 
+
+
+

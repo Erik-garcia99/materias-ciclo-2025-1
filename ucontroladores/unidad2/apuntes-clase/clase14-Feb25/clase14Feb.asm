@@ -1,0 +1,10 @@
+LDI r16, 5
+ROR R16
+
+
+LDI R26, 0
+LDI R27, 2
+
+LD R0, X
+
+LDS R0,0x200

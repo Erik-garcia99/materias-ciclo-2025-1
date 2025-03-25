@@ -1,0 +1,13 @@
+las instrucciones de setear o de limpiar solo se puede hacer en los primero 32 registros. 
+
+los rotaciones son  a fuerza a traves del acarreo, por lo que son de 9 bits. 
+
+el aritmet shift rigth, este desplazamiento conserva el signo. 
+
+el desplzamineto ala derecha es como una división entre 2
+
+
+direccionaminto ndirecto se refiere a toda la memoria. la directa solo afecta en una sección en memoria
+
+
+

@@ -1,0 +1,8 @@
+timers (0,2)
+	-8 bits 
+	-16 bits 
+ADC 
+
+
+
+
