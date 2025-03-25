@@ -1,0 +1,19 @@
+-chetu 
+	-pues esta empresa tiene de todos, pero al parecer tiene una tirada a desarrollar en conjunto con empresas 
+	multinacionales en vez de las empresas locales, tiene sede en U.S.A, por lo que para un empresario locales
+	pues no es inpedimneto pero por alguna razon si tiene que ir a las oficias y no cuenta con visa pues no podra 
+	ir pero este es un problema menor. 
+	--paguina: https://www.chetu.com/es/
+	
+-inelisis
+	-cuenta con una amplia gama de productos pero al parecer muchos ya estan prefabricados por lo que 
+	no estan usando la adaptabilidad de nosotro estamos ofreciene el hacer e software a medida, 
+	software para las medianas y pequenias empresas ya estan pre fabricadas, por lo que no ofrece el proceso
+	a medida 
+	--pagina:https://intelisis.com/index.php
+	
+-SYCA:
+	-al parecer tambien contiene software prefabricado pero tambien esta laopcion de que se pongan en contacto con 
+	la empresa para desarrollar el producto, 
+	link empresa: https://syca.com.mx/desarrollo-de-software/baja-california/tijuana/
+	
