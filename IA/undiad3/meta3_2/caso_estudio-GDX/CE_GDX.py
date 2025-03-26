@@ -107,10 +107,10 @@ def trainGDX(n, x_range, max_iter, show, lr_init=1e-3, momentum=0.9, lr_dec=0.7,
 
 
 #lecutra esta OK
-def lectura():
+def lectura(URL):
 
     import os
-    ruta = "C:/Users/erikG/OneDrive/Documents/ciclo2025-1/IA/undiad3/meta3_2/data/challenge00_syntheticdataset22.txt"
+    ruta = URL
 
 
     X_data = []
@@ -193,7 +193,9 @@ def calcular_r2(Y_real, Y_pred):
     return r2
 def main():
 
-    A,Y = lectura()
+    #URL= "C:/Users/erikG/OneDrive/Documents/ciclo2025-1/IA/undiad3/meta3_2/data/challenge00_syntheticdataset22.txt"
+    URL ="C:/Users/erikG/Documents/ciclo2025-1/materias-ciclo-2025-1/IA/undiad3/meta3_2/data/challenge00_syntheticdataset22.txt"
+    A,Y = lectura(URL)
 
     #A y Y son matrices
     #A es X las entradas y Y las salidas estunadas no son las hipoteticas 
@@ -235,6 +237,10 @@ def main():
 
     print(type(gdX))
     print(gdX)
+
+    r_2=calcular_r2(Y,Y_hip)
+    print("estadistica")
+    print(r_2)
 
 
 
