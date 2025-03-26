@@ -1,4 +1,5 @@
 import numpy as np
+import os
 
 # objective Extended Rosenbrock function
 '''calcula el valor de la funcion objetivo, la funcion tiene un minumo en el punto (1,1,....,1)
@@ -192,9 +193,16 @@ def calcular_r2(Y_real, Y_pred):
     r2 = 1 - (ss_res / ss_tot)
     return r2
 def main():
-
+    #PC gris
     #URL= "C:/Users/erikG/OneDrive/Documents/ciclo2025-1/IA/undiad3/meta3_2/data/challenge00_syntheticdataset22.txt"
-    URL ="C:/Users/erikG/Documents/ciclo2025-1/materias-ciclo-2025-1/IA/undiad3/meta3_2/data/challenge00_syntheticdataset22.txt"
+    
+    #pc negra
+    #URL ="C:/Users/erikG/Documents/ciclo2025-1/materias-ciclo-2025-1/IA/undiad3/meta3_2/caso_estudio-GDX/challenge00_syntheticdataset22.txt"
+
+    URL="../data/challenge00_syntheticdataset22.txt"
+    #URL =os.path.join('..', 'data/challenge00_syntheticdataset22.txt')
+
+
     A,Y = lectura(URL)
 
     #A y Y son matrices
@@ -243,8 +251,17 @@ def main():
     print(r_2)
 
 
+#funcion de python pra calcular la jacobiana para el 2do algoritmo 
+#norma para que funciona xd
 
+#hipotsis 
+#funcion de costo 
+#gradiete - jacobiana para mi  ecorizada
 
+#aplicar las metricas
+
+#para la norma debemos vectorizar 
+#la norma e obtiene por medio del gradiete
 
 main()
 
