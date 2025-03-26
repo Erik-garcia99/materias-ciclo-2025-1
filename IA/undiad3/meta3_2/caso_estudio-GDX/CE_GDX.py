@@ -165,7 +165,32 @@ def fcnJcbn():
 
     print()
 
+# Función para calcular R^2 (agrégala junto a las otras funciones)
+def calcular_r2(Y_real, Y_pred):
+    """
+    Calcula el coeficiente de determinación R².
     
+    Args:
+        Y_real (np.ndarray): Valores reales (matriz n x m)
+        Y_pred (np.ndarray): Valores predichos (matriz n x m)
+        
+    Returns:
+        float: Valor de R² entre 0 y 1
+    """
+    # Aplanar las matrices a vectores
+    y_real = Y_real.flatten()
+    y_pred = Y_pred.flatten()
+    
+    # Calcular suma de cuadrados
+    ss_res = np.sum((y_real - y_pred)**2)
+    ss_tot = np.sum((y_real - np.mean(y_real))**2)
+    
+    # Evitar división por cero
+    if ss_tot == 0:
+        return 1.0  # Todos los valores son iguales
+    
+    r2 = 1 - (ss_res / ss_tot)
+    return r2
 def main():
 
     A,Y = lectura()
