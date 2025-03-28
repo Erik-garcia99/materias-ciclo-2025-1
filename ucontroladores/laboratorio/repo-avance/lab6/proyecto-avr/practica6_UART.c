@@ -1,12 +1,15 @@
 #include <avr/io.h>
 #include "UART.h"
 
+
+
 int main( void )
 {
     char cad[20];
     char cadUart3[20];
     uint16_t num;
 
+	/*
     UART_Ini(0,12345,8,1,2);
     UART_Ini(2,115200,8,0,1);
     UART_Ini(3,115200,8,0,1);
@@ -42,5 +45,7 @@ int main( void )
         UART_gotoxy(0,5,5);
         UART_puts(0,"Bin: ");
         UART_puts(0,cad);
-    }
+    }*/
 }
+
+
