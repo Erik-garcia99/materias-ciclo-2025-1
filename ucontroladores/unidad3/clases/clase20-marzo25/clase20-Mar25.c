@@ -6,7 +6,7 @@
 //UBBR= 16MHz / (8*600) -1 =  3332 /u2x =1 600.06 baujae real con doblre activado 
  void uart_init(){
 
-	UCSR0A= 1<< U2X3; // el valor que va el UBRR es el que se calculo cuando se activa U2X 
+	UCSR0A= 1 << U2X3; // el valor que va el UBRR es el que se calculo cuando se activa U2X 
 	
 	UCSR0B= 3<< TXEN3; //habilitacion de las interrupciones, por ahora solo nos interesa transmicion y recepcion 
 	// UCSZn2 este funciona para seleccionar de que tamanio va a ser la cadena que se va a mandar, el dato, edto es con una tabla los otros 2
