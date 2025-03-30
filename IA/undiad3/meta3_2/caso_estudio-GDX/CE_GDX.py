@@ -106,11 +106,44 @@ def trainGDX(n, x_range, max_iter, show, lr_init=1e-3, momentum=0.9, lr_dec=0.7,
 
     return x, performace, epoch, trayectoria
 
+################################################################################
+#funciones para la meta 3.2
+
+#funcion de lectura 
+#funcion de la hipotesis
+#funcoin del costo
+#funcion del gradiente
 
 #lecutra esta OK
+#usamos la que no los serpara
+def lectura(URL):
+    X_data = []
+    Y_data = []
+    with open(URL, 'r') as archivo:
+        for linea in archivo:
+            linea_limpia = linea.strip()
+            if not linea_limpia:
+                continue
+            # Separar por espacios y dividir en predictores (primeros 2) y respuestas (últimos 2)
+            valores = list(map(float, linea_limpia.split()))
+            if len(valores) != 4:
+                continue  # Cada línea debe tener 4 números: x1, x2, y1, y2
+            X_data.append(valores[:2])  # Primeros dos: predictores
+            Y_data.append(valores[2:])  # Últimos dos: respuestas
+    
+    # Construir matriz de diseño A = [X | 1]
+    X_matrix = np.array(X_data)
+    unos = np.ones((X_matrix.shape[0], 1))
+    A = np.hstack((X_matrix, unos))
+    Y = np.array(Y_data)
+    return A, Y
+
+
+"""
+esta funcion utiliza los serpadores "/"
 def lectura(URL):
 
-    import os
+    
     ruta = URL
 
 
@@ -140,6 +173,9 @@ def lectura(URL):
     Y = np.array(Y_data)
     
     return A, Y
+"""
+
+
 
 #hipotesis esta OK
 def hipotesis(A, THETA):
@@ -160,6 +196,7 @@ def funcion_costo(Y, Y_hat):
 def fcnGrad(A,E):
 
     gradiete= -2*(A.T @ E)
+
     return gradiete
 
 def fcnJcbn():
@@ -199,19 +236,24 @@ def main():
     #pc negra
     #URL ="C:/Users/erikG/Documents/ciclo2025-1/materias-ciclo-2025-1/IA/undiad3/meta3_2/caso_estudio-GDX/challenge00_syntheticdataset22.txt"
 
-    URL="../data/challenge00_syntheticdataset22.txt"
-    #URL =os.path.join('..', 'data/challenge00_syntheticdataset22.txt')
+    URL="data/challenge00_syntheticdataset22.txt"
+ 
 
 
     A,Y = lectura(URL)
 
+    ##############################################
+    #ayuda
     #A y Y son matrices
     #A es X las entradas y Y las salidas estunadas no son las hipoteticas 
+
 
     print(A) #matriz de diseño 
     print("\n")
     print(Y) #matriz de salidas estimadas
     print("\n")
+
+    ###################################################
     
     phi = A.shape[1]
     print(type(phi))
