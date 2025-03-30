@@ -38,7 +38,7 @@ uint8_t *usart_offset[]=
 	 
 	//uint8_t *regA= (&UCSR0A + (com*8)); //estamos haceindo referencia hacia la direccion en donde esta UCSR0A que es donde empieza el UART0
 	
-	uint8_t UART_Regs_t *myUART =usart_offset[com]
+	 UART_Regs_t *myUART =usart_offset[com]
 
 	
 	myUART->UCSRA = 1<<U2X0; 

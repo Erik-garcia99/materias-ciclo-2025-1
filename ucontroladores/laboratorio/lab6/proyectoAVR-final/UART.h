@@ -7,7 +7,7 @@ typedef struct{
 	uint8_t UCSRB;
 	uint8_t UCSRC;
 	uint8_t resb;
-	uint16_t UBBR;
+	uint16_t UBRR;
 
 }UART_reg_t;
 
@@ -31,7 +31,7 @@ uint8_t *UART_offset[]=
 // Initialization
 
 
-UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t stop)
+UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t stop);
 /*
 // Send
 void UART_puts(uint8_t com, char *str);
