@@ -182,15 +182,23 @@ def hipotesis(A, THETA):
     return A @ THETA
 
 
-def funcion_costo(Y, Y_hat):
+def funcion_costo(Y, Y_hat, A):
 
     E= Y-Y_hat #calcula el error que seria XI matriz de erroes distribuida normalemnte 
+
+
+
     E_vector_F= E.flatten(order='F') #matriz vectorizada en forma de fila
     E_vector_C=E.flatten(order='F').reshape(-1, 1) #matriz vectroizada en manera de columna
     
     SEE = E_vector_F @ E_vector_C #multiplicacion para calcular el costo
-    
-    return E, E_vector_F, E_vector_C, SEE
+
+    m=Y.shape[1]
+    g=A.shape[1] 
+
+    MSE = SEE/m
+    RMSE = np.sqrt(MSE)     
+    return E, SEE, MSE, RMSE
 
 
 def fcnGrad(A,E):
@@ -229,6 +237,8 @@ def calcular_r2(Y_real, Y_pred):
     
     r2 = 1 - (ss_res / ss_tot)
     return r2
+
+
 def main():
     #PC gris
     #URL= "C:/Users/erikG/OneDrive/Documents/ciclo2025-1/IA/undiad3/meta3_2/data/challenge00_syntheticdataset22.txt"
@@ -255,42 +265,50 @@ def main():
 
     ###################################################
     
-    phi = A.shape[1]
-    print(type(phi))
-    theta = np.random.randn(phi, Y.shape[1]) #matriz
-    print("tipo de dato de theta", type(theta),"\ndatos: \n", theta )
-    Y_hip= hipotesis(A,theta)
+    n_paramts= A.shape[1] #nimero de parametros por respuesta
 
+    n_answ=Y.shape[1] 
+
+    # print("parametros- respuestas")
+    # print("parametros", n_paramts)
+    # print("respuestas", n_answ)
+    # print("\n")
+
+    theta = np.random.randn(n_paramts, n_answ) #matriz
+
+    print("theta\n", theta)
+    print(" \n ")
+
+    Y_hip= hipotesis(A,theta)
+    print("Y hipotesis:\n",Y_hip)
     print(type(Y_hip))
+    print(" \n ")
 
     #termino de error 
 
-    xi,xi_F,xi_C, SEE = funcion_costo(Y, Y_hip)
+    E,SEE,MSE,RMSE= funcion_costo(Y, Y_hip, A)
     print("funcion costo\n  ")
-    print(type(xi)) # XI es una matriz 
-    print(xi)
 
-    print("\n")
-    print(type(xi_F)) # XI es una matriz 
-    print(xi_F)
-
-    
-    print(type(xi_C)) # XI es una matriz 
-    print(xi_C)
+    print("E:\n",E)
 
     print("\n")
     print(type(SEE))
-    print(SEE)
+    print("SEE:\n",SEE)
 
-    print("funcion gradinte")
-    gdX= fcnGrad(A, xi)
+    print("MSE:\n",MSE)
 
-    print(type(gdX))
-    print(gdX)
+    print("RMSE:\n",RMSE)
 
-    r_2=calcular_r2(Y,Y_hip)
-    print("estadistica")
-    print(r_2)
+
+    # print("funcion gradinte")
+    # gdX= fcnGrad(A, xi)
+
+    # print(type(gdX))
+    # print(gdX)
+
+    # r_2=calcular_r2(Y,Y_hip)
+    # print("estadistica")
+    # print(r_2)
 
 
 #funcion de python pra calcular la jacobiana para el 2do algoritmo 
