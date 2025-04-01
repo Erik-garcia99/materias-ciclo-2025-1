@@ -85,42 +85,6 @@ def lectura(URL):
     return A, Y
 
 
-"""
-esta funcion utiliza los serpadores "/"
-def lectura(URL):
-
-    
-    ruta = URL
-
-
-    X_data = []
-    Y_data = []
-    
-    with open(ruta, 'r') as archivo:
-        for linea in archivo:
-            linea_limpia = linea.strip()
-            if not linea_limpia: continue
-            
-            partes = linea_limpia.split('/')
-            if len(partes) != 2: continue
-            
-            x_vals = list(map(float, partes[0].split()))
-            y_vals = list(map(float, partes[1].split()))
-            
-            if len(x_vals) != 2 or len(y_vals) != 2: continue
-            
-            X_data.append(x_vals)
-            Y_data.append(y_vals)
-    
-    # Convertir a matrices numpy y agregar columna de unos solo a X
-    X_matrix = np.array(X_data)
-    unos = np.ones((X_matrix.shape[0], 1))
-    A = np.hstack((X_matrix, unos))  # Matriz de diseño [X | 1]
-    Y = np.array(Y_data)
-    
-    return A, Y
-"""
-
 
 
 #hipotesis esta OK
