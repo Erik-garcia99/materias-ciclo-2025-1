@@ -81,8 +81,6 @@ def funcion_costo(Y, Y_hat, A):
 
     E= Y-Y_hat #calcula el error que seria XI matriz de erroes distribuida normalemnte 
 
-
-
     E_vector_F= E.flatten(order='F') #matriz vectorizada en forma de fila
     E_vector_C=E.flatten(order='F').reshape(-1, 1) #matriz vectroizada en manera de columna
     
@@ -102,50 +100,13 @@ def fcnGrad(A,E):
 
 
 
-# Función para calcular R^2 (agrégala junto a las otras funciones)
-# def calcular_r2(Y_real, Y_pred):
-#     """
-#     Calcula el coeficiente de determinación R².
-    
-#     Args:
-#         Y_real (np.ndarray): Valores reales (matriz n x m)
-#         Y_pred (np.ndarray): Valores predichos (matriz n x m)
-        
-#     Returns:
-#         float: Valor de r2 entre 0 y 1
-#     """
-#     # Aplanar las matrices a vectores
-#     y_real = Y_real.flatten()
-#     y_pred = Y_pred.flatten()
-    
-#     # Calcular suma de cuadrados
-#     ss_res = np.sum((y_real - y_pred)**2)
-#     ss_tot = np.sum((y_real - np.mean(y_real))**2)
-    
-#     # Evitar división por cero
-#     if ss_tot == 0:
-#         return 1.0  # Todos los valores son iguales
-    
-#     r2 = 1 - (ss_res / ss_tot)
-#     return r2
-
 def calcular_r2(Y_real, Y_pred):
-    """Coeficiente de determinación R²"""
     ss_res = np.sum((Y_real - Y_pred)**2)
     ss_tot = np.sum((Y_real - np.mean(Y_real, axis=0))**2)
     return 1 - (ss_res / ss_tot)
 
 
 def calcular_jacobiana(A, m):
-    """Jacobiana del error (Requisito 4)
-    
-    Args:
-        A: Matriz de diseño (q x g)
-        m: Número de salidas
-    
-    Returns:
-        J: Matriz jacobiana (q*m x g*m)
-    """
     q, g = A.shape
     J = np.zeros((q*m, g*m))
     
@@ -157,9 +118,35 @@ def calcular_jacobiana(A, m):
         
     return J
 
+
+
+def objfcn_reg(theta_vec, A, Y):
+    g = A.shape[1]
+    m = Y.shape[1]
+    theta = theta_vec.reshape((g, m), order='F')
+    Y_hat = hipotesis(A,theta)
+    E = Y - Y_hat
+    return np.sum(E**2)
+
+
+def objfcnjac_reg(theta_vec, A, Y):
+    g = A.shape[1]
+    m = Y.shape[1]
+    theta = theta_vec.reshape((g, m), order='F')
+    Y_hat = hipotesis(A,theta)
+    E = Y - Y_hat
+    residuals = E.flatten(order='F')
+    J = calcular_jacobiana(A, m)
+    gX = 2.0 * J.T @ residuals
+    normgX = np.linalg.norm(gX)
+    return residuals, J, normgX
+
+
+
+
 ##################################################################################
 
-def trainLM(n,x_range, max_iter, show, lr_init=1e-3, lr_dec=0.1, lr_inc=10.0, gamma_max=1e10, tol=1e-8, verbose=False):
+def trainLM(x0,A,Y, max_iter, show, lr_init=1e-3, lr_dec=0.1, lr_inc=10.0, gamma_max=1e10, tol=1e-8, verbose=False):
 
 
     x = x0.copy() # vector inical, se actualiza durante las iteraciones 
@@ -169,37 +156,36 @@ def trainLM(n,x_range, max_iter, show, lr_init=1e-3, lr_dec=0.1, lr_inc=10.0, ga
     for epoch in range(max_iter):
         try:
 
-            F, J, norm_grad = objfcnjac(x) #recibe el hacobian, los residuos y la norma del graditen. 
-        
-
-            current_performance = objfcn(x)
+            resisual, J, norm_grad = objfcnjac_reg(x,A,Y)
+            current_performance=objfcn_reg(x,A,Y)
             performance.append(current_performance)
 
-            if verbose and (show > 0) and (epoch % show == 0):
-                x_norm = np.linalg.norm(x) # se está usando para calcular la norma euclidiana (también conocida como norma L2) del vector x, se obtiene una visión más completa del estado del algoritmo en cada iteración
-                print(f"Iter {epoch:5d}: f(x) = {current_performance:.4e} | "
-                    f"||grad|| = {norm_grad:.4e} | "
-                    f"gama = {gamma:.4e} | "
-                    f"||x_norm|| = {x_norm:.4e}")
+            if verbose and (epoch % show ==0):
+                
+                print(f"Iter {epoch:5d}: costo = {current_performance:.4e} | ||grad|| ={norm_grad:.4e} | gamma = {gamma:.4e}")
 
             if norm_grad < tol:
                 if verbose:
                     print(f"Converged at iteration {epoch}")
                 return x, performance
 
-            A = J.T @ J + gamma * np.eye(len(x))
-            # se utiliza para crear una matriz identidad de tamaño len(x) x len(x). La matriz identidad es una matriz cuadrada con unos en la diagonal principal y ceros en el resto de posiciones.
-            b = -J.T @ F
-            delta = np.linalg.solve(A, b) # utilizado para resolver el sistema de ecuaciones lineales. donde A es una matriz cuadrada y b un arreglo unideimencional o matriz bidimensional 
+            A_lm = J.T @ J + gamma * np.eye(len(x))
+            b = -J.T @ resisual
+            delta = np.linalg.solve(A_lm, b) # utilizado para resolver el sistema de ecuaciones lineales. donde A es una matriz cuadrada y b un arreglo unideimencional o matriz bidimensional 
            
-            x_new = x + delta.flatten()  # Asegurar que delta tenga la misma forma que x
-            new_performance = objfcn(x_new)
+            x_new = x + delta  # Asegurar que delta tenga la misma forma que x
+            new_performance = objfcn_reg(x_new,A,Y)
 
             if new_performance < current_performance:
                 x = x_new
                 gamma *= lr_dec
             else:
                 gamma *= lr_inc
+
+            if gamma > gamma_max:
+                if verbose:
+                    print("Gamma reached maximum value")
+                break
 
         except np.linalg.LinAlgError:
             gamma *= lr_inc
@@ -213,81 +199,121 @@ def trainLM(n,x_range, max_iter, show, lr_init=1e-3, lr_dec=0.1, lr_inc=10.0, ga
     return x, performance
 
 
-opcion=0
+def main():
 
-while(opcion != 5 ):
 
-    print("1 - 10 variables - rango [-10,10]")
-    print("2 - 100 variables - rango [-10,10]")
-    print("3 - 1000 variables - rango [-10,10]")
-    print("4 - 1000 variables - rango [-100,100]")
-    print("5 - salir")
-    opcion=int(input(": "))
+    URL="data/challenge00_syntheticdataset22.txt"
+ 
 
-    if(opcion==1):
+
+    A,Y = lectura(URL)
+
+
+    print(A) #matriz de diseño 
+    print("\n")
+    print(Y) #matriz de salidas estimadas
+    print("\n")
+
+    g = A.shape[1]
+    m = Y.shape[1]
+    
+    # Inicializar parámetros
+    Theta_initial = np.zeros((g, m))
+    x0 = Theta_initial.flatten(order='F')
+    
+    # Entrenar modelo
+    theta_opt, performance = trainLM(x0, A, Y, max_iter=1000, show=100, tol=1e-6)
+    
+    # Resultados
+    Theta_opt = theta_opt.reshape((g, m), order='F')
+    Y_hat = A @ Theta_opt
+    r2 = calcular_r2(Y, Y_hat)
+    print("\nCoeficientes optimos:")
+    print(Theta_opt)
+    print(f"\nR_2: {r2:.4f}")
+
+
+
+
+
+main()
+
+
+# opcion=0
+
+# while(opcion != 5 ):
+
+#     print("1 - 10 variables - rango [-10,10]")
+#     print("2 - 100 variables - rango [-10,10]")
+#     print("3 - 1000 variables - rango [-10,10]")
+#     print("4 - 1000 variables - rango [-100,100]")
+#     print("5 - salir")
+#     opcion=int(input(": "))
+
+#     if(opcion==1):
 
         
-        n = 10
-        x0 = np.random.uniform(-10, 10, n)
+#         n = 10
+#         x0 = np.random.uniform(-10, 10, n)
 
-        solution, performance = trainLM(
-        x0, 
-        x_range=(-10,10),
-        max_iter=10000,
-        show=1000,  # Mostrar cada 1000 iteraciones
-        verbose=True,
-        tol=1e-3  # Tolerancia más estricta para alta precisión
-        )   
+#         solution, performance = trainLM(
+#         x0, 
+#         x_range=(-10,10),
+#         max_iter=10000,
+#         show=1000,  # Mostrar cada 1000 iteraciones
+#         verbose=True,
+#         tol=1e-3  # Tolerancia más estricta para alta precisión
+#         )   
 
-        print(f"n={n} performance final ={performance[-1]:.2e}")
-        print("solucion :", solution)
-        #print(solution)
+#         print(f"n={n} performance final ={performance[-1]:.2e}")
+#         print("solucion :", solution)
+#         #print(solution)
 
-    elif(opcion==2):
-        n = 100
-        x0 = np.random.uniform(-10, 10, n)
+#     elif(opcion==2):
+#         n = 100
+#         x0 = np.random.uniform(-10, 10, n)
 
-        solution, performance = trainLM(
-        x0, 
-        x_range=(-10,10),
-        max_iter=10000,
-        show=1000,  # Mostrar cada 1000 iteraciones
-        verbose=True,
-        tol=1e-3  # Tolerancia más estricta para alta precisión
-        )   
+#         solution, performance = trainLM(
+#         x0, 
+#         x_range=(-10,10),
+#         max_iter=10000,
+#         show=1000,  # Mostrar cada 1000 iteraciones
+#         verbose=True,
+#         tol=1e-3  # Tolerancia más estricta para alta precisión
+#         )   
 
-        print(f"n={n} performance final ={performance[-1]:.2e}")
-        print("solucion :", solution)
+#         print(f"n={n} performance final ={performance[-1]:.2e}")
+#         print("solucion :", solution)
 
-    elif(opcion==3):
-        n = 1000
-        x0 = np.random.uniform(-10, 10, n)
+#     elif(opcion==3):
+#         n = 1000
+#         x0 = np.random.uniform(-10, 10, n)
 
-        solution, performance = trainLM(
-        x0, 
-        x_range=(-10,10),
-        max_iter=5000,
-        show=1000,  # Mostrar cada 1000 iteraciones
-        verbose=True,
-        tol=1e-3  # Tolerancia más estricta para alta precisión
-        )   
+#         solution, performance = trainLM(
+#         x0, 
+#         x_range=(-10,10),
+#         max_iter=5000,
+#         show=1000,  # Mostrar cada 1000 iteraciones
+#         verbose=True,
+#         tol=1e-3  # Tolerancia más estricta para alta precisión
+#         )   
 
-        print(f"n={n} performance final ={performance[-1]:.2e}")
-        print("solucion :", solution[:100],"\n.......\n", solution[900:])
+#         print(f"n={n} performance final ={performance[-1]:.2e}")
+#         print("solucion :", solution[:100],"\n.......\n", solution[900:])
 
-    elif(opcion==4):
-        n = 10000
-        x0 = np.random.uniform(-100, 100, n)
+#     elif(opcion==4):
+#         n = 10000
+#         x0 = np.random.uniform(-100, 100, n)
 
-        solution, performance = trainLM(
-        x0, 
-        x_range=(-100,1000),
-        max_iter=5000,
-        show=1000,  # Mostrar cada 1000 iteraciones
-        verbose=True,
-        tol=1e-3  # Tolerancia más estricta para alta precisión
-        )   
+#         solution, performance = trainLM(
+#         x0, 
+#         x_range=(-100,1000),
+#         max_iter=5000,
+#         show=1000,  # Mostrar cada 1000 iteraciones
+#         verbose=True,
+#         tol=1e-3  # Tolerancia más estricta para alta precisión
+#         )   
 
-        print(f"n={n} performance final ={performance[-1]:.2e}")
-        print("solucion :", solution[:100],"\n.......\n", solution[900:])
+#         print(f"n={n} performance final ={performance[-1]:.2e}")
+#         print("solucion :", solution[:100],"\n.......\n", solution[900:])
 
