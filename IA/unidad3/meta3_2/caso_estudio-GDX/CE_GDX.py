@@ -151,7 +151,7 @@ def calcular_r2(Y_real, Y_pred):
     return 1 - (ss_res / ss_tot)
 ##############################################################################################
 
-def trainGDX(A,Y, x_range, max_iter, show, lr_init=1e-4, momentum=0.9, lr_dec=0.7, lr_inc=1.05, max_perf_inc=1.04, tol=1e-8):
+def trainGDX(A,Y, x_range, max_iter, show, lr_init=1e-1, momentum=0.9, lr_dec=0.7, lr_inc=1.05, max_perf_inc=1.04, tol=1e-8):
 
 
     #dimension del problema 
@@ -192,6 +192,8 @@ def trainGDX(A,Y, x_range, max_iter, show, lr_init=1e-4, momentum=0.9, lr_dec=0.
         theta_prev = theta_flat.copy()
         SEE_prev = SEE
         delta_x_prev = delta_x.copy()
+        
+        theta_flat+=delta_x # DDDDDDDD:<<<<<<<<<
 
         # Actualizar x
         theta = theta_flat.reshape(g,m)

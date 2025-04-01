@@ -106,6 +106,7 @@ def calcular_r2(Y_real, Y_pred):
     return 1 - (ss_res / ss_tot)
 
 
+
 def calcular_jacobiana(A, m):
     q, g = A.shape
     J = np.zeros((q*m, g*m))
@@ -119,7 +120,7 @@ def calcular_jacobiana(A, m):
     return J
 
 
-
+#calcula el error total, corresponde a la funcion de costo 
 def objfcn_reg(theta_vec, A, Y):
     g = A.shape[1]
     m = Y.shape[1]
@@ -128,17 +129,17 @@ def objfcn_reg(theta_vec, A, Y):
     E = Y - Y_hat
     return np.sum(E**2)
 
-
+#calcular el jacobiano, las derivadas parciales
 def objfcnjac_reg(theta_vec, A, Y):
     g = A.shape[1]
     m = Y.shape[1]
     theta = theta_vec.reshape((g, m), order='F')
     Y_hat = hipotesis(A,theta)
     E = Y - Y_hat
-    residuals = E.flatten(order='F')
+    residuals = E.flatten(order='F') #aplanar la matiz de error en un vector por columnas para alinear con el jacobiano
     J = calcular_jacobiana(A, m)
     gX = 2.0 * J.T @ residuals
-    normgX = np.linalg.norm(gX)
+    normgX = np.linalg.norm(gX) #fuciona para verificar si la norma se hacerca al 0, computacional?
     return residuals, J, normgX
 
 
@@ -226,7 +227,8 @@ def main():
     
     # Resultados
     Theta_opt = theta_opt.reshape((g, m), order='F')
-    Y_hat = A @ Theta_opt
+
+    Y_hat = hipotesis(A,Theta_opt) 
     r2 = calcular_r2(Y, Y_hat)
     print("\nCoeficientes optimos:")
     print(Theta_opt)
