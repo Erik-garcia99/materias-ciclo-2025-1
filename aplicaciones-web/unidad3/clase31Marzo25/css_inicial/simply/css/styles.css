@@ -1,0 +1,13 @@
+html{
+    /* tamanio de HTML */
+    font-size: 62.5%;
+}
+
+body{
+    /* estas 2 reglas podemos defini que 1 rem = 10px */
+    font-size: 16px;
+}
+
+h1{
+    font-family:'Krub';
+}
