@@ -51,67 +51,13 @@ def objfcnjac(x):
     normgX = np.linalg.norm(gX)
     return z, Jz, normgX
 
-def trainGDX(n, x_range, max_iter, show, lr_init=1e-3, momentum=0.9, lr_dec=0.7, lr_inc=1.05, max_perf_inc=1.04, tol=1e-8):
-    # Inicialización de x usando distribución uniforme
-    #vector de parametros inicalizando con valores uniformes en el reango especificado. 
-    x = np.random.uniform(x_range[0], x_range[1], size=(n, 1))
-    
-    performace = objfcn(x) #valor iniciar de la funcion objetivo 
-    gX = objfcngrad(x) # gradiente incial 
-    delta_x = np.zeros((n,1))
-    lr = lr_init
-    trayectoria = [x.copy()] # guarda los esstados de x en cada iteracion, utiliza la funcion .copy(), para no alterar los demas valores anteriores a la iteracion actual 
-    grad_norm = np.linalg.norm(gX) #norma del gradiente inical, se calcula la norma euclidiana del vector x actual durante la optimización
-
-    for epoch in range(max_iter+1):
-        if show > 0 and (epoch % show == 0 or epoch == 0):
-            print(f"Iter {epoch}: f(x) = {performace:.4e} |delta_f| = {grad_norm:.4e} lr = {lr:.2e}")
-
-        #condicion de parada. 
-        if grad_norm < tol:
-            print(f"norma gradiente < {tol:.1e}")
-            break
-
-        # Actualizar delta_x usando momentum
-        delta_x = momentum * delta_x - (1 - momentum) * lr * gX
-
-        # Guardar el estado actual antes de actualizar
-        x_prev = x.copy()
-        performace_prev = performace
-        delta_x_prev = delta_x.copy()
-
-        # Actualizar x
-        x = x_prev + delta_x
-        performace = objfcn(x)
-        gX = objfcngrad(x)
-        grad_norm = np.linalg.norm(gX)
-
-        # Verificar si el rendimiento ha aumentado demasiado
-        if performace / performace_prev > max_perf_inc:
-            # Revertir los cambios
-            x = x_prev
-            performace = performace_prev
-            delta_x = delta_x_prev
-            # Reducir la tasa de aprendizaje
-            lr *= lr_dec
-            # Recalcular el gradiente
-            gX = objfcngrad(x)
-            grad_norm = np.linalg.norm(gX)
-        else:
-            # Si el rendimiento ha mejorado, aumentar la tasa de aprendizaje
-            if performace < performace_prev:
-                lr *= lr_inc
-
-        trayectoria.append(x.copy())
-
-    return x, performace, epoch, trayectoria
 
 ################################################################################
 #funciones para la meta 3.2
 
-#funcion de lectura 
-#funcion de la hipotesis
-#funcoin del costo
+#funcion de lectura OK
+#funcion de la hipotesis OK
+#funcoin del costo OK
 #funcion del gradiente
 
 #lecutra esta OK
@@ -191,52 +137,133 @@ def funcion_costo(Y, Y_hat, A):
     E_vector_F= E.flatten(order='F') #matriz vectorizada en forma de fila
     E_vector_C=E.flatten(order='F').reshape(-1, 1) #matriz vectroizada en manera de columna
     
-    SEE = E_vector_F @ E_vector_C #multiplicacion para calcular el costo
+    #SEE = E_vector_F @ E_vector_C #multiplicacion para calcular el costo
 
-    m=Y.shape[1]
-    g=A.shape[1] 
+    SEE =np.sum(E**2)
+    g=Y.shape[0] #entradas
+    m=Y.shape[1] #salidas
 
-    MSE = SEE/m
+    MSE = SEE/(g*m)
     RMSE = np.sqrt(MSE)     
     return E, SEE, MSE, RMSE
 
 
 def fcnGrad(A,E):
+    return -2*A.T @ E
 
-    gradiete= -2*(A.T @ E)
 
-    return gradiete
-
-def fcnJcbn():
-
-    print()
 
 # Función para calcular R^2 (agrégala junto a las otras funciones)
-def calcular_r2(Y_real, Y_pred):
-    """
-    Calcula el coeficiente de determinación R².
+# def calcular_r2(Y_real, Y_pred):
+#     """
+#     Calcula el coeficiente de determinación R².
     
-    Args:
-        Y_real (np.ndarray): Valores reales (matriz n x m)
-        Y_pred (np.ndarray): Valores predichos (matriz n x m)
+#     Args:
+#         Y_real (np.ndarray): Valores reales (matriz n x m)
+#         Y_pred (np.ndarray): Valores predichos (matriz n x m)
         
-    Returns:
-        float: Valor de R² entre 0 y 1
-    """
-    # Aplanar las matrices a vectores
-    y_real = Y_real.flatten()
-    y_pred = Y_pred.flatten()
+#     Returns:
+#         float: Valor de r2 entre 0 y 1
+#     """
+#     # Aplanar las matrices a vectores
+#     y_real = Y_real.flatten()
+#     y_pred = Y_pred.flatten()
     
-    # Calcular suma de cuadrados
-    ss_res = np.sum((y_real - y_pred)**2)
-    ss_tot = np.sum((y_real - np.mean(y_real))**2)
+#     # Calcular suma de cuadrados
+#     ss_res = np.sum((y_real - y_pred)**2)
+#     ss_tot = np.sum((y_real - np.mean(y_real))**2)
     
-    # Evitar división por cero
-    if ss_tot == 0:
-        return 1.0  # Todos los valores son iguales
+#     # Evitar división por cero
+#     if ss_tot == 0:
+#         return 1.0  # Todos los valores son iguales
     
-    r2 = 1 - (ss_res / ss_tot)
-    return r2
+#     r2 = 1 - (ss_res / ss_tot)
+#     return r2
+
+def calcular_r2(Y_real, Y_pred):
+    """Coeficiente de determinación R²"""
+    ss_res = np.sum((Y_real - Y_pred)**2)
+    ss_tot = np.sum((Y_real - np.mean(Y_real, axis=0))**2)
+    return 1 - (ss_res / ss_tot)
+##############################################################################################
+
+def trainGDX(A,Y, x_range, max_iter, show, lr_init=1e-4, momentum=0.9, lr_dec=0.7, lr_inc=1.05, max_perf_inc=1.04, tol=1e-8):
+
+
+    #dimension del problema 
+    q,g = A.shape
+
+    m=Y.shape[1]
+    n_params=g*m #total de parametro a optimizar
+
+    #inician los parametros 
+    theta_flat= np.random.uniform(x_range[0],x_range[1],(n_params,1)) #estos los mandare en forma de tupla
+
+    #estado incial
+    theta=theta_flat.reshape(g,m)
+    Y_hat = hipotesis(A,theta)
+    E,SEE,_,_=funcion_costo(Y,Y_hat,A)
+
+    performace = fcnGrad(A,E) #valor iniciar de la funcion objetivo  grad_matrix
+    grad_flat=performace.reshape(-1,1)
+
+    delta_x = np.zeros_like(theta_flat)
+    lr = lr_init
+    trayectoria = [theta_flat.copy()] # guarda los esstados de x en cada iteracion, utiliza la funcion .copy(), para no alterar los demas valores anteriores a la iteracion actual 
+    grad_norm = np.linalg.norm(grad_flat) #norma del gradiente inical, se calcula la norma euclidiana del vector x actual durante la optimización
+
+    for epoch in range(max_iter+1):
+        if show > 0 and (epoch % show == 0 or epoch == 0):
+            print(f"Iter {epoch}: costo ={SEE:.4e} |Grad|= {grad_norm:.4e} lr ={lr:.2e}")
+
+        #condicion de parada. 
+        if grad_norm < tol:
+            print(f"convergencia alcanzada en {epoch} iteraciones")
+            break
+
+        # Actualizar delta_x usando momentum
+        delta_x = momentum * delta_x - (1 - momentum) * lr * grad_flat
+
+        # Guardar el estado actual antes de actualizar
+        theta_prev = theta_flat.copy()
+        SEE_prev = SEE
+        delta_x_prev = delta_x.copy()
+
+        # Actualizar x
+        theta = theta_flat.reshape(g,m)
+        Y_hat=hipotesis(A,theta)
+        E,SEE,_,_ = funcion_costo(Y,Y_hat,A)
+        performace = fcnGrad(A,E)
+        grad_flat = performace.reshape(-1,1)
+        grad_norm = np.linalg.norm(grad_flat)
+
+        # control adaptativo de tasa de aprendizaje
+        if SEE / SEE_prev > max_perf_inc:
+            # Revertir los cambios
+            theta_flat = theta_prev
+            SEE=SEE_prev
+            delta_x = delta_x_prev
+            # Reducir la tasa de aprendizaje
+            lr *= lr_dec
+            # Recalcular el gradiente
+            theta=theta_flat.reshape(g,m)
+            Y_hat = hipotesis(A,theta)
+            E,_,_,_=funcion_costo(Y,Y_hat,A)
+            performace=fcnGrad(A,E)
+            grad_flat=performace.reshape(-1,1)
+            grad_norm=np.linalg.norm(grad_flat)
+        elif SEE < SEE_prev:
+            # Si el rendimiento ha mejorado, aumentar la tasa de aprendizaje
+            lr *= lr_inc
+
+        trayectoria.append(theta_flat.copy())
+
+        #preprar salidad
+        theta_opt = theta_flat.reshape(g,m)
+
+    return theta_opt, SEE, epoch, trayectoria, performace
+
+
 
 
 def main():
@@ -263,49 +290,67 @@ def main():
     print(Y) #matriz de salidas estimadas
     print("\n")
 
+    paramIniciales=(-0.5,0.5)
     ###################################################
-    
-    n_paramts= A.shape[1] #nimero de parametros por respuesta
 
-    n_answ=Y.shape[1] 
+    theta_opt,costo, iteraciones, trayectoria, performance= trainGDX(A,Y,paramIniciales,1000000,100000)
 
-    # print("parametros- respuestas")
-    # print("parametros", n_paramts)
-    # print("respuestas", n_answ)
-    # print("\n")
-
-    theta = np.random.randn(n_paramts, n_answ) #matriz
-
-    print("theta\n", theta)
-    print(" \n ")
-
-    Y_hip= hipotesis(A,theta)
-    print("Y hipotesis:\n",Y_hip)
-    print(type(Y_hip))
-    print(" \n ")
-
-    #termino de error 
-
-    E,SEE,MSE,RMSE= funcion_costo(Y, Y_hip, A)
-    print("funcion costo\n  ")
-
-    print("E:\n",E)
+    print("/n fuera de la funcion ")
+    print("performance: ", performance)
+    print("PARAMETROS OPTIMOS:", theta_opt)
+    print("costo: ",costo)
 
     print("\n")
-    print(type(SEE))
-    print("SEE:\n",SEE)
 
-    print("MSE:\n",MSE)
-
-    print("RMSE:\n",RMSE)
+    Y_hat= hipotesis(A,theta_opt)
+    _,_,_,RMSE = funcion_costo(Y,Y_hat,A)
+    r2=calcular_r2(Y,Y_hat)
 
 
+    print(f"funcionde presicion : {r2:.4f}")
+
+    # # print("parametros- respuestas")
+    # # print("parametros", n_paramts)
+    # # print("respuestas", n_answ)
+    # # print("\n")
+
+    # theta = np.random.randn(n_paramts, n_answ) #matriz
+
+    # print("theta\n", theta)
+    # print(" \n ")
+
+    # Y_hip= hipotesis(A,theta)
+    # print("Y hipotesis:\n",Y_hip)
+    # print(type(Y_hip))
+    # print(" \n ")
+
+    # #termino de error 
+
+    # E,SEE,MSE,RMSE= funcion_costo(Y, Y_hip, A)
+    # print("funcion costo\n  ")
+
+    # print("E:\n",E)
+
+    # print("\n")
+    # print(type(SEE))
+    # print("SEE:\n",SEE)
+
+    # print("MSE:\n",MSE)
+
+    # print("RMSE:\n",RMSE)
+
+    # print("\n")
     # print("funcion gradinte")
-    # gdX= fcnGrad(A, xi)
+    # gradiente,gX= fcnGrad(A, E)
 
-    # print(type(gdX))
-    # print(gdX)
+    # print(type(gradiente))
+    # print(gradiente)
 
+    # print("normal de la gradiente\n")
+    # print(type(gX))
+    # print(gX)
+
+    # print("A transpuesta")
     # r_2=calcular_r2(Y,Y_hip)
     # print("estadistica")
     # print(r_2)
