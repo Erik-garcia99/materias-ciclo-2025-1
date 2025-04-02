@@ -197,6 +197,8 @@ def trainLM(x0,A,Y, max_iter, show, lr_init=1e-3, lr_dec=0.1, lr_inc=10.0, gamma
                 print("Gamma reached maximum value")
             break
 
+        print(epoch)
+
     return x, performance
 
 
@@ -227,6 +229,8 @@ def main():
     
     # Resultados
     Theta_opt = theta_opt.reshape((g, m), order='F')
+
+    # print(performance)
 
     Y_hat = hipotesis(A,Theta_opt) 
     r2 = calcular_r2(Y, Y_hat)
