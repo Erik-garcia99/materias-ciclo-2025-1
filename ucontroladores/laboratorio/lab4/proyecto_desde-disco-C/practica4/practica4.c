@@ -34,6 +34,8 @@ extern void delay1S(void);
 
 extern void delay_103us(void);
 extern void delay(uint16_t mseg);
+
+
 void InitPorts(void);
 uint8_t check_Btn(void);
 void sendData(uint8_t *data);

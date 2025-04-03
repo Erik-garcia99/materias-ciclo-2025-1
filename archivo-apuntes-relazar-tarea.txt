@@ -9,7 +9,7 @@ es el proceso en el cual se entrena al software para que tome deciciones meidnat
 entre sus beneficios tenemos que son sobresalienten en entornos complejos
 los cuales cuentan con muchas reglas y dependencias. no es necesario la interaccion humana, no necesita que los datos sean etiquetados
 
-incomenientes el Q-learing, este proceso de aprendizaje por refuerzo tiene el problema de sobreestimar el valor de algunas acciones, ser sensible al ruida y las correlaciones en los datos y requiere mucha memoria y calculo. 
+incomenientes el Q-learing, este proceso de aprendizaje por refuerzo tiene el problema de sobreestimar el valor de algunas acciones, ser sensible al ruida y las correlaciones en los datos y requiere mucha memoria y calculo, esto porque el agente tiende a tomar la accion menos optima porque es la que tiene un valor de Q maximo, este caso no siempre se da cunado el varo es el obtimo
 
 el Doble Deep Q learning: utiliza 2 redes neuronales, una red de destino y una red en Linea. 
 la red de destino es una copia de la res en linea que se actualiza con menos frecuencia. 
@@ -19,10 +19,14 @@ la red de lina se utiliza para seleccionar la mejor accion en cada estado.
 
 con esta mejora DDQN reduce el sesgo de sobreestimacion en la evaluacion de acciones y la varianza de actualuzacion de Q-learning
 
+
+
 bibliografia:
 https://aws.amazon.com/es/what-is/reinforcement-learning/
 https://www.linkedin.com/advice/0/how-do-you-implement-double-deep-q-network
 https://rubikscode.net/2021/07/20/introduction-to-double-q-learning/
+https://medium.com/@qempsil0914/deep-q-learning-part2-double-deep-q-network-double-dqn-b8fc9212bbb2
+
 
 
 
