@@ -1,0 +1,50 @@
+/*clase 3 abril ucontroladores 
+
+-TIMERS
+
+timer 0 timer 2 - 8 bits   -- timer 1 timer 3 timer 4 16 bits
+
+
+PWM - moulador de ancho
+
+el timer puede leer tanto eventos externos como eventos internos, este valor se puede seleccionar con el prescalador. 
+
+si se quiere usar como PWM el timer, que tenga una salida por el pin solo se vera reflejado si se habilita el pin como salida. 
+
+
+OCF - bandera de comparacion - (A), 
+
+las banderas se ven reflejadas un tick despues de ocurrido el patch 
+
+
+registros 
+
+TCCR0A : los ultimos 4 bits son para controlar los modos de salia de modo A Y B esto para pwm
+
+modo normal es cunado el tope de FF 
+
+CTC es el modo definido por OCRA
+
+
+registro TCCR0B 
+
+para definir el modo del timer oucpa 3 bit 2 bits en A y el otro bit esta aqui en B.
+
+CS02 prescalador 
+tenemos: 
+no prescalador 
+8
+64
+256
+1024
+
+referencia en tabla de CSnx
+
+TCNT0 
+
+TIMSK0 - mascara la interrupcion 
+
+TIFR0 - registro de banderas 
+*/
+
+
