@@ -1,5 +1,6 @@
 
 
+
 //estrucutra que define a los distintos uarts
 typedef struct{
 
@@ -32,8 +33,6 @@ uint8_t *UART_offset[]=
 
 
 UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t stop);
-
-uint16_t set_UBRR(uint32_t baudrate);
 /*
 // Send
 void UART_puts(uint8_t com, char *str);
