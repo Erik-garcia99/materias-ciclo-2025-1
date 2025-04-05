@@ -19,7 +19,7 @@ UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t s
 
 	
 	//sacamos el valor de boud 
-	uint16_t myUBRR_VN = (FOSC/16/baudrate-1);
+	uint16_t myUBRR_VN = set_UBRR(boudrate) ;
 
 	/**************************************/
 	//debemos pensar en una manera de como poder escoger si velocidad normal o doble velocidad
@@ -35,17 +35,23 @@ UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t s
     // para inicalr el UART este debemos de especificar la velocidad de comunicacion, si tendra bit de paridad o no,
     // los bits de stop el tamanio del frame del mismo
 	
-	if(parity ==1){
+	/*if(parity ==1){
 		partity=2;
 	}
 	else{
 		partity=3;
-	}
-
+	}*/
 	
+	//establecer las variuables
+	parity_mode= (parity == 1) ? 2 : 3;  // 2: Paridad par, 3: Paridad impar
+	
+	stop_mode= (stop==1)? 0: 1;
 
 
-    myUART->UCSRC = (parity << UPM00) | (((stop==1)?0:1;) << USBS0); // este no importa cual sea al final seran la misma gata, estamos indicando la paridad
+	myUART->UCSRC = (parity_mode << UPM00) | (stop_mode << USBS0);
+
+
+    //myUART->UCSRC |= (parity << UPM00) | (((stop==1)?0:1;) << USBS0); // este no importa cual sea al final seran la misma gata, estamos indicando la paridad
                                                        // indicando el/los stop bits
 
 	if(size!=9 && size <= 8){
@@ -94,17 +100,35 @@ uint16_t set_UBRR(uint32_t baudrate){
 	uint8_t valid_2V = (UBRR_2V <= 0xFFF) && (baudrate <= (FOSC / 8));
 
 	if(valid_Simp && valid_2V ){
+
+		// Calcular error para modo normal: |FOSC - 16*baud*(ubrr_vn+1)|
+
+		uint32_t error_Simp= (FOSC > 16 * boudrate*(UBRR_Simp + 1))? 
+							(FOSC - 16 * baudrate * (ubrr_vn + 1)):
+							(16 * baudrate * (ubrr_vn + 1) - FOSC);
+
+		uint32_t error_2V = (FOSC > 8 * boudrate*(UBRR_Simp + 1))? 
+							(FOSC - 8 * baudrate * (ubrr_vn + 1)):
+							(8 * baudrate * (ubrr_vn + 1) - FOSC)
 	
-	
-		else{
-			//boudrate no soportado
-			return ;
-		}
+		
+		use_doble = (error_2V < error_Simp);
+		ubrr_final= use_doble? UBBR_2V: UBRR_Simp;
 	
 	}
+	else if(valid_Simp){
+		ubrr_final=UBRR_Simp;
+	}
+	else if(valid_2V){
+		use_doble=1;
+		ubrr_final=UBRR_2V;
+	}
+	else{
+		//boudrate no soportado
+		return ;
+	}
 
-
-
+	return ubrr_final
 	
 }
 
