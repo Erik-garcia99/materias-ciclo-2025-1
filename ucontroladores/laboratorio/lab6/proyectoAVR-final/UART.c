@@ -5,10 +5,14 @@
 // Prototypes
 // Initialization
 
-#define FOSC 16000000 //velocidad del clock
+#define FOSC 16000000 //velocidad del clock <- creo que esto va a valer verga, vamos a probar 
+//como se comporta si no debemos volver a reajustar para los 12M
 
 
 // es una macro
+
+/*****************************************************************************************/
+//iniciamos nuestro UART
 
 UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t stop)
 {
@@ -19,13 +23,20 @@ UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t s
 
 	
 	//sacamos el valor de boud 
-	uint16_t myUBRR_VN = set_UBRR(boudrate) ;
+	uint16_t myUBRR_VN = set_UBRR(boudrate);
 
 	/**************************************/
 	//debemos pensar en una manera de como poder escoger si velocidad normal o doble velocidad
 	//unit16_t myUBRR_2X = (FOSC/8/baudrate-1);
 
-		
+	//habilitamos RXC y TXC 
+
+	myUART->UCSRB = 3 << TXC0;
+
+	//porque con A no, porque al parecer A las podemos escirbir o leer pero estas se setean cunado
+	//hay un dato por ejemplo con el de trasmition trasmitio todo el frame O Rreception recibio 
+	//todo el frame
+
 	//if(myUBRR_VN )
 
 	//myUART->UBRR = myUBRR;
@@ -132,14 +143,31 @@ uint16_t set_UBRR(uint32_t baudrate){
 	
 }
 
+
+
+/****************************************************************************/
+
 /*
 // Send
 void UART_puts(uint8_t com, char *str);
 void UART_putchar(uint8_t com, char data);
 
-// Received
-uint8_t UART_available(uint8_t com);
-char UART_getchar(uint8_t com );
+// Received*/
+
+//aguanta mientras no haya dato en para trasmitir
+uint8_t UART_available(uint8_t com){
+
+	 UART_reg_t *myUART = UART_offset[com]; //con esta varuable me desplajo al UART a usar
+	 //si no existe dado en el periferico aqui se queda cunado exista arroja 1
+
+	while(!(myUART->UCSR0A & (1<<UDRE0)))
+		;
+
+		return 1;
+
+}
+
+/*char UART_getchar(uint8_t com );
 void UART_gets(uint8_t com, char *str);
 
 // Escape sequences

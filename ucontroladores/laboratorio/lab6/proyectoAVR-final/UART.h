@@ -39,9 +39,9 @@ uint16_t set_UBRR(uint32_t baudrate);
 void UART_puts(uint8_t com, char *str);
 void UART_putchar(uint8_t com, char data);
 
-// Received
+// Received*/
 uint8_t UART_available(uint8_t com);
-char UART_getchar(uint8_t com );
+/*char UART_getchar(uint8_t com );
 void UART_gets(uint8_t com, char *str);
 
 // Escape sequences
