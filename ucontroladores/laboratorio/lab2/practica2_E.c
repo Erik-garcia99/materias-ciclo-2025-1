@@ -10,7 +10,7 @@ practica 2 microcontroladores
 
 const uint8_t flash_mem[] = {
     0x0F, 0xEF, // -> SER R0 1110 1111 0000 1111
-    0x10, 0x0F, // -> 0000 1111 0001 0000 -> ADD r17,r16
+    0x10, 0x0F, // -> 0000 1111 0001  0000 -> ADD r17,r16
     0x21, 0x2F, // -> 0010 1111 0010 0001 -> MOV r18,r17
     0x3F, 0xEF, // -> 1110 1111 0011 1111 -> SER r3 - LDI r3, 255
     0x32, 0x02, //-> 0000 0010 00011 0010 -> MULS r3, r2

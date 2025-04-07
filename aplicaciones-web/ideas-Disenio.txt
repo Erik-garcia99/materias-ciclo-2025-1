@@ -1,0 +1,21 @@
+
+-sabemos que el sistema debe ser intuitivo y simple para su uso en caso de ser usado por personas con poca experiencia con la tecnologia 
+
+-el menu de arriba va ser cosas con respecto a la cuenta del usuario
+
+-menu lateral con respecto a la seccion se podran desplegar opciones espcificas pero habra secciones generales
+
+
+cuales seran mis menus:
+
+para empleado general 
+-venta
+-ver stock (mas no modificar nada)
+-enviar reportes 
+-comunicacion (la comunicacion seria con alguein mas arriba)
+
+-el inicio para el empleado genreal sera el punto de venta 
+
+-podemos poner imagenes secciones de productos o poder escanerar el producto 
+
+

@@ -1,0 +1,139 @@
+<!------------------- Página 1 - Login ------------------->
+<!-- login.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {font-size: 20px; max-width: 600px; margin: 50px auto;}
+        input, button {font-size: 18px; padding: 12px; margin: 10px; width: 90%;}
+        .container {text-align: center;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>StockControlX</h1>
+        <img src="logo.png" alt="Logo" width="150">
+        <form>
+            <input type="email" placeholder="Correo electrónico" required>
+            <input type="password" placeholder="Contraseña" required>
+            <button type="submit">Ingresar</button>
+        </form>
+        <p><a href="recuperar.html">¿Olvidó su contraseña?</a></p>
+    </div>
+</body>
+</html>
+
+<!------------------- Página 2 - Menú Principal ------------------->
+<!-- menu.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {font-size: 20px;}
+        .menu {padding: 20px;}
+        .boton {display: block; width: 80%; margin: 15px auto; padding: 20px; 
+               font-size: 24px; background: #007bff; color: white; border: none;}
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Menú Principal</h1>
+    <div class="menu">
+        <button class="boton" onclick="location.href='productos.html'">Productos</button>
+        <button class="boton" onclick="location.href='reportes.html'">Reportes</button>
+        <button class="boton" onclick="location.href='alertas.html'">Alertas</button>
+        <button class="boton" style="background: #6c757d;" onclick="location.href='login.html'">Salir</button>
+    </div>
+</body>
+</html>
+
+<!------------------- Página 3 - Gestión de Productos ------------------->
+<!-- productos.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {font-size: 18px;}
+        .acciones {margin: 20px; text-align: center;}
+        .boton-peq {padding: 12px; margin: 5px; font-size: 16px;}
+        table {width: 100%; border-collapse: collapse;}
+        th, td {padding: 12px; border: 1px solid #ddd; text-align: left;}
+    </style>
+</head>
+<body>
+    <h1>Gestión de Productos</h1>
+    <div class="acciones">
+        <button class="boton-peq" onclick="location.href='nuevo-producto.html'">➕ Nuevo</button>
+        <input type="text" placeholder="Buscar producto..." style="width: 300px; padding: 8px;">
+    </div>
+    
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Stock</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+        </tr>
+        <!-- Ejemplo de fila -->
+        <tr>
+            <td>Arroz 1kg</td>
+            <td style="color: red;">15 (Bajo)</td>
+            <td>$25.00</td>
+            <td>
+                <button class="boton-peq">✏️ Editar</button>
+                <button class="boton-peq">🗑️ Desactivar</button>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
+<!------------------- Página 4 - Reportes ------------------->
+<!-- reportes.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .reporte {background: #f8f9fa; margin: 20px; padding: 15px;}
+        h2 {color: #2c3e50;}
+    </style>
+</head>
+<body>
+    <h1>Reportes</h1>
+    
+    <div class="reporte">
+        <h2>📊 Stock Actual</h2>
+        <p>Productos bajos de stock: 12</p>
+        <p>Productos con exceso: 3</p>
+    </div>
+    
+    <div class="reporte">
+        <h2>📈 Ventas del Mes</h2>
+        <p>Total vendido: $45,230.00</p>
+        <p>Producto más vendido: Leche 1L</p>
+    </div>
+</body>
+</html>
+
+<!------------------- Página 5 - Alertas ------------------->
+<!-- alertas.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .alerta {padding: 15px; margin: 10px; border-left: 5px solid red; background: #ffe6e6;}
+    </style>
+</head>
+<body>
+    <h1>⚠️ Alertas</h1>
+    
+    <div class="alerta">
+        <h3>Stock Crítico: Arroz 1kg</h3>
+        <p>Cantidad actual: 15 unidades (Mínimo requerido: 50)</p>
+    </div>
+    
+    <div class="alerta">
+        <h3>Revisión de Inventario</h3>
+        <p>Próxima revisión programada: 15/03/2025</p>
+    </div>
+</body>
+</html>
