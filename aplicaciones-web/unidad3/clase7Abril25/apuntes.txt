@@ -1,0 +1,12 @@
+combinadores - cocnatenacion de los selectores
+
+article p { ... } solo seleccionara a los P dentro de article todos los elementos P incluso si estosn son hijos de otros elementos 
+
+
+combinador child E>P  hijos directos 
+
+combinador E+P elige a los hermanos
+
+combinador general de hermanos E~P 
+
+selector por grupo, sepador por (,) podemos elegir mas de 1 elemento y asingarle los mismos estilos
