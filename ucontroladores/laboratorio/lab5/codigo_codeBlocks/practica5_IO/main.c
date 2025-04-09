@@ -29,6 +29,14 @@ enum GameStates
     eYouLoose
 }
 
+/*necesitaria hacer un arrego aqui a fuera que corresponde a eso*/
+
+
+
+
+
+
+
 // Prototypes
 extern uint8_t
 myRand(uint8_t seed);
@@ -100,3 +108,12 @@ int main(void)
         millis++;
     }
 }
+
+void InitPorts(void){
+
+
+
+
+
+}
+
