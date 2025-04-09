@@ -64,10 +64,19 @@ def lectura(URL):
     
     # Construir matriz de diseño A = [X | 1]
     X_matrix = np.array(X_data)
-    unos = np.ones((X_matrix.shape[0], 1))
-    A = np.hstack((X_matrix, unos))
     Y = np.array(Y_data)
-    return A, Y
+
+     # Normalizar 
+    X_mean, X_std = X_matrix.mean(axis=0), X_matrix.std(axis=0)
+    Y_mean, Y_std = Y.mean(axis=0), Y.std(axis=0)
+    X_normalized = (X_matrix - X_mean) / X_std
+    Y_normalized = (Y - Y_mean) / Y_std
+
+
+    unos = np.ones((X_normalized.shape[0], 1))
+    A = np.hstack((X_normalized, unos))
+    
+    return A, Y_normalized,X_mean,X_std,Y_mean,Y_std
 
 
 
@@ -77,7 +86,7 @@ def hipotesis(A, THETA):
     return A @ THETA
 
 
-def funcion_costo(Y, Y_hat, A):
+def funcion_costo(Y, Y_hat, theta,  lambda_reg=0.01):
 
     E= Y-Y_hat #calcula el error que seria XI matriz de erroes distribuida normalemnte 
 
@@ -86,7 +95,7 @@ def funcion_costo(Y, Y_hat, A):
     
     #SEE = E_vector_F @ E_vector_C #multiplicacion para calcular el costo
 
-    SEE =np.sum(E**2)
+    SEE = np.sum(E**2) + lambda_reg * np.sum(theta**2)
     g=Y.shape[0] #entradas
     m=Y.shape[1] #salidas
 
@@ -209,7 +218,7 @@ def main():
  
 
 
-    A,Y = lectura(URL)
+    A, Y_normalized, X_mean, X_std, Y_mean, Y_std = lectura(URL)
 
 
     # print(A) #matriz de diseño 
@@ -218,14 +227,15 @@ def main():
     # print("\n")
 
     g = A.shape[1]
-    m = Y.shape[1]
+    m = Y_normalized.shape[1]
     
     # Inicializar parámetros
     Theta_initial = np.zeros((g, m))
     x0 = Theta_initial.flatten(order='F')
+    Y_original = np.array([linea[2:] for linea in np.loadtxt(URL, delimiter=',')])
     
     # Entrenar modelo
-    theta_opt, performance = trainLM(x0, A, Y, max_iter=100000, show=1000, tol=1e-6)
+    theta_opt, performance = trainLM(x0, A, Y_normalized, max_iter=100000, show=1000, tol=1e-6)
     
     # Resultados
     Theta_opt = theta_opt.reshape((g, m), order='F')
@@ -235,8 +245,9 @@ def main():
 
     # print(performance)
 
-    Y_hat = hipotesis(A,Theta_opt) 
-    r2 = calcular_r2(Y, Y_hat)
+    Y_hat_normalized = hipotesis(A,Theta_opt) 
+    Y_hat = Y_hat_normalized * Y_std + Y_mean #desnoralizar
+    r2 = calcular_r2(Y_original, Y_hat)
     print("\nCoeficientes optimos:")
     print(Theta_opt)
     print(f"\nR_2: {r2:.4f}")

@@ -257,7 +257,7 @@ def main():
     #URL ="C:/Users/erikG/Documents/ciclo2025-1/materias-ciclo-2025-1/IA/undiad3/meta3_2/caso_estudio-GDX/challenge00_syntheticdataset22.txt"
 
     # URL_5="data/challenge00_syntheticdataset22.txt"
-    URL="data/challenge01_syntheticdataset22.txt"
+    URL="data/challenge00_syntheticdataset22.txt"
  
 
 
@@ -286,6 +286,8 @@ def main():
     print("performance: \n", performance)
     print("\nPARAMETROS OPTIMOS:\n", theta_opt)
     print("\ncosto: \n",costo)
+
+    print("\n")
 
     Y_hat_normalized= hipotesis(A,theta_opt)
     Y_hat = Y_hat_normalized * Y_std + Y_mean #desnoralizar
