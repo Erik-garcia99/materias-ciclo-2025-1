@@ -56,7 +56,7 @@ def lectura(URL):
             if not linea_limpia:
                 continue
             # Separar por espacios y dividir en predictores (primeros 2) y respuestas (últimos 2)
-            valores = list(map(float, linea_limpia.split()))
+            valores = list(map(float, linea_limpia.split(',')))  # Usar ',' como separador
             if len(valores) != 4:
                 continue  # Cada línea debe tener 4 números: x1, x2, y1, y2
             X_data.append(valores[:2])  # Primeros dos: predictores
@@ -147,7 +147,7 @@ def objfcnjac_reg(theta_vec, A, Y):
 
 ##################################################################################
 
-def trainLM(x0,A,Y, max_iter, show, lr_init=1e-3, lr_dec=0.1, lr_inc=10.0, gamma_max=1e10, tol=1e-8, verbose=False):
+def trainLM(x0,A,Y, max_iter, show, lr_init=1e-4, lr_dec=0.1, lr_inc=10.0, gamma_max=1e10, tol=1e-8, verbose=False):
 
 
     x = x0.copy() # vector inical, se actualiza durante las iteraciones 
@@ -196,7 +196,7 @@ def trainLM(x0,A,Y, max_iter, show, lr_init=1e-3, lr_dec=0.1, lr_inc=10.0, gamma
             if verbose:
                 print("Gamma reached maximum value")
             break
-
+    
         print(epoch)
 
     return x, performance
@@ -205,17 +205,17 @@ def trainLM(x0,A,Y, max_iter, show, lr_init=1e-3, lr_dec=0.1, lr_inc=10.0, gamma
 def main():
 
 
-    URL="data/challenge00_syntheticdataset22.txt"
+    URL="data/challenge01_syntheticdataset22.txt"
  
 
 
     A,Y = lectura(URL)
 
 
-    print(A) #matriz de diseño 
-    print("\n")
-    print(Y) #matriz de salidas estimadas
-    print("\n")
+    # print(A) #matriz de diseño 
+    # print("\n")
+    # print(Y) #matriz de salidas estimadas
+    # print("\n")
 
     g = A.shape[1]
     m = Y.shape[1]
@@ -225,10 +225,13 @@ def main():
     x0 = Theta_initial.flatten(order='F')
     
     # Entrenar modelo
-    theta_opt, performance = trainLM(x0, A, Y, max_iter=1000, show=100, tol=1e-6)
+    theta_opt, performance = trainLM(x0, A, Y, max_iter=100000, show=1000, tol=1e-6)
     
     # Resultados
     Theta_opt = theta_opt.reshape((g, m), order='F')
+
+    # print("\nperformance: \n", performance)
+    print("\ntheta optima:\n ", theta_opt)
 
     # print(performance)
 

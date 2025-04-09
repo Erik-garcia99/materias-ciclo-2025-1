@@ -71,7 +71,7 @@ def lectura(URL):
             if not linea_limpia:
                 continue
             # Separar por espacios y dividir en predictores (primeros 2) y respuestas (últimos 2)
-            valores = list(map(float, linea_limpia.split()))
+            valores = list(map(float, linea_limpia.split(',')))  # Usar ',' como separador
             if len(valores) != 4:
                 continue  # Cada línea debe tener 4 números: x1, x2, y1, y2
             X_data.append(valores[:2])  # Primeros dos: predictores
@@ -151,7 +151,7 @@ def calcular_r2(Y_real, Y_pred):
     return 1 - (ss_res / ss_tot)
 ##############################################################################################
 
-def trainGDX(A,Y, x_range, max_iter, show, lr_init=1e-1, momentum=0.9, lr_dec=0.7, lr_inc=1.05, max_perf_inc=1.04, tol=1e-8):
+def trainGDX(A,Y, x_range, max_iter, show, lr_init=1e-3, momentum=0.9, lr_dec=0.7, lr_inc=1.05, max_perf_inc=1.04, tol=1e-8):
 
 
     #dimension del problema 
@@ -177,13 +177,16 @@ def trainGDX(A,Y, x_range, max_iter, show, lr_init=1e-1, momentum=0.9, lr_dec=0.
     grad_norm = np.linalg.norm(grad_flat) #norma del gradiente inical, se calcula la norma euclidiana del vector x actual durante la optimización
 
     for epoch in range(max_iter+1):
-        if show > 0 and (epoch % show == 0 or epoch == 0):
-            print(f"Iter {epoch}: costo ={SEE:.4e} |Grad|= {grad_norm:.4e} lr ={lr:.2e}")
 
         #condicion de parada. 
         if grad_norm < tol:
             print(f"convergencia alcanzada en {epoch} iteraciones")
             break
+
+
+        if show > 0 and (epoch % show == 0 or epoch == 0):
+            print(f"Iter {epoch}: costo ={SEE:.4e} |Grad|= {grad_norm:.4e} lr ={lr:.2e}")
+
 
         # Actualizar delta_x usando momentum
         delta_x = momentum * delta_x - (1 - momentum) * lr * grad_flat
@@ -239,7 +242,8 @@ def main():
     #pc negra
     #URL ="C:/Users/erikG/Documents/ciclo2025-1/materias-ciclo-2025-1/IA/undiad3/meta3_2/caso_estudio-GDX/challenge00_syntheticdataset22.txt"
 
-    URL="data/challenge00_syntheticdataset22.txt"
+    # URL="data/challenge00_syntheticdataset22.txt"
+    URL="data/challenge01_syntheticdataset22.txt"
  
 
 
@@ -251,20 +255,20 @@ def main():
     #A es X las entradas y Y las salidas estunadas no son las hipoteticas 
 
 
-    print(A) #matriz de diseño 
-    print("\n")
-    print(Y) #matriz de salidas estimadas
-    print("\n")
+    # print(A) #matriz de diseño 
+    # print("\n")
+    # print(Y) #matriz de salidas estimadas
+    # print("\n")
 
-    paramIniciales=(-0.5,0.5)
+    paramIniciales=(-0.1,0.1)
     ###################################################
 
-    theta_opt,costo, iteraciones, trayectoria, performance= trainGDX(A,Y,paramIniciales,1000000,100000)
+    theta_opt,costo, iteraciones, trayectoria, performance= trainGDX(A,Y,paramIniciales,1000000,100)
 
-    print("/n fuera de la funcion ")
-    print("performance: ", performance)
-    print("PARAMETROS OPTIMOS:", theta_opt)
-    print("costo: ",costo)
+    print("\n fuera de la funcion \n")
+    print("performance: \n", performance)
+    print("\nPARAMETROS OPTIMOS:\n", theta_opt)
+    print("\ncosto: \n",costo)
 
     print("\n")
 
@@ -274,65 +278,6 @@ def main():
 
 
     print(f"funcionde presicion : {r2:.4f}")
-
-    # # print("parametros- respuestas")
-    # # print("parametros", n_paramts)
-    # # print("respuestas", n_answ)
-    # # print("\n")
-
-    # theta = np.random.randn(n_paramts, n_answ) #matriz
-
-    # print("theta\n", theta)
-    # print(" \n ")
-
-    # Y_hip= hipotesis(A,theta)
-    # print("Y hipotesis:\n",Y_hip)
-    # print(type(Y_hip))
-    # print(" \n ")
-
-    # #termino de error 
-
-    # E,SEE,MSE,RMSE= funcion_costo(Y, Y_hip, A)
-    # print("funcion costo\n  ")
-
-    # print("E:\n",E)
-
-    # print("\n")
-    # print(type(SEE))
-    # print("SEE:\n",SEE)
-
-    # print("MSE:\n",MSE)
-
-    # print("RMSE:\n",RMSE)
-
-    # print("\n")
-    # print("funcion gradinte")
-    # gradiente,gX= fcnGrad(A, E)
-
-    # print(type(gradiente))
-    # print(gradiente)
-
-    # print("normal de la gradiente\n")
-    # print(type(gX))
-    # print(gX)
-
-    # print("A transpuesta")
-    # r_2=calcular_r2(Y,Y_hip)
-    # print("estadistica")
-    # print(r_2)
-
-
-#funcion de python pra calcular la jacobiana para el 2do algoritmo 
-#norma para que funciona xd
-
-#hipotsis 
-#funcion de costo 
-#gradiete - jacobiana para mi  ecorizada
-
-#aplicar las metricas
-
-#para la norma debemos vectorizar 
-#la norma e obtiene por medio del gradiete
 
 main()
 
