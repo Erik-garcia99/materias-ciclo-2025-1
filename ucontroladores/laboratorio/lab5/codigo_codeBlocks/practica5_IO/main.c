@@ -29,10 +29,23 @@ enum GameStates
     eYouLoose
 }
 
+/*******************************************/
 /*necesitaria hacer un arrego aqui a fuera que corresponde a eso*/
 
+typedef uinion {
+
+    typedef struct{
+
+        DDRF =0xE;
+    }led1;
 
 
+}waitConf
+
+
+
+
+/**********************************************/
 
 
 

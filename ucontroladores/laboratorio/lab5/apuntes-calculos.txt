@@ -1,0 +1,7 @@
+-empecemos con como vamo a poner para que cada configruarion de los diferentes modos 
+
+anodo +
+catodo -
+
+--arreglo para DDRF - PORTF
+
