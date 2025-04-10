@@ -1,0 +1,62 @@
+
+*{
+/* este es el selecciondor final */
+    box-sizing: border-box;
+}
+
+.foothead{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid black;
+    background-color: peru;
+    text-align: center;
+}
+
+.article01{
+    /* el psition: static;  <- este es por defecto, por lo que si lo quitamos o no, no afecta porque es por defecto*/
+    /* position: static;  */
+
+    /* Z-index */
+    position: relative;
+    
+    width: 300px;
+    padding: 10px;
+    border: 1px solid black;
+    background-color: sandybrown;
+}
+.article02{
+    /* position: static; */
+    /* usando realitve */
+    /* position: relative; */
+    /* este se puede usar top-bottom left-right, se uno o otro para cada lado top o bottom*/
+    /* top: -75px; */
+    /* left: 100px; */
+
+    /* absolute */
+    /* position: absolute;
+    top: 0;
+    left: 100px; */
+
+    /* fixed */
+    /* position: fixed;
+    top: 0px;
+    left: 100px; */
+
+    /* Z-index */
+    position: relative;
+    top:-75px;
+    left: 100px;
+    width: 300px;
+    padding: 10px;
+    border: 1px solid black;
+    background-color: bisque;
+}
+
+.sticky_h1{
+    position: -webkit-sticky;
+    position: sticky;
+    top: -1;
+    width: 100%;
+    background-color: black;
+    color: white;
+}

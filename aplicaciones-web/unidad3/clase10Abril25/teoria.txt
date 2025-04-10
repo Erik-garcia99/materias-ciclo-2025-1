@@ -1,0 +1,47 @@
+posicionamineto  CSS 
+
+-mediante la function "position"
+
+
+-modelo flexbox
+-flexbox
+
+
+--position - controla como y donde se ubica el elemento en la pagina 
+
+tiene valores sigueintes: static, absolute, relative, fixed, 
+
+
+--document flow, es la froma en que los elementos HTMl se colocan en la pagina, el orden delm codigo y relgas de CSS
+
+-formas principales de posicionar los elementos display, float, position
+
+position tiene como forma por default siene el "static" se colocan de forma normal en el flujo del documento. 
+
+
+
+--
+el relative mueve un elemento fuera de su posicion actual, pero mantiene su espacio reservado. 
+
+
+--position
+
+abosolute, se coloca inicalmente si fuera estatico 
+
+----
+en la practiva el absolute y el relative se suelen usar combinados 
+
+----position
+
+fixed se posiciona siempre con la ventana del navegador, se mantiene fijo en el navegador siempre 
+
+
+--Z-index
+
+
+
+--float
+es una propiedad que nos permite sacar un elemento del flujo normal 
+
+
+
