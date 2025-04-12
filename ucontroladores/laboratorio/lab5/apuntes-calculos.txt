@@ -5,3 +5,42 @@ catodo -
 
 --arreglo para DDRF - PORTF
 
+-los puertos 0 - 3 deben de estar como salida ambos, solos e les pone por medio de port 0 o 1 dependeindo de lo que se espera para un wait
+
+PORT al PIN se le escribe un 1 logico cunado esta configurado como INPUT y los pull ups activados 
+si se le apagan los pull ups, si se les escribe un 0 o esta confiturado como salida 
+
+
+como funciona un enum que la forma en como esta cambiando los estados de los leds es mediante un enum 
+
+links: https://learn.microsoft.com/es-es/cpp/c-language/c-enumeration-declarations?view=msvc-170
+https://www.tutorialesprogramacionya.com/cya/detalleconcepto.php?punto=63&codigo=63&inicio=60
+https://www.ibm.com/docs/es/i/7.5.0?topic=enumerations-enumeration-type-definition
+
+
+un enum es un tipo de dato que creamso asociando un conjunto de enteros con un conjuto de literales
+
+ejmp: 
+
+enum operaciones { suma, resta, multiplicacion, divicion};
+
+dentro de las llaves indicamoas todas los valroes que puede almacenra una varibale de ese tipo 
+
+la primer linetar toma el valro de 0, luego 1, y asi susecivamente
+
+
+OOOOOOOoOOoOOoOoOOOOOOO e sido iluminado por el altisimo 
+
+los ENUM, no es que estan asociados a alguna arreglo o estrucutra 
+lo que hacen es en vez de poner en un arreglo algun numero X o asi 
+por ejemplo en un ciclo y buscando un indice lo que se hace 
+
+es mediaante un enum le asignamso un nombre descripctivo a esa literal o variable que estamos buscando 
+lo que hace el codigo mas legible, remplaza ese numero por una texto legible que se enteinda a lo que se esta haceindo referencia cunado se esta llamando 
+
+
+
+
+
+
+

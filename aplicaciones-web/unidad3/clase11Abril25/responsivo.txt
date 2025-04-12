@@ -1,0 +1,41 @@
+creacion de disenio responsivo 
+
+-antes el desnio estaba de acuerdo al dispositivo en el cual se iba a usar 
+
+-el disenio responsivo, es una tecnica en la cual hacemos una serie de reglas de acuerdo al tamanio de la interfaz 
+
+
+-se mide el megapixels 
+
+los telefonos comienza entre 320-480 px, tabletas, 768-1024px, PC desde 1024px 
+
+
+--MEDIA QUERY 
+son el nucleo del disenio responsivo 
+-responden a un disenio 
+-se pueden utiulizar para 
+---tamanio de dispositivo 
+---resolicion e pantalla 
+---orientacion de pantalla 
+---opciones de entrada
+
+
+--estrucutura basica e un media query 
+
+-screen and (max-with : 480px)
+
+@media screen and (min-with: 960px){
+	/*CSS statements for desktop */
+}
+
+
+recomendacion 
+
+html{
+
+	box-sizing: border-box
+}
+
+*, *::afeter{
+	
+}

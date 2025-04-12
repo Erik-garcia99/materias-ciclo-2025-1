@@ -1,0 +1,20 @@
+
+-timer 2 se le puede agregar un cristar externo, hace lo mismo que el timer 0, a excepcion de ese cristal externo
+
+timer 2 de 
+
+registro extra de sincronizacio 
+
+
+3 modos de operacion de timer 2, tosc 1, tosc 2, clk interno
+
+
+
+-modo de operacion asincron a el timer2
+
+//lo mas que el micro puede contabilizar con el timer2 son 8 segundos 
+
+
+
+
+
