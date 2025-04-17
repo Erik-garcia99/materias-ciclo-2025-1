@@ -3,8 +3,6 @@
 
 -el menu de arriba va ser cosas con respecto a la cuenta del usuario
 
--menu lateral con respecto a la seccion se podran desplegar opciones espcificas pero habra secciones generales
-
 
 cuales seran mis menus:
 
@@ -12,10 +10,48 @@ para empleado general
 -venta
 -ver stock (mas no modificar nada)
 -enviar reportes 
--comunicacion (la comunicacion seria con alguein mas arriba)
+
+--me hace falta agregar un icon que haga referencia a las busquedas por ejemplo en la busqueda en ventas 
 
 -el inicio para el empleado genreal sera el punto de venta 
 
 -podemos poner imagenes secciones de productos o poder escanerar el producto 
 
+--que es lo que hace el empladodo genreal 
+-el empleado genral puede: 
+--vender 
+--buscar entre el stock (puede buscar mediante filtros, (stock bajo, productos más vendidos, por precio, por categoria de productos) espero poder 
+	que se agregen todos esos casos y biscar, pero si no me conformo que funcione para almenos 2 a 3)
+--puede enviar manuealmente si hace falta pedidos (esto en el caso de si podemos implementar el sistema que lo haga automatico)
 
+
+
+
+--que hace el usuario gerente 
+--el gerente va a responder directamente a los reportes o solicitudes directos de sus subornidados 
+--este y los administrativos podran visucalizar el historial de cambios de algun productos,(los productos eliminados no se eliminan solo se 
+	suspenden)
+
+
+--que hace el superusuario (administrador o dueño )
+-si se quiere ingresar un nuevo producto, solo estos sueper usuasrios pueden ser capaces de realizar dicha tarea
+-estos son los indicados para agregar a nuevos usuarios, aprovar a estos o crearlos (RH) - cunados se crea una cuenta este viene con una 
+	contrasenia por defecto por lo que es necesario indicarle que es necesario cambiarla por una segura 
+
+
+--si hacemos el sistema que manda automaticamente el proveedor sobre el pedido este no sera parte de algun empleado si no porpio del sisteme el cual 
+	se puede apagar o prender, dependiendo del personal administrativo, estos tiene acceso a ese proceso. 
+	
+	
+	-----gerente y administrativo 
+	Tipos de Informes Disponibles: - - - - - 
+Stock Actual: Muestra la cantidad disponible de cada producto, con alertas 
+visuales para stock bajo o excedente 
+Movimientos Recientes: Detalla las últimas transacciones (ingresos, salidas, 
+ajustes) 
+Ventas por Periodo: Permite comparar ventas entre fechas, identificando 
+tendencias y productos estrella 
+Productos con Mayor Rotación: Identifica los productos que se venden más 
+rápidamente, se puede modificar los parámetros dependiendo la época.  
+Análisis de Margen de Ganancia: Muestra la rentabilidad de cada producto 
+comparando precio de compra y venta

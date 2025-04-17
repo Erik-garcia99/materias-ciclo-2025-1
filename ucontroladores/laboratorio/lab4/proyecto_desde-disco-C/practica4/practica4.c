@@ -52,6 +52,10 @@ int main(void)
 
 	// uint8_t bit =3;
 
+	delay(10);
+
+	uint8_t doodo=0;
+
 	InitPorts();
 
 	/*while(1){

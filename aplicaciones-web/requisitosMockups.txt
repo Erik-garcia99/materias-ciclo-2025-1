@@ -1,0 +1,76 @@
+Actividad: Diseño de wireframes para la aplicación del proyecto
+
+
+
+
+
+Objetivo: Los estudiantes diseñaran wireframes en alta fidelidad de una aplicación web que implemente CRUD (crear, leer, actualizar y eliminar), asegurando que la interfaz sea responsiva para distintos dispositivos (escritorio, tablet y móvil).
+
+
+
+Instrucciones:
+
+
+
+Definir casos de uso:
+
+Selecciona un tipo de aplicación, esta deberá ser la que propusiste en la propuesta del proyecto (actividad anterior).
+Identificar y diseñar las pantallas:
+
+Define y diseñe los wireframes de las funcionalidades principales de la aplicación que desarrollaras, deberás diseñar la versión web, tablet y dispositivo movil. La aplicación deberá ser responsiva.
+Usa herramientas como Figma, Adobe XD o Balsamiq para crear los wireframes detallados.
+Diseña la interfaz en tres tamaños de pantalla:
+Escritorio (≥1024px): Interfaz completa con menús laterales o navegación extendida.
+Tableta (768px - 1023px): Diseño ajustado con posible reducción de elementos.
+Móvil (≤767px): Diseño optimizado con navegación compacta y elementos táctiles.
+Mantén una estructura clara con jerarquía visual bien definida (botones, formularios, menús, etc.).
+Prioriza usabilidad y accesibilidad en todos los dispositivos.
+Entrega:
+
+Presenta los wireframes en tres versiones (escritorio, tableta y móvil) en un documento o prototipo interactivo.
+Criterios de Evaluación
+Criterio
+
+Descripción
+
+Puntos
+
+Definición del caso de uso
+
+Claridad y coherencia del problema abordado
+
+10 pts
+
+Diseño de pantallas CRUD
+
+Correcta representación de las funciones CRUD
+
+25 pts
+
+Estructura y jerarquía visual
+
+Organización adecuada de la interfaz
+
+15 pts
+
+Diseño responsivo
+
+Adaptación del diseño a escritorio, tableta y móvil
+
+25 pts
+
+Claridad y navegabilidad
+
+Diseño intuitivo y bien estructurado
+
+15 pts
+
+Documentación del diseño
+
+Explicación de las pantallas y su función
+
+10 pts
+
+
+
+Total: 100 pts

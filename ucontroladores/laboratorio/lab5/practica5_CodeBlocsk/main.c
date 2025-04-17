@@ -7,8 +7,6 @@
 #define TIME_WINDOW 300
 #define SEED xx
 /*******************/
-#define PIN6_IN PF6
-#define PIN7_IN PF7
 
 
 enum ButtonStates
@@ -30,47 +28,64 @@ enum GameStates
 }
 
 /********/
-//estrucutras usadas por mi
-typedef union{
+//mejor si seria un arreglo este
 
-    struct{
-        uint8_t DDRF = (1 << );
-        uint8_t PORTF =
-    }led1;
 
-    struct{
-        uint8_t DDRF = (1 << );
-        uint8_t PORTF =
-    }led2;
+//hagamos un enum para representar que led se sta haciendo referencia
 
-    struct{
-        uint8_t DDRF = (1 << );
-        uint8_t PORTF =
-    }led3;
 
-    struct{
-        uint8_t DDRF = (1 << );
-        uint8_t PORTF =
-    }led4;
+uint8_t _CONF_PORT[]={
 
-    struct{
-        uint8_t DDRF = (1 << );
-        uint8_t PORTF =
-    }led5;
-    struct{
-        uint8_t DDRF = (1 << );
-        uint8_t PORTF =
-    }led6;
-    struct{
-        uint8_t DDRF = (1 << );
-        uint8_t PORTF =
-    }led7;
-    struct{
-        uint8_t DDRF = (1 << );
-        uint8_t PORTF =
-    }led8;
+    //que se necesita en la salida de los puertos para que se prenda un led, vamos a lo simple, uno a uno
+    0x02, //LD1
+    0x01,
+    0x04,
+    0x02,
+    0x01,
+    0x04,
+    0x08,
+    0x04
 
-}myUnion;
+
+
+
+
+
+
+};
+
+uint8_t _CONF_DDR[]={
+
+    //al parecer para que este pueda funcionar necesitamos, poner com entrada los demas leds que no se ocupen para prender
+    //un led, es como ponerlos en corto
+    0x03,
+    0x03,
+    0x06,
+    0x06,
+    0x05,
+    0x05,
+    0x0C,
+    0x0C
+
+
+
+
+
+};
+
+
+enum _leds_{
+
+    LD1,
+    LD2,
+    LD3,
+    LD4,
+    LD5,
+    LD6,
+    LD7,
+    LD8
+
+};
 
 
 
@@ -97,6 +112,9 @@ int main(void)
     uint16_t countup = 0;
 
     //InitPorts();
+
+    //configurar los pines 0 - 3  como salida
+    DDRF = 0xF;
 
     while (1)
     {

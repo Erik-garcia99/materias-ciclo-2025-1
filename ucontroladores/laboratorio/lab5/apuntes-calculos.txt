@@ -10,6 +10,9 @@ catodo -
 PORT al PIN se le escribe un 1 logico cunado esta configurado como INPUT y los pull ups activados 
 si se le apagan los pull ups, si se les escribe un 0 o esta confiturado como salida 
 
+DDRx = 0 se configura el pin como entrada 
+DDRx = 1 se configura como salida el pin
+
 
 como funciona un enum que la forma en como esta cambiando los estados de los leds es mediante un enum 
 
@@ -41,6 +44,10 @@ lo que hace el codigo mas legible, remplaza ese numero por una texto legible que
 
 
 
+-----------------------------------------
+12 de abril
 
+primero con lo mas simple, hagamos la configuracion con lo que sabemos que con esa configuracion
+se prende el led, 1 LED, podemos poner la configuracion de 1 con un delay de cambio muy pequenio el cual
 
 
