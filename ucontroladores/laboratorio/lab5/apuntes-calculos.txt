@@ -51,3 +51,57 @@ primero con lo mas simple, hagamos la configuracion con lo que sabemos que con e
 se prende el led, 1 LED, podemos poner la configuracion de 1 con un delay de cambio muy pequenio el cual
 
 
+
+---------------------------------
+
+uniones (typedef union)
+en una union, es un tipo de dato definido por le programador el cual consta que todos sus miembros tienen la misma 
+ubicacion en memoria, sin importar cuantos elementos estos tenga, su tamanio de define por el miembro mas grande. 
+
+
+---------------------------------------
+
+que se necesita para prender cada led, su configuracion de DDRx y PORTx
+
+
+
+       DDRF                     PORTF
+LED1    0100 0011(0x43)     |   0100 0010(0x42)
+LED2    0100 0011(0x43)     |   0100 0001(0x41)
+LED3    0100 0110(0x46)     |   0100 0100(0x44)
+LED4    0100 0110(0x46)     |   0100 0010(0x42)
+LED5    0100 0101(0x45)     |   0100 0001(0x41)
+LED6    0100 0101(0x45)     |   0100 0100(0x44)
+LED7    0100 1100(0x4C)     |   0100 1000(0x48)
+LED8    0100 1100(0x4C)     |   0100 0100(0x44)
+
+
+------------------------------
+
+SECUENCIA DE WAIT : 
+
+
+volatile uint8_t indice=0;
+
+	while(1){
+	
+		while(indice<8){
+			
+			
+			DDRF  = _CONF_DDR[indice];
+			PORTF = _CONF_PORT[indice];
+			delay(100);
+			indice++;
+
+		
+		}
+
+		indice=0;
+	}
+	
+	
+-------------------------------------------
+
+que lee PIN cunado no hay nada conectado 
+el pin tiene un valor por defecto de HIGH (alto) no presionado, por lo que si quiero leer el pin 
+que me diga si no esta presionado haga esot, entonces debo de negar la entrada de la lectura del PIN 

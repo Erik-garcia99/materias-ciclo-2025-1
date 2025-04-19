@@ -22,67 +22,6 @@
 
 
 
-delay_103us:
-
-
-	nop
-	nop
-
-
-	ldi r22,5
-	ldi r21, 7
-
-nxt0:
-	nop
-	nop
-	nop
-	ldi r20, 8
-
-
-nxt1:
-	dec r21
-	nop
-	nop
-	brne nxt1
-
-nxt2:
-	ldi r21,7
-	nop
-	nop
-	dec r20
-	brne nxt1
-
-	dec r22
-	nop
-	brne nxt0
-
-	ret
-
-
-delay1S:
-
-ldi r20, 241;
-	nop				;1
-		nxt_S: ldi r21, 144;  		/x
-		nop;						/x
-		nop;						/x
-		nop;						/x
-			nxt2_S:ldi r22, 152 ; 	/xy
-			nop;					/xy
-			nop;					/xy
-				nxt3_S:dec r22; 	/xyz
-				brne nxt3_S;	 	/xy(2z-1)
-			dec r21; 				/xy
-			brne nxt2_S;	 		/x(2y-1)
-		dec r20;	 				/x
-		brne nxt_S;		 			/2x-1
-
-
-	ret
-
-
-
-
 delay:
 
 	; en este tendre que hacer muchos descuentos por esto de
@@ -121,11 +60,6 @@ final:
 	; agrego un nop porque al final
 
 	ret
-
-
-
-
-
 
 
 

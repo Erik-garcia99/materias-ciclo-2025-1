@@ -2,6 +2,7 @@ import random
 import logging
 import numpy as np
 import tensorflow as tf
+tf.compat.v1.disable_eager_execution()
 from abc import abstractmethod
 from dqn import DeepQNetworkModel
 from memory_buffers import ExperienceReplayMemory
@@ -99,8 +100,9 @@ class QPlayer(Player):
     A reinforcement learning agent, based on Double Deep Q Network model
     This class holds two Q-Networks: `qnn` is the learning network, `q_target` is the semi-constant network
     """
-    def __init__(self, session, hidden_layers_size, gamma, learning_batch_size, batches_to_q_target_switch, tau, memory_size,
-                 maximize_entropy=False, var_scope_name=None):
+    def __init__(self, session, hidden_layers_size, gamma, learning_batch_size, 
+             batches_to_q_target_switch, tau, memory_size, 
+             maximize_entropy=False, var_scope_name=None):
         """
         :param session: a tf.Session instance
         :param hidden_layers_size: an array of integers, specifying the number of layers of the network and their size
@@ -112,14 +114,15 @@ class QPlayer(Player):
         :param maximize_entropy: boolean, should the network try to maximize entropy over direct future rewards
         :param var_scope_name: the variable scope to use for the player
         """
-        layers_size = [item for sublist in [[9],hidden_layers_size,[9]] for item in sublist]
+        #modificacion 
+        layers_size = [9] + hidden_layers_size + [9]  # Ajusta según tu modelo
         self.session = session
         self.model = DeepQNetworkModel(session=self.session, layers_size=layers_size,
                                        memory=ExperienceReplayMemory(memory_size),default_batch_size=learning_batch_size,
                                        gamma=gamma, double_dqn=True,
                                        learning_procedures_to_q_target_switch=batches_to_q_target_switch,
                                        tau=tau, maximize_entropy=maximize_entropy, var_scope_name=var_scope_name)
-        self.session.run(tf.global_variables_initializer())
+        self.session.run(tf.compat.v1.global_variables_initializer()) #modificacion
         super(QPlayer, self).__init__()
 
     def select_cell(self, board, **kwargs):

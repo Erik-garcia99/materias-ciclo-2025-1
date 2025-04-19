@@ -4,6 +4,8 @@ from time import time
 import numpy as np
 import matplotlib.pyplot as plt
 import tensorflow as tf
+tf.compat.v1.disable_eager_execution()
+
 import players
 from game import Game
 
@@ -37,7 +39,8 @@ def train(p1_name, p2_name, p1_max_ent, p2_max_ent, p2_novice, num_of_games=1e6,
     graph2 = tf.Graph()
 
     with graph1.as_default():
-        p1 = players.QPlayer(tf.Session(), hidden_layers_size=layers_size, learning_batch_size=batch_size, gamma=gamma,
+        #modificacion en la session para P1 y P2
+        p1 = players.QPlayer(tf.compat.v1.Session(), hidden_layers_size=layers_size, learning_batch_size=batch_size, gamma=gamma,
                              batches_to_q_target_switch=batches_to_q_target_switch, tau=tau, memory_size=memory_size,
                              maximize_entropy=p1_max_ent)
     p1.name = p1_name
@@ -46,7 +49,7 @@ def train(p1_name, p2_name, p1_max_ent, p2_max_ent, p2_novice, num_of_games=1e6,
         p2 = players.Novice()
     else:
         with graph2.as_default():
-            p2 = players.QPlayer(tf.Session(), hidden_layers_size=layers_size, learning_batch_size=batch_size,
+            p2 = players.QPlayer(tf.compat.v1.Session(), hidden_layers_size=layers_size, learning_batch_size=batch_size,
                                  gamma=gamma,
                                  batches_to_q_target_switch=batches_to_q_target_switch, tau=tau,
                                  memory_size=memory_size,
@@ -208,7 +211,7 @@ def play(model_path, is_max_entropy):
 
     p1 = players.QPlayer(hidden_layers_size=layers_size, learning_batch_size=batch_size, gamma=gamma, tau=tau,
                          batches_to_q_target_switch=batches_to_q_target_switch, memory_size=memory_size,
-                         session=tf.Session(), maximize_entropy=is_max_entropy)
+                         session=tf.compat.v1.Session(), maximize_entropy=is_max_entropy)
     p1.restore(model_path)
 
     p2 = players.Human()
@@ -257,7 +260,7 @@ def face_off(paths, rng=3, p1_name='Q', p2_name='E'):
             with graph1.as_default():
                 p1 = players.QPlayer(hidden_layers_size=layers_size, learning_batch_size=batch_size, gamma=gamma, tau=tau,
                                      batches_to_q_target_switch=batches_to_q_target_switch, memory_size=memory_size,
-                                     session=tf.Session(), maximize_entropy=False)
+                                     session=tf.compat.v1.Session(), maximize_entropy=False)
                 p1.restore('{}/{}.ckpt'.format(p1_dir,p1_name))
                 p1.name = p1_name
 
@@ -269,7 +272,7 @@ def face_off(paths, rng=3, p1_name='Q', p2_name='E'):
                     with graph2.as_default():
                         p2 = players.QPlayer(hidden_layers_size=layers_size, learning_batch_size=batch_size, gamma=gamma, tau=tau,
                                              batches_to_q_target_switch=batches_to_q_target_switch, memory_size=memory_size,
-                                             session=tf.Session(), maximize_entropy=True)
+                                             session=tf.compat.v1.Session(), maximize_entropy=True)
                         p2.restore('{}/{}.ckpt'.format(p2_dir,p2_name))
                         p2.name = p2_name
 
