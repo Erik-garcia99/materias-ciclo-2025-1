@@ -1,0 +1,54 @@
+html{
+    font-size: 62.5%;
+}
+
+
+/* la regla del html y del body sobre el font size asegura que 1rem = 10px */
+body{
+    font-size: 16px;
+}
+/* tipografia */
+
+
+
+.extremos{
+    background-color: black;
+    color: #dadddf;
+}
+
+#AX{
+    text-transform: uppercase;
+    font-optical-sizing: auto;
+    font-weight:700px;
+    font-style: bold;
+
+    
+}
+
+
+#IT{
+    text-transform: uppercase;
+    font-optical-sizing: auto;
+    font-weight:300px;
+    font-style: ligth;
+
+    
+
+    color: coral;
+}
+
+.HERO{
+    font-family: "Roboto", sans-serif;
+
+}
+
+.HERO h1{
+    font-size: 70px;
+    float: left;
+    display: block;
+}
+
+.HERO h2{
+    float: left;
+    display: block;
+}

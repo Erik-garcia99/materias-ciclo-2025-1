@@ -54,12 +54,14 @@ class DeepQNetworkModel:
         self.tau = tau
         self.maximize_entropy = maximize_entropy
         self.memory = memory
+        #encontramso las 2 redes nuronales esta en la red online 
         self.q_network = self.__create_q_network(input_size=layers_size[0], output_size=self.output_size,
                                                  hidden_layers_size=layers_size[1:-1], gamma=gamma,
                                                  maximize_entropy=maximize_entropy,
                                                  var_scope_name=var_scope_name,
                                                  layer_name_suffix='qnn')
         if double_dqn:
+            #en el caso de este activdo el DDQN se crearia la red objetivo si no trabaja como DQN (DEEP Q-learning )
             self.target_q_network = self.__create_q_network(input_size=layers_size[0], output_size=self.output_size,
                                                             hidden_layers_size=layers_size[1:-1], gamma=gamma,
                                                             maximize_entropy=maximize_entropy,
@@ -205,6 +207,6 @@ class QNetwork:
             self.future_q = tf.log(tf.reduce_sum(tf.exp(self.q_target), axis=1))
         else:
             self.future_q = tf.reduce_max(self.q_target, axis=1)
-        self.labels = self.r + (gamma * self.future_q)
-        self.cost = tf.reduce_mean(tf.losses.mean_squared_error(labels=self.labels, predictions=self.predictions))
-        self.optimizer = tf.train.AdamOptimizer(learning_rate=self.learning_rate).minimize(self.cost)
+            self.labels = self.r + (gamma * self.future_q)
+            self.cost = tf.reduce_mean(tf.losses.mean_squared_error(labels=self.labels, predictions=self.predictions))
+            self.optimizer = tf.train.AdamOptimizer(learning_rate=self.learning_rate).minimize(self.cost)
