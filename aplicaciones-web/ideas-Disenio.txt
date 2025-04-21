@@ -17,12 +17,16 @@ para empleado general
 
 -podemos poner imagenes secciones de productos o poder escanerar el producto 
 
+
+
 --que es lo que hace el empladodo genreal 
 -el empleado genral puede: 
 --vender 
 --buscar entre el stock (puede buscar mediante filtros, (stock bajo, productos más vendidos, por precio, por categoria de productos) espero poder 
 	que se agregen todos esos casos y biscar, pero si no me conformo que funcione para almenos 2 a 3)
 --puede enviar manuealmente si hace falta pedidos (esto en el caso de si podemos implementar el sistema que lo haga automatico)
+--el suuario general puede modificar indirectamnete la cantidad de productos con las ventas
+--puede camputrar una devolucion lo cual no se ingresa al stock (este debe de ser  regresado por el genrete o su jefe inmediato)
 
 
 
@@ -31,16 +35,36 @@ para empleado general
 --el gerente va a responder directamente a los reportes o solicitudes directos de sus subornidados 
 --este y los administrativos podran visucalizar el historial de cambios de algun productos,(los productos eliminados no se eliminan solo se 
 	suspenden)
+	
+--MINMENU - STOCK - podra ver las solicitudes sobre el los produtos faltantes, apartir de el puede relizar una lista y enviar a los provedores
+las solicitudes, 
+
+--(llegada)los usuarios genretes asi como lo adminstradores puedes capturar los productos que llegan, estos deben de tener un registro de 
+-hora, fecha, proveedor, productos (una lista de estos), nombre del repartidor (asi mismo en DB se registra el codigo del empleado que lo relizo)
+	costo de este
+-(reporte) - (deben de haber opciones predefinidias para tratar un problema un reporte) entre uno de las opciones para solucionar el problema 
+--es si esta fuera de las capacidades del generte mandarlo a un superior o a RH. 
+--opciones de mandar un reporte sobre en caso de descansar a un empleado (el gerente tiene ese poder y debe de ser registrado)
+(gernete y admi pueden hacer lo que hace el usuario general algo que casi nunca haria )
+
+-----al inicio de ambos va a parecer un feed con los elemetnos mas nuevos de cada seccion.
 
 
 --que hace el superusuario (administrador o dueño )
 -si se quiere ingresar un nuevo producto, solo estos sueper usuasrios pueden ser capaces de realizar dicha tarea
 -estos son los indicados para agregar a nuevos usuarios, aprovar a estos o crearlos (RH) - cunados se crea una cuenta este viene con una 
 	contrasenia por defecto por lo que es necesario indicarle que es necesario cambiarla por una segura 
+-el usuario adminstrador o duenio es el unico que puede eliminar(no se elimina se quita y se agrega a otra tabla) o agregar proveedores asi como agregar 
+nuevo producto o eliminarlos 
 
 
 --si hacemos el sistema que manda automaticamente el proveedor sobre el pedido este no sera parte de algun empleado si no porpio del sisteme el cual 
 	se puede apagar o prender, dependiendo del personal administrativo, estos tiene acceso a ese proceso. 
+	
+-aun si lo metod todo o solo una parte
+-(el usaario administrador puede ver las estadisiticas de ventas por dia, semana, mes y anio, asi como por producto aplicando estos lineas de tiempo
+asi como de toda la tienda, se puede exportar en cvs o .xls esto con el proposito de sugerir stock basado en estos datos, simular escencario
+sobre que pasaria si se hicieran ciertos cambios con los datos que se tiene hasta ahora. )
 	
 	
 	-----gerente y administrativo 
