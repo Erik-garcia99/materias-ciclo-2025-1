@@ -164,6 +164,7 @@ class QNetwork:
     A Q-Network implementation
     """
     def __init__(self, input_size, output_size, hidden_layers_size, gamma, maximize_entropy, layer_name_suffix):
+        
         self.q_target =tf.compat.v1.placeholder(shape=(None, output_size), dtype=tf.float32)
         self.r =tf.compat.v1.placeholder(shape=None, dtype=tf.float32)
         self.states = tf.compat.v1.placeholder(shape=(None, input_size), dtype=tf.float32)
@@ -173,40 +174,31 @@ class QNetwork:
         for i in range(len(hidden_layers_size)):
             
             
-            """
-            los parametros inputs es un arguemento a la API antigua de tf q.x el cual no es compatible con keras por lo que es necesaio modificar
-            el codigo
-            layer = tf.keras.layers.Dense(inputs=layer, units=hidden_layers_size[i], activation=tf.nn.relu,
-                                    name='{}_dense_layer_{}'.format(layer_name_suffix,i),
-                                    kernel_initializer=tf.keras.initializers.GlorotNormal()) #modificacion
-        self.output = tf.keras.layers.Dense(inputs=layer, units=output_size,
-                                      name='{}_dense_layer_{}'.format(layer_name_suffix,len(hidden_layers_size)),
-                                      kernel_initializer=tf.contrib.layers.xavier_initializer())
-        self.predictions = tf.gather_nd(self.output, indices=self.enumerated_actions)"""
+            
         #modificacion adeucada para keras
         
-        dense_layer = tf.keras.layers.Dense(
-        units=hidden_layers_size[i], 
-        activation=tf.nn.relu,
-        name=f'{layer_name_suffix}_dense_layer_{i}',
-        kernel_initializer=tf.keras.initializers.GlorotNormal()
-        )
-        layer = dense_layer(layer)  # Aplica la capa al tensor anterior
+            dense_layer = tf.keras.layers.Dense(
+            units=hidden_layers_size[i], 
+            activation=tf.nn.relu,
+            name=f'{layer_name_suffix}_dense_layer_{i}',
+            kernel_initializer=tf.keras.initializers.GlorotNormal()
+            )
+            layer = dense_layer(layer)  # Aplica la capa al tensor anterior
 
-        # Para la capa de salida
-        output_layer = tf.keras.layers.Dense(
-        units=output_size,
-        name=f'{layer_name_suffix}_dense_layer_{len(hidden_layers_size)}',
-        kernel_initializer=tf.keras.initializers.GlorotNormal()  # Reemplaza tf.contrib.layers.xavier_initializer()
-        )
-        self.output = output_layer(layer)  # Aplica la capa al tensor anterior
-        self.predictions = tf.gather_nd(self.output, indices=self.enumerated_actions)
+        #    Para la capa de salida
+            output_layer = tf.keras.layers.Dense(
+            units=output_size,
+            name=f'{layer_name_suffix}_dense_layer_{len(hidden_layers_size)}',
+            kernel_initializer=tf.keras.initializers.GlorotNormal()  # Reemplaza tf.contrib.layers.xavier_initializer()
+            )
+            self.output = output_layer(layer)  # Aplica la capa al tensor anterior
+            self.predictions = tf.gather_nd(self.output, indices=self.enumerated_actions)
         
         
-        if maximize_entropy:
-            self.future_q = tf.log(tf.reduce_sum(tf.exp(self.q_target), axis=1))
-        else:
-            self.future_q = tf.reduce_max(self.q_target, axis=1)
-            self.labels = self.r + (gamma * self.future_q)
-            self.cost = tf.reduce_mean(tf.losses.mean_squared_error(labels=self.labels, predictions=self.predictions))
-            self.optimizer = tf.train.AdamOptimizer(learning_rate=self.learning_rate).minimize(self.cost)
+            if maximize_entropy:
+                self.future_q = tf.log(tf.reduce_sum(tf.exp(self.q_target), axis=1))
+            else:
+                self.future_q = tf.reduce_max(self.q_target, axis=1)
+                self.labels = self.r + (gamma * self.future_q)
+                self.cost = tf.reduce_mean(tf.losses.mean_squared_error(labels=self.labels, predictions=self.predictions))
+                self.optimizer = tf.train.AdamOptimizer(learning_rate=self.learning_rate).minimize(self.cost)
