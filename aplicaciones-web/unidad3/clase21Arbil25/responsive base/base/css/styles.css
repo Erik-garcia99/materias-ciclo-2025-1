@@ -1,0 +1,191 @@
+@charset "UTF-8";
+/* General basic settings */
+/* esta seccion es lo primro a poner para responsivos */
+html {
+    box-sizing: border-box;
+    }
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    color: #1d2731; /*ivory black*/
+    background-color: #efefef; /*neutral*/
+    font-family: Georgia;
+}
+ul {
+    padding: 0;
+}
+.wrapper {
+    background-color: #ff3b3f; /*watermelon*/
+}
+.header {
+    text-align: center;
+    padding: 1em;
+    background-color: #07889b; /* Teal */
+    color: #efefef; /* Neutral */
+    border-bottom: 1px solid #efefef;
+}
+.aside {
+    border-top: 1px solid #a9a9a9;
+    padding-top: 0.5em;
+}
+.footer {
+    background-color: #a9a9a9; /* Carbon */
+    color: #efefef; /* Neutral */
+    padding: 1em;
+    text-align: center;
+    border-top: 1px solid #efefef;
+}
+.nav-ul {
+    margin:0;
+    background-color: #ff383f; /* Watermelon */
+}
+.nav-li {
+    list-style: none;
+    margin-left: 0;
+    border-bottom: 1px solid #efefef;
+}
+.nav-li-a {
+    padding: 0.6em 2rem;
+    display: block;
+}
+.nav-ul a:link {
+    text-decoration: none;
+}
+.nav-ul a:link, .nav-ul a:visited {
+    color: #fff; /* white*/
+}
+.nav-ul a:hover, .nav-ul a:focus, .nav-ul a:active {
+    background-color: #000; /* Black */
+    color: #efefef; /* Neutral */
+}
+.nav-active {
+    color: #000; /* Black */
+    background-color: #fff; /* White */
+}
+.container {
+    background-color: #fff; /* white */
+    padding: 2em 2rem;
+}
+
+
+/* version tablet desde 640px=40em  */
+/* cunado llege a 640px va a cambiar las regas */
+@media (min-width: 640px){
+
+    .header{
+        padding: 1.5em;
+        text-align: left;
+
+    }
+
+    .container {
+        padding: 3rem 0;
+        display: inline-block;
+        overflow: auto;
+
+    }
+
+    .content{
+        display: block;
+        float: left;
+        width: 65%;
+        padding: 0 1rem 0 2rem;
+
+    }
+
+    .aside{
+        display: block;
+        margin: 0 0 0 65%;
+        width: 35%;
+        padding: 0 2rem 0 2rem;
+        border-top: none;
+    }
+
+    .nav-ul{
+        padding: 0 2rem;
+        overflow: hidden;
+
+    }
+    .nav-li{
+
+        float: left; /*alinea los eleemntos a la izquiera*/
+        display: inline-block;
+        border: none;
+        width: auto;
+
+    }
+
+    .nav-li a{
+        padding: 0.7rem 1.2rem;
+        display: inline-block;
+
+    }
+
+}
+
+/* para monitores de difrente resolucion  */
+
+
+@media screen and ( min-width: 1024px){
+
+    .container {
+        width: 85%;
+        padding: 0;
+        margin-left: 15%;
+
+    }
+
+    .content{
+        width: 70%;
+        padding:1rem 1.5rem;
+
+    }
+
+    .aside{
+        width: 30%;
+        padding: 1rem 1.5rem;
+        margin: 0 0 0 70%;
+    }
+
+    .nav-ul{
+        width: 15%;
+        float: left;
+        margin: 1em 0;
+        padding: 0;
+
+    }
+    .nav-li{
+        width: 100%;
+        float: none;
+        text-align: center;
+
+    }
+
+    .nav-li a{
+        padding: 0.5rem 3rem;
+        display: block;
+
+    }
+
+}
+
+@media screen and (min-width: 80em){
+    .wrapper{
+        margin: 0 auto;
+        max-width: 80em;
+    }
+    .article{
+        display: block;
+        width: 50%;
+        float: left;
+        padding: 0 1rem 0 1rem;
+    }
+
+    .clear{
+        clear: both;
+    }
+}
+
+
