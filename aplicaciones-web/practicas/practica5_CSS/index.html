@@ -3,6 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- font -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,300italic,400italic,500,600,700,200' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    
+
     <link rel="stylesheet" href="/styles/styles.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,316 +26,402 @@
     itzel barriba cazares
     -->
 
-    <div class="extremos">
-        <header>
-            <nav>
+    
+    <header>
+        <div class="container">
+            <div class="logo"><a href="#"><img src="/img/logo.png" alt=""></a></div>
+            <nav class="nav-collapse">
                 <ul>
-                    <li>Features</li>
-                    <li>about</li>
-                    <li>pricing</li>
-                    <li>reviews</li>
+                    <li class="menu-item active"><a href="#banner">Features</a></li>
+                    <li class="menu-item"><a href="#tabbingsec">about</a></li>
+                    <li class="menu-item"><a href="#customer">Reviews</a></li>
+                    <li class="menu-item"><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
-        </header>
-    </div>
+        </div>
+    </header>
+    
 
 
-    <div>
-        <section class="HERO">
+    <section id="banner">
+        <div class="container">
             <div>
-                <h1><span id="AX">AX</span ><span id="IT">IT</span></h1>
-                <h2>MODERN AXURE TEMPLATE FOR BEAUTIFUL PROTOTYPES</h2>
+                <h2>MODERN AXURE TEMPLATE<br> 
+                    FOR BEAUTIFUL PROTOTYPES</h2>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos rerum odit quibusdam, eum iusto aut reiciendis sit? Omnis, similique, expedita molestiae fugit nam delectus a dolorum deleniti tempora libero vero.</p>
     
-                <button>Download</button>
+                <button class="download">Download</button>
             </div>
+
             </div>
                 <!-- formulario -->
-                <h3>Try Your FREE Trial Today</h3>
+                
                 <form action="">
+                    <h3>Try Your <span>FREE</span> Trial Today</h3>
                     <!-- <label for="name">Name</label> -->
                     <input type="text" name="u_name" id="" placeholder="Name">
                     <input type="email" name="u_email" id="" placeholder="Email">
                     <input type="password" name="u_pass" id="" placeholder="Password">
-                    <button>Get Started</button>
+                    <a href="#">Get Started</a>
     
                 </form>
             <div>
-    
-        </section>
-    </div>
+        </div>
 
-    <div>
-        <section>
+    </section>
+
+    <section id="social">
+        <div class="container">
             <div>
                 <h3>social media</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis reprehenderit suscipit temporibus quam non qui officiis sit porro, atque architecto eos officia ducimus, dolorum nisi. Exercitationem incidunt rem alias placeat.</p>
             </div>
     
             <div>
-                <a href="https://www.facebook.com/" target="_blank">
-                    <img src="" alt="facebook" >
-                </a>
-                <a href="https://www.x.com" target="_blank">
-                    <img src="" alt="X">
-                </a>
-                <!-- red social cerrada -->
-                <a href="#"><img src="" alt="google+"></a>
-                <a href="https://mx.pinterest.com/"><img src="" alt="pinterest"></a>
-                <a href="https://www.instagram.com/"><img src="" alt="instagram"></a>
-                <a href="#"><img src="" alt="unknown"></a>
-                <a href="#"><img src="" alt="unknown"></a>
+                <div class="rightside"> <a href="#"><i class="fa fa-facebook fa-3x" aria-hidden="true"></i></a> <a href="#"><i class="fa fa-twitter fa-3x" aria-hidden="true"></i></a> <a href="#"><i class="fa fa-google-plus fa-3x" aria-hidden="true"></i></a> <a href="#"><i class="fa fa-pinterest fa-3x" aria-hidden="true"></i></a> <a href="#"><i class="fa fa-instagram fa-3x" aria-hidden="true"></i></a> <a href="#"><i class="fa fa-stumbleupon fa-3x" aria-hidden="true"></i></a> <a href="#"><i class="fa fa-rss fa-3x" aria-hidden="true"></i></a> </div>
             </div>
-    
-    
-        </section>
-    </div>
+        </div>
 
-    <div>
-        <section>
+
+    </section>
+
+    <section id="tabbingsec">
+        <div class="container">
+            
             <div>
-                <ul>
-                    <li>TAB 1</li>
-                    <li>TAB 2</li>
-                    <li>TAB 3</li>
+                <ul class="tab-links">
+                    <li class="actived"><a href="#tab1">TAB 1</a></li>
+                    <li><a href="#tab2">TAB #2</a></li>
+                    <li><a href="#tab3">TAB #3</a></li>
                 </ul>
             </div>
     
-            <div>
-                <h3>Tabs whith soft transitioning effect</h3>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo reprehenderit perspiciatis nobis facere voluptates minima atque magnam animi id veniam? Eos, quas explicabo. Recusandae accusantium eveniet quam dolorum consectetur nihil.</p>
-            </div>
+            <div class="tab-content">
+
+                <div id="tab1" class="tab actived">
+                    <div class="width60">
+                        <h3>Tabs whith soft transitioning effect</h3>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi officiis voluptas doloremque alias magnam quam laboriosam earum ipsa quasi dolorum sit laudantium, sapiente exercitationem tenetur aliquam, velit vitae eos ipsum?</p>
+                        
+                        <a href="#">Download</a>
+                    </div>
     
-            <div>
-                <button>Download</button>
-            </div>
+                    <div class="width40"> <img src="/img/tabright.png" alt=""></div>
+
+                </div>
+
+                <div id="tab2" class="tab">
+                    <div class="width60">
+                        <h3>Tabs whith soft transitioning effect</h3>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi officiis voluptas doloremque alias magnam quam laboriosam earum ipsa quasi dolorum sit laudantium, sapiente exercitationem tenetur aliquam, velit vitae eos ipsum?</p>
+                        
+                        <a href="#">Download</a>
+                    </div>
     
-            <div>
-                <img src="#" alt="city">
+                    <div class="width40"> <img src="/img/tabright.png" alt=""></div>
+
+                </div>
+
+                <div id="tab3" class="tab">
+                    <div class="width60">
+                        <h3>Tabs whith soft transitioning effect</h3>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi officiis voluptas doloremque alias magnam quam laboriosam earum ipsa quasi dolorum sit laudantium, sapiente exercitationem tenetur aliquam, velit vitae eos ipsum?</p>
+                        
+                        <a href="#">Download</a>
+                    </div>
+                    <div class="width40"> <img src="/img/tabright.png" alt=""></div>
+                </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
 
-    <div>
-        <section>
-            <div>
-                <img src="#" alt="city">
-            </div>
-    
-            <div>
-                <h3>Sub list Section</h3>
-                <hr>
-    
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos natus rem architecto expedita! Inventore a sint excepturi corporis cumque accusantium autem, accusamus adipisci vero quae veritatis hic et eaque tempore.</p>
-    
-                <h4>Title</h4>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis perferendis voluptatem voluptates rem sint voluptatibus aspernatur placeat deserunt ad quis, dolorum, esse temporibus necessitatibus aliquam aliquid quae beatae ipsam expedita.</p>
-    
-                <h4>title</h4>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus, nisi optio reprehenderit molestias ex molestiae quibusdam ut dolores earum aliquam atque doloribus aspernatur culpa, modi iure! Facere odit eos ipsa!</p>
-            </div>
-        </section>
-    </div>
 
-    <div>
-        <section>
+    <section id="sublevel1">
+        <div class="container">
             <div>
-                <h3>Standard Picture Section</h3>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam eligendi error nesciunt maxime optio assumenda unde aut, molestias possimus, eaque at alias laudantium temporibus fugiat impedit ipsum! Corrupti, dicta aliquid.</p>
+                <img src="/img/sec1.png" alt="">
             </div>
-    
-            <div>
-                <img src="#" alt="city">
-            </div>
-        </section>
-    </div>
+            
 
-    <div>
-        <section>
-            <div>
-                <h2></h2>
-    
+            <h3>Sub list section</h3>
+            <span class="line"></span>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam eligendi error nesciunt maxime optio assumenda unde aut, molestias possimus, eaque at alias laudantium temporibus fugiat impedit ipsum! Corrupti, dicta aliquid.</p>
+        
+            <div class="row">
                 <div>
-                    <img src="#" alt="idea">
-                    <h3>Thoughtful</h3>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit ea labore obcaecati ratione at totam tenetur voluptas ipsum, fuga velit architecto nobis rem, quod alias asperiores esse sint qui quos.</p>
+                    <i class="fa fa-cloud-upload" aria-hidden="true"></i>
                 </div>
-    
-                <div>
-                    <img src="#" alt="keyboard">
-                    <h3>Well Crafted</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique esse reiciendis, sit, aspernatur aliquam iusto aut hic magnam et, nihil quibusdam neque modi molestiae impedit nisi? Sequi quo praesentium voluptas?</p>
-                </div>
-    
-                <div>
-                    <img src="#" alt="power">
-                    <h3>Easy to Costomize</h3>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti ex sit ipsum iure vel consequatur, obcaecati autem necessitatibus adipisci tempora, illum, dolor architecto cumque perferendis cum nostrum ut porro hic?</p>
-                </div>
-    
-            </div>
-        </section>
-    </div>
-
-    <div>
-        <section>
-            <div>
-                <h2>PRICING OPTION</h2>
-                <hr>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            </div>
-    
-            <div>
-                <div>
-                    <h3><strong>basic</strong></h3>
-                    <p>0$</p>
-                    <p>free for life</p>
-                    <ul>
-                        <li>1 GB OF SPACE</li>
-                        <li>10 GB  OF BANDWIDTH</li>
-                        <li>3 WEBSITES</li>
-                        <li>BASIC CUSTOMIZATION</li>
-                        <li>WORDPRESS INTEGRATION</li>
-                        <li>EMAIL SUPORT</li>
-                    </ul>
-                </div>
-    
-                <div>
-                    <h3><strong>Profesional</strong></h3>
-                    <p>$19</p>
-                    <p>Monthy Pyment</p>
-                    <p><strong>OUR MOST POPULAR</strong></p>
-                    <ul>
-                        <li>5GB OF SPACE</li>
-                        <li>50GB OF BANDWIDTH</li>
-                        <li>12 WEBSITES</li>
-                        <li>advanced CUSTOMIZATION</li>
-                        <li>>WORDPRESS INTEGRATION</li>
-                        <li>EMAIL SUPORT</li>
-    
-                    </ul>
-                </div>
-    
-                <div>
-                    <h3><strong>ENTERPRISE</strong></h3>
-                    <p>$70</p>
-                    <p>Monthy Pyment</p>
-                    <p><strong>OUR MOST POPULAR</strong></p>
-                    <ul>
-                        <li>UNLIMITED SPACE</li>
-                        <li>UNLIMITED BANDWIDTH</li>
-                        <li>100 WEBSITES</li>
-                        <li>advanced CUSTOMIZATION</li>
-                        <li>>WORDPRESS INTEGRATION</li>
-                        <li>24/7 CUSTOMER SUPORT</li>
-    
-                    </ul>
-                </div>
-    
-    
-            </div>
-        </section>
-    </div>
-
-    <div>
-        <section>
-            <div>
-                <h2>WHAT OUR CUSTOMERS ARE SAYNING</h2>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. </p>
-    
-                <div>
-                    <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    </p>
-    
-                    <img src="#" alt="person">
-                    <h3>Jeremy H.</h3>
-                    <p>	Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto sunt praesentium illum, tenetur quidem consequatur officia voluptatum nihil, modi doloremque et sapiente autem dolore pariatur culpa deleniti, fuga similique voluptatem!</p>
-                </div>
-    
-                <div>
-                    <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    </p>
-    
-                    <img src="#" alt="person">
-                    <h3>John S.</h3>
-                    <p>	Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto sunt praesentium illum, tenetur quidem consequatur officia voluptatum nihil, modi doloremque et sapiente autem dolore pariatur culpa deleniti, fuga similique voluptatem!</p>
-                </div>
-    
-    
-                <div>
-                    <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    </p>
-    
-                    <img src="#" alt="person">
-                    <h3>Susan W.</h3>
-                    <p>	Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto sunt praesentium illum, tenetur quidem consequatur officia voluptatum nihil, modi doloremque et sapiente autem dolore pariatur culpa deleniti, fuga similique voluptatem!</p>
-                </div>
-    
-            </div>
-        </section>
-    </div>
-
-    <div>
-        <section>
-            <div>
-                <img src="#" alt="">
-                <h2>STYLISH AXURE DESING</h2>
-                <hr>
-                <p>User the sections you need, remove the ones ypu dont. Create gorgeous prototypes faster than ever!</p>
-    
-                <button>Download</button>
-            </div>
-        </section>
-    </div>
-
-    <div>
-        <section>
-            <div>
-                <h2>CONSTACT US</h2>
-                <hr>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 
                 <div>
-                    <form action="#">
-                        <input type="text" name="name" id="" placeholder="Name">
-                        <input type="email" name="email" id="" placeholder="Email">
-                        <input type="password" name="pass" id="" placeholder="password">
-                    </form>
+                    <h4>Title</h4>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat, ab. Quos excepturi natus officia ex</p>
+                </div>
+            </div>  
+        
+            <div class="row">
+                <div>
+                    <i class="fa fa-cloud-download" aria-hidden="true"></i>
                 </div>
                 <div>
-                    <p></p>
-                    <textarea name="message" id="" placeholder="message"></textarea>
+                    <h4>Title</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum excepturi architecto vel totam quibusdam esse officiis suscipit</p>
                 </div>
-                <button> Send Meesage</button>
+
             </div>
-        </section>
-    </div>
+
+        </div>
+    </section>
+
     
-    <div class="extremos">
-        <footer>
-            <div>
-                
-                    <a href="https://www.facebook.com/" target="_blank">
-                        <img src="" alt="facebook" >
-                    </a>
-                    <a href="https://www.x.com" target="_blank">
-                        <img src="" alt="X">
-                    </a>
-                    <!-- red social cerrada -->
-                    <a href="#"><img src="" alt="google+"></a>
-                    <a href="https://mx.pinterest.com/"><img src="" alt="pinterest"></a>
-                    <a href="https://www.instagram.com/"><img src="" alt="instagram"></a>
-                    <a href="#"><img src="" alt="unknown"></a>
-                    <a href="#"><img src="" alt="unknown"></a>
-                
+    <section id="sublevel2">
+        <div class="container">
+            <div class="row">   
+
+                <div>
+                    <h3>Standard Picture Section</h3>
+                    <span class="line"></span>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt ad aut, tempora, magnam accusantium vel rem cumque nesciunt voluptatibus reiciendis<br><br>
+                    unde animi asperiores officia quam et culpa. Ullam, eaque aspernatur.</p>
+                </div>
+
+                <div>
+                    <img src="/img/sec2.png" alt="">
+                </div>
             </div>
+        </div>
+    </section>
+
+    <section id="awesome">
+        <div class="container">
+            <div class="row">
+                <div>
+                    <h2>WHY THIS IS AWESOME</h2>
+                    <span class="line"></span>
+                    <p class="bottom">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div>
+                    <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+                    <h3>Thoughtful Design</h3>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima iste culpa illo temporibus sed animi molestias doloribus quia eius unde esse debitis tempora quae cum natus, officia dignissimos porro beatae.</p>
+                </div>
+
+                <div>
+                    <i class="fa fa-keyboard-o" aria-hidden="true"></i>
+                    <h3>>Well Crafted</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam repellendus voluptatem perferendis iure non laudantium exercitationem quisquam facere quidem recusandae, magnam totam earum sunt? Sunt repellendus inventore nesciunt corrupti impedit.</p>
+                </div>
+
+                <div>
+                    <i class="fa fa-bolt" aria-hidden="true"></i>
+                    <h3>Easy to Customize</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est magnam ea assumenda nemo ipsum, dicta tenetur id ex totam quo laboriosam iusto officiis tempora sapiente, aspernatur incidunt velit hic ipsam!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- aqui nos qudamos -->
+    <section id="pricing">
+        <div class="container">
+            
+            <div class="row">
+                <div>
+                    <h2>PRICING OPTIONS </h2>
+                    <span class="line"></span>
+                    <p class="bottom"> Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div>
+                    <article>
+                        <h3>Basic</h3>\
+                        <h1><span>$</span>0</h1>
+                        <h4>Free for Life</h4>
+                        <p>1 gb of space</p>
+                        <p>10 gb of bandwidth</p>
+                        <p>3 websites</p>
+                        <p>Basic Customization</p>
+                        <p>wordpress integration</p>
+                        <p>email support</p>
+                    </article>
+                </div>
+
+                <div>
+                    <article id="topmar">
+                        <h3>Professional</h3>
+                        <h1><span>$</span>19</h1>
+                        <h4>Monthly Payment</h4>
+                        <h5>OUR MOST POPULAR</h5>
+                        <p>5 gb of space</p>
+                        <p>50 gb of bandwidth</p>
+                        <p>12 websites</p>
+                        <p>Advanced Customization</p>
+                        <p>wordpress integration</p>
+                        <p>email support</p>
+                    </article>
+                </div>
+
+                <div>
+                    <article>
+                        <h3>Enterprise</h3>
+                        <h1><span>$</span>70</h1>
+                        <h4>Monthly Payment</h4>
+                        <p>Unlimited space</p>
+                        <p>unlimited bandwidth</p>
+                        <p>100 websites</p>
+                        <p>Advanced Customization</p>
+                        <p>wordpress integration</p>
+                        <p>24/7 customer support</p>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="customer">
+        <div class="container">
+            <div class="row">
+                <div>
+                    <h2>WHAT OUR CUSTOMERS ARE SAYING</h2>
+                    <span class="line"></span>
+                    <p class="bottom">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div>
+                    <article>
+                        <p class="arrow_box">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae voluptatum odio culpa distinctio minus repellendus pariatur repudiandae nihil eveniet placeat necessitatibus rem, unde error vitae ipsam harum? Consectetur, accusantium eligendi?
+                        </p>
+
+                        <div class="mainhald clearfix">
+                            <div class="hlfside">
+                                <img src="/img/post.png" alt=""></div>
+                                <div class="athrhalf">
+                                    <h3>Jeremy H.</h3>
+                                    <span>Manager</span>
+                                </div>
+                        </div>
+                    </article>
+                </div>
+
+
+                <div>
+                    <article>
+                        <p class="arrow_box">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium vel, quaerat deserunt veritatis doloribus fugit doloremque qui unde aut ab maiores. Natus dolore assumenda adipisci et cumque quisquam eaque. Voluptatem.
+                        </p>
+
+                        <div class="mainhald clearfix">
+                            <div class="hlfside"> <img src="/img/post.png" alt=""></div>
+                            <div class="athrhalf">
+                                <h3>Jeremy H.</h3>
+                                <span>Manager</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+
+                <div>
+                    <article>
+                        <p class="arrow_box">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium vel, quaerat deserunt veritatis doloribus fugit doloremque qui unde aut ab maiores. Natus dolore assumenda adipisci et cumque quisquam eaque. Voluptatem.
+                        </p>
+
+                        <div class="mainhald clearfix">
+                            <div class="hlfside"> <img src="/img/post.png" alt=""></div>
+                            <div class="athrhalf">
+                                <h3>Jeremy H.</h3>
+                                <span>Manager</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <aside id="desing">
+        <div class="container">
+            <div class="row">
+
+                <div>
+                    <h2>
+                        STYLISH AXURE DESIGN
+                    </h2>
+                    <span class="line"></span>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga cumque voluptate quia ut, deserunt cum suscipit dolorum, perspiciatis quam repellat quo consectetur libero at aliquid et eveniet mollitia officiis dignissimos?</p>
+                    <a href="%">Download</a>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div>
+                    <h2>CONSTACT US</h2>
+                        <span class="line"></span>
+                        <p class="bottom">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div>
+                    <input type="text" placeholder="Name">
+                    <input type="email" placeholder="Email">
+                    <input type="text" placeholder="subject">
+                </div>
+
+                <div>
+                    <textarea placeholder="Message"></textarea>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div>
+                    <a href="#">send message</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
     
-            <p>2015 asure themes</p>
-        </footer>
-    </div>
+    <footer>
+        <div class="container">
+            
+            <div class="row">
+                <div>
+                    <div class="bottomsocial">
+                        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a> 
+                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a> 
+                        <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a> 
+                        <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a> 
+                        <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a> 
+                        <a href="#"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a> 
+                        <a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a>
+
+                    </div>
+                    <p>>© 2015 Axure Themes</p>
+                    <p>>Free Template by <a href="https://freetemplates.pro/">FreeTemplates.pro</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

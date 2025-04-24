@@ -1,3 +1,4 @@
+/*................................reset...........................................*/
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
 	margin: 0;
 	padding: 0;
@@ -6,23 +7,10 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 	font: inherit;
 	vertical-align: baseline;
 }
-
-html{
-    font-size: 62.5%;
-}
-
-
-/* la regla del html y del body sobre el font size asegura que 1rem = 10px */
-body{
-    font-size: 16px;
-}
-/* tipografia */
-
-
+/* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-
 body {
 	line-height: 1;
 }
@@ -40,9 +28,26 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
-/* global */
-
+/*................................clearfix...........................................*/
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+.clearfix {
+	display: inline-block;
+}
+/* start commented backslash hack \*/
+* html .clearfix {
+	height: 1%;
+}
+.clearfix {
+	display: block;
+}
+/*.........GLOBLE......*/
 
 body {
 	font-family: 'Open Sans', sans-serif;
@@ -218,9 +223,8 @@ nav ul li a:hover {
 #social a i:hover {
 	color: #ff9b51;
 }
-
 /* TABING CSS*/
-
+/*----- Tabs -----*/
 .tabs {
 	width: 100%;
 	display: inline-block;
@@ -257,7 +261,24 @@ nav ul li a:hover {
 	background: #ff8b38;
 	color: #fff;
 }
+/*----- Content of Tabs -----*/
 
+.tab {
+	display: none;
+}
+.tab.active {
+	display: block;
+}
+#tabbingsec{background:#f5f5f5; padding:145px 0 110px;}
+.width60{width:60%; float:left; padding-left:50px;}
+.width40{width:40%; float:left; text-align:right;}
+#tabbingsec h3 {
+	font-size: 20px;
+	font-weight: 700;
+	color: #000;
+	padding-bottom: 50px;
+}
+#tabbingsec p{padding-bottom:45px;}
 .width60 a {
 	width: 121px;
 	height: 46px;
@@ -450,3 +471,161 @@ footer a i:hover{color:#ff8b38;}
 footer p , footer p a{color:rgba(255,255,255,0.50); font-size:12px;}
 .bottomsocial{margin-bottom:10px;}
 footer p a:hover{color:#fff;}
+
+/* New */
+
+.os-animation {
+	opacity: 0;
+}
+.os-animation.animated {
+	opacity: 1;
+}
+.staggered-animation {
+	opacity: 0;
+}
+.staggered-animation.animated {
+	opacity: 1;
+}
+/*LOADER EFFECT*/
+/*Paste this css to your style sheet file or under head tag*/
+/* This only works with JavaScript, 
+if it's not present, don't show loader */
+.no-js #loader { display: none;  }
+.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.se-pre-con {
+ position: fixed;
+ left: 0px;
+ top: 0px;
+ width: 100%;
+ height: 100%;
+ z-index: 9998;
+ background: #ff9b51;
+}
+
+
+.cssload-spinner {
+	position: absolute;
+	width: 33px;
+	height: 33px;
+	left: 50%;
+	top:50%;
+	margin-left: -17px;
+	margin-top: -17px;
+}
+.cssload-spinner:after, .cssload-spinner:before {
+	position: absolute;
+	content: "";
+	border: 2px solid rgb(255,255,255);
+	width: 31px;
+	height: 31px;
+}
+.cssload-spinner:after {
+	animation: cssload-spinner1 2.88s linear infinite;
+		-o-animation: cssload-spinner1 2.88s linear infinite;
+		-ms-animation: cssload-spinner1 2.88s linear infinite;
+		-webkit-animation: cssload-spinner1 2.88s linear infinite;
+		-moz-animation: cssload-spinner1 2.88s linear infinite;
+}
+.cssload-spinner:before {
+	width: 43px;
+	height: 43px;
+	margin-left: -6.5px;
+	margin-top: -6.5px;
+	animation: cssload-spinner2 2.88s linear infinite;
+		-o-animation: cssload-spinner2 2.88s linear infinite;
+		-ms-animation: cssload-spinner2 2.88s linear infinite;
+		-webkit-animation: cssload-spinner2 2.88s linear infinite;
+		-moz-animation: cssload-spinner2 2.88s linear infinite;
+}
+
+
+
+@keyframes cssload-spinner1 {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@-o-keyframes cssload-spinner1 {
+	from {
+		-o-transform: rotate(0deg);
+	}
+	to {
+		-o-transform: rotate(360deg);
+	}
+}
+
+@-ms-keyframes cssload-spinner1 {
+	from {
+		-ms-transform: rotate(0deg);
+	}
+	to {
+		-ms-transform: rotate(360deg);
+	}
+}
+
+@-webkit-keyframes cssload-spinner1 {
+	from {
+		-webkit-transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+@-moz-keyframes cssload-spinner1 {
+	from {
+		-moz-transform: rotate(0deg);
+	}
+	to {
+		-moz-transform: rotate(360deg);
+	}
+}
+
+@keyframes cssload-spinner2 {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(-360deg);
+	}
+}
+
+@-o-keyframes cssload-spinner2 {
+	from {
+		-o-transform: rotate(0deg);
+	}
+	to {
+		-o-transform: rotate(-360deg);
+	}
+}
+
+@-ms-keyframes cssload-spinner2 {
+	from {
+		-ms-transform: rotate(0deg);
+	}
+	to {
+		-ms-transform: rotate(-360deg);
+	}
+}
+
+@-webkit-keyframes cssload-spinner2 {
+	from {
+		-webkit-transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(-360deg);
+	}
+}
+
+@-moz-keyframes cssload-spinner2 {
+	from {
+		-moz-transform: rotate(0deg);
+	}
+	to {
+		-moz-transform: rotate(-360deg);
+	}
+}
