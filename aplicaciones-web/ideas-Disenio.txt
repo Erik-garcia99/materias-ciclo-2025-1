@@ -79,3 +79,75 @@ Productos con Mayor Rotación: Identifica los productos que se venden más
 rápidamente, se puede modificar los parámetros dependiendo la época.  
 Análisis de Margen de Ganancia: Muestra la rentabilidad de cada producto 
 comparando precio de compra y venta
+
+
+----------------------------------------------------------------------------------------
+aqui empieza todo el desarrollo de la app
+
+
+----------------
+usuario general (permisos basicos)
+
+-el usuario general puede realizar ventas 
+-el usuario general afectara al inventiario 
+-el usuario general puede ver el stock
+-el usuario general no puede eviar una solicitud de surtimiento al proveedor 
+debera de realizar un pedido a su jefe inmediato que tiene un usuario con permisos de gerencia. 
+-el usuario general al realizar el cobor este deberia de imprimir y/o genrear un recibo 
+-el usurio gereanl puede genrear una factura (recibo!=factura)
+-el usurio genreal puede modificar infromarmacion perosnal en su perfil como puede ser 
+(correo electronico, numero de teelfono, numero y persona de contacto en caso de emergencia 
+puede solicitar un cambio de banco de nomina, foto de usuario)
+-el usuario general puede relaizar reportes on su jefe inmediato y/o con un supervisor a eleccion esto en el caso que el usuario general crea necesario 
+comunicar algo con dichos directivos 
+
+
+
+
+
+
+
+----------------------------
+usuario gerencia (persmisos mayores)
+
+
+-el usuario de gerencia tiene una opcion para el producto en el cal si revsa sirto umbral hacia abajo de stocks del elementos este podra mostrar 
+un indicador (en este caso un punto de 4 colores verde=OK, amarrillo = ok pero ya se esta vaicando  rojo = esta por acabarse y gris=no hay disponibles) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------
+usuario administratio (sudo)
+
+
+
+
+
+
+-------------------------------------------------
+
+sistema :
+
+----inicio de sesoin y/o recuperacion de contrasenia
+-(debemo de crar una interfaz de inicio en la cual los usuarios inician con su numero de empleado y contrasenia)
+-para recuperar una contrasenia este debera de ingresar su correo, este deberia de mandar una solicitud a un adminstrativo que reasignara una nueva contrasenia
+y este dberia de ir con este adminsitrativo por dicha contrasenia (eso esta fuera del sistema)
+------------
+
+-menu para usuario genreal: este usuario gerneal tendra 3 opciones (por le momento) - venta - stock - reporte, asi como otras 2 opciones que corresponden a 
+salir del sistema o configuracion
+
+-el proceso de venta, este tendra 2 ventanas en las cuales en una la mas grande, que tendra 
+todos los productos que hay donibles. 
+- si hay un producto que tenga cierca cantidad de elementos disponibles en alamcen, este puede se configurado para que tenga un punto de 4 colores que indican
+si esta por acabarse, se cabao, o esta ok
