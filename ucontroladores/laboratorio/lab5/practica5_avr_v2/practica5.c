@@ -5,7 +5,7 @@
 #define ClrBitPort(port, bit) __asm__ __volatile__("cbi %0, %1" : : "I"(_SFR_IO_ADDR(port)), "I"(bit) : "memory")
 
 #define TIME_WINDOW 300
-#define SEED xx
+#define SEED 0x01
 /*******************/
 #define BTN_PIN PF7
 #define NOT_PRESSED 0
@@ -182,7 +182,7 @@ int main(void)
         }
         }
 
-        updateLeds(currentGameState, uint8_t lectura);
+        //updateLeds(currentGameState, uint8_t lectura);
         delay(1);
         millis++;
     }
@@ -217,6 +217,12 @@ uint8_t check_Btn(void)
     // el circuoto del boton esta en pull - up, por lo que para verificar si el boton
     // esta presionado o no, no presiondado = 1 - HIGH
     //  presionado = 0 - LOW
+
+    if (PINF & (1 << BTN_PIN))
+    {
+        return 0;
+    }
+
     // PINx lee el estado fisico del pin
 
     delay(20); // esperar 20 ms antes de actuar
