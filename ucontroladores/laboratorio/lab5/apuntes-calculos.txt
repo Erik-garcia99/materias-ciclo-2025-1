@@ -105,3 +105,17 @@ volatile uint8_t indice=0;
 que lee PIN cunado no hay nada conectado 
 el pin tiene un valor por defecto de HIGH (alto) no presionado, por lo que si quiero leer el pin 
 que me diga si no esta presionado haga esot, entonces debo de negar la entrada de la lectura del PIN 
+
+
+
+
+-------------------------------------------------
+
+0100 0010(0x42)
+0100 0001(0x41)
+0100 0100(0x44)
+0100 0010(0x42)
+0100 0001(0x41)
+0100 0100(0x44)
+0100 1000(0x48)
+0100 0100(0x44)
