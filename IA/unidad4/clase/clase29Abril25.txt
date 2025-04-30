@@ -1,0 +1,13 @@
+
+
+puedeoms ver la infromacion en e libro del 2008 de IA del curso 
+
+meta 4.1
+
+-tecnicas de representacion del conocimiento 
+ -redes semanticas (semantics nets)
+  -marcos (frame)
+  -regla de produccion
+  
+  
+  

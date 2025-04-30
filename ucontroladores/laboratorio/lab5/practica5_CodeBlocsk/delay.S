@@ -134,18 +134,38 @@ delay_general:
 
 
 
+;myRand:
+
+;	ldi R16, 0xA5      ; Multiplicador (a = 165)
+ ;   mul R24, R16       ; Multiplica semilla por 'a' (R1:R0 = R24 * R16)
+  ;  ldi R17, 0x4D      ; Constante aditiva (c = 77)
+   ; add R0, R17        ; Suma constante al byte bajo del resultado
+    ;mov R24, R0        ; Mueve resultado a registro de retorno
+   ; clr R1             ; Limpia registro alto (requerido por convención AVR-GCC)
+    ;ret
+
+
+
 myRand:
+    ; Entrada: seed en r24
+    ; Salida: n?mero pseudoaleatorio en r24
 
-	ldi R16, 0xA5      ; Multiplicador (a = 165)
-    mul R24, R16       ; Multiplica semilla por 'a' (R1:R0 = R24 * R16)
-    ldi R17, 0x4D      ; Constante aditiva (c = 77)
-    add R0, R17        ; Suma constante al byte bajo del resultado
-    mov R24, R0        ; Mueve resultado a registro de retorno
-    clr R1             ; Limpia registro alto (requerido por convención AVR-GCC)
+    mov r16, r24      ; r16 = seed
+
+    ; Multiplicar X por 5: (X << 2) + X
+    mov r18, r16      ; r18 = copia de X
+    lsl r16           ; X * 2
+    lsl r16           ; X * 4
+    add r16, r18      ; X * 5
+
+    ; Sumar 1
+    ldi r18, 1
+    add r16, r18      ; 5*X + 1 (mod 256 autom?ticamente)
+
+    ; Devolver resultado en r24
+    mov r24, r16
+
     ret
-
-
-
 
 
 
