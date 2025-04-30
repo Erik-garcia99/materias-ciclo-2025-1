@@ -11,3 +11,22 @@ meta 4.1
   
   
   
+--------------------------------------------
+
+clase 30 de abril 25 
+
+redes semanticas - relacio entre objetos, 
+
+frames (marcos) - forma de organizar la infromacion de un objeto, es como si fuera un "sistema orientado a objetos", 
+-conotra, si un hecho contiene insertidumbre ya no es posible el analisis con frames. 
+
+regla IF..THEN 
+
+IF X is A THEN Y is B -> A esta bajo dominio de X, o que quiere decirnos que A->B- A implica B 
+
+--modus ponen (MP)
+
+--tatoulogia
+
+
+

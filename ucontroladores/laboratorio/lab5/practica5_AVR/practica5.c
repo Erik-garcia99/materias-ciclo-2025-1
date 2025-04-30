@@ -5,7 +5,7 @@
 #define ClrBitPort(port, bit) __asm__ __volatile__("cbi %0, %1" : : "I"(_SFR_IO_ADDR(port)), "I"(bit) : "memory")
 
 #define TIME_WINDOW 300
-#define SEED 0x10
+#define SEED 5
 /*******************/
 #define BTN_PIN PF7
 //#define NOT_PRESSED 0
@@ -97,11 +97,10 @@ mis prototipos
 
 void waitState();
 void startGame();
+void endCount();
 
 // Global variable
-uint32_t millis;
-uint32_t lastUpdate=0;
-volatile uint8_t _start_game_=0;
+uint32_t millis=0;
 
 int main(void)
 {
@@ -110,24 +109,17 @@ int main(void)
     uint16_t countup = 0;
 
     // varibale para el modod wait para que este contantemente ciclado siempre y cunado no se ha presionado el boton.
-    uint8_t bucle = 1;
-    // InitPorts();
-    uint8_t lectura;
-    uint8_t btn;
-	
-	btn = (myRand(SEED) + 1) * 20;
-    // configurar los pines 0 - 3  como salida
-	
-	__asm__("nop");
-    // prueba
+    InitPorts();
 
-		btn = (myRand(SEED) + 1) * 20;
     // configurar los pines 0 - 3  como salida
-	
-	__asm__("nop");
+
     // prueba
 
     // currentGameState++;
+
+
+	//countdown = myRand(SEED);
+	//__asm__("nop");
 
     while (1)
     {
@@ -148,9 +140,10 @@ int main(void)
         {
         case eGameRestart:
         {
-            countdown = (myRand(SEED) + 1) * 20;
+            countdown = ((myRand(SEED) + 1) * 10) % 25;
+            //countdown = (myRand(SEED % 255) + 1) * 20;
             countup = 0;
-            currentGameState++;
+            currentGameState=eWaitForStart;
             break;
         }
         case eWaitForStart:
@@ -184,14 +177,21 @@ int main(void)
             break;
         case eStartCount:
         {
+
             countdown--;
-            if (countdown == 0)
-                currentGameState++;
+            DDRB |= (1<<PB7);
+            SetBitPort(PORTB,7);
+            if (countdown == 0){
+                //currentGameState++;
+                currentGameState = eEndCount;
+
+            }
 
             break;
         }
         case eEndCount:
         {
+            ClrBitPort(PORTB,7);
             if (countdown != 0)
                 currentGameState++;
             else
@@ -229,7 +229,7 @@ void InitPorts(void)
                       0000 0000
 
     */
-    PORTF |= (1 << PF6); // quiero que constantemente se este sacando un 1 por el pin 6 del puerto, por esa razon lo asigno
+     PORTF |= (1 << PF6) | (1 << PF7); // Enable pull-up for PF7 and set PF6 high  quiero que constantemente se este sacando un 1 por el pin 6 del puerto, por esa razon lo asigno
     // con un OR
 }
 
@@ -245,13 +245,11 @@ uint8_t check_Btn(void)
     //  presionado = 0 - LOW
     // PINx lee el estado fisico del pin
 
+    if(PINF & (1<<BTN_PIN)) return eBtnUndefined;
+
     delay(20); // esperar 20 ms antes de actuar
 
-    if (PINF & (1 << BTN_PIN))
-    {
-
-        return eBtnUndefined;
-    }
+    if (PINF & (1 << BTN_PIN)) return eBtnUndefined;
 
     uint16_t tiempo_presionado = 0;
 
@@ -287,6 +285,8 @@ uint8_t check_Btn(void)
 
         return eBtnShortPressed;
     }
+
+    return eBtnUndefined;
 }
 
 void updateLeds(uint8_t gameState)
@@ -306,41 +306,25 @@ void updateLeds(uint8_t gameState)
         }
 
         case eStartCount:
-//            startGame();
+            startGame();
             break;
 
+        case eEndCount:
+            endCount();break;
 
 
     }
 }
 
-/*
-void waitState(uint8_t btn) {
-    static uint32_t lastChange = 0;
-    uint8_t indice=0;
-
-    while(1){
-        while(indice<8){
-            DDRF = _CONF_DDR[indice];
-            PORTF = _CONF_PORT[indice];
-            delay(100);
-            indice++;
-        }
-        indice =0;
-        if(_start_game_==1){
-            break;
-        }
-    }
-}*/
 
 void waitState() {
 
-    volatile uint8_t indice=0;
-    while(indice<8){
-        DDRF = _CONF_DDR[indice];
-        PORTF =_CONF_PORT[indice];
-        indice++;
-    }
+    static volatile uint8_t indice = 0; //para amantener el valor entre llamadas
+    DDRF = _CONF_DDR[indice];
+    PORTF =_CONF_PORT[indice];
+    delay(100);
+
+    indice = (indice + 1) % 8;
 }
 
 /*
@@ -348,17 +332,47 @@ void startGame() {
 
     uint8_t indice=0;
 
-    uint8_t random;
+    uint8_t random= ((myRand(SEED) + 1) * 20)%50;
 
     for(uint8_t idx = 0; idx<random; idx++){
-
-
-        if(indice>=8){
-                //volvemos a regresar el indice al inicio
-            indice =0;
+        indice++;
+        if(indice>=7){
+            indice=0; // regresamos el indice
         }
-
     }
+    DDRF = _CONF_DDR[indice];
+    PORTF = _CONF_PORT[indice];
+    delay(100);
 
 
 }*/
+
+
+void startGame() {
+
+
+    static uint8_t seed = SEED; // Variable estática para mantener la semilla actualizada
+
+    // Genera un número aleatorio y actualiza la semilla
+
+    //uint8_t random = myRand(seed + (millis % 255));
+    uint8_t random = myRand(seed);
+    seed = random; // Actualiza la semilla para la próxima llamada
+
+    // Asegura que el índice esté entre 0-7 usando módulo 8
+    uint8_t indice = random % 8;
+
+    // Configura el LED correspondiente
+    DDRF = _CONF_DDR[indice];
+    PORTF = _CONF_PORT[indice];
+    delay(100);
+}
+
+
+void endCount(){
+
+    DDRF =0x40;
+    PORTF =0x40;
+
+}
+
