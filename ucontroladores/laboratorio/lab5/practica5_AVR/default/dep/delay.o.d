@@ -1,4 +1,4 @@
-delay.o: ../delay.S c:/winavr-20100110/lib/gcc/../../avr/include/avr/io.h \
+delay.o: ../delay.s c:/winavr-20100110/lib/gcc/../../avr/include/avr/io.h \
   c:/winavr-20100110/lib/gcc/../../avr/include/avr/sfr_defs.h \
   c:/winavr-20100110/lib/gcc/../../avr/include/avr/iom2560.h \
   c:/winavr-20100110/lib/gcc/../../avr/include/avr/iomxx0_1.h \

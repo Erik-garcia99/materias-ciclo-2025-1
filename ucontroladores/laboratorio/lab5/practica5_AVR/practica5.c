@@ -98,6 +98,7 @@ mis prototipos
 void waitState();
 void startGame();
 void endCount();
+void _YOU_LOOSE_();
 
 // Global variable
 uint32_t millis=0;
@@ -140,7 +141,8 @@ int main(void)
         {
         case eGameRestart:
         {
-            countdown = ((myRand(SEED) + 1) * 10) % 25;
+            //countdown = ((myRand(SEED) + 1) * 10) % 50;
+            countdown = myRand(SEED)%75;
             //countdown = (myRand(SEED % 255) + 1) * 20;
             countup = 0;
             currentGameState=eWaitForStart;
@@ -193,7 +195,7 @@ int main(void)
         {
             ClrBitPort(PORTB,7);
             if (countdown != 0)
-                currentGameState++;
+                currentGameState=eGameOver;
             else
                 countup++;
             break;
@@ -229,7 +231,7 @@ void InitPorts(void)
                       0000 0000
 
     */
-     PORTF |= (1 << PF6) | (1 << PF7); // Enable pull-up for PF7 and set PF6 high  quiero que constantemente se este sacando un 1 por el pin 6 del puerto, por esa razon lo asigno
+    PORTF |= (1 << PF6) | (1 << PF7); // Enable pull-up for PF7 and set PF6 high  quiero que constantemente se este sacando un 1 por el pin 6 del puerto, por esa razon lo asigno
     // con un OR
 }
 
@@ -237,6 +239,8 @@ void InitPorts(void)
 ok el check btn no esta del todo bien, esto porque
 
 */
+
+
 uint8_t check_Btn(void)
 {
 
@@ -288,6 +292,35 @@ uint8_t check_Btn(void)
 
     return eBtnUndefined;
 }
+
+
+/*
+uint8_t check_Btn(void) {
+    // Botón no presionado (pull-up habilitado)
+    if (PINF & (1 << BTN_PIN)) return eBtnUndefined;
+
+    // Debounce inicial
+    delay(20);
+    if (PINF & (1 << BTN_PIN)) return eBtnUndefined;
+
+    // Medir tiempo de presión
+    uint16_t tiempo_presionado = 0;
+    while (!(PINF & (1 << BTN_PIN))) {
+        delay(1);
+        tiempo_presionado++;
+        if (tiempo_presionado >= 1000) { // 1000 ms = Long press
+            while (!(PINF & (1 << BTN_PIN))); // Esperar liberación
+            delay(20); // Debounce final
+            return eBtnLongPressed;
+        }
+    }
+
+    // Debounce final para short press
+    delay(20);
+    return (tiempo_presionado > 0) ? eBtnShortPressed : eBtnUndefined;
+}
+*/
+
 
 void updateLeds(uint8_t gameState)
 {
@@ -373,6 +406,29 @@ void endCount(){
 
     DDRF =0x40;
     PORTF =0x40;
+
+}
+
+void _YOU_LOOSE_(){
+
+
+
+    for(uint8_t idx=0;idx<4; idx++){
+        DDRF=_CONF_DDR[idx];
+        PORTF=_CONF_PORT[idx];
+        delay(1);
+
+    }
+    delay(500);
+
+    for(uint8_t jdx=4;jdx<7;jdx++){
+        DDRF =_CONF_DDR[jdx];
+        PORTF=_CONF_PORT[jdx];
+        delay(1);
+    }
+    delay(500);
+
+
 
 }
 

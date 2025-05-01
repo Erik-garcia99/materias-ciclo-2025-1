@@ -1,13 +1,11 @@
 Archive member included because of file (symbol)
 
-c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_divmodhi4.o)
-                              practica5.o (__divmodhi4)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodqi4.o)
+                              practica5.o (__udivmodqi4)
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
                               c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o (exit)
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
                               practica5.o (__do_clear_bss)
-c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodhi4.o)
-                              c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_divmodhi4.o) (__udivmodhi4)
 
 Memory Configuration
 
@@ -25,7 +23,7 @@ Linker script and memory map
 Address of section .data set to 0x800200
 LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
 LOAD practica5.o
-LOAD _support_.o
+LOAD delay.o
 LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
 LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a
 LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
@@ -120,7 +118,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x3a6
+.text           0x00000000      0x3f6
  *(.vectors)
  .vectors       0x00000000       0xe4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
                 0x00000000                __vectors
@@ -233,35 +231,32 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
                 0x00000126                __vector_18
                 0x00000126                __vector_20
                 0x00000126                __vector_42
- .text          0x0000012a      0x1d6 practica5.o
-                0x0000016c                waitState
-                0x000001a6                updateLeds
-                0x0000013e                startGame
+ .text          0x0000012a      0x25c practica5.o
+                0x000001dc                waitState
+                0x000002a6                updateLeds
+                0x00000278                startGame
                 0x00000136                endCount
-                0x00000228                main
-                0x000001c6                check_Btn
+                0x000002c6                main
+                0x00000216                check_Btn
                 0x0000012a                InitPorts
- .text          0x00000300       0x54 _support_.o
-                0x00000300                delay
-                0x00000346                myRand
- .text          0x00000354        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_divmodhi4.o)
- .text          0x00000354        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
- .text          0x00000354        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
- .text          0x00000354        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodhi4.o)
-                0x00000354                . = ALIGN (0x2)
+                0x0000013e                _YOU_LOOSE_
+ .text          0x00000386       0x54 delay.o
+                0x00000386                delay
+                0x000003cc                myRand
+ .text          0x000003da        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodqi4.o)
+ .text          0x000003da        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
+ .text          0x000003da        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
+                0x000003da                . = ALIGN (0x2)
  *(.text.*)
- .text.libgcc   0x00000354       0x26 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_divmodhi4.o)
-                0x00000354                __divmodhi4
-                0x00000354                _div
- .text.libgcc   0x0000037a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
- .text.libgcc   0x0000037a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
- .text.libgcc   0x0000037a       0x28 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodhi4.o)
-                0x0000037a                __udivmodhi4
-                0x000003a2                . = ALIGN (0x2)
+ .text.libgcc   0x000003da       0x18 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodqi4.o)
+                0x000003da                __udivmodqi4
+ .text.libgcc   0x000003f2        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
+ .text.libgcc   0x000003f2        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
+                0x000003f2                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000003a2        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
-                0x000003a2                exit
-                0x000003a2                _exit
+ .fini9         0x000003f2        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
+                0x000003f2                exit
+                0x000003f2                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -280,22 +275,21 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000003a2        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
+ .fini0         0x000003f2        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
  *(.fini0)
-                0x000003a6                _etext = .
+                0x000003f6                _etext = .
 
-.data           0x00800200       0x12 load address 0x000003a6
+.data           0x00800200       0x12 load address 0x000003f6
                 0x00800200                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800200        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
  .data          0x00800200       0x11 practica5.o
                 0x00800208                _CONF_DDR
                 0x00800200                _CONF_PORT
- .data          0x00800211        0x0 _support_.o
- .data          0x00800211        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_divmodhi4.o)
+ .data          0x00800211        0x0 delay.o
+ .data          0x00800211        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodqi4.o)
  .data          0x00800211        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
  .data          0x00800211        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
- .data          0x00800211        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodhi4.o)
  *(.data*)
  *(.rodata)
  *(.rodata*)
@@ -311,16 +305,15 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
  .bss           0x00800212        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
  .bss           0x00800212        0x5 practica5.o
                 0x00800212                millis
- .bss           0x00800217        0x0 _support_.o
- .bss           0x00800217        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_divmodhi4.o)
+ .bss           0x00800217        0x0 delay.o
+ .bss           0x00800217        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodqi4.o)
  .bss           0x00800217        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
  .bss           0x00800217        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
- .bss           0x00800217        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodhi4.o)
  *(.bss*)
  *(COMMON)
                 0x00800217                PROVIDE (__bss_end, .)
-                0x000003a6                __data_load_start = LOADADDR (.data)
-                0x000003b8                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000003f6                __data_load_start = LOADADDR (.data)
+                0x00000408                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800217        0x0
                 0x00800217                PROVIDE (__noinit_start, .)
@@ -383,38 +376,38 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
  .debug_aranges
                 0x00000000       0x20 practica5.o
  .debug_aranges
-                0x00000020       0x20 _support_.o
+                0x00000020       0x20 delay.o
 
 .debug_pubnames
-                0x00000000       0x97
+                0x00000000       0xa7
  *(.debug_pubnames)
  .debug_pubnames
-                0x00000000       0x97 practica5.o
+                0x00000000       0xa7 practica5.o
 
-.debug_info     0x00000000      0x31d
+.debug_info     0x00000000      0x362
  *(.debug_info)
- .debug_info    0x00000000      0x277 practica5.o
- .debug_info    0x00000277       0xa6 _support_.o
+ .debug_info    0x00000000      0x2c1 practica5.o
+ .debug_info    0x000002c1       0xa1 delay.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev   0x00000000      0x173
+.debug_abbrev   0x00000000      0x185
  *(.debug_abbrev)
- .debug_abbrev  0x00000000      0x15f practica5.o
- .debug_abbrev  0x0000015f       0x14 _support_.o
+ .debug_abbrev  0x00000000      0x171 practica5.o
+ .debug_abbrev  0x00000171       0x14 delay.o
 
-.debug_line     0x00000000      0x2d5
+.debug_line     0x00000000      0x399
  *(.debug_line)
- .debug_line    0x00000000      0x26d practica5.o
- .debug_line    0x0000026d       0x68 _support_.o
+ .debug_line    0x00000000      0x335 practica5.o
+ .debug_line    0x00000335       0x64 delay.o
 
-.debug_frame    0x00000000       0x80
+.debug_frame    0x00000000       0x90
  *(.debug_frame)
- .debug_frame   0x00000000       0x80 practica5.o
+ .debug_frame   0x00000000       0x90 practica5.o
 
-.debug_str      0x00000000      0x21c
+.debug_str      0x00000000      0x227
  *(.debug_str)
- .debug_str     0x00000000      0x21c practica5.o
-                                0x250 (size before relaxing)
+ .debug_str     0x00000000      0x227 practica5.o
+                                0x25b (size before relaxing)
 
 .debug_loc      0x00000000       0x6f
  *(.debug_loc)
