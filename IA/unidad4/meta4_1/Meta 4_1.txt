@@ -1,0 +1,33 @@
+
+Meta 4.1 Analizar los principios y métodos de la ingeniería del conocimiento, para resolver problemas de un dominio específico, a través del desarrollo de una base de conocimiento y sistema de razonamiento, con actitud creativa y propositiva.
+
+Elaborar una presentación (25-30 min) sobre los principios y métodos de la ingeniería de conocimiento en base a los siguientes temas:
+
+1. ALCARAZ DELGADO JESUS MAURICIO
+- Lógica y representación de conocimiento
+	Definición conocimiento.
+	Conocimiento tácito y explicito.
+	Adquisición del conocimiento.
+	Construcción de la Base de Conocimiento.
+	Características de la Representación del conocimiento.
+	Sistemas de razonamiento.
+
+2. GARCÍA CHÁVEZ ERIK
+- Técnicas de Representación del Conocimiento
+	Redes semanticas (Semantic Nets)
+	Marcos (Frames)
+	Reglas de producción
+
+3. LEYVA GUTIERREZ BRYAN GIOVANI	
+- Sistemas expertos
+
+4. ROBLERO ESCALANTE SANDI GUILMA
+- Sistemas Difusos
+
+5. FIGUEROA ROMERO CARLOS
+- Web semántica (Semantic Web)
+
+6. MACHADO MERAZ ULISES JOEL
+- Ontología (Ontology)
+
+Fecha de presentación y entrega : 6, 7 Mayo 2025

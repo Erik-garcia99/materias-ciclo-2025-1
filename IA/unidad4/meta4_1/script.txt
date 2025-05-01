@@ -1,0 +1,14 @@
+redes semanticas: 
+
+este concepto tiene su origen en 1909 con Charles Peirce quien propuso una notacion grafica de nodos y arcos denominada "grafos existenciales". 
+las redes semanticas es un metodo de represnecacion del conocimineto basado en relaciones entre objetos. este conocimiento puede ser representado mediante un 
+grafo
+
+los nodos corresponte a los objetos y los arcos describen las relaciones entre los objetos. cad aarco con sus dos nodos forman una tripleta (sujeto, relaciones,
+objeto). la red solo alamcena las relaciones estaticas mas no como usar es infromacion
+
+
+nota: la red puede declar que "pluto es-un perro" y que "perro es-un perro" pero no como inferir que "pluto es-un mamifero"
+
+
+para derivar conocimiento nuevo
