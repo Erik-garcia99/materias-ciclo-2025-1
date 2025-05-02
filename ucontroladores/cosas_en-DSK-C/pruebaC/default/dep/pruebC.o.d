@@ -1,0 +1,1 @@
+pruebC.o: ../pruebC.c

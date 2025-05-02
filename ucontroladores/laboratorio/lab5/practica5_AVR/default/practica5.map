@@ -432,10 +432,10 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
  .debug_pubnames
                 0x00000000       0xad practica5.o
 
-.debug_info     0x00000000      0x3cf
+.debug_info     0x00000000      0x3ce
  *(.debug_info)
  .debug_info    0x00000000      0x32d practica5.o
- .debug_info    0x0000032d       0xa2 delay.o
+ .debug_info    0x0000032d       0xa1 delay.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev   0x00000000      0x172
@@ -452,10 +452,10 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
  *(.debug_frame)
  .debug_frame   0x00000000       0xa0 practica5.o
 
-.debug_str      0x00000000      0x224
+.debug_str      0x00000000      0x223
  *(.debug_str)
- .debug_str     0x00000000      0x224 practica5.o
-                                0x258 (size before relaxing)
+ .debug_str     0x00000000      0x223 practica5.o
+                                0x257 (size before relaxing)
 
 .debug_loc      0x00000000       0xa7
  *(.debug_loc)

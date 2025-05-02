@@ -1,0 +1,26 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.1.42</VERSION>
+ <DEVICE>Unknown</DEVICE>
+ <WORKING_DIR>C:\ucontroladores\XD</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:\Program Files (x86)\Atmel\AVR Tools\AvrAssembler2\Appnotes</DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\ucontroladores\XD\random.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\ucontroladores\XD\random.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>C:\ucontroladores\XD\random.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>C:\ucontroladores\XD\random.map</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <delay1S><FILE>C:\ucontroladores\XD\random.asm</FILE><LINE>4</LINE></delay1S>
+  <nxt><FILE>C:\ucontroladores\XD\random.asm</FILE><LINE>6</LINE></nxt>
+  <nxt2><FILE>C:\ucontroladores\XD\random.asm</FILE><LINE>9</LINE></nxt2>
+  <nxt3><FILE>C:\ucontroladores\XD\random.asm</FILE><LINE>12</LINE></nxt3>
+ </LABELS>
+</ASSEMBLER_INFO>

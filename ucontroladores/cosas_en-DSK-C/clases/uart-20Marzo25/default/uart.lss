@@ -1,0 +1,335 @@
+
+uart.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000001e8  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .debug_aranges 00000020  00000000  00000000  0000023c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  2 .debug_pubnames 00000050  00000000  00000000  0000025c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  3 .debug_info   000001ba  00000000  00000000  000002ac  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_abbrev 000000eb  00000000  00000000  00000466  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_line   000001a0  00000000  00000000  00000551  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_frame  00000050  00000000  00000000  000006f4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_str    000000b4  00000000  00000000  00000744  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_loc    0000001e  00000000  00000000  000007f8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 72 00 	jmp	0xe4	; 0xe4 <__ctors_end>
+   4:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+   8:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+   c:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  10:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  14:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  18:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  1c:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  20:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  24:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  28:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  2c:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  30:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  34:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  38:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  3c:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  40:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  44:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  48:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  4c:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  50:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  54:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  58:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  5c:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  60:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  64:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  68:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  6c:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  70:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  74:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  78:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  7c:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  80:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  84:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  88:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  8c:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  90:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  94:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  98:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  9c:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  a0:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  a4:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  a8:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  ac:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  b0:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  b4:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  b8:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  bc:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  c0:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  c4:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  c8:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  cc:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  d0:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  d4:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  d8:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  dc:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+  e0:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+
+000000e4 <__ctors_end>:
+  e4:	11 24       	eor	r1, r1
+  e6:	1f be       	out	0x3f, r1	; 63
+  e8:	cf ef       	ldi	r28, 0xFF	; 255
+  ea:	d1 e2       	ldi	r29, 0x21	; 33
+  ec:	de bf       	out	0x3e, r29	; 62
+  ee:	cd bf       	out	0x3d, r28	; 61
+  f0:	00 e0       	ldi	r16, 0x00	; 0
+  f2:	0c bf       	out	0x3c, r16	; 60
+
+000000f4 <__do_copy_data>:
+  f4:	12 e0       	ldi	r17, 0x02	; 2
+  f6:	a0 e0       	ldi	r26, 0x00	; 0
+  f8:	b2 e0       	ldi	r27, 0x02	; 2
+  fa:	e8 ee       	ldi	r30, 0xE8	; 232
+  fc:	f1 e0       	ldi	r31, 0x01	; 1
+  fe:	00 e0       	ldi	r16, 0x00	; 0
+ 100:	0b bf       	out	0x3b, r16	; 59
+ 102:	02 c0       	rjmp	.+4      	; 0x108 <__do_copy_data+0x14>
+ 104:	07 90       	elpm	r0, Z+
+ 106:	0d 92       	st	X+, r0
+ 108:	a0 30       	cpi	r26, 0x00	; 0
+ 10a:	b1 07       	cpc	r27, r17
+ 10c:	d9 f7       	brne	.-10     	; 0x104 <__do_copy_data+0x10>
+ 10e:	0e 94 ac 00 	call	0x158	; 0x158 <main>
+ 112:	0c 94 f2 00 	jmp	0x1e4	; 0x1e4 <_exit>
+
+00000116 <__bad_interrupt>:
+ 116:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000011a <uart_init>:
+
+//UBBR= 16MHz / (16*600) -1 =  1666 u2x=0 599.88 baudaje real
+//UBBR= 16MHz / (8*600) -1 =  3332 /u2x =1 600.06 baujae real con doblre activado 
+ void uart_init(){
+
+	UCSR0A= 1<< U2X3; // el valor que va el UBRR es el que se calculo cuando se activa U2X 
+ 11a:	82 e0       	ldi	r24, 0x02	; 2
+ 11c:	80 93 c0 00 	sts	0x00C0, r24
+	
+	UCSR0B= 3<< TXEN3; //habilitacion de las interrupciones, por ahora solo nos interesa transmicion y recepcion 
+ 120:	88 e1       	ldi	r24, 0x18	; 24
+ 122:	80 93 c1 00 	sts	0x00C1, r24
+	// UCSZn2 este funciona para seleccionar de que tamanio va a ser la cadena que se va a mandar, el dato, edto es con una tabla los otros 2
+	//bits estan en C
+	
+	UCSR0C= (3<< UCSZ30) |(1<<UPM31) | (1<<USBS3); // stop bit, pridad par, define el tamanio del dato a enviar
+ 126:	8e e2       	ldi	r24, 0x2E	; 46
+ 128:	80 93 c2 00 	sts	0x00C2, r24
+	
+	
+	UBRR0=3332; //PUEDE SER DE parte alta o parte baja 
+ 12c:	84 e0       	ldi	r24, 0x04	; 4
+ 12e:	9d e0       	ldi	r25, 0x0D	; 13
+ 130:	90 93 c5 00 	sts	0x00C5, r25
+ 134:	80 93 c4 00 	sts	0x00C4, r24
+
+}
+ 138:	08 95       	ret
+
+0000013a <UART3_WriteByte>:
+
+//calcular el baud colose match en la tabla 22-1 
+
+
+void UART3_WriteByte(uint8_t data){
+ 13a:	98 2f       	mov	r25, r24
+	
+	//verificamos si el bit del transmition complete esta set quiere decir que ya hubo una transferencia
+	while(!(UCSR0A & (1<< UDRE0)))
+ 13c:	80 91 c0 00 	lds	r24, 0x00C0
+ 140:	85 ff       	sbrs	r24, 5
+ 142:	fc cf       	rjmp	.-8      	; 0x13c <UART3_WriteByte+0x2>
+		;
+		
+	UDR0 = data;
+ 144:	90 93 c6 00 	sts	0x00C6, r25
+		
+	
+	
+	
+	
+}
+ 148:	08 95       	ret
+
+0000014a <UART3_ReadByte>:
+
+uint8_t UART3_ReadByte(void){
+	
+	//mientras no me ha llegado un valor 
+
+	while(!(UCSR0A & (1<< RXC0)))
+ 14a:	80 91 c0 00 	lds	r24, 0x00C0
+ 14e:	87 ff       	sbrs	r24, 7
+ 150:	fc cf       	rjmp	.-8      	; 0x14a <UART3_ReadByte>
+		;
+
+
+	return UDR0;
+ 152:	80 91 c6 00 	lds	r24, 0x00C6
+	
+	
+	
+}
+ 156:	08 95       	ret
+
+00000158 <main>:
+
+//UBBR= 16MHz / (16*600) -1 =  1666 u2x=0 599.88 baudaje real
+//UBBR= 16MHz / (8*600) -1 =  3332 /u2x =1 600.06 baujae real con doblre activado 
+ void uart_init(){
+
+	UCSR0A= 1<< U2X3; // el valor que va el UBRR es el que se calculo cuando se activa U2X 
+ 158:	82 e0       	ldi	r24, 0x02	; 2
+ 15a:	80 93 c0 00 	sts	0x00C0, r24
+	
+	UCSR0B= 3<< TXEN3; //habilitacion de las interrupciones, por ahora solo nos interesa transmicion y recepcion 
+ 15e:	88 e1       	ldi	r24, 0x18	; 24
+ 160:	80 93 c1 00 	sts	0x00C1, r24
+	// UCSZn2 este funciona para seleccionar de que tamanio va a ser la cadena que se va a mandar, el dato, edto es con una tabla los otros 2
+	//bits estan en C
+	
+	UCSR0C= (3<< UCSZ30) |(1<<UPM31) | (1<<USBS3); // stop bit, pridad par, define el tamanio del dato a enviar
+ 164:	8e e2       	ldi	r24, 0x2E	; 46
+ 166:	80 93 c2 00 	sts	0x00C2, r24
+	
+	
+	UBRR0=3332; //PUEDE SER DE parte alta o parte baja 
+ 16a:	84 e0       	ldi	r24, 0x04	; 4
+ 16c:	9d e0       	ldi	r25, 0x0D	; 13
+ 16e:	90 93 c5 00 	sts	0x00C5, r25
+ 172:	80 93 c4 00 	sts	0x00C4, r24
+
+
+void UART3_WriteByte(uint8_t data){
+	
+	//verificamos si el bit del transmition complete esta set quiere decir que ya hubo una transferencia
+	while(!(UCSR0A & (1<< UDRE0)))
+ 176:	80 91 c0 00 	lds	r24, 0x00C0
+ 17a:	85 ff       	sbrs	r24, 5
+ 17c:	fc cf       	rjmp	.-8      	; 0x176 <main+0x1e>
+		;
+		
+	UDR0 = data;
+ 17e:	88 e4       	ldi	r24, 0x48	; 72
+ 180:	80 93 c6 00 	sts	0x00C6, r24
+
+
+void UART3_WriteByte(uint8_t data){
+	
+	//verificamos si el bit del transmition complete esta set quiere decir que ya hubo una transferencia
+	while(!(UCSR0A & (1<< UDRE0)))
+ 184:	80 91 c0 00 	lds	r24, 0x00C0
+ 188:	85 ff       	sbrs	r24, 5
+ 18a:	fc cf       	rjmp	.-8      	; 0x184 <main+0x2c>
+		;
+		
+	UDR0 = data;
+ 18c:	8f e4       	ldi	r24, 0x4F	; 79
+ 18e:	80 93 c6 00 	sts	0x00C6, r24
+
+
+void UART3_WriteByte(uint8_t data){
+	
+	//verificamos si el bit del transmition complete esta set quiere decir que ya hubo una transferencia
+	while(!(UCSR0A & (1<< UDRE0)))
+ 192:	80 91 c0 00 	lds	r24, 0x00C0
+ 196:	85 ff       	sbrs	r24, 5
+ 198:	fc cf       	rjmp	.-8      	; 0x192 <main+0x3a>
+		;
+		
+	UDR0 = data;
+ 19a:	8c e4       	ldi	r24, 0x4C	; 76
+ 19c:	80 93 c6 00 	sts	0x00C6, r24
+
+
+void UART3_WriteByte(uint8_t data){
+	
+	//verificamos si el bit del transmition complete esta set quiere decir que ya hubo una transferencia
+	while(!(UCSR0A & (1<< UDRE0)))
+ 1a0:	80 91 c0 00 	lds	r24, 0x00C0
+ 1a4:	85 ff       	sbrs	r24, 5
+ 1a6:	fc cf       	rjmp	.-8      	; 0x1a0 <main+0x48>
+		;
+		
+	UDR0 = data;
+ 1a8:	81 e4       	ldi	r24, 0x41	; 65
+ 1aa:	80 93 c6 00 	sts	0x00C6, r24
+
+
+void UART3_WriteByte(uint8_t data){
+	
+	//verificamos si el bit del transmition complete esta set quiere decir que ya hubo una transferencia
+	while(!(UCSR0A & (1<< UDRE0)))
+ 1ae:	80 91 c0 00 	lds	r24, 0x00C0
+ 1b2:	85 ff       	sbrs	r24, 5
+ 1b4:	fc cf       	rjmp	.-8      	; 0x1ae <main+0x56>
+		;
+		
+	UDR0 = data;
+ 1b6:	8a e0       	ldi	r24, 0x0A	; 10
+ 1b8:	80 93 c6 00 	sts	0x00C6, r24
+
+
+void UART3_WriteByte(uint8_t data){
+	
+	//verificamos si el bit del transmition complete esta set quiere decir que ya hubo una transferencia
+	while(!(UCSR0A & (1<< UDRE0)))
+ 1bc:	80 91 c0 00 	lds	r24, 0x00C0
+ 1c0:	85 ff       	sbrs	r24, 5
+ 1c2:	fc cf       	rjmp	.-8      	; 0x1bc <main+0x64>
+		;
+		
+	UDR0 = data;
+ 1c4:	8d e0       	ldi	r24, 0x0D	; 13
+ 1c6:	80 93 c6 00 	sts	0x00C6, r24
+
+uint8_t UART3_ReadByte(void){
+	
+	//mientras no me ha llegado un valor 
+
+	while(!(UCSR0A & (1<< RXC0)))
+ 1ca:	80 91 c0 00 	lds	r24, 0x00C0
+ 1ce:	87 ff       	sbrs	r24, 7
+ 1d0:	fc cf       	rjmp	.-8      	; 0x1ca <main+0x72>
+		;
+
+
+	return UDR0;
+ 1d2:	90 91 c6 00 	lds	r25, 0x00C6
+
+
+void UART3_WriteByte(uint8_t data){
+	
+	//verificamos si el bit del transmition complete esta set quiere decir que ya hubo una transferencia
+	while(!(UCSR0A & (1<< UDRE0)))
+ 1d6:	80 91 c0 00 	lds	r24, 0x00C0
+ 1da:	85 ff       	sbrs	r24, 5
+ 1dc:	fc cf       	rjmp	.-8      	; 0x1d6 <main+0x7e>
+		;
+		
+	UDR0 = data;
+ 1de:	90 93 c6 00 	sts	0x00C6, r25
+ 1e2:	f3 cf       	rjmp	.-26     	; 0x1ca <main+0x72>
+
+000001e4 <_exit>:
+ 1e4:	f8 94       	cli
+
+000001e6 <__stop_program>:
+ 1e6:	ff cf       	rjmp	.-2      	; 0x1e6 <__stop_program>

@@ -1,10 +1,13 @@
 
 
-
 #include <avr/io.h>
 
+.section .data
+SEED: .byte 1
 
 .section .text
+
+
 
 .global delay_103us
 .global delay
@@ -135,15 +138,69 @@ delay_general:
 
 
 
+;myRand:
+
+;	ldi R16, 0xA5      ; Multiplicador (a = 165)
+ ;   mul R24, R16       ; Multiplica semilla por 'a' (R1:R0 = R24 * R16)
+  ;  ldi R17, 0x4D      ; Constante aditiva (c = 77)
+   ; add R0, R17        ; Suma constante al byte bajo del resultado
+    ;mov R24, R0        ; Mueve resultado a registro de retorno
+    ;clr R1             ; Limpia registro alto (requerido por convención AVR-GCC)
+    ;ret
+
+
+
+;myRand:
+    ; Entrada: seed en r24
+    ; Salida: n?mero pseudoaleatorio en r24
+
+ ;   mov r16, r24      ; r16 = seed
+
+    ; Multiplicar X por 5: (X << 2) + X
+  ;  mov r18, r16      ; r18 = copia de X
+   ; lsl r16           ; X * 2
+    ;lsl r16           ; X * 4
+    ;add r16, r18      ; X * 5
+
+    ; Sumar 1
+    ;ldi r18, 1
+    ;add r16, r18      ; 5*X + 1 (mod 256 autom?ticamente)
+
+    ; Devolver resultado en r24
+    ;mov r24, r16
+
+    ;ret
+
+
+
+
 myRand:
-    ldi r16, 0xA5       ; Multiplicador (a = 165)
-    mul r24, r16        ; R1:R0 = semilla * a
-    ldi r17, 0x4D       ; Constante (c = 77)
-    add r0, r17         ; R0 = R0 + c
-    adc r1, r17         ; Mejora la distribución
-    mov r24, r0         ; Retorna el byte bajo
-    clr r1              ; Limpia R1 (requerido)
-    ret
+
+ ; --- Guardar semilla ---
+    sts SEED, r24  ; Almacenar semilla inicial desde C
+
+    ; --- Cargar parámetros LCG ---
+    ldi r26, 0xa5   ; a = 165 (multiplicador)
+    ldi r27, 0x4d   ; c = 77  (incremento)
+
+    ; --- Calcular a * x_n ---
+    lds r24, SEED    ; Cargar semilla
+    mul r24, r26     ; R1:R0 = a * x_n
+
+    ; --- Sumar c ---
+    add r0, r27      ; Sumar c al byte bajo
+    adc r1, r25      ; Sumar acarreo (R25 es 0 por defecto)
+
+    ; --- Actualizar semilla (mod 256) ---
+    mov r24, r0      ; El resultado es el byte bajo (R0)
+    sts SEED, r24    ; Guardar nueva semilla
+
+    ; --- Retornar resultado a C ---
+    ret              ; El resultado ya está en R24
+
+
+
+
 
 
 
@@ -183,10 +240,3 @@ nxt2:
 	brne nxt0
 
 	ret
-
-
-
-
-
-
-

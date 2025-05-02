@@ -119,3 +119,28 @@ que me diga si no esta presionado haga esot, entonces debo de negar la entrada d
 0100 0100(0x44)
 0100 1000(0x48)
 0100 0100(0x44)
+
+
+
+-cunado se esta leyendo un pin siempre esta leyendo 1 si tenemos un pull up activado,
+
+asi que como saber 
+
+
+------------------------------------------------------------
+
+DDRF = ok porque estoy dejando en claro quein es de salida y quein es de entrada
+PF6 esta OK - conf -> out - PORTF -> send HIGH
+
+
+PF7 tiengo que desactivar su PULL DOWN que se hace mediante el 0
+
+       DDRF                     PORTF
+LED1    0100 0011(0x43)     |   0100 0010(0x42)
+LED2    0100 0011(0x43)     |   0100 0001(0x41)
+LED3    0100 0110(0x46)     |   0100 0100(0x44)
+LED4    0100 0110(0x46)     |   0100 0010(0x42)
+LED5    0100 0101(0x45)     |   0100 0001(0x41)
+LED6    0100 0101(0x45)     |   0100 0100(0x44)
+LED7    0100 1100(0x4C)     |   0100 1000(0x48)
+LED8    0100 1100(0x4C)     |   0100 0100(0x44)

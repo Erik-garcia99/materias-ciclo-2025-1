@@ -1,0 +1,38 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.1.42</VERSION>
+ <DEVICE>ATmega2560</DEVICE>
+ <WORKING_DIR>C:\ucontroladores\laboratorio\lab3</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:\Program Files (x86)\Atmel\AVR Tools\AvrAssembler2\Appnotes</DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\ucontroladores\laboratorio\lab3\Lab3.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:\Program Files (x86)\Atmel\AVR Tools\AvrAssembler2\Appnotes\m2560def.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\ucontroladores\laboratorio\lab3\Lab3.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>C:\ucontroladores\laboratorio\lab3\Lab3.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>C:\ucontroladores\laboratorio\lab3\Lab3.map</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <numero_random><FILE>C:\ucontroladores\laboratorio\lab3\Lab3.asm</FILE><LINE>181</LINE></numero_random>
+  <retardo_1S><FILE>C:\ucontroladores\laboratorio\lab3\Lab3.asm</FILE><LINE>159</LINE></retardo_1S>
+  <retardo_103uS><FILE>C:\ucontroladores\laboratorio\lab3\Lab3.asm</FILE><LINE>61</LINE></retardo_103uS>
+  <retardo_1mS><FILE>C:\ucontroladores\laboratorio\lab3\Lab3.asm</FILE><LINE>112</LINE></retardo_1mS>
+  <arriba><FILE>C:\ucontroladores\laboratorio\lab3\Lab3.asm</FILE><LINE>43</LINE></arriba>
+  <abajo><FILE>C:\ucontroladores\laboratorio\lab3\Lab3.asm</FILE><LINE>50</LINE></abajo>
+  <nxt0><FILE>C:\ucontroladores\laboratorio\lab3\Lab3.asm</FILE><LINE>73</LINE></nxt0>
+  <nxt1><FILE>C:\ucontroladores\laboratorio\lab3\Lab3.asm</FILE><LINE>81</LINE></nxt1>
+  <nxt2><FILE>C:\ucontroladores\laboratorio\lab3\Lab3.asm</FILE><LINE>89</LINE></nxt2>
+  <nxt_mS><FILE>C:\ucontroladores\laboratorio\lab3\Lab3.asm</FILE><LINE>127</LINE></nxt_mS>
+  <nxt1_mS><FILE>C:\ucontroladores\laboratorio\lab3\Lab3.asm</FILE><LINE>133</LINE></nxt1_mS>
+  <nxt2_mS><FILE>C:\ucontroladores\laboratorio\lab3\Lab3.asm</FILE><LINE>137</LINE></nxt2_mS>
+  <nxt_S><FILE>C:\ucontroladores\laboratorio\lab3\Lab3.asm</FILE><LINE>163</LINE></nxt_S>
+  <nxt2_S><FILE>C:\ucontroladores\laboratorio\lab3\Lab3.asm</FILE><LINE>167</LINE></nxt2_S>
+  <nxt3_S><FILE>C:\ucontroladores\laboratorio\lab3\Lab3.asm</FILE><LINE>170</LINE></nxt3_S>
+ </LABELS>
+</ASSEMBLER_INFO>

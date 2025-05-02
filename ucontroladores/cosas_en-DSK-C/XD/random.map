@@ -1,0 +1,8 @@
+
+AVRASM ver. 2.1.42  C:\ucontroladores\XD\random.asm Fri Apr 11 18:45:56 2025
+
+
+CSEG delay1S      00000003
+CSEG nxt          00000004
+CSEG nxt2         00000007
+CSEG nxt3         0000000a
