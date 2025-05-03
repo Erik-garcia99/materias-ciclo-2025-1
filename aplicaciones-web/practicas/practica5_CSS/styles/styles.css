@@ -9,23 +9,21 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 html{
     font-size: 62.5%;
+
+	/* grd.css */
+	font-family: sans-serif;
 }
 
-
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, main,summary {
+	display: block;
+}
 /* la regla del html y del body sobre el font size asegura que 1rem = 10px */
 body{
     font-size: 16px;
+	line-height: 1;
 }
 /* tipografia */
 
-
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-
-body {
-	line-height: 1;
-}
 ol, ul {
 	list-style: none;
 }
@@ -40,6 +38,48 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+
+/* menus */
+
+
+.nav-collapse ul {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	display: block;
+	list-style: none;
+  }
+  
+  .nav-collapse li {
+	width: 100%;
+	display: block;
+  }
+
+/* clearfix */
+.clearfix:after{
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+
+.clearfix{
+	display: inline-block;
+}
+
+* html .clearfix{ 
+	height: 1%;
+}
+
+.clearfix{
+	display: block;
+}
+
+
+
 
 /* global */
 
@@ -61,7 +101,8 @@ h2 {
 	text-align: center;
 	text-transform: uppercase;
 }
-h3{font-size: 20px;
+h3{
+	font-size: 20px;
 	font-weight: 700;
 	color: #333333;}
 .line {
@@ -76,8 +117,8 @@ header {
 	background: #000;
 	width: 100%;
 	padding: 20px 0;
-	-webkit-transition: all 0.4s ease;
-	transition: all 0.4s ease;
+	/* -webkit-transition: all 0.4s ease; */
+	/* transition: all 0.4s ease; */
 }
 header.sticky {
 	position: fixed;
@@ -114,7 +155,7 @@ nav ul li a:hover {
 	transition: all 0.5s;
 }
 #banner {
-	background: url(images/banner.jpg) no-repeat bottom center;
+	background: url(/img/banner.jpg) no-repeat bottom center;
 	background-size: cover;
 	padding: 110px 0 135px;
 }
@@ -258,6 +299,40 @@ nav ul li a:hover {
 	color: #fff;
 }
 
+.tab{
+	display: none;
+}
+.ab.active{
+	display: block;
+}
+
+#tabbingsec{
+	background: #f5f5f5; 
+	padding: 145px 0 110px;
+}
+
+.width60{
+	width: 60%;
+	float: left;
+	padding-left: 50px;
+}
+
+.width40{
+	width: 40%;
+	float: left;
+	text-align: right;
+}
+
+#tabbingsec h3{
+	font-size: 20px;
+	font-weight: 700;
+	color : #000;
+	padding-bottom: 50px;
+}
+
+#tabbingsec p{
+	padding-bottom:45px;
+}
 .width60 a {
 	width: 121px;
 	height: 46px;
@@ -386,7 +461,7 @@ p.arrow_box:after {
 .athrhalf{width:70%; float:left; text-align:left;}
 .athrhalf h3{padding-top:15px; padding-bottom:5px;}
 #design{
-	background:url(images/news.jpg) no-repeat center center;
+	background:url(/img/news.jpg) no-repeat center center;
 	min-height:	320px;
 	background-size:cover;
 	padding:70px 0;

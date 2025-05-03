@@ -214,16 +214,37 @@ void InitPorts(void){
 
 
 //el check_btn  sera un poquito diferente
-void check_Btn(){
+uint8_t check_Btn(){
+
+    //creamos una varbale que recoja los que hay en el pin?
+
+    uint8_t btn = PINF & (1<<BTN_PIN); //leo lo que hay en el pin
+
+    DDRB = (1<<PF7);
+
+    if(btn == 1){
+        SetBitPort(PORTB,1);
+
+        return 0;
+    }
+
+    if(btn !=1){
+        ClrBitPort(PORTB,7);
+
+        return 0;
+    }
 
 
+
+
+    /*
     //okay, sabemos que PF7 esta en 0 aterrizado a tierra, por lo que si no se presiona esta en 0
 
-    if(!(PIN & (1<<BTN_PIN))){
+    if(!(PIN & (1){
         //como ahora lo tenemos en DOWN, lo invertimos, esto para que, porque actulamet estoy leyendo 0
         /*
             lo que quiere decir que no esta presionado el boton
-        */
+
         return eBtnUndefined;
     }
 
@@ -232,9 +253,7 @@ void check_Btn(){
 
     if((!(PIN & (1<<BTN_PIN))){
         return eBtnUndefined;
-    }
-
-
+    }*/
 
 }
 
@@ -286,6 +305,7 @@ void _endCount_(void){
 
 }
 
+
 void _youLoose_(void){
 
     //7 6 5 4  3 2 1 0
@@ -296,17 +316,20 @@ void _youLoose_(void){
         __LOW_NIBBLE__();
     }
 
+    _endCount_();
+
     delay(500);
 
-    _endCount_();
+
 
     for(uint8_t idx =0 ; idx< 4; idx++){
 
         __HIGH_NIBBLE__();
 
     }
-    delay(500);
     _endCount_();
+    delay(500);
+
 
 }
 
@@ -345,27 +368,12 @@ void _youWin_(void){
         _waitState_();
     }
 
-    delay(250);
-
     _endCount_();
 
     delay(250);
 
 
-    /*
-    static volatile uint8_t idx=0;
 
-    while(idx< 8){
-
-        DDRF = _CONF_DDR[idx];
-        PORTF= _CONF_PORT[idx];
-        delay(1);
-        idx = (idx +1) %8;
-    }
-
-    delay(250);
-    _endCount_();
-    delay(250);*/
 
 
 

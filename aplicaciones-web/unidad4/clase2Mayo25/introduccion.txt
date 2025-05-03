@@ -1,0 +1,94 @@
+podemos usar JS para crear un sistema una aplicacion web dinamica, 
+
+-JS ya entra como un lenguaje de programacion como tal, interpretado desde el navegador 
+
+-hay 3 lugares donde colocar el JS 
+-- en el <head> : 
+-- <body>
+--archivos externos 
+
+por lo regular se carga al final del body 
+
+-los comentarios de linea // 
+-comentario ded bloque /**/
+
+
+-declaraciones de varibales 
+
+-var
+-let 
+-const 
+
+- no es necesario decirle el tipo de dato, el interperte sabra el tipo de dato si es caracter, string, entero, flotante, booleano. 
+
+declaraciones de variables 
+
+el nombre de las variables pueden inicar con letras, $ ,(_) - 
+
+- let abarca un bloque de codigo , y var represetna un valor global que puede ser obtenida desde cualquier lugar 
+
+-constantes 
+
+const, se acostumbra a nombrarlas en mayusuculas 
+
+una constante es un valor cuyo valor no cambia
+
+operadores 
+
+lso difertnes tipos de operadores son 
+-operadores aritmeticos
+- "     "   asignacion 
+- "    "    comparacion 
+- "    "    logicos 
+- "    "    de cadena. 
+
+
+
+aritmetico, asignacion  los mismos que puede haber en C 
+
+comparacion 
+
+=== -> igual y del mismo tipo 
+!== no es igual a y del mismo tipo 
+
+opredor ternario igual que en C 
+
+(condicion)? valor1 : valor2
+
+
+-eventos 
+
+evento ocurre cundo alo sucede en la pagina, hay 2 tipos de eventos 
+
+-eventos de ventana : se activan por acciones del nvegador 
+
+-eventos de usuario : que ocurre cunado el usuario interacta 
+
+
+-funciones 
+
+es un bloque de codigo que se ejecuta al ser lamado o cunado se activa un elemento 
+
+function <nombreFuncion>(params){
+
+	....
+	return x; <- puede devolver o no nada 
+}
+
+
+
+en el proyecto debe de haber un folder que contenga todos los scripts del proyecto
+
+DOM (modelo de objetos de docuemntos), conecta paginas web con script. representa la estrucuta del documento 
+
+permiten que los scripts accedan y modifiquen el contenido del docuemtno 
+
+este representa el docuemento como un arbol genealogico. por medio de este se puede acceder y modificar la estrucutura del contenido dentro del HTML 
+
+
+
+
+
+
+
+
