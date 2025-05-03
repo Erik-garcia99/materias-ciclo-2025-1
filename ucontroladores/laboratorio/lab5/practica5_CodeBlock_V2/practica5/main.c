@@ -68,14 +68,14 @@ const uint8_t _CONF_DDR[] = {
 const uint8_t _CONF_PORT[] = {
 
     // que se necesita en la salida de los puertos para que se prenda un led, vamos a lo simple, uno a uno
-    0x42, // LD1 con el 4 se esta mandando 1 en todo momneto por el pin 6 para su uso
-    0x41, // LD2
-    0x44, // LD3
-    0x42, // LD4
-    0x41, // LD5
-    0x44, // LD6
-    0x48, // LD7
-    0x44  // LD18
+    0x82, // LD1 con el 4 se esta mandando 1 en todo momneto por el pin 6 para su uso
+    0x81, // LD2
+    0x84, // LD3
+    0x82, // LD4
+    0x81, // LD5
+    0x84, // LD6
+    0x88, // LD7
+    0x84  // LD18
 
 };
 
@@ -84,9 +84,12 @@ const uint8_t _CONF_PORT[] = {
 // Prototypes
 extern uint8_t myRand(uint8_t seed); //esperemos que funcione, ya vreremos
 extern void delay(uint16_t mseg);
+extern void delay_103us();
 void InitPorts(void);
 uint8_t check_Btn(void);
 void updateLeds(uint8_t gameState);
+
+
 
 
 
@@ -122,7 +125,7 @@ int main(void)
 
     while(1){
 
-        _youWin_();
+        check_Btn();
 
     }
 
@@ -185,19 +188,16 @@ int main(void)
 void InitPorts(void){
 
     /*
-    el not o eso, afecta a loque poneomos ene ste caso
-
-    ~(1<<PF6) -> 0100 0000 -> al aplicar el not 1011 1111, por lo que esto afecta al registro PINF, es como la mascara padre
 
 
 
-    */
-    DDRF |= (1<<PF6); //PF6 como salida, PULL-UP desable, no importa si desactivo lo dem
-    //necesito mandar el 1 por mientras, mientras se configura lo demas
-    PORTF |=(1<<PF6);
+    aqui debemos de cambiar algunas cosas, priemro los puertos como salida o entrada siguen siendo los mismos
 
-    //PF7 funciona como entrada, de entrada debo de desactiva rl PULLUP
-    DDRF &=~(1<<PF7);
+    pero
+
+    PF7 se activa el pull up interno, por lo que ese puerto esta en 1 siempre
+
+    PF6 se activa como salida y que saque 0 no 1, esto para cunado se haga click haga corto con PF7 y se baje a 0
 
     /*
      0xxx xxxx
@@ -207,7 +207,15 @@ void InitPorts(void){
      0111 1111 -> dejo pasar a los 1 y los ceros de vuelven ceros, se mantienen
     */
 
-    PORTF &=~(1<<PF7);
+    //PF7 como entrada - entrada es 0
+    DDRF &= ~(1<<PF7); //configruacmos pf7 como entrada
+    PORTF |= (1<<PF7); // activamos PULL-UP
+
+    DDRF |=(1<<PF6); //activamos a PF6 como salida
+    PORTF &=~(1<<PF6); //sacamos el 0
+
+
+
 
 
 }
@@ -216,26 +224,46 @@ void InitPorts(void){
 //el check_btn  sera un poquito diferente
 uint8_t check_Btn(){
 
-    //creamos una varbale que recoja los que hay en el pin?
 
-    uint8_t btn = PINF & (1<<BTN_PIN); //leo lo que hay en el pin
+    if(PINF & (1<<BTN_PIN)){
+    //que me esta diciendo essto, que, como esta siempre leyendo 1 por lo decimos
+    //si hay 1 en ese pin quiere decri que no esta precionado por lo que no sabemos que hay
 
-    DDRB = (1<<PF7);
-
-    if(btn == 1){
-        SetBitPort(PORTB,1);
-
-        return 0;
+        return eBtnUndefined;
     }
 
-    if(btn !=1){
-        ClrBitPort(PORTB,7);
+    delay(30); // un delay para un antirebote por software
 
-        return 0;
+    if(PINF & (1<<BTN_PIN)) return eBtnUndefined; // hacemos lo mismos
+
+    //delay(1);
+    uint16_t tiempoPrecionado = 0;
+
+
+
+
+    if(!(PINF & (1<<BTN_PIN))){
+    //este me quiere decir lo contrario, quiere decir que si no esta precionado me manda un 1 por loq ue aqui lo inverito
+    //lo que seria un 0, por lo que no entraira
+
+    //pero si es 0 que se esta precionando es 1 lo que quiere decir qeu se esta precionando
+
+        while(!(PINF & (1<<BTN_PIN))){
+
+            delay_103us();
+            tiempoPrecionado++;
+
+            if(tiempoPrecionado >= 9708){
+
+                if(PINF & (1<<BTN_PIN)){
+                    return eBtnLongPressed;
+                }
+            }
+
+        }
+        return eBtnShortPressed;
+
     }
-
-
-
 
     /*
     //okay, sabemos que PF7 esta en 0 aterrizado a tierra, por lo que si no se presiona esta en 0
@@ -254,6 +282,7 @@ uint8_t check_Btn(){
     if((!(PIN & (1<<BTN_PIN))){
         return eBtnUndefined;
     }*/
+
 
 }
 

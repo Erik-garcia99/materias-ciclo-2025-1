@@ -129,18 +129,49 @@ asi que como saber
 
 ------------------------------------------------------------
 
-DDRF = ok porque estoy dejando en claro quein es de salida y quein es de entrada
-PF6 esta OK - conf -> out - PORTF -> send HIGH
+debemos de hacer unos cambios aqui, en DDRF esta bien la parte alta, tenemos a PF7 como entrada y PF6 como salida, este cambia se hace por: 
+
+Configuración Correcta de los Pines:
+PF7 (Entrada con Pull-Up):
+
+DDRF &= ~(1 << PF7); // PF7 como entrada.
+
+PORTF |= (1 << PF7); // Activar pull-up interno en PF7.
+
+PF6 (Salida en Bajo):
+
+DDRF |= (1 << PF6); // PF6 como salida.
+
+PORTF &= ~(1 << PF6); // PF6 en LOW (0).
+
+Comportamiento del Circuito:
+Botón no presionado:
+
+PF7 (entrada con pull-up) lee HIGH (1).
+
+PF6 (salida en bajo) está en LOW (0).
+
+Botón presionado:
+
+Al presionar el botón, PF7 se conecta a PF6 (LOW).
+
+PF7 lee LOW (0) debido al cortocircuito con PF6.
 
 
-PF7 tiengo que desactivar su PULL DOWN que se hace mediante el 0
+
+por lo que en PF6 para PORTF 0, y PF7 1 para que este activado el pull up interno 
 
        DDRF                     PORTF
-LED1    0100 0011(0x43)     |   0100 0010(0x42)
-LED2    0100 0011(0x43)     |   0100 0001(0x41)
-LED3    0100 0110(0x46)     |   0100 0100(0x44)
-LED4    0100 0110(0x46)     |   0100 0010(0x42)
-LED5    0100 0101(0x45)     |   0100 0001(0x41)
-LED6    0100 0101(0x45)     |   0100 0100(0x44)
-LED7    0100 1100(0x4C)     |   0100 1000(0x48)
-LED8    0100 1100(0x4C)     |   0100 0100(0x44)
+LED1    0100 0011(0x43)     |   1000 0010(0x82)
+LED2    0100 0011(0x43)     |   1000 0001(0x81)
+LED3    0100 0110(0x46)     |   1000 0100(0x84)
+LED4    0100 0110(0x46)     |   1000 0010(0x82)
+LED5    0100 0101(0x45)     |   1000 0001(0x81)
+LED6    0100 0101(0x45)     |   1000 0100(0x84)
+LED7    0100 1100(0x4C)     |   1000 1000(0x88)
+LED8    0100 1100(0x4C)     |   1000 0100(0x84)
+
+
+
+
+----------------------------------------------------
