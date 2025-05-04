@@ -13,3 +13,50 @@ ser compatibles con los otros aspectos del lenguaje
 
 
 para derivar conocimiento nuevo
+
+-------------------------------------
+
+frames 
+
+- un marco (frame) es una coleccion de atributos que normalmente son llamados ranuras (slots), con valores asociados y posiblemnte restricciones 
+entre valores, estos describen alguna entidad del mundo, algunas veces el marco describe una entidad en un sentido absoluto y en otras representa
+la entidad desde un punto de vista particular
+
+
+fue propuesto por Minsky en 1975 como una forma de representacion del conociemiento, esta inspirado en como el humano capta y alamcena el conocimineto
+de su entorno, 
+
+la idea original se explesa como < Un Frame es una estructura de datos para representar una situación estereotipada, podemos pensar en un Frame como una red de nodos y relaciones. Los ‘niveles superiores’ de un Frame son fijos y representan cosas que son siempre ciertas en la situación supuesta. Los niveles inferiores tienen muchos terminales – ‘slots’ que tienen que llenarse con instancias o datos específicos. Las suposiciones por defecto son asociadas débilmente con sus terminales, de forma tal que ellas puedan ser fácilmente removidas ante nuevos elementos que se ajusten mejor a la situación actual.>
+
+que un frame es una plantilla que captura como es una situacion tipica por ejemplo un restaurante y sis atributos como ubicacion, tipo, precio, horario, etc.
+el fram no es una lista si no mas bien como una red estrucutrado donde los atributos (nodos) estan conectados entre si. 
+podemos pensar un frame incluso como alguna clase padre, en donde nos dire que la parte superior es fija, son los atributos, la infromacion 
+inmutable, escencial sobre un concepto, como en POO esta tendria sus clases hijas que son los niveles inferiores, los niveles inferiores heredan 
+de la parte superior sus atributos pero la parte baja se adapta a casos concretos. 
+los slots tiene valores predeterminados, pero pueden ser cambiarse si la realidad es distinta como un ave, tendremos a pensar que un ave vuela pero
+por ejemplo el pinguino es un ave pero no vuela. 
+
+podemos considerar los frmaes como uan red semantica con numero de posibilidades mucho mayor entre las que destacan especialmente, la capacidad de activacion de procesos,
+y de hrencia nomonotica mediante sobrecontrol,  en la que un nodo hijo hereda todos los slots de su padre a menos que se especifique lo contrario.
+
+
+
+caracterisiticas: 
+-precision: los objetos, las relaciones entre objetos y sus propiedades se describen de forma precisa. 
+-activacion dinamica de procesos : es posible adjuntar procedimineto a un frame o algunos de sus componentes de forma que se llamen y ejecuten 
+automaticamente tras la comprobacion de cambio de valor o propiedad
+-herencia por defecto no-monotonica: Los marcos están conceptualmente relacionados, permitiendo que los atributos de los objetos sean heredados de otros objetos predecesores en la jerarquía.
+-modularidad: La base de conocimiento está organizada en componentes claramente diferenciados.
+
+estrucutra: 
+-nombre: el cual debe ser unico
+-padre o naturaleza: equivale a la clase superior a la cual pertenece y es la que le permite el mecanismo de herencia. El frame raíz no tiene padre y normalmente se identifica su tipo con algún atributo, en nuestro caso superior.
+-slots o atributos: Constituye el cuerpo y cada uno representa una propiedad estándar o atributo del elemento representado.
+
+estrucutra de un Slot: 
+-nombre: cada slot debe de teneru un nombre unoc dentro del frame 
+-valor del slot: puede ser asingao inicalmente o estar vacio para aniadirle valor despues
+-procedimiento anexos: 
+-if - needed: significa que antes de obtener el valor, se ejecuta el procedimineto adjunto y solo si tiene exito se podra obtener el valor
+-if - added : antes de asignarle un valor al slot, debe de ejecutarse con exito el procedimiento. de otra manera no se realizara alguan accion
+-if -delted: antes de borrar el valor del slot, debe de ejecutarse con exito el procedimoneto, de otra manera no se borrara el valor del slot

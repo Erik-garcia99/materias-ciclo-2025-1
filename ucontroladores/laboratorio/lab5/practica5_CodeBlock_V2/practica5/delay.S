@@ -145,7 +145,7 @@ delay_general:
   ;  ldi R17, 0x4D      ; Constante aditiva (c = 77)
    ; add R0, R17        ; Suma constante al byte bajo del resultado
     ;mov R24, R0        ; Mueve resultado a registro de retorno
-    ;clr R1             ; Limpia registro alto (requerido por convención AVR-GCC)
+    ;clr R1             ; Limpia registro alto (requerido por convenciÃ³n AVR-GCC)
     ;ret
 
 
@@ -174,32 +174,52 @@ delay_general:
 
 
 
-myRand:
+;myRand:
 
  ; --- Guardar semilla ---
-    sts SEED, r24  ; Almacenar semilla inicial desde C
+   ; sts SEED, r24  ; Almacenar semilla inicial desde C
 
-    ; --- Cargar parámetros LCG ---
-    ldi r26, 0xa5   ; a = 165 (multiplicador)
-    ldi r27, 0x4d   ; c = 77  (incremento)
+    ; --- Cargar parÃ¡metros LCG ---
+    ;ldi r26, 0xa5   ; a = 165 (multiplicador)
+    ;ldi r27, 0x4d   ; c = 77  (incremento)
 
     ; --- Calcular a * x_n ---
-    lds r24, SEED    ; Cargar semilla
-    mul r24, r26     ; R1:R0 = a * x_n
+    ;lds r24, SEED    ; Cargar semilla
+    ;mul r24, r26     ; R1:R0 = a * x_n
 
     ; --- Sumar c ---
-    add r0, r27      ; Sumar c al byte bajo
-    adc r1, r25      ; Sumar acarreo (R25 es 0 por defecto)
+    ;add r0, r27      ; Sumar c al byte bajo
+    ;adc r1, r25      ; Sumar acarreo (R25 es 0 por defecto)
 
     ; --- Actualizar semilla (mod 256) ---
-    mov r24, r0      ; El resultado es el byte bajo (R0)
-    sts SEED, r24    ; Guardar nueva semilla
+    ;mov r24, r0      ; El resultado es el byte bajo (R0)
+    ;sts SEED, r24    ; Guardar nueva semilla
 
     ; --- Retornar resultado a C ---
-    ret              ; El resultado ya está en R24
+    ;ret              ; El resultado ya estÃ¡ en R24
 
 
 
+myRand:
+    ; Entrada: seed en r24
+    ; Salida: nï¿½mero pseudoaleatorio en r24
+
+    mov r16, r24      ; r16 = seed
+
+    ; Multiplicar X por 5: (X << 2) + X
+    mov r18, r16      ; r18 = copia de X
+    lsl r16           ; X * 2
+    lsl r16           ; X * 4
+    add r16, r18      ; X * 5
+
+    ; Sumar 1
+    ldi r18, 1
+    add r16, r18      ; 5*X + 1 (mod 256 automï¿½ticamente)
+
+    ; Devolver resultado en r24
+    mov r24, r16
+
+    ret
 
 
 

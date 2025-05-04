@@ -1,18 +1,32 @@
-#include <avr/io.h>
-#include <stdint.h>
+//vamos  aver todo desde cero
 
-// Macros
-#define SetBitPort(port, bit)  __asm__ __volatile__("sbi %0, %1" : : "I" (_SFR_IO_ADDR(port)), "I" (bit))
-#define ClrBitPort(port, bit)  __asm__ __volatile__("cbi %0, %1" : : "I" (_SFR_IO_ADDR(port)), "I" (bit))
+#include<avr/io.h>
+
+/*
+erik garcia chavez 01275863 - practica5
+GPIOS
+
+*/
+
+
+//Macros
+#define SetBitPort(port, bit) __asm__ __volatile__("sbi %0, %1" : : "I"(_SFR_IO_ADDR(port)), "I"(bit) : "memory")
+#define ClrBitPort(port, bit) __asm__ __volatile__("cbi %0, %1" : : "I"(_SFR_IO_ADDR(port)), "I"(bit) : "memory")
+
+/*
+las entradas son las que tienen el pull-up que puede estar activado o desactivado.
+*/
+
+//PF6 como salida y manda siempre 1
+//PF7 como entrada
+//PF7 tiene un  pull-down para evitar interferencias o que el boton este flotado cunado este
+//no este precionado, necesito aterrizarlo.
+
 
 #define TIME_WINDOW 300
-#define SEED 10
-#define BTN_PIN       PF7     // Boton en pin K0
-#define SEND_PIN      PE1     // LED o salida en pin E1
-#define SALIDA        PF6
-#define NOT_PRESSED   0
-#define SHORT_PRESSED 1
-#define LONG_PRESSED  2
+#define BTN_PIN PF7
+#define SEED 1
+
 
 enum ButtonStates
 {
@@ -31,230 +45,417 @@ enum GameStates
     eYouWin,
     eYouLoose
 };
-const uint8_t leds[] = {
 
-    0x42,
-    0x41,    
-    0x44,
-    0x42,
-    0x41,
-    0x44,
-    0x48,
-    0x44
+
+
+//arreglos que configuran PORTF y DDRF
+
+const uint8_t _CONF_DDR[] = {
+
+    // al parecer para que este pueda funcionar necesitamos, poner com entrada los demas leds que no se ocupen para prender
+    // un led, es como ponerlos en corto
+    0x43, // LD1 activamos el pin 6 como salida y el pin 7 como entrada y el pin 7 es que estamos cehcando en caso
+    0x43, // LD2 de ser presionado
+    0x46, // LD3
+    0x46, // LD4
+    0x45, // LD5
+    0x45, // LD6
+    0x4C, // LD7
+    0x4C  // LD8
 
 };
-const uint16_t DDRs[] = {
-  0x43,
-  0x43,
-  0x46,
-  0x46,
-  0x45,
-  0x45,
-  0x4C,
-  0x4C
-  
+
+const uint8_t _CONF_PORT[] = {
+
+    // que se necesita en la salida de los puertos para que se prenda un led, vamos a lo simple, uno a uno
+    0x82, // LD1 con el 4 se esta mandando 1 en todo momneto por el pin 6 para su uso
+    0x81, // LD2
+    0x84, // LD3
+    0x82, // LD4
+    0x81, // LD5
+    0x84, // LD6
+    0x88, // LD7
+    0x84  // LD18
+
 };
 
-void ledsWalkingZero(void);
-void ledsRandomPattern(void);
-void ledsOff(void);
-void ledsLooseAlternating(void);
-void ledsWinBlink(void);
+
 
 // Prototypes
-extern uint8_t myRand(uint8_t seed);
-extern void    delay(uint16_t mseg);
-void    InitPorts(void);
+extern uint8_t myRand(uint8_t seed); //esperemos que funcione, ya vreremos
+extern void delay(uint16_t mseg);
+extern void delay_103us();
+void InitPorts(void);
 uint8_t check_Btn(void);
-void    updateLeds(uint8_t gameState);
+void updateLeds(uint8_t gameState);
+
+
+
+
+
+//---------------------------------------
+//funciones propias
+
+void _waitState_(void);
+void _startGame_(void);
+void _endCount_(void);
+void _youLoose_(void);
+void _youWin_(void);
+
+
+//-------- apoyo
+
+void __LOW_NIBBLE__(void);
+
+void __HIGH_NIBBLE__(void);
+
+
+//--------------------------------------
 
 // Global variable
 uint32_t millis;
 
 int main(void)
 {
-    uint8_t  currentGameState = eGameRestart;
+    uint8_t currentGameState = eGameRestart;
     uint16_t countdown = 0;
     uint16_t countup = 0;
     InitPorts();
+    uint16_t _back_countdown=0;
 
-    while(1)
-    {    
-        switch(check_Btn())
+
+    while (1)
+    {
+        switch (check_Btn())
         {
-            case eBtnShortPressed: currentGameState++;
-                break;
-            case eBtnLongPressed:  currentGameState = eGameRestart;
-                break;
+        case eBtnShortPressed:
+            currentGameState++;
+            break;
+        case eBtnLongPressed:
+            currentGameState = eGameRestart;
+            break;
         }
-        
-        switch(currentGameState)
+
+        switch (currentGameState)
         {
-            case eGameRestart:
-            {
-                countdown = (( myRand(SEED) + 1) * 10)%50;
-                countup = 0;
+        case eGameRestart:
+        {
+            //countdown = (myRand(SEED) + 1) * 20;
+            countdown=((myRand(SEED) % 10) + 1) * 20;
+            _back_countdown= countdown;
+            countup = 0;
+            currentGameState++;
+            break;
+        }
+        case eWaitForStart:
+            break;
+        case eStartCount:
+        {
+            countdown--;
+
+            if(_back_countdown > countdown){
+                _back_countdown--;
+                DDRB |= (1<<PB7);
+                SetBitPort(PORTB, 7);
+                delay(500);
+                ClrBitPort(PORTB,7);
+            }
+
+
+            if (countdown == 0)
                 currentGameState++;
-                break;
-            }
-            case eWaitForStart:
-                break;
-            case eStartCount:
-            {
-                countdown--;
-                if (countdown == 0)
+            break;
+        }
+        case eEndCount:
+        {
+            if (countdown != 0)
                 currentGameState++;
-                break;
-            }
-            case eEndCount:
-            {
-                if (countdown != 0)
-                    currentGameState++;
-                else
-                    countup++;
-                break;
-            }
-            case eGameOver:
-            {
-                if ( (countdown + countup) > TIME_WINDOW)
-                    currentGameState = eYouLoose;
-                else 
-                    currentGameState = eYouWin;
-                break;
-            }
-        }  
+            else
+                countup++;
+            break;
+        }
+        case eGameOver:
+        {
+            if ((countdown + countup) > TIME_WINDOW)
+                currentGameState = eYouLoose;
+            else
+                currentGameState = eYouWin;
+            break;
+        }
+        }
+
         updateLeds(currentGameState);
         delay(1);
         millis++;
     }
 }
 
-void InitPorts(void) //Inicializacion requerida de los puertos utilizados en esta practica. 
-                    //El pin PE1 debe dejarse en un nivel alto.
-{   //Configurar PK0 como entrada y activar 
-    DDRF &= ~(1 << BTN_PIN);    // Boton en PK0 como entrada. 0 = ENTRADA
-    DDRF |= (1 << PF6);
-    PORTF |= (1 << PF6);
 
-    DDRE |= (1 << SEND_PIN); //Activar en PE1 como salida. 1 = SALIDA
-    SetBitPort(PORTE,1);   //Poner en alto nivel al pin PE1. Usando la macro SetBirPort
+void InitPorts(void){
+
+    /*
+
+
+
+    aqui debemos de cambiar algunas cosas, priemro los puertos como salida o entrada siguen siendo los mismos
+
+    pero
+
+    PF7 se activa el pull up interno, por lo que ese puerto esta en 1 siempre
+
+    PF6 se activa como salida y que saque 0 no 1, esto para cunado se haga click haga corto con PF7 y se baje a 0
+
+    /*
+     0xxx xxxx
+
+     1000 0000
+     ~
+     0111 1111 -> dejo pasar a los 1 y los ceros de vuelven ceros, se mantienen
+    */
+
+    //PF7 como entrada - entrada es 0
+    DDRF &= ~(1<<PF7); //configruacmos pf7 como entrada
+    PORTF |= (1<<PF7); // activamos PULL-UP
+
+    DDRF |=(1<<PF6); //activamos a PF6 como salida
+    PORTF &=~(1<<PF6); //sacamos el 0
+
+
+
+
+
 }
 
 
-uint8_t check_Btn(void)
-{
-    if ((PINF & (1 << BTN_PIN)))     // Si tenemos un 1 en BTN_PIN
-    {
-        uint16_t cont = 0;          // Contador para validar si es Largo o Corto
-        delay(30);                  // Esperamos al rebote
-        if (!(PINF & (1 << BTN_PIN))) // Si despues del rebote ya no esta presionado
-        {
-            return eBtnUndefined;     // No fue presionado realmente
-        }
-        while ((PINF & (1 << BTN_PIN))) // Mientras siga presionado
-        {
-            delay103uS();            // Esperamos 103 microsegundos
-            cont++;                  // Contamos los ciclos
-            if (cont >= 9708)        // Si superamos el tiempo para 1 segundo
-            {
-                while ((PINF & (1 << BTN_PIN))); // Esperamos que se suelte
-                return eBtnLongPressed;
+
+//el check_btn  sera un poquito diferente
+uint8_t check_Btn(){
+
+
+    if(PINF & (1<<BTN_PIN)){
+    //que me esta diciendo essto, que, como esta siempre leyendo 1 por lo decimos
+    //si hay 1 en ese pin quiere decri que no esta precionado por lo que no sabemos que hay
+
+        return eBtnUndefined;
+    }
+
+    delay(30); // un delay para un antirebote por software
+
+    if(PINF & (1<<BTN_PIN)) return eBtnUndefined; // hacemos lo mismos
+
+    //delay(1);
+    uint16_t tiempoPrecionado = 0;
+
+
+
+
+    if(!(PINF & (1<<BTN_PIN))){
+    //este me quiere decir lo contrario, quiere decir que si no esta precionado me manda un 1 por loq ue aqui lo inverito
+    //lo que seria un 0, por lo que no entraira
+
+    //pero si es 0 que se esta precionando es 1 lo que quiere decir qeu se esta precionando
+
+        while(!(PINF & (1<<BTN_PIN))){
+
+            delay_103us();
+            tiempoPrecionado++;
+
+            if(tiempoPrecionado >= 9708){
+
+                if(PINF & (1<<BTN_PIN)){
+                    return eBtnLongPressed;
+                }
             }
-        }// Si salir del while antes de llegar a 9708 ciclos, fue corto
+
+        }
         return eBtnShortPressed;
+
     }
-    return eBtnUndefined; // Si nunca hubo un 1 en BTN_PIN
-}
 
-void updateLeds(uint8_t gameState)
-{
-    switch(gameState)
-    {
-        case eWaitForStart:
-            fWaitForStart();       // Secuencia MSB a LSB
-            break;
+    /*
+    //okay, sabemos que PF7 esta en 0 aterrizado a tierra, por lo que si no se presiona esta en 0
 
-        case eStartCount:
-            fStartCount();     // Aleatorio cada 100ms
-            break;
+    if(!(PIN & (1){
+        //como ahora lo tenemos en DOWN, lo invertimos, esto para que, porque actulamet estoy leyendo 0
+        /*
+            lo que quiere decir que no esta presionado el boton
 
-        case eEndCount:
-            fEndCount();               // Apaga todos
-            break;
-
-        case eYouLoose:
-            fYouLoose();  // Nibble ON/OFF alternado
-            break;
-
-        case eYouWin:
-            fYouWin();          // Todos ON/OFF simultaneo
-            break;
-
-        default:
-            fEndCount();               // Seguridad por si acaso
-            break;
+        return eBtnUndefined;
     }
+
+    delay(30); esperamos
+
+
+    if((!(PIN & (1<<BTN_PIN))){
+        return eBtnUndefined;
+    }*/
+
+
 }
 
-void fWaitForStart(void){
-  for (uint8_t i = 0; i < 8; i++) {
-  DDRF = DDRs[i];    // Configura direccion (sin desplazamiento)
-  PORTF = leds[i];  // Establece valores LED (sin desplazamiento)
-  delay(2);       // Retardo aumentado para mejor visualizacion
-  }
+
+/*
+uint8_t check_Btn(void) {
+    // Botón no presionado (pull-up habilitado)
+    if (PINF & (1 << BTN_PIN)) return eBtnUndefined;
+
+    // Debounce inicial
+    delay(20);
+    if (PINF & (1 << BTN_PIN)) return eBtnUndefined;
+
+    // Medir tiempo de presión
+    uint16_t tiempo_presionado = 0;
+    while (!(PINF & (1 << BTN_PIN))) {
+        delay(1);
+        tiempo_presionado++;
+        if (tiempo_presionado >= 1000) { // 1000 ms = Long press
+            while (!(PINF & (1 << BTN_PIN))); // Esperar liberación
+            delay(20); // Debounce final
+            return eBtnLongPressed;
+        }
+    }
+
+    // Debounce final para short press
+    delay(20);
+    return (tiempo_presionado > 0) ? eBtnShortPressed : eBtnUndefined;
+}
+*/
+
+
+void updateLeds(uint8_t gameState){
+
+
+    switch(gameState){
+
+        case eWaitForStart : _waitState_(); break;
+
+        case eStartCount: _startGame_(); break;
+
+        case eEndCount : _endCount_(); break;
+
+        case eYouLoose : _youLoose_(); break;
+
+        case eYouWin: _youWin_(); break;
+
+    }
+
 }
 
-void fStartCount(void)
-{
+
+
+
+//funciones de los estados
+
+
+void _waitState_(void){
+
+    static volatile uint8_t indice=0; // static para mantenre el valor entre entrada y salida de la funcion y no quiero
+    //que se optimice ya que estara cambiando constantemente
+
+    DDRF = _CONF_DDR[indice];
+    PORTF= _CONF_PORT[indice];
+    delay(1);
+
+    indice= (indice+1) % 8;
+
+}
+
+void _startGame_(void){
+
+
     static uint8_t seed = SEED;
-    // Genera nuevo numero aleatorio
-    seed = myRand( rand() );
-    // Asegura un indice va?lido entre 0 y 7
-    uint8_t index = seed % 8;
 
-    // Configura la direccion del puerto y el valor del LED
-    DDRF = DDRs[index];
-    PORTF = leds[index];
-    // Espera 100 ms antes de cambiar al siguiente patron
+    uint8_t random=myRand(seed);
+    seed = random;
+
+    uint8_t indice = random % 8;
+
+    DDRF = _CONF_DDR[indice];
+    PORTF = _CONF_PORT[indice];
     delay(100);
+
 }
 
-void fEndCount(void){
-  DDRF = 0x40;
-  PORTF = 0x40;
+
+
+
+void _endCount_(void){
+
+    DDRF &=0xF0;
+    PORTF &= 0xF0;
+
 }
 
-void fYouLoose(void){
-  uint16_t counter;
-    // Mostrar primeros 4 LEDs por 500 ms
-    for (counter = 0; counter < 13; counter++) {
-        for (uint8_t i = 0; i < 4; i++) {
-            DDRF = DDRs[i];
-            PORTF = leds[i];
-            delay(2);  // Peque?o retardo entre cada LED
-        }
+
+void _youLoose_(void){
+
+    //7 6 5 4  3 2 1 0
+
+
+    for(uint8_t idx =0 ; idx< 4 ; idx++){
+
+        __LOW_NIBBLE__();
     }
 
-    // Mostrar altimos 4 LEDs por 500 ms
-    for (counter = 0; counter < 13; counter++) {
-        for (uint8_t i = 4; i < 8; i++) {
-            DDRF = DDRs[i];
-            PORTF = leds[i];
-            delay(2);  // Peque?o retardo entre cada LED
-        }
+    _endCount_();
+
+    delay(500);
+
+
+
+    for(uint8_t idx =0 ; idx< 4; idx++){
+
+        __HIGH_NIBBLE__();
+
     }
-}
+    _endCount_();
+    delay(500);
 
-void fYouWin(void){
-          for (uint16_t conter = 0; conter <7; conter++){
-                  for (uint8_t i = 0; i < 8; i++) {
-                  DDRF = DDRs[i];    // Configura direccion (sin desplazamiento)
-                  PORTF = leds[i];  // Establece valores LED (sin desplazamiento)
-                  delay(2);       // Retardo aumentado para mejor visualizacion
-                  };       // Retardo aumentado para mejor visualizacion
-            }
-          fEndCount();
-          delay(250);
+
 }
 
 
+void __LOW_NIBBLE__(void){
+
+    static volatile uint8_t idx =0;
+
+    DDRF = _CONF_DDR[idx] | (DDRF & 0xF0);
+    PORTF = _CONF_PORT[idx] | (PORTF & 0xF0);
+    delay(1);
+
+    idx = (idx + 1)%4;
+
+}
+
+
+void __HIGH_NIBBLE__(void){
+
+
+    static volatile uint8_t idx = 4;
+
+    DDRF = _CONF_DDR[idx] | (DDRF & 0xF0);
+    PORTF = _CONF_PORT[idx] | (PORTF & 0xF0);
+    delay(1);
+
+    idx = 4 + ((idx + 1) % 4);
+}
+
+
+void _youWin_(void){
+
+
+    for(uint8_t idx=0; idx< 8 ; idx++){
+
+        _waitState_();
+    }
+
+    _endCount_();
+
+    delay(250);
+
+
+
+
+
+
+}

@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Styles/syles.css">
+    <!-- FONT -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,300italic,400italic,500,600,700,200' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/Styles/syles.css">
     <title>Axit</title>
 </head>
 <body>
@@ -15,13 +20,13 @@
             <nav class="nav-collapse">
                 <ul>
                     <li class="menu-item active"> <a href="#banner">Features</a></li>
-    
+
                     <li class="menu-item"> <a href="#tabbingsec">About</a></li>
-                    
+                
                     <li class="menu-item"><a href="#pricing">Pricing</a></li>
-                    
+                
                     <li class="menu-item"><a href="#customer">Reviews</a></li>
-                    
+                
                     <li class="menu-item"><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -34,33 +39,31 @@
 
         <div class="container">
 
-            <!-- <img src="img/bannerlogo.png" alt="banner"> -->
-
-            <h2>MODERN AXURE TEMPLATE
-                FOR BEAUTIFUL PROTOTYPES</h2>
-
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean<br>
-                euismod bibendum laoreet. Proin gravida dolor sit amet lacus<br>
-                accumsan et viverra justo commodo.
-            </p>
-
-            <a  class="download" href="#">Download</a>
-
-
-            <div>
-                <form action="">
-
-                    <h3>Try Your <span>FREE</span> Trial Today</h3>
-
-                    <div>
-                        <input type="text" placeholder="Name" />
-                        <input type="text" placeholder="Email" />
-                        <input type="text" placeholder="Password" />
-                    </div>
-                    <a href="#">Get Started</a>
-                </form>
+            <div class="banner-content">
+                <h1>MODERN AXURE TEMPLATE FOR BEAUTIFUL PROTOTYPES</h1>
+                <div class="line"></div>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean<br>
+                    euismod bibendum laoreet. Proin gravida dolor sit amet lacus<br>
+                    accumsan et viverra justo commodo.
+                </p>
+    
+                <a  href="#" class="btn-download">Download</a>
+    
             </div>
+
+            <form class="free-trial">
+    
+                <h3>Try Your <span>FREE</span> Trial Today</h3>
+
+                <div>
+                    <input type="text" placeholder="Name" />
+                    <input type="text" placeholder="Email" />
+                    <input type="text" placeholder="Password" />
+                </div>
+                <!-- <a href="#">Get Started </a> -->
+                <button type="submit">Get Started</button>
+            </form>
         </div>
     </section>
 
@@ -68,12 +71,12 @@
     <section id="social">
 
         <div class="container">
-            <h3>Social Media</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur  adipiscing elit. 
-                Aenean euismod bibendum laoreet</p>
 
-                <div class="rightside"> 
-                    <a href="#"><i class="fa fa-facebook fa-3x" aria-hidden="true"></i></a> 
+            <div class="social-info">
+                <h3>Social Media</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur  adipiscing elit. Aenean euismod bibendum laoreet</p>
+
+                <a href="#"><i class="fa fa-facebook fa-3x" aria-hidden="true"></i></a> 
 
                     <a href="#"><i class="fa fa-twitter fa-3x" aria-hidden="true"></i></a> 
                     
@@ -86,7 +89,7 @@
                     <a href="#"><i class="fa fa-stumbleupon fa-3x" aria-hidden="true"></i></a> 
                     
                     <a href="#"><i class="fa fa-rss fa-3x" aria-hidden="true"></i></a> 
-                </div>
+            </div>
         </div>
     </section>
 
@@ -244,59 +247,57 @@
 
         <div class="container">
 
-            <div>
-                <h2>PRICING OPTIONS</h2>
-                <span class="line"></span>
-                <p class="bottom">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
-            </div>
-
-
-
-            <div>
-                <article>
+            
+            <h2>PRICING OPTIONS</h2>
+            <span class="line"></span>
+            <div class="pricing-gird">
+                <div class="price-card">
                     <h3>Basic</h3>
-                    <h1><span>$</span>0</h1>
-                    <h4>Free for Life</h4>
-                    <p>1 gb of space</p>
-                    <p>10 gb of bandwidth</p>
-                    <p>3 websites</p>
-                    <p>Basic Customization</p>
-                    <p>wordpress integration</p>
-                    <p>email support</p>
-                </article>
-            </div>
+                    <div class="price">$0</div>
+                    <ul>
+                        <li>Free for Life</li>
+                        <li>1 gb of space</li>
+                        <li>10 gb of bandwidth</li>
+                        <li>3 websites</li>
+                        <li>Basic Customization</li>
+                        <li>wordpress integration</li>
+                        <li>email support</li>
+                    </ul>
+                    <a href="#" class="btn-pricing">Choose plan</a>
+                </div>
 
 
-            <div>
-
-                <article class="topmar">
+                <div class="price-card featured">
                     <h3>Professional</h3>
-                    <h1><span>$</span>19</h1>
-                    <h4>Monthly Payment</h4>
-                    <h5>OUR MOST POPULAR</h5>
-                    <p>5 gb of space</p>
-                    <p>50 gb of bandwidth</p>
-                    <p>12 websites</p>
-                    <p>Advanced Customization</p>
-                    <p>wordpress integration</p>
-                    <p>email support</p>
-                </article>
+                    <div class="price">$19</div>
+                    <ul>
+                        <li>Monthly Payment</li>
+                        <a href="#" class="btn-pricing">OUR MOST POPULAR</a>
+                        <li>5 gb of space</li>
+                        <li>50 gb of bandwidth</li>
+                        <li>12 websites</li>
+                        <li>Advanced Customization</li>
+                        <li>wordpress integration</li>
+                        <li>email support</li>
+                    </ul>
+                </div>
+
+                <div class="price-card">
+                    <h3>Professional</h3>
+                    <div class="price">$70</div>
+                    <ul>
+                        <li>Monthly Payment</li>
+                        <li>Unlimited space</li>
+                        <li>unlimited bandwidth</li>
+                        <li>100 websites</li>
+                        <li>Advanced Customization</li>
+                        <li>wordpress integration</li>
+                        <li>24/7 customer support</li>
+                    </ul>
+                </div>
+
             </div>
 
-            <div>
-                <article>
-                    <h3>Enterprise</h3>
-                    <h1><span>$</span>70</h1>
-                    <h4>Monthly Payment</h4>
-                    <p>Unlimited space</p>
-                    <p>unlimited bandwidth</p>
-                    <p>100 websites</p>
-                    <p>Advanced Customization</p>
-                    <p>wordpress integration</p>
-                    <p>24/7 customer support</p>
-                </article>
-            </div>
         </div>
     </section>
 

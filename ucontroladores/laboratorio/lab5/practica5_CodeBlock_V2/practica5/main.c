@@ -25,7 +25,7 @@ las entradas son las que tienen el pull-up que puede estar activado o desactivad
 
 #define TIME_WINDOW 300
 #define BTN_PIN PF7
-#define SEED 10
+#define SEED 1
 
 
 enum ButtonStates
@@ -121,13 +121,7 @@ int main(void)
     uint16_t countdown = 0;
     uint16_t countup = 0;
     InitPorts();
-
-
-    while(1){
-
-        check_Btn();
-
-    }
+    uint16_t _back_countdown=0;
 
 
     while (1)
@@ -146,7 +140,9 @@ int main(void)
         {
         case eGameRestart:
         {
-            countdown = (myRand(SEED) + 1) * 20;
+            //countdown = (myRand(SEED) + 1) * 20;
+            countdown=((myRand(SEED) % 10) + 1) * 20;
+            _back_countdown= countdown;
             countup = 0;
             currentGameState++;
             break;
@@ -156,6 +152,16 @@ int main(void)
         case eStartCount:
         {
             countdown--;
+
+            if(_back_countdown > countdown){
+                _back_countdown--;
+                DDRB |= (1<<PB7);
+                SetBitPort(PORTB, 7);
+                delay(500);
+                ClrBitPort(PORTB,7);
+            }
+
+
             if (countdown == 0)
                 currentGameState++;
             break;
@@ -219,6 +225,7 @@ void InitPorts(void){
 
 
 }
+
 
 
 //el check_btn  sera un poquito diferente
@@ -287,7 +294,52 @@ uint8_t check_Btn(){
 }
 
 
+/*
+uint8_t check_Btn(void) {
+    // Botón no presionado (pull-up habilitado)
+    if (PINF & (1 << BTN_PIN)) return eBtnUndefined;
 
+    // Debounce inicial
+    delay(20);
+    if (PINF & (1 << BTN_PIN)) return eBtnUndefined;
+
+    // Medir tiempo de presión
+    uint16_t tiempo_presionado = 0;
+    while (!(PINF & (1 << BTN_PIN))) {
+        delay(1);
+        tiempo_presionado++;
+        if (tiempo_presionado >= 1000) { // 1000 ms = Long press
+            while (!(PINF & (1 << BTN_PIN))); // Esperar liberación
+            delay(20); // Debounce final
+            return eBtnLongPressed;
+        }
+    }
+
+    // Debounce final para short press
+    delay(20);
+    return (tiempo_presionado > 0) ? eBtnShortPressed : eBtnUndefined;
+}
+*/
+
+
+void updateLeds(uint8_t gameState){
+
+
+    switch(gameState){
+
+        case eWaitForStart : _waitState_(); break;
+
+        case eStartCount: _startGame_(); break;
+
+        case eEndCount : _endCount_(); break;
+
+        case eYouLoose : _youLoose_(); break;
+
+        case eYouWin: _youWin_(); break;
+
+    }
+
+}
 
 
 

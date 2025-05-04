@@ -1,14 +1,25 @@
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+/* /* html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+} 
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
 	display: block;
+}
+.container{
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 body{
@@ -32,7 +43,7 @@ table{
     border-spacing: 0;
 }
 
-/*................................clearfix...........................................*/
+/*................................clearfix...........................................
 
 .clearfix:after {
 	visibility: hidden;
@@ -44,8 +55,8 @@ table{
 }
 .clearfix {
 	display: inline-block;
-}
-/* start commented backslash hack \*/
+
+/* start commented backslash hack \
 * html .clearfix {
 	height: 1%;
 }
@@ -53,7 +64,7 @@ table{
 	display: block;
 }
 
-/*  global */
+/*  global 
 
 body{
     font-family:'Open Sans, seans-serif';
@@ -88,9 +99,9 @@ h3{
 }
 
 header{
-    z-index: 9998;
+    /* z-index: 9998; 
     background: #000;
-    width: 100%;
+    /* width: 100%; 
     padding: 20px 0;
 }
 header.sticky{
@@ -113,19 +124,27 @@ header a.logo img {
 
 nav{
     width: 70%;
-    float: left;
+    float: right;
     text-align: right;
 }
-nav ul li{
+/* nav ul li{
     display:  inline-block;
     padding: 0px 0px 0px 48px;
+} 
+nav ul {
+    text-align: right;
 }
-nav ul li a{
+/* nav ul li a{
     font-size: 14px;
     font-weight: 400;
     line-height: 30px;
     display: block;
     color: rgba(255,255,255,0.70);
+} 
+nav a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
 }
 
 nav ul li a:hover {
@@ -133,10 +152,17 @@ nav ul li a:hover {
 }
 
 #banner{
-    background: url(/axit_V2/img/banner.jpg) no-repeat center;
+    background: url(/img/banner.jpg) no-repeat center;
     background-size: cover;
+    color: #fff;
     padding: 110px 0 132px;
 }
+.banner-content{
+    width: 50%;
+    float: left;
+}
+
+
 #banner img{
     display: block;
 }
@@ -245,7 +271,7 @@ nav ul li a:hover {
     color: #ff9b51;
 }
 
-/* tabbing CSS */
+/* tabbing CSS 
 
 .tab{
     width: 100%;
@@ -468,4 +494,5 @@ p.arrow_box:after{
     border-top-color: #f5f5f5;
     border-width: 15px;
     margin-left: 15px;
-}
+} */
+
