@@ -225,6 +225,8 @@ nav ul li a:hover {
 }
 /* TABING CSS*/
 /*----- Tabs -----*/
+
+/* aui vamos  */
 .tabs {
 	width: 100%;
 	display: inline-block;
@@ -402,6 +404,8 @@ p.arrow_box:after {
 	border-width: 15px;
 	margin-left: -15px;
 }
+
+/* aqui nos quedamos */
 .mainhald{margin-top:20px;}
 .hlfside{width:30%; float:left;}
 .athrhalf{width:70%; float:left; text-align:left;}
