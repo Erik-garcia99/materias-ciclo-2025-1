@@ -1,15 +1,225 @@
+html{
+    font-size: 62.5%;
+}
+/* 1 rem = 10px */
+body{
+    font-size: 16px;
+}
+
 .container {
+    max-width: 1200px;
     margin-right: auto;
     margin-left: auto;
     padding-left: 15px;
     padding-right: 15px;
 }
 
-
-header{
-    background:#000 ;
+#menu-bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:20px 0 ;
+}
+#logo img{
+    height: 40px;
+    display: block;
 }
 
-nav ul{
+.nav-collapse{
+    display: flex;
+    align-items: center;
+}
+
+.nav-collapse ul{
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 40px;
+}
+
+.nav-collapse li{
+    position: relative;
+}
+
+.nav-collapse a{
+    text-decoration: none;
+    color: rgba(255,255,255,0.70);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    /* //transition: color 0.3s ease; */
+}
+.nav-collapse a:hover{
+    color: #ff8b38;
+    transition: all 0.5s;
+}
+
+
+ul.active{
+    color: #ff8b38;
+}
+header{
+    background:#000 ;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.line {
+	width: 64px;
+	height: 2px;
+	background: #ff8b38;
+	display: block;
+	margin: 30px auto;
+}
+
+/* banner */
+#Banner{
+    background: url(/img/banner.jpg) no-repeat center;
+    background-size: cover;
+    padding: 110px 0 135px;
+}
+
+/* #Banner .content{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+} */
+
+.banner-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.hero-section{
+    flex: 1;
+    max-width: 650px;
+}
+/* .form_banner{
+    flex: 0 0 360;
+    background: #fff;
+    border-radius: 20px;
+    margin-top: 40px;
+} */
+/* .form_banner {
+    flex: 0 0 360px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 0; /* Elimina margen superior 
+} */
+
+
+#Banner img{
+    max-width: 200px;
+    margin-bottom: 20px;
+}
+/* 
+#Banner h2{
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #fff;
+    /* text-align: left; 
+    margin: 25px 0;
+} */
+#Banner h2 {
+    font-size: 3.6rem; /* Tamaño original */
+    color: #fff;
+    line-height: 1.2;
+    margin: 25px 0;
+    font-weight: 300;
+}
+
+
+
+#Banner span.line{
+    margin: 30px 0;
+}
+
+/* #Banner p{
+    color: rgba(255,255,255,0.80);
+	margin-bottom: 35px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 25px 0;
+} */
+
+#Banner p {
+    color: rgba(255,255,255,0.80);
+    font-size: 1.6rem; /* Tamaño original */
+    line-height: 1.6;
+    margin: 25px 0;
+}
+
+
+#Banner span.line{background:#fff;}
+
+.Download a{
+    width: 135px;
+    height: 42px;
+    line-height: 40px;
+    border: 2px solid #fff;
+    text-align: center;
+    color: #fff;
+    font-size: 15px;
+    display: block;
+    text-decoration: none;
+}
+
+.Download a:hover{
+    background: #fff;
+    color: #232323;
+    transition: all 0.5s;
+}
+
+#Banner form{
+    max-width: 360px;
+    width: 100%;
     float: right;
+    background: #fff;
+    border-radius: 3px;
+    text-align: center;
+}
+#Banner form h3{
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    background: 20px 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+#Banner form h3 span{
+    color: #ff8b38;
+}
+#Banner form input{
+    width: 85%;
+    border: 0;
+    margin-top: 30px;
+    border-bottom: 1px solid #d6d6d6;
+    border-left: 1px solid #fbfbfb;
+    border-right: 1px solid #fbfbfb;
+    padding: 10px;
+    outline: 0;
+}
+
+#Banner form input:focus{
+    border-bottom: 1px solid #ff8b38;
+}
+#Banner form a{
+    background: #ff9b51;
+    color: #fff;
+    width: 100%;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    margin-top: 50px;
+    display: block;
+    padding: 20px 0;
+    font-size: 15px;
+    font-weight: 600;
+}
+#Banner form a:hover{
+    background: #000;
+    transition: all 0.5s;
 }
