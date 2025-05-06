@@ -60,3 +60,68 @@ estrucutra de un Slot:
 -if - needed: significa que antes de obtener el valor, se ejecuta el procedimineto adjunto y solo si tiene exito se podra obtener el valor
 -if - added : antes de asignarle un valor al slot, debe de ejecutarse con exito el procedimiento. de otra manera no se realizara alguan accion
 -if -delted: antes de borrar el valor del slot, debe de ejecutarse con exito el procedimoneto, de otra manera no se borrara el valor del slot
+
+
+
+-------------------------------------------------------------------------
+
+reglas de produccion
+
+tambien denominadas reglas IF-THEN. conforman una de las tecnicas de representacion del conociemiento mas antiguas. esta surgen entre la decada de los 70's 
+con los primreos sitemas expertos, su simplicidad las hizo populares para modealar conocimineto humano en forma de reglas explicitas. 
+
+su estrucutra es simple se vincula a "condiciones" (antecedentes) con "acciones o conclusiones" (consecuencias).
+SI (condicion X se cumple {IF}) ENTONCES (ejeuctar accion Y o inferir conclusion Z {THEN})
+
+es un paradigma de representacion aplicado en sistemas expertos, en este sistema los programas emulan la toma de deciciones de un humano partiendo 
+de igul forma como lo haria un humano, tiene el conocimiento  necesario para hacerce de igual forma las preguntas si el paciente tiene X condicion entonces 
+deberia de tener X tambien y sucesivamente hasta entontrar la respuesta. un ejemplo de un sistema experto puede ser MYCIN un sistema experto medico de los 
+anios 70's que dignosticaba infecciones bacterianas usando relgas. 
+
+es muy popular para diagnosticas patologias dentro de la medicina por su naturaleza, las reglas IF-THEN permiten codificar el conocimineto medicico en pasos logicos,
+vinculando sistomas, pruebas de dignostico y tratamientos. 
+como por ejemplo: 
+
+SI "el paciente tiene tos persistente por más de 3 semanas"  
+  Y "pérdida de peso inexplicable"  
+ENTONCES "sospechar de tuberculosis y ordenar una prueba de esputo".  
+
+existen 2 tipos de relgas de produccion:
+
+encadenaminto hacia adelante (Forward chaining):
+
+el sistema comineza con hechos inicales y aplica reglas para inferir nuevos hechos hasta llegar a una conclucion
+
+ejemplo:
+Hecho : "Juan es un hombre"
+Regla: SI una persona es un hombre ENTONCES es un ser humano
+conclusion: "Juan es un ser humano"
+
+encadenaminto hacia atras (Backward Chaining):
+si el sistema comienza con una hipotesis o conclusion y trabaja hacia atras para ver si los hechos la apoyan
+
+
+Hipotesis: "Juan es un ser humano"
+Relga: "Si una persona es un ser humano Entonces es un hombre o una mujer"
+verificacion: "Confirmamos que 'juan es un hombre' lo que soporta la hipotesis inical"
+
+
+ventajas: 
+-permiten representar conocimineto declarativo y procedimental de manera conjunta
+-es modular, por lo que se puede aniadir, quitar o modificar reglas sin altera todo el sistema
+-la forma IF-THEN de la regla tiene con frecuencia una buena correlacion con el lenguaje natural 
+-en algunos sistemas se ha visto que los sistemas basado en reglas consiguen algo parecido al modelo que el hombre utilizaria para 
+solucionar por si mismo el problema 
+
+desventajas:
+
+-si hya muchas reglas en un sistema algunas pueden solaparse, contrascirse o activarse en cadena de froma imprevista 
+-las relgas sulen almacenarse como una lista plana sin organizacion jerarquica o tematica. cunado hay miles de relgas se vuelve caotico modificarlas, depurarlas
+o enteder como se relacionan entre si 
+-no todos los metodos de resolucion se adaptan a las reglas IF-THEN. en muchas ocaciones usamos instruicion, experiecnia o aprendizaje por analogia, procesos
+mas dificiles de capturar con reglas simples 
+-validad un sistema basdo en relas implica asegurar de que todas las combinaciones posiles de relgas funcionen correctamente. pero en los sismemas grandes
+es casi imposibe probar todas las interacciones entre reglas lo que puede dejar errores ocultos.
+
+
+
