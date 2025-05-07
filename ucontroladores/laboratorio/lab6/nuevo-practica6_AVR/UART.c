@@ -64,13 +64,21 @@ UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t s
 
 
 // Send
-/*void UART_puts(uint8_t com, char *str){
+void UART_puts(uint8_t com, char *str){
 
 	//TXn trasmitir el contenido 
 
+	while(*str){
+	
+		//mientras haya contenido en el apuntador, que sea diferente a NULL 
+
+
+		while()
+	}
+
 	
 
-}*/
+}
 
 
 
@@ -94,8 +102,6 @@ void UART_putchar(uint8_t com, char data){
 
 	myUART->UDR= data;
 }
-
-
 
 
 
