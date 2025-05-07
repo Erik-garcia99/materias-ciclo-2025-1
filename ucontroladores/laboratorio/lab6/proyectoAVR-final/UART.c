@@ -147,25 +147,44 @@ uint16_t set_UBRR(uint32_t baudrate){
 
 /****************************************************************************/
 
-/*
-// Send
-void UART_puts(uint8_t com, char *str);
-void UART_putchar(uint8_t com, char data);
 
-// Received*/
+// Send
+void UART_puts(uint8_t com, char *str){
+
+
+	
+
+
+}
+
+
+
+//void UART_putchar(uint8_t com, char data);
+
+// Received
 
 //aguanta mientras no haya dato en para trasmitir
 uint8_t UART_available(uint8_t com){
 
+	//si hay 1 en UDRE quiere decir que el buffer esa vacia 
+
 	 UART_reg_t *myUART = UART_offset[com]; //con esta varuable me desplajo al UART a usar
 	 //si no existe dado en el periferico aqui se queda cunado exista arroja 1
 
-	while(!(myUART->UCSR0A & (1<<UDRE0)))
+	//por lo que si se recibe 1 quiere decir que esta vacia pero investimos porque queremos
+	//saber cuando hay un dato en el periferico 
+
+	//por loq ue si es 0 quiere decir que hay algo y entonces devolvera 1 porque ese periferico
+	//tiene algo  
+	while(myUART->UCSR0A & (1<<UDRE0))
 		;
 
 		return 1;
 
 }
+
+
+
 
 /*char UART_getchar(uint8_t com );
 void UART_gets(uint8_t com, char *str);

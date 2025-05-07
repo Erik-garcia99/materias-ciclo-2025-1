@@ -17,16 +17,16 @@ UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t s
 
     UART_reg_t *myUART = UART_offset[com]; // eligo a mi UART
 
-    uint16_t myUART->UCSRB = 3<< TXC0;
+    myUART->UCSRB = 3<< TXC0;
 
 
     //establecer las paridades
 	uint8_t parity_mode= (parity == 1) ? 2 : 3;  // 2: Paridad par, 3: Paridad impar
 
 
-    uint8_t stop_mode= (stop==)?0:1;
+    uint8_t stop_mode= (stop == 1)? 0:1;
 
-    myUART->UCSRC = (arity_mode << UPM00) | (stop_mode <<USBS0);
+    myUART->UCSRC = (parity_mode << UPM00) | (stop_mode <<USBS0);
 
 
     //tamanio del frame
@@ -63,11 +63,39 @@ UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t s
 }
 
 
-/*
 // Send
-void UART_puts(uint8_t com, char *str);
-void UART_putchar(uint8_t com, char data);
-*/
+/*void UART_puts(uint8_t com, char *str){
+
+	//TXn trasmitir el contenido 
+
+	
+
+}*/
+
+
+
+void UART_putchar(uint8_t com, char data){
+
+	//este lo que hace es trasmitiri un caracter 
+
+	//perimro debemos de mostrar a cual UART es 
+
+	//que nos dice la teoria, la teroia nos dice que su UDR esta en 1 quiere decir
+	//que el registro esta vacio, 
+
+	//entonces el ciclo va a espear para cunado este se vacie por completo
+	//lo que hace es esperar mientras haya datos dentro del buffer
+
+	UART_reg_t *myUART = UART_offset[com]; 
+
+	while(!(myUART->UCSRA &(1<<myUART->UDR)))
+		; //espera a que el periferico este vacio 
+
+
+	myUART->UDR= data;
+}
+
+
 
 
 
@@ -76,18 +104,34 @@ void UART_putchar(uint8_t com, char data);
 
 
 //aguanta mientras no haya dato en para trasmitir
-uint8_t UART_available(uint8_t com){
+/*uint8_t UART_available(uint8_t com){
+
+	//si hay 1 queire decir que el buffer esta vacia 
+
+	//nosotros queremos esperar siempre y cunado este vacio, si hay un dato en el perferico
+	//estara en 0 y nos sacara porque ya hay algo en el periferico
 
 	 UART_reg_t *myUART = UART_offset[com]; //con esta varuable me desplajo al UART a usar
 	 //si no existe dado en el periferico aqui se queda cunado exista arroja 1
 
-	while(!(myUART->UCSR0A & (1<<UDRE0)))
+	while(myUART->UCSRA & (1<<UDRE0))
 		;
 
-		return 1;
+		return 1;  //regresa 1 cunado esta disponible 
+}
+*/
+
+uint8_t UART_available(uint8_t com){
+
+	//RXC0 sta en 1 cuando hay un dato sin leer en RXC 
+	//y esta en 0 cunado este no tiene nada 
+
+	UART_reg_t *myUART = UART_offset[com]; 
+
+	return (myUART->UCSRA & (1 << RXC0)) ; // Hay dato disponible
+	//creo que va a asi pero si hay errores podemos invertirlo
 
 }
-
 
 
 

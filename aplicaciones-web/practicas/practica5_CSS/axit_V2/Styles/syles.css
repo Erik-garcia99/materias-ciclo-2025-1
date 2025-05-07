@@ -6,12 +6,19 @@ body{
     font-size: 16px;
 }
 
-.container {
+/* .container {
     max-width: 1200px;
     margin-right: auto;
     margin-left: auto;
     padding-left: 15px;
     padding-right: 15px;
+} */
+
+.container{
+    margin-left: auto;
+    margin-left: auto;
+    padding-left: 17px;
+    padding-right: 17px;
 }
 
 #menu-bar{
@@ -222,4 +229,127 @@ header{
 #Banner form a:hover{
     background: #000;
     transition: all 0.5s;
+}
+
+/* social */
+#social{
+    padding: 15px 0;
+    box-shadow: 0px 1px 0.3px 0px rgba(0, 0, 0, 0.38);
+}
+
+#content{
+    width: 700px;
+}
+
+#social h3{
+    font-size: 20px;
+    font-weight: 700;
+    columns: #000;
+    padding-bottom: 5px;
+}
+
+.rightside {
+	text-align: right;
+}
+
+#social a i {
+	color: #cccccc;
+	padding: 10px 0px 0 40px;
+    font-size: 50px;
+}
+
+#social a i:hover {
+	color: #ff9b51;
+}
+
+/* tablas */
+.tabs{
+    width: 100%;
+    display: inline-block;
+}
+
+.tab-links{
+    display: inline-block;
+}
+
+/* tabs links */
+
+.tab-links:after{
+    display: block;
+    clear: both;
+    content: '';
+}
+
+.tab-links li{
+    margin: 0 5px;
+    list-style: none;
+}
+
+.tab-links a{
+    width: 112px;
+    height: 112px;
+    line-height: 112px;
+    display: block;
+    background: #333;
+    border-bottom: 1px solid #fff;
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    transition: all linear 0.15s;
+}
+
+.tab-links a:hover{
+    background: #ff8b38;
+    text-decoration: none;
+}
+
+.tab-links li.active a, .tab-links li.active a:hover{
+    background: #ff8b38;
+    color: #fff;
+}
+
+/* contenido en las tablas */
+
+
+.tab{
+    display: none;
+} 
+
+.tab.active{
+    display: block;
+}
+
+#tabbingsec{
+    background:#f5f5f5;
+     padding:145px 0 110px;
+}
+
+.width60{width:60%; float:left; padding-left:50px;}
+
+#tabbingsec h3{
+    font-size: 20px;
+    font-weight: 700;
+    color: #000;
+    padding-bottom: 50px;
+}
+#tabbingsec p{
+    padding-bottom: 45px;
+}
+
+.width60 a{
+    width: 121px;
+    height: 46px;
+    line-height: 46px;
+    text-align: center;
+    color: #fff;
+    background: #ff8b38;
+    border-radius: 3px;
+    font-size: 15px;
+    display: block;
+}
+.width60 a:hover {
+	background: #232323;
+	color: #fff;
+	transition: all 0.5s;
 }

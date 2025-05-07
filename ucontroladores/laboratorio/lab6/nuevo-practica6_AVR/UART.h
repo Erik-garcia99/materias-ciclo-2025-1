@@ -8,6 +8,7 @@ typedef struct{
 	uint8_t UCSRC;
 	uint8_t resb;
 	uint16_t UBRR;
+	uint8_t UDR;
 
 }UART_reg_t;
 
