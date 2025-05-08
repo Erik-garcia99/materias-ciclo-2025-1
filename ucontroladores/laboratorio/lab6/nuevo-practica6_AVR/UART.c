@@ -64,20 +64,26 @@ UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t s
 
 
 // Send
+
+/*
+puts funcionan para imprimir  TX 
+
+gets funcionan para recibir  RX
+
+*/
+
+
+//este haria lo mismo de putchar la unica deiferente es que este estara 
+//recorriendo la cadena que se quiere imprimir 
 void UART_puts(uint8_t com, char *str){
 
 	//TXn trasmitir el contenido 
-
-	while(*str){
-	
+	uint8_t i=0;
+	while(str[i] != '\0'){
 		//mientras haya contenido en el apuntador, que sea diferente a NULL 
-
-
-		while()
+		UART_putchar(com, str[i]);
+		i++;
 	}
-
-	
-
 }
 
 
@@ -98,7 +104,6 @@ void UART_putchar(uint8_t com, char data){
 
 	while(!(myUART->UCSRA &(1<<myUART->UDR)))
 		; //espera a que el periferico este vacio 
-
 
 	myUART->UDR= data;
 }
@@ -134,16 +139,77 @@ uint8_t UART_available(uint8_t com){
 
 	UART_reg_t *myUART = UART_offset[com]; 
 
-	return (myUART->UCSRA & (1 << RXC0)) ; // Hay dato disponible
+	return (!(myUART->UCSRA & (1 << RXC0))) ; // Hay dato disponible
 	//creo que va a asi pero si hay errores podemos invertirlo
 
 }
 
 
 
-/*char UART_getchar(uint8_t com );
-void UART_gets(uint8_t com, char *str);
+char UART_getchar(uint8_t com){
 
+	
+	char c;
+
+	UART_reg_t *myUART = UART_offset[com]; 
+	//okay, que es lo que esta pasando aqui, lo que esta pasando es que 
+	//si hay datos sin leer se establece en 1, al invertirlo nos da el 0
+	//lo que quiere decri que esta disponible para la transmicion 
+
+	//si esta vacio esta en 0 al invertirlo nos da 1 lo que quiere decrir que esta
+	//listo para recibir 
+	while(UART_available(com)){
+		
+		//lo que quiere decir es que lo que este en el registro UDR 
+		//se pasa a C y este lo devolvemos al gets 
+		c= myUART->UDR;
+		
+	}
+
+	return c;
+}
+
+
+void UART_gets(uint8_t com, char *str){
+
+
+	char c;
+	//gets lo que hace es captrua una cadena, con la ayuda de getchar
+
+	while(1){
+		
+
+		c = UART_getchar(com);
+		uint8_t i=0;
+
+		//condiciones para saber que es lo que se preiosno, cuales son los 
+		//posibles combinaciones que se puedan dar 
+		
+		//se sale cunado hacemos un retorno de carro 
+
+		//si el usuario borra algun dato esto se deberia de ver reflejado que no
+
+
+		//al igual si ahce un espacio se debe de ver dicho espacio
+		if(c==27){
+			putchar(com,' ');
+			str[i++];
+		}
+
+		
+		if(c=='\r' || c == 0x13){
+		
+			break;
+		}
+		
+		
+		str[i]='\0'; //al final le agregamos un caracter nulo 		
+
+	}
+
+}
+
+/*
 // Escape sequences
 UART_clrscr( uint8_t com );
 UART_setColor(uint8_t com, uint8_t color);

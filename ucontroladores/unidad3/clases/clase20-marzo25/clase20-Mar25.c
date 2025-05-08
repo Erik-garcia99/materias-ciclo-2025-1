@@ -29,11 +29,6 @@ void UART3_WriteByte(uint8_t data){
 		;
 		
 	UDR0 = data;
-		
-	
-	
-	
-	
 }
 
 uint8_t UART3_ReadByte(void){
