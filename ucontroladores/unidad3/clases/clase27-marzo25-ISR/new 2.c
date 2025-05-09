@@ -149,7 +149,6 @@ uint8_t UART3_ReadByte(void){
 		;
 	return UDR0;
 	
-	
 }
 
 

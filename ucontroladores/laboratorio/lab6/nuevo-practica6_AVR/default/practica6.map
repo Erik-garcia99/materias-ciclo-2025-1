@@ -4,6 +4,19 @@ c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodsi4.o)
                               UART.o (__udivmodsi4)
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
                               c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o (exit)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(putchar.o)
+                              UART.o (putchar)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(fputc.o)
+                              c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(putchar.o) (fputc)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(iob.o)
+                              c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(putchar.o) (__iob)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
+                              c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(iob.o) (__do_clear_bss)
+
+Allocating common symbols
+Common symbol       size              file
+
+__iob               0x6               c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(iob.o)
 
 Memory Configuration
 
@@ -116,7 +129,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x2da
+.text           0x00000000      0x41a
  *(.vectors)
  .vectors       0x00000000       0xe4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
                 0x00000000                __vectors
@@ -156,6 +169,8 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
  *(.init4)
  .init4         0x000000f4       0x1a c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
                 0x000000f4                __do_copy_data
+ .init4         0x0000010e       0x10 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
+                0x0000010e                __do_clear_bss
  *(.init4)
  *(.init5)
  *(.init5)
@@ -166,88 +181,99 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x0000010e        0x8 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
+ .init9         0x0000011e        0x8 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
  *(.init9)
  *(.text)
- .text          0x00000116        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-                0x00000116                __vector_38
-                0x00000116                __vector_22
-                0x00000116                __vector_28
-                0x00000116                __vector_1
-                0x00000116                __vector_32
-                0x00000116                __vector_34
-                0x00000116                __vector_24
-                0x00000116                __vector_12
-                0x00000116                __vector_55
-                0x00000116                __vector_46
-                0x00000116                __bad_interrupt
-                0x00000116                __vector_6
-                0x00000116                __vector_31
-                0x00000116                __vector_35
-                0x00000116                __vector_39
-                0x00000116                __vector_3
-                0x00000116                __vector_23
-                0x00000116                __vector_30
-                0x00000116                __vector_45
-                0x00000116                __vector_25
-                0x00000116                __vector_11
-                0x00000116                __vector_54
-                0x00000116                __vector_13
-                0x00000116                __vector_17
-                0x00000116                __vector_19
-                0x00000116                __vector_56
-                0x00000116                __vector_7
-                0x00000116                __vector_49
-                0x00000116                __vector_41
-                0x00000116                __vector_43
-                0x00000116                __vector_27
-                0x00000116                __vector_5
-                0x00000116                __vector_33
-                0x00000116                __vector_47
-                0x00000116                __vector_52
-                0x00000116                __vector_37
-                0x00000116                __vector_4
-                0x00000116                __vector_44
-                0x00000116                __vector_51
-                0x00000116                __vector_9
-                0x00000116                __vector_2
-                0x00000116                __vector_21
-                0x00000116                __vector_15
-                0x00000116                __vector_36
-                0x00000116                __vector_29
-                0x00000116                __vector_40
-                0x00000116                __vector_8
-                0x00000116                __vector_26
-                0x00000116                __vector_48
-                0x00000116                __vector_14
-                0x00000116                __vector_53
-                0x00000116                __vector_10
-                0x00000116                __vector_50
-                0x00000116                __vector_16
-                0x00000116                __vector_18
-                0x00000116                __vector_20
-                0x00000116                __vector_42
- .text          0x0000011a        0x6 practica6.o
-                0x0000011a                main
- .text          0x00000120      0x172 UART.o
-                0x00000204                UART_puts
-                0x00000236                UART_available
-                0x00000270                UART_gets
-                0x00000254                UART_getchar
-                0x000001d8                UART_putchar
-                0x00000120                UART_Ini
- .text          0x00000292        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodsi4.o)
- .text          0x00000292        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
-                0x00000292                . = ALIGN (0x2)
+ .text          0x00000126        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
+                0x00000126                __vector_38
+                0x00000126                __vector_22
+                0x00000126                __vector_28
+                0x00000126                __vector_1
+                0x00000126                __vector_32
+                0x00000126                __vector_34
+                0x00000126                __vector_24
+                0x00000126                __vector_12
+                0x00000126                __vector_55
+                0x00000126                __vector_46
+                0x00000126                __bad_interrupt
+                0x00000126                __vector_6
+                0x00000126                __vector_31
+                0x00000126                __vector_35
+                0x00000126                __vector_39
+                0x00000126                __vector_3
+                0x00000126                __vector_23
+                0x00000126                __vector_30
+                0x00000126                __vector_45
+                0x00000126                __vector_25
+                0x00000126                __vector_11
+                0x00000126                __vector_54
+                0x00000126                __vector_13
+                0x00000126                __vector_17
+                0x00000126                __vector_19
+                0x00000126                __vector_56
+                0x00000126                __vector_7
+                0x00000126                __vector_49
+                0x00000126                __vector_41
+                0x00000126                __vector_43
+                0x00000126                __vector_27
+                0x00000126                __vector_5
+                0x00000126                __vector_33
+                0x00000126                __vector_47
+                0x00000126                __vector_52
+                0x00000126                __vector_37
+                0x00000126                __vector_4
+                0x00000126                __vector_44
+                0x00000126                __vector_51
+                0x00000126                __vector_9
+                0x00000126                __vector_2
+                0x00000126                __vector_21
+                0x00000126                __vector_15
+                0x00000126                __vector_36
+                0x00000126                __vector_29
+                0x00000126                __vector_40
+                0x00000126                __vector_8
+                0x00000126                __vector_26
+                0x00000126                __vector_48
+                0x00000126                __vector_14
+                0x00000126                __vector_53
+                0x00000126                __vector_10
+                0x00000126                __vector_50
+                0x00000126                __vector_16
+                0x00000126                __vector_18
+                0x00000126                __vector_20
+                0x00000126                __vector_42
+ .text          0x0000012a       0xde practica6.o
+                0x0000012a                main
+ .text          0x00000208      0x164 UART.o
+                0x000002e8                UART_puts
+                0x0000030e                UART_available
+                0x00000342                UART_gets
+                0x00000326                UART_getchar
+                0x000002cc                UART_putchar
+                0x00000208                UART_Ini
+ .text          0x0000036c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodsi4.o)
+ .text          0x0000036c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
+ .text          0x0000036c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(putchar.o)
+ .text          0x0000036c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(fputc.o)
+ .text          0x0000036c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(iob.o)
+ .text          0x0000036c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
+                0x0000036c                . = ALIGN (0x2)
  *(.text.*)
- .text.libgcc   0x00000292       0x44 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodsi4.o)
-                0x00000292                __udivmodsi4
- .text.libgcc   0x000002d6        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
-                0x000002d6                . = ALIGN (0x2)
+ .text.libgcc   0x0000036c       0x44 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodsi4.o)
+                0x0000036c                __udivmodsi4
+ .text.libgcc   0x000003b0        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
+ .text.avr-libc
+                0x000003b0        0xe c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(putchar.o)
+                0x000003b0                putchar
+ .text.avr-libc
+                0x000003be       0x58 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(fputc.o)
+                0x000003be                fputc
+ .text.libgcc   0x00000416        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
+                0x00000416                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000002d6        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
-                0x000002d6                exit
-                0x000002d6                _exit
+ .fini9         0x00000416        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
+                0x00000416                exit
+                0x00000416                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -266,47 +292,57 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000002d6        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
+ .fini0         0x00000416        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
  *(.fini0)
-                0x000002da                _etext = .
+                0x0000041a                _etext = .
 
-.data           0x00800200       0x10 load address 0x000002da
+.data           0x00800200       0x2c load address 0x0000041a
                 0x00800200                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800200        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
- .data          0x00800200        0x8 practica6.o
-                0x00800200                UART_offset
- .data          0x00800208        0x8 UART.o
- .data          0x00800210        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodsi4.o)
- .data          0x00800210        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
+ .data          0x00800200       0x24 practica6.o
+ .data          0x00800224        0x8 UART.o
+                0x00800224                UART_offset
+ .data          0x0080022c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodsi4.o)
+ .data          0x0080022c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
+ .data          0x0080022c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(putchar.o)
+ .data          0x0080022c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(fputc.o)
+ .data          0x0080022c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(iob.o)
+ .data          0x0080022c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
  *(.data*)
  *(.rodata)
  *(.rodata*)
  *(.gnu.linkonce.d*)
-                0x00800210                . = ALIGN (0x2)
-                0x00800210                _edata = .
-                0x00800210                PROVIDE (__data_end, .)
+                0x0080022c                . = ALIGN (0x2)
+                0x0080022c                _edata = .
+                0x0080022c                PROVIDE (__data_end, .)
 
-.bss            0x00800210        0x0
-                0x00800210                PROVIDE (__bss_start, .)
+.bss            0x0080022c        0x6
+                0x0080022c                PROVIDE (__bss_start, .)
  *(.bss)
- .bss           0x00800210        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
- .bss           0x00800210        0x0 practica6.o
- .bss           0x00800210        0x0 UART.o
- .bss           0x00800210        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodsi4.o)
- .bss           0x00800210        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
+ .bss           0x0080022c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
+ .bss           0x0080022c        0x0 practica6.o
+ .bss           0x0080022c        0x0 UART.o
+ .bss           0x0080022c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodsi4.o)
+ .bss           0x0080022c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
+ .bss           0x0080022c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(putchar.o)
+ .bss           0x0080022c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(fputc.o)
+ .bss           0x0080022c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(iob.o)
+ .bss           0x0080022c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
  *(.bss*)
  *(COMMON)
-                0x00800210                PROVIDE (__bss_end, .)
-                0x000002da                __data_load_start = LOADADDR (.data)
-                0x000002ea                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x0080022c        0x6 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(iob.o)
+                0x0080022c                __iob
+                0x00800232                PROVIDE (__bss_end, .)
+                0x0000041a                __data_load_start = LOADADDR (.data)
+                0x00000446                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800210        0x0
-                0x00800210                PROVIDE (__noinit_start, .)
+.noinit         0x00800232        0x0
+                0x00800232                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x00800210                PROVIDE (__noinit_end, .)
-                0x00800210                _end = .
-                0x00800210                PROVIDE (__heap_start, .)
+                0x00800232                PROVIDE (__noinit_end, .)
+                0x00800232                _end = .
+                0x00800232                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -365,44 +401,44 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
                 0x00000020       0x20 UART.o
 
 .debug_pubnames
-                0x00000000       0xab
+                0x00000000       0x9b
  *(.debug_pubnames)
  .debug_pubnames
-                0x00000000       0x2b practica6.o
+                0x00000000       0x1b practica6.o
  .debug_pubnames
-                0x0000002b       0x80 UART.o
+                0x0000001b       0x80 UART.o
 
-.debug_info     0x00000000      0x470
+.debug_info     0x00000000      0x445
  *(.debug_info)
- .debug_info    0x00000000       0xf4 practica6.o
- .debug_info    0x000000f4      0x37c UART.o
+ .debug_info    0x00000000       0xc7 practica6.o
+ .debug_info    0x000000c7      0x37e UART.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev   0x00000000      0x23f
+.debug_abbrev   0x00000000      0x25d
  *(.debug_abbrev)
- .debug_abbrev  0x00000000       0x9f practica6.o
- .debug_abbrev  0x0000009f      0x1a0 UART.o
+ .debug_abbrev  0x00000000       0x96 practica6.o
+ .debug_abbrev  0x00000096      0x1c7 UART.o
 
-.debug_line     0x00000000      0x245
+.debug_line     0x00000000      0x2c5
  *(.debug_line)
- .debug_line    0x00000000       0xa3 practica6.o
- .debug_line    0x000000a3      0x1a2 UART.o
+ .debug_line    0x00000000      0x113 practica6.o
+ .debug_line    0x00000113      0x1b2 UART.o
 
 .debug_frame    0x00000000       0x90
  *(.debug_frame)
  .debug_frame   0x00000000       0x20 practica6.o
  .debug_frame   0x00000020       0x70 UART.o
 
-.debug_str      0x00000000      0x1ad
+.debug_str      0x00000000      0x1b7
  *(.debug_str)
- .debug_str     0x00000000       0xef practica6.o
-                                0x128 (size before relaxing)
- .debug_str     0x000000ef       0xbe UART.o
-                                0x1ce (size before relaxing)
+ .debug_str     0x00000000       0xdc practica6.o
+                                0x115 (size before relaxing)
+ .debug_str     0x000000dc       0xdb UART.o
+                                0x1d8 (size before relaxing)
 
-.debug_loc      0x00000000      0x1ef
+.debug_loc      0x00000000      0x23b
  *(.debug_loc)
- .debug_loc     0x00000000      0x1ef UART.o
+ .debug_loc     0x00000000      0x23b UART.o
 
 .debug_macinfo
  *(.debug_macinfo)
