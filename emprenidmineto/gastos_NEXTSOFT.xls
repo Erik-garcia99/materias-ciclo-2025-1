@@ -1,0 +1,163 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>test</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--><meta http-equiv="content-type" content="text/plain; charset=UTF-8"/></head><body><table><tr style="background:#F1A983;">
+                                    <th style="width:59px;" class="fw"></th>
+                                    <th class="fw">Títulos</th>
+                                    <th style="width:59px;" class="fw">Tipo de Unidades</th>
+                                    <th>Cantidad</th>
+                                    <th title="Por favor, ingresa tu razonamiento detrás de las suposiciones clave, por ejemplo: ¿Por qué seleccionaste un precio particular? ¿Por qué los fundadores están recibiendo (o no recibiendo) salarios?">Notas de Planeación</th>
+                                </tr><tr style="background: #FFFFFF">
+                                    <th rowspan="2" class="th_valign">Ingresos</th>
+                                    <td class="td_ass_item_width headng_td" colspan="4">Precio de venta</td>
+
+                                </tr><tr style="background: #FFFFFF">
+
+
+                                    <td class="td_ass_item_width">
+                                        Tarifa promedio de servicio por cliente</td>
+                                    <td>
+                                        software terminado
+                                    </td>
+                                    <td class="td_ass_amount_width">
+                                        35000
+                                    </td>
+                                    <td></td>
+                                </tr><tr style="background:#F7C7AC">
+                                    <th rowspan="4" class="th_valign"><span title="Gastos que solo se incurren si se producen los bienes; cambian proporcionalmente con el nivel de producción o ventas, incluyendo materiales, mano de obra y servicios públicos">Costos variables</span></th>
+                                    <td class="td_ass_item_width headng_td" colspan="4">Costos de entrega de servicio (por cliente por mes)</td>
+
+                                </tr><tr style="background:#FBE2D5">
+
+                                    <td class="td_ass_item_width" title="">
+                                        Soporte de servicio externalizado
+                                        </td>
+                                    <td>Cantidad</td>
+                                    <td class="td_ass_amount_width">
+                                        300
+                                    </td>
+                                    <td></td>
+                                </tr><tr style="background:#FBE2D5">
+
+                                    <td class="td_ass_item_width" title="">
+                                        Suscripciones a herramientas (por ejemplo, Canva, Buffer)
+                                    </td>
+                                    <td>Cantidad</td>
+                                    <td class="td_ass_amount_width">
+                                        248
+                                    </td>
+                                    <td></td>
+                                </tr><tr style="background:#FBE2D5">
+
+                                    <td class="td_ass_item_width" title="">
+                                        Soporte al cliente
+                                    </td>
+                                    <td>Cantidad</td>
+                                    <td class="td_ass_amount_width">
+                                        1500
+                                    </td>
+                                    <td></td>
+                                </tr><tr style="background:#83CCEB">
+                                    <th rowspan="5" class="th_valign"> <span title="Gastos que se incurren en la empresa incluso si no se produce ni se vende nada; son independientes del nivel de producción o ventas, como la renta, los salarios y el seguro">Costos fijos</span></th>
+                                    <td class="td_ass_item_width headng_td" colspan="4">Gastos generales y salarios (mensuales)</td>
+                                </tr><tr style="background:#C0E6F5">
+
+                                    <td class="td_ass_item_width">
+                                        Salarios de los fundadores
+                                    </td>
+                                    <td>Cantidad</td>
+                                    <td class="td_ass_amount_width">
+                                        12000
+                                    </td>
+                                    <td></td>
+                                </tr><tr style="background:#C0E6F5">
+
+                                    <td class="td_ass_item_width">Salarios de los gerentes de proyecto</td>
+                                    <td>Cantidad</td>
+                                    <td class="td_ass_amount_width">
+                                        5800
+                                    </td>
+                                    <td></td>
+                                </tr><tr style="background:#C0E6F5">
+
+                                    <td class="td_ass_item_width">Otros salarios</td>
+                                    <td>Cantidad</td>
+                                    <td class="td_ass_amount_width">
+                                        5601
+                                    </td>
+                                    <td></td>
+                                </tr><tr style="background:#C0E6F5">
+
+                                    <td class="td_ass_item_width">Renta, administración, viajes y otros</td>
+                                    <td>Cantidad</td>
+                                    <td class="td_ass_amount_width">
+                                        1030
+                                    </td>
+                                    <td></td>
+                                </tr><tr style="background: #F1A983">
+                                    <th rowspan="3" class="th_valign">Otros costos fijos</th>
+                                    <td class="td_ass_item_width headng_td" colspan="4">Otros gastos (mensuales)</td>
+
+                                </tr><tr style="background: #FBE2D5">
+
+                                    <td class="td_ass_item_width">Salarios del equipo de marketing y ventas</td>
+                                    <td>Cantidad</td>
+                                    <td class="td_ass_amount_width">
+                                        15000
+                                    </td>
+                                    <td></td>
+                                </tr><tr style="background: #DAF2D0">
+
+                                    <td class="td_ass_item_width">Marketing y publicidad</td>
+                                    <td>Cantidad</td>
+                                    <td class="td_ass_amount_width">4000 </td>
+                                    <td></td>
+                                </tr><tr style="background:#B5E6A2">
+                                    <th rowspan="4" class="th_valign">Proyección</th>
+                                    <td class="td_ass_item_width headng_td" colspan="4">Proyección de ventas</td>
+                                </tr><tr style="background: #DAF2D0">
+
+                                    <td class="td_ass_item_width">Empresas clientes en el mes #1</td>
+                                    <td>Cantidad</td>
+                                    <td class="td_ass_amount_width">
+                                        3
+                                    </td>
+                                    <td></td>
+                                </tr><tr style="background: #DAF2D0">
+
+                                    <td class="td_ass_item_width">Tasa de crecimiento mensual de clientes % (después de la pérdida de clientes)</td>
+                                    <td>Tasa porcentual</td>
+                                    <td class="td_ass_amount_width">
+                                        20
+                                    </td>
+                                    <td></td>
+                                </tr><tr style="background: #DAF2D0">
+
+                                    <td class="td_ass_item_width">Duración promedio de la relación con el cliente en meses</td>
+                                    <td>Cantidad</td>
+                                    <td class="td_ass_amount_width">
+                                        12
+                                    </td>
+                                    <td></td>
+                                </tr><tr style="background: #D9D9D9">
+
+                                    <th rowspan="6" class="th_valign">Inversiones e impuestos</th>
+                                    <td class="td_ass_item_width headng_td" colspan="4">Inversiones de capital</td>
+                                </tr><tr style="background: #D9D9D9">
+                                    <td class="td_ass_item_width">Inversión personal</td>
+                                    <td>Cantidad</td>
+                                    <td class="td_ass_amount_width">75000 </td>
+                                    <td></td>
+                                </tr><tr style="background: #D9D9D9">
+                                    <td class="td_ass_item_width">Préstamo bancario</td>
+                                    <td>Cantidad</td>
+                                    <td class="td_ass_amount_width">45000 </td>
+                                    <td></td>
+                                </tr><tr style="background: #D9D9D9">
+                                    <td class="td_ass_item_width">Tasa de interés del préstamo bancario</td>
+                                    <td>Tasa porcentual</td>
+                                    <td class="td_ass_amount_width">20 </td>
+                                    <td></td>
+                                </tr><tr style="background: #D9D9D9">
+                                    <td class="td_ass_item_width">Tasa del impuesto sobre la renta</td>
+                                    <td>Tasa porcentual</td>
+                                    <td class="td_ass_amount_width">30 </td>
+                                    <td></td>
+                                </tr></table></body></html>

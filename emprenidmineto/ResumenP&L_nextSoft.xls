@@ -1,0 +1,58 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>test</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--><meta http-equiv="content-type" content="text/plain; charset=UTF-8"/></head><body><table><tr style="background: #DAE9F8;">
+
+                                    <th class="fw"></th>
+                                    <th style="width:59px;" class="fw">Tipo de Unidad</th>
+                                    <th>Cantidad</th>
+                                </tr><tr class="odd">
+                                    <td>Unidades totales vendidas</td>
+                                    <td>Artículos</td>
+                                    <td class="s_c6">130</td>
+                                </tr><tr class="odd">
+                                    <td class="bold">Ingresos totales</td>
+                                    <td>Cantidad</td>
+                                    <td class="s_c7 bold">45,50,000</td>
+                                </tr><tr class="odd">
+                                    <td title="Los costos directos atribuibles a la producción de bienes o servicios vendidos por una empresa, incluidos materiales, mano de obra y gastos generales.">Costo del bien vendido</td>
+                                    <td>Cantidad</td>
+                                    <td class="s_c8">2,66,240</td>
+                                </tr><tr class="tr_gp">
+                                    <td title="El beneficio bruto de una empresa es lo que obtiene después de restar los costos directamente asociados con la producción de sus bienes o servicios (costo de bienes vendidos) de sus ingresos totales.">Ganancias brutas</td>
+                                    <td>Cantidad</td>
+                                    <td class="s_c9">42,83,760</td>
+                                </tr><tr class="odd">
+                                    <td title="Los gastos operativos son los costos continuos que incurre una empresa para mantener sus operaciones, incluyendo sueldos, renta, servicios públicos y gastos administrativos.">Gastos operativos</td>
+                                    <td>Cantidad</td>
+                                    <td class="s_c10">7,01,172</td>
+                                </tr><tr class="tr_gp">
+                                    <td title="El beneficio operativo es la ganancia que una empresa obtiene de sus operaciones principales, excluyendo los costos e ingresos no relacionados con las actividades primarias, como los ingresos por inversiones o los gastos relacionados con la financiación.">
+									Beneficio operativo
+									</td>
+                                    <td>Cantidad</td>
+                                    <td class="s_c11">35,82,588</td>
+                                </tr><tr class="odd">
+                                    <td>Intereses e impuestos</td>
+                                    <td>Cantidad</td>
+                                    <td class="s_c12">10,81,078</td>
+                                </tr><tr class="tr_gp">
+                                    <td>Cantidad</td>
+                                    <td title="El ingreso neto es la ganancia total de una empresa después de que se han deducido todos los gastos, incluidos impuestos, intereses y depreciación, de sus ingresos totales. En esta herramienta, la depreciación/amortización no ha sido considerada.">Ingreso neto</td>
+                                    <td class="s_c13">25,01,510</td>
+                                </tr><tr style="margin-bottom:10px;">
+                                    <td>Crecimiento de ingresos en 12 meses</td>
+                                    <td class="s_f3">700%</td>
+                                </tr><tr title="El punto de equilibrio es el momento en el que los ingresos totales igualan los costos totales, lo que resulta en que no haya ni ganancia ni pérdida. A partir de este punto, cualquier venta adicional genera ganancia." style="margin-bottom:10px;">
+                                    <td>
+                                        Mes de equilibrio
+                                    </td>
+                                    <td class="s_f4">1</td>
+                                </tr><tr style="margin-bottom:10px;">
+                                    <td title="El punto de equilibrio es el momento en el que los ingresos totales igualan los costos totales, lo que resulta en que no haya ni ganancias ni pérdidas. Más allá de este punto, cualquier venta adicional genera ganancias.">
+                                        Efectivo necesario hasta el punto de equilibrio
+                                    </td>
+                                    <td class="s_f5">0</td>
+                                </tr><tr style="margin-bottom:10px;">
+                                    <td title="El valor total de las ganancias que una empresa puede esperar de un solo cliente durante toda su relación con la compañía se conoce como Valor del Tiempo de Vida del Cliente.">
+                                        Valor del tiempo de vida del cliente (basado en ingreso neto)
+                                    </td>
+                                    <td class="s_f6">2,30,554</td>
+                                </tr></table></body></html>
