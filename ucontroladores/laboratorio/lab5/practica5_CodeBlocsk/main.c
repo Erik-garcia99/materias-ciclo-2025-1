@@ -294,7 +294,7 @@ uint8_t check_Btn(void)
 }
 
 
-/*
+
 uint8_t check_Btn(void) {
     // Botón no presionado (pull-up habilitado)
     if (PINF & (1 << BTN_PIN)) return eBtnUndefined;
@@ -319,7 +319,7 @@ uint8_t check_Btn(void) {
     delay(20);
     return (tiempo_presionado > 0) ? eBtnShortPressed : eBtnUndefined;
 }
-*/
+
 
 
 void updateLeds(uint8_t gameState)

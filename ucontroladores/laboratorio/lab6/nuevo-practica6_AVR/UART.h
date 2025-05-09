@@ -7,7 +7,7 @@
 typedef struct{
 
 	volatile uint8_t UCSRA;
-	volatile uint8_t UCSRB;
+    volatile uint8_t UCSRB;
 	volatile uint8_t UCSRC;
 	volatile uint8_t resb;
 	volatile uint16_t UBRR;

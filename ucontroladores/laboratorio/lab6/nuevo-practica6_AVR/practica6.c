@@ -6,40 +6,39 @@
 
 int main( void )
 {
-    char cad[20];
+    char cad[22];
     char cadUart3[22];
     uint16_t num;
 
 
-    UART_Ini(0,12345,8,1,2); //8 bits de frame,paaridad impar, 2 stop bits 
+    UART_Ini(0,12345,8,1,2); //comunicacion con teraterm
     UART_Ini(2,115200,8,0,1);
     UART_Ini(3,115200,8,0,1);
     while(1)
     {
-        UART_getchar(0); //getchar funciona bine
-        //UART_clrscr(0);
+        UART_getchar(0);//getchar funciona OK
+        UART_clrscr(0);
 
         //UART_gotoxy(0,2,2);
-        //UART_setColor(0,YELLOW);
-        UART_puts(0,"Introduce un n?mero:\0"); //terminamos con un caracter nulo //puts funciona bine
+        UART_setColor(0,YELLOW);
+        UART_puts(0,"Introduce un n?mero:\0"); //terminamos con un caracter nulo, funciona bien puts
 
         //UART_gotoxy(0,22,2);
-        //UART_setColor(0,GREEN);
-		//
-        UART_gets(0,cad);
+        UART_setColor(0,GREEN);
+        UART_gets(0,cad); //vreremos si este funciona correcto
 // -------------------------------------------
         // Cycle through UART2->UART3
         UART_puts(2,cad);
         UART_puts(2,"\r");
         UART_gets(3,cadUart3);
-       // UART_gotoxy(0,5,3);
+        //UART_gotoxy(0,5,3);
         UART_puts(0,cadUart3);
 // -------------------------------------------
         //num = atoi(cad);
         //itoa(num,cad,16);
 
         //UART_gotoxy(0,5,4);
-        //UART_setColor(0,BLUE);
+        UART_setColor(0,BLUE);
         UART_puts(0,"Hex: ");
         UART_puts(0,cad);
         //itoa(num,cad,2);
@@ -49,5 +48,6 @@ int main( void )
         UART_puts(0,cad);
     }
 }
+
 
 

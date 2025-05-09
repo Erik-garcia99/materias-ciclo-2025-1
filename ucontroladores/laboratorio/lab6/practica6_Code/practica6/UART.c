@@ -1,6 +1,35 @@
 #include <avr/io.h>
 #include "UART.h"
 
+/*
+funcioneds que esta bien
+
+el inicalizador para UART0 esta ok mas supogo que de igual forma para UART2 y 3
+
+putchar y puts OK
+
+avaible, getcgar y gets OK
+
+
+
+
+secuencias de escape
+
+-clscr OK
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
 // Prototypes
 // Initialization
 
@@ -40,8 +69,7 @@ UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t s
 
     switch(parity){
 
-    case 0 :
-        break; //no padridad
+        //en caso que sea cero
 
         //1 paridad impar y 2 pardidad par
     case 1:
@@ -52,6 +80,13 @@ UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t s
 
         parity_mode = 2; //paridad par
         break;
+
+    default:
+        parity_mode = 0; //en caso que no sea ninguno permanece en 0 pero por si
+        //alguna razon se mueve este nuermo lo ponemos de nuevo
+
+        break;
+
     }
 
     // 0 = 1 stop bit
@@ -225,7 +260,7 @@ void UART_gets(uint8_t com, char *str){
 	uint8_t i=0;
 
 	while(1){
-
+        c=UART_getchar(com);
 		/*
 
 		-debe de capturar hasta que se le de enter lo que quiere decir que se termino
@@ -242,7 +277,7 @@ void UART_gets(uint8_t com, char *str){
 		if(c=='\b'){
 			if(i>0){
 
-				str[i] = '\0'; //sustitumos el utlimo caracter con el nulo
+				str[--i] = '\0'; //sustitumos el utlimo caracter con el nulo
 				UART_putchar(com,'\b');
 				UART_putchar(com, ' ');
 				UART_putchar(com,'\b');
@@ -308,12 +343,53 @@ void UART_gets(uint8_t com, char *str){
 
 }
 
-/*
+
 // Escape sequences
-UART_clrscr( uint8_t com );
-UART_setColor(uint8_t com, uint8_t color);
-UART_gotoxy(uint8_t com, uint8_t x, uint8_t y);
+UART_clrscr( uint8_t com ){
+
+    UART_reg_t *myUART = UART_offset[com];
+
+
+    //que es lo que hace un clsrc es que limpia tpda la pantalla
+
+    /*
+        los numeros salen del sigueinte fromato
+        \x1B representa el nuemero 27 que es ESC en ascii
+        para representar ese valor en HEX se usa \xHH,
+        el [2J es un estandar ANSI/VT100 que se establece lo que nos dice
+        que con ESC[2J se borra toda la pantalla
+
+        lo mismo para con posicionar al inicio de la termianl
+        sin parametros H se estbalce en la fila1 - columna1
+    */
+    UART_puts(com,"\x1B[2J"); //borra toda la pantalla
+    UART_puts(com,"\x1B[H"); // poen el curso al incio fila 1, columna 1
+
+
+}
+
+/*
+
+UART_gotoxy(uint8_t com, uint8_t x, uint8_t y){
+
+    UART_puts(com,"\x1B["); //inicio de la secuencia de esapce
+    UART_puts(com,y+1);
+    UART_puts(com, ";");
+    UART_puts(com,x+1);
+    UART_puts(com,"f");
+}
+*/
+UART_setColor(uint8_t com, uint8_t color){
+
+
+    UART_puts(com,"\x1B["); //incio del comando espace
+    UART_putchar(com, '0'+(color/10)); //decena del caracter
+    UART_putchar(com, '0'+(color%10)); //unidad del caracter
+    UART_putchar(com,"m"); //final del comando
+
+ }
+
 
 // Utils
-void itoa(uint16_t number, char* str, uint8_t base);
+/*void itoa(uint16_t number, char* str, uint8_t base);
 uint16_t atoi(char *str);*/
