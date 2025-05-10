@@ -132,7 +132,7 @@ UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t s
         myUART->UCSRB |= (1 << UCSZ02); // Habilitar bit 9
     } else
      {
-        myUART->UCSRC |= ((size - 5) << UCSZ00); // Ej: 8 bits → 3 << UCSZ00
+        myUART->UCSRC |= ((size - 5) << UCSZ00); // Ej: 8 bits ? 3 << UCSZ00
     }
 
     uint16_t v_UBRR = (FOSC / (16 * baudrate)) - 1 ;
@@ -392,13 +392,131 @@ void itoa(uint16_t number, char* str, uint8_t base){
 	//representación ASCII en la base
     //especificada
 
-	uint8_t buffer[17];
+	//pimeor debemos saber que base es
+
+	//recibe un caracter con terminacion '\0'
+
+    //arreglo con los caractrers de HEX
+    char HEX[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+	char codigo;
+
+
+    //entonces sonostro vamos a tener un valro decimal, no un caracter ascii
+
+    //lo cinvertimos a decimla y es lo que recibimos y tenemos que converitr en su valor HEX, octal o binaria pero en ASCII
+
+
+	if(base == 2){
+        //binario
+        HEX[1];
+
+	}
+
+
+	/*else if(number == 8){
+        //octal
+
+
+	}*/
+
+	else if(base == 16){
+        //hexadecimal
+
+        //residuo
+        //para converitr el decimal en HEX lo divido por 16 y el resto es lo que me dara que caracter es
+
+
+		/*uint8_t caracter=48; //le ponemos 0 solo para que entre al bucle despues de esto debe de cambiar
+        while(caracter>0){
+            caracter = number%16; //sacamos el primer valor LSB de 16 bits
+
+            UART_putchar(0, HEX[caracter-1]);
+        }*/
+
+
+		//algo asi, pero el primer dato que saque ese va hasta el ultimo mi pa
+		//entonces debo de hacer otra pila paa mandar los caacteres.
+
+		uint8_t caracter = number % 16;
+		caracter-=2;
+		codigo = HEX[caracter];
+
+		uint8_t idx =0;
+
+		str[idx]= codigo;
 
 
 
-
-
+	}
 
 }
 
-/*uint16_t atoi(char *str);*/
+uint16_t atoi(char *str){
+
+    //primero debemos hacer este que devolvera un numero decimal de 16 bits
+
+    //recibe una cadena y lo convierte en su parte decimal
+
+
+    /*
+        543
+
+        '5'
+
+    */
+
+    //hacemos un arreglo para poder almacenar los elementos que se del tamanio del string enviado
+
+
+
+    uint8_t cantidad=0;
+
+    while(*str!='\0'){
+
+        cantidad++;
+        *str++;
+    }
+
+    uint8_t items[cantidad]; //arreglo reservado
+
+    //recorrera cad caraacter a mi parecer desde el inicio hasta el final por lo que debemos de hacer
+    //como una pila ingresar desde la ultima ubicacion,
+
+    uint8_t num; // guardada el numero actual y este al ser multiplicado por el exponente sera agregado al la pia
+
+    uint8_t idx= cantidad-1; //me indica en que pisicion del arreglo va
+
+    //aseguramos doble
+    while(*str !='\0' && idx >=0){
+
+        num= *str - 48;
+
+        items[idx]= num; // en la posicion idx ya items
+        //exp*=10;
+        //ya se agrego recoremos nustro arreglo
+        idx--;
+        *str++;
+    }
+
+    //[3,2,5] -> ejemplo
+
+
+    uint16_t exp=1; //el esponente es para poder sumar al final y este represente decimales, decenas, centenas, millaes, etc.
+    uint8_t acum = 0;
+    uint8_t actual;
+    for(uint8_t i=0; i< cantidad; i++){
+        //vamos a recorrer la pila y calcular ese exponente
+
+        actual = items[i];
+
+        actual*=exp;
+
+        exp*=10; //lo elevamos a la 10 en cada iteracion, pero este tendra un limite claro, cunado ya no cabe en 16 bits
+        //con al esperanza de que no sean numereos mas grandes de 4 digitos
+
+        acum += actual;
+
+    }
+
+    return acum; //retornarme el acumulador
+}

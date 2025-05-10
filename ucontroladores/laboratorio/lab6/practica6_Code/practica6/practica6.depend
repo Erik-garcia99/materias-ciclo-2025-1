@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1746465778 source:c:\users\erikg\documents\ciclo2025-1\materias-ciclo-2025-1\ucontroladores\laboratorio\lab6\practica6_code\practica6\fuse.c
+	<avr/io.h>
+
+1746909730 source:c:\users\erikg\documents\ciclo2025-1\materias-ciclo-2025-1\ucontroladores\laboratorio\lab6\practica6_code\practica6\main.c
+	<avr/io.h>
+	"UART.h"
+
+1746909761 c:\users\erikg\documents\ciclo2025-1\materias-ciclo-2025-1\ucontroladores\laboratorio\lab6\practica6_code\practica6\uart.h
+

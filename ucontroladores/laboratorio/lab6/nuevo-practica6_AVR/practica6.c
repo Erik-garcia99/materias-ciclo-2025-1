@@ -34,8 +34,8 @@ int main( void )
         UART_gotoxy(0,5,3);
         UART_puts(0,cadUart3);
 // -------------------------------------------
-        //num = atoi(cad);
-        //itoa(num,cad,16);
+        num = atoi(cad);
+        itoa(num,cad,16);
 
         UART_gotoxy(0,5,4);
         UART_setColor(0,BLUE);
