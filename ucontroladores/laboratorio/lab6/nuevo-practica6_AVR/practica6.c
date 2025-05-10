@@ -20,11 +20,11 @@ int main( void )
         UART_clrscr(0);
 
         //UART_gotoxy(0,2,2);
-        UART_setColor(0,YELLOW);
+        //UART_setColor(0,YELLOW);
         UART_puts(0,"Introduce un n?mero:\0"); //terminamos con un caracter nulo, funciona bien puts
 
         //UART_gotoxy(0,22,2);
-        UART_setColor(0,GREEN);
+        //UART_setColor(0,GREEN);
         UART_gets(0,cad); //vreremos si este funciona correcto
 // -------------------------------------------
         // Cycle through UART2->UART3
@@ -38,7 +38,7 @@ int main( void )
         //itoa(num,cad,16);
 
         //UART_gotoxy(0,5,4);
-        UART_setColor(0,BLUE);
+        //UART_setColor(0,BLUE);
         UART_puts(0,"Hex: ");
         UART_puts(0,cad);
         //itoa(num,cad,2);

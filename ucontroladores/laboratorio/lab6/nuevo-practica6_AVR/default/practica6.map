@@ -1,7 +1,5 @@
 Archive member included because of file (symbol)
 
-c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodqi4.o)
-                              UART.o (__udivmodqi4)
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodsi4.o)
                               UART.o (__udivmodsi4)
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
@@ -131,7 +129,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x5aa
+.text           0x00000000      0x52e
  *(.vectors)
  .vectors       0x00000000       0xe4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
                 0x00000000                __vectors
@@ -244,43 +242,40 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
                 0x00000126                __vector_18
                 0x00000126                __vector_20
                 0x00000126                __vector_42
- .text          0x0000012a      0x10a practica6.o
+ .text          0x0000012a       0xe6 practica6.o
                 0x0000012a                main
- .text          0x00000234      0x2b0 UART.o
-                0x0000036c                UART_clrscr
-                0x00000312                UART_puts
-                0x00000338                UART_available
-                0x000003fc                UART_gets
-                0x00000350                UART_getchar
-                0x00000386                UART_setColor
-                0x000002f6                UART_putchar
-                0x00000234                UART_Ini
- .text          0x000004e4        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodqi4.o)
- .text          0x000004e4        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodsi4.o)
- .text          0x000004e4        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
- .text          0x000004e4        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(putchar.o)
- .text          0x000004e4        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(fputc.o)
- .text          0x000004e4        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(iob.o)
- .text          0x000004e4        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
-                0x000004e4                . = ALIGN (0x2)
+ .text          0x00000210      0x270 UART.o
+                0x00000348                UART_clrscr
+                0x000002ee                UART_puts
+                0x00000314                UART_available
+                0x00000390                UART_gets
+                0x0000032c                UART_getchar
+                0x00000362                UART_setColor
+                0x000002d2                UART_putchar
+                0x00000210                UART_Ini
+ .text          0x00000480        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodsi4.o)
+ .text          0x00000480        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
+ .text          0x00000480        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(putchar.o)
+ .text          0x00000480        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(fputc.o)
+ .text          0x00000480        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(iob.o)
+ .text          0x00000480        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
+                0x00000480                . = ALIGN (0x2)
  *(.text.*)
- .text.libgcc   0x000004e4       0x18 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodqi4.o)
-                0x000004e4                __udivmodqi4
- .text.libgcc   0x000004fc       0x44 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodsi4.o)
-                0x000004fc                __udivmodsi4
- .text.libgcc   0x00000540        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
+ .text.libgcc   0x00000480       0x44 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodsi4.o)
+                0x00000480                __udivmodsi4
+ .text.libgcc   0x000004c4        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
  .text.avr-libc
-                0x00000540        0xe c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(putchar.o)
-                0x00000540                putchar
+                0x000004c4        0xe c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(putchar.o)
+                0x000004c4                putchar
  .text.avr-libc
-                0x0000054e       0x58 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(fputc.o)
-                0x0000054e                fputc
- .text.libgcc   0x000005a6        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
-                0x000005a6                . = ALIGN (0x2)
+                0x000004d2       0x58 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(fputc.o)
+                0x000004d2                fputc
+ .text.libgcc   0x0000052a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
+                0x0000052a                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000005a6        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
-                0x000005a6                exit
-                0x000005a6                _exit
+ .fini9         0x0000052a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
+                0x0000052a                exit
+                0x0000052a                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -299,18 +294,17 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000005a6        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
+ .fini0         0x0000052a        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
  *(.fini0)
-                0x000005aa                _etext = .
+                0x0000052e                _etext = .
 
-.data           0x00800200       0x3a load address 0x000005aa
+.data           0x00800200       0x3a load address 0x0000052e
                 0x00800200                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800200        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
  .data          0x00800200       0x24 practica6.o
  .data          0x00800224       0x16 UART.o
                 0x00800232                UART_offset
- .data          0x0080023a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodqi4.o)
  .data          0x0080023a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodsi4.o)
  .data          0x0080023a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
  .data          0x0080023a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(putchar.o)
@@ -331,7 +325,6 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
  .bss           0x0080023a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
  .bss           0x0080023a        0x0 practica6.o
  .bss           0x0080023a        0x0 UART.o
- .bss           0x0080023a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodqi4.o)
  .bss           0x0080023a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodsi4.o)
  .bss           0x0080023a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
  .bss           0x0080023a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(putchar.o)
@@ -343,8 +336,8 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
  COMMON         0x0080023a        0x6 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(iob.o)
                 0x0080023a                __iob
                 0x00800240                PROVIDE (__bss_end, .)
-                0x000005aa                __data_load_start = LOADADDR (.data)
-                0x000005e4                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000052e                __data_load_start = LOADADDR (.data)
+                0x00000568                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800240        0x0
                 0x00800240                PROVIDE (__noinit_start, .)
@@ -417,42 +410,42 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
  .debug_pubnames
                 0x0000001b       0xa2 UART.o
 
-.debug_info     0x00000000      0x6bb
+.debug_info     0x00000000      0x625
  *(.debug_info)
  .debug_info    0x00000000       0xc7 practica6.o
- .debug_info    0x000000c7      0x5f4 UART.o
+ .debug_info    0x000000c7      0x55e UART.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev   0x00000000      0x2fa
+.debug_abbrev   0x00000000      0x2e6
  *(.debug_abbrev)
  .debug_abbrev  0x00000000       0x96 practica6.o
- .debug_abbrev  0x00000096      0x264 UART.o
+ .debug_abbrev  0x00000096      0x250 UART.o
 
-.debug_line     0x00000000      0x47a
+.debug_line     0x00000000      0x412
  *(.debug_line)
- .debug_line    0x00000000      0x133 practica6.o
- .debug_line    0x00000133      0x347 UART.o
+ .debug_line    0x00000000      0x11b practica6.o
+ .debug_line    0x0000011b      0x2f7 UART.o
 
 .debug_frame    0x00000000       0xb0
  *(.debug_frame)
  .debug_frame   0x00000000       0x20 practica6.o
  .debug_frame   0x00000020       0x90 UART.o
 
-.debug_str      0x00000000      0x1d6
+.debug_str      0x00000000      0x1d7
  *(.debug_str)
- .debug_str     0x00000000       0xdb practica6.o
-                                0x114 (size before relaxing)
- .debug_str     0x000000db       0xfb UART.o
-                                0x1f7 (size before relaxing)
+ .debug_str     0x00000000       0xdc practica6.o
+                                0x115 (size before relaxing)
+ .debug_str     0x000000dc       0xfb UART.o
+                                0x1f8 (size before relaxing)
 
-.debug_loc      0x00000000      0x3a8
+.debug_loc      0x00000000      0x37d
  *(.debug_loc)
- .debug_loc     0x00000000      0x3a8 UART.o
+ .debug_loc     0x00000000      0x37d UART.o
 
 .debug_macinfo
  *(.debug_macinfo)
 OUTPUT(practica6.elf elf32-avr)
 LOAD linker stubs
 
-.debug_ranges   0x00000000      0x120
- .debug_ranges  0x00000000      0x120 UART.o
+.debug_ranges   0x00000000       0xc0
+ .debug_ranges  0x00000000       0xc0 UART.o

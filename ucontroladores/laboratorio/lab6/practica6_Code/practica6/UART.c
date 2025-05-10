@@ -248,7 +248,7 @@ char UART_getchar(uint8_t com){
 
 char UART_getchar(uint8_t com) {
     UART_reg_t *myUART = UART_offset[com];
-    while (!(UART_available(com))); // Espera dato
+    while (!(myUART->UCSRA & (1 << RXC0))); // Espera dato
     return myUART->UDR;
 }
 
@@ -285,6 +285,8 @@ void UART_gets(uint8_t com, char *str){
 
 			continue; // si no hay nada que borrar o si hay algoq ue borrar sigue con el ciclo
 		}
+
+		UART_putchar(com,c);
 		if(c == '\r' || c== '\n'){
 		//retorno de carro o salto de linea lo que quiere decir que se terminao de escribir el
 		//texto actual.
@@ -302,44 +304,6 @@ void UART_gets(uint8_t com, char *str){
 		}
 
 	}
-
-
-	//gets lo que hace es captrua una cadena, con la ayuda de getchar
-
-	/*while(1){
-
-
-		c = UART_getchar(com);
-		uint8_t i=0;
-
-		//condiciones para saber que es lo que se preiosno, cuales son los
-		//posibles combinaciones que se puedan dar
-
-		//se sale cunado hacemos un retorno de carro
-
-		//si el usuario borra algun dato esto se deberia de ver reflejado que no
-		//escape de borrar el dato '\b'
-		//verificamos con su numero en ascii y su represnetacion como tal
-		if(c=='\b' )
-
-		//al igual si ahce un espacio se debe de ver dicho espacio
-		if(c==27){
-			putchar(com,' ');
-			str[i++];
-		}
-
-		//el final de la trasmicion sera cundo el usuario preciono el enter
-		if(c=='\n' || c == 0x0A){
-			str[i]='\0'; //al final le agregamos un caracter nulo
-			break;
-		}
-
-
-
-
-	}
-*/
-
 
 }
 
@@ -383,8 +347,7 @@ UART_setColor(uint8_t com, uint8_t color){
 
 
     UART_puts(com,"\x1B["); //incio del comando espace
-    UART_putchar(com, '0'+(color/10)); //decena del caracter
-    UART_putchar(com, '0'+(color%10)); //unidad del caracter
+
     UART_putchar(com,"m"); //final del comando
 
  }
