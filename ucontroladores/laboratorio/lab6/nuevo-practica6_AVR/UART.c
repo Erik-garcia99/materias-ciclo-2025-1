@@ -287,6 +287,7 @@ void UART_gets(uint8_t com, char *str){
 		}
 
 		UART_putchar(com,c);
+
 		if(c == '\r' || c== '\n'){
 		//retorno de carro o salto de linea lo que quiere decir que se terminao de escribir el
 		//texto actual.
@@ -332,27 +333,67 @@ UART_clrscr( uint8_t com ){
 
 }
 
-/*
+
+void UART_putnum(uint8_t com, uint8_t num){
+
+    if(num >= 100){
+        UART_putchar(com, '0'+(num/100));
+        num%=100;
+    }
+    if(num>=10){
+        UART_putchar(com, '0'+(num/10));
+        num%=10;
+    }
+
+    UART_putchar(com,'0'+num);
+
+}
+
 
 UART_gotoxy(uint8_t com, uint8_t x, uint8_t y){
 
     UART_puts(com,"\x1B["); //inicio de la secuencia de esapce
-    UART_puts(com,y+1);
-    UART_puts(com, ";");
-    UART_puts(com,x+1);
-    UART_puts(com,"f");
+
+    UART_putnum(com,y+1); //convertir a caracter
+    UART_putchar(com,';');
+    UART_putnum(com,x+1);
+    UART_putchar(com,'H'); //final de la secuencia
+
 }
-*/
+
+
+
+
+
+
+
+
+
 UART_setColor(uint8_t com, uint8_t color){
 
 
     UART_puts(com,"\x1B["); //incio del comando espace
-
-    UART_putchar(com,"m"); //final del comando
-
+    UART_putchar(com, '0'+(color/10));
+    UART_putchar(com,'0'+(color%10));
+    UART_putchar(com,'m'); //final del comando
  }
 
 
+
+
+
 // Utils
-/*void itoa(uint16_t number, char* str, uint8_t base);
-uint16_t atoi(char *str);*/
+void itoa(uint16_t number, char* str, uint8_t base){
+
+
+	//primero debo saber sobre que base se va a operar 
+	//convierte Función que convierte una numero de 16 bits a su 
+	//representación ASCII en la base
+    //especificada
+
+	uint8_
+
+
+}
+
+/*uint16_t atoi(char *str);*/
