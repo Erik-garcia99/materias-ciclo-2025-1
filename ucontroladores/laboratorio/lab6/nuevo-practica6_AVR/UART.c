@@ -400,8 +400,11 @@ void itoa(uint16_t number, char* str, uint8_t base){
     char HEX[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
 	char codigo;
 
-
+    uint8_t caracter=48; //le ponemos 0 solo para que entre al bucle despues de esto debe de cambiar
     //entonces sonostro vamos a tener un valro decimal, no un caracter ascii
+
+    uint8_t idx =0;
+
 
     //lo cinvertimos a decimla y es lo que recibimos y tenemos que converitr en su valor HEX, octal o binaria pero en ASCII
 
@@ -424,27 +427,29 @@ void itoa(uint16_t number, char* str, uint8_t base){
 
         //residuo
         //para converitr el decimal en HEX lo divido por 16 y el resto es lo que me dara que caracter es
-        
-		
-		/*uint8_t caracter=48; //le ponemos 0 solo para que entre al bucle despues de esto debe de cambiar
+
+
+
         while(caracter>0){
             caracter = number%16; //sacamos el primer valor LSB de 16 bits
+            codigo = HEX[caracter-1];
+            str[idx] = codigo;
+            idx++;
 
-            UART_putchar(0, HEX[caracter-1]);
-        }*/
-		
-		
-		//algo asi, pero el primer dato que saque ese va hasta el ultimo mi pa 
-		//entonces debo de hacer otra pila paa mandar los caacteres.		
+        }
 
-		uint8_t caracter = number % 16;
+
+		//algo asi, pero el primer dato que saque ese va hasta el ultimo mi pa
+		//entonces debo de hacer otra pila paa mandar los caacteres.
+
+		/*uint8_t caracter = number % 16;
 		caracter-=2;
 		codigo = HEX[caracter];
 
-		uint8_t idx =0;  
+		uint8_t idx =0;
 
 		str[idx]= codigo;
-
+*/
 
 
 	}
