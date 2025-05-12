@@ -511,13 +511,10 @@ void itoa(uint16_t number, char* str, uint8_t base){
     //char HEX[]={"0123456789ABCDEF"};
 
     char HEX[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
-\0\
     char *aux = str; // trabajamos con un apuntador aux
 
-    char _HEX_STACK_[5]; //segun este es ara un valor de 16 bits, el ultimo deberia de ser un caracter nulo ,
-    //empieza a almacenar desde 0 y sigue al final cunado se agregan todo le agegamos el '\0'
 
-
+    uint8_t idx=0;
 
 
 
