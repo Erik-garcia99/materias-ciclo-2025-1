@@ -397,13 +397,13 @@ void itoa(uint16_t number, char* str, uint8_t base){
 	//recibe un caracter con terminacion '\0'
 
     //arreglo con los caractrers de HEX
-    char HEX[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
-	char codigo;
 
-    uint8_t caracter=48; //le ponemos 0 solo para que entre al bucle despues de esto debe de cambiar
+	//char codigo;
+
+    //uint8_t caracter=48; //le ponemos 0 solo para que entre al bucle despues de esto debe de cambiar
     //entonces sonostro vamos a tener un valro decimal, no un caracter ascii
 
-    uint8_t idx =0;
+
 
 
     //lo cinvertimos a decimla y es lo que recibimos y tenemos que converitr en su valor HEX, octal o binaria pero en ASCII
@@ -412,7 +412,26 @@ void itoa(uint16_t number, char* str, uint8_t base){
 
     //nota importar reducir dividir entre 16 porque nomas se saca el modulo y sigue el mismo valor
 
-    uint8_t acumulador[];
+    //********************************************************************
+    // variables
+    char HEX[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+
+    uint8_t temp=number;
+    uint8_t item_HEX=0;
+
+
+    //necsito una pila porque el primer dato que sale sera le ultimo
+
+
+
+
+
+    //********************************************************************
+
+
+
+
+
 	if(base == 2){
         //binario
         HEX[1];
@@ -427,35 +446,47 @@ void itoa(uint16_t number, char* str, uint8_t base){
 	}*/
 
 	else if(base == 16){
-        //hexadecimal
-
-        //residuo
-        //para converitr el decimal en HEX lo divido por 16 y el resto es lo que me dara que caracter es
 
 
+        while(temp > 0){
 
-        while(caracter>0){
-            caracter = number%16; //sacamos el primer valor LSB de 16 bits
-            codigo = HEX[caracter-1];
-            str[idx] = codigo;
-            idx++;
+            temp/16;
+            item_HEX++;
 
         }
 
+        temp=number; //volvemos a cagar a temp del valor que nos manda itoa
 
-		//algo asi, pero el primer dato que saque ese va hasta el ultimo mi pa
-		//entonces debo de hacer otra pila paa mandar los caacteres.
-
-		/*uint8_t caracter = number % 16;
-		caracter-=2;
-		codigo = HEX[caracter];
-
-		uint8_t idx =0;
-
-		str[idx]= codigo;
-*/
+        char _HEX_ASCII[item_HEX];
 
 
+        uint8_t _stack_point_=item_HEX-1;
+
+        uint8_t residuo= temp;
+
+        //empieza el algoritmo que dica cuales seran ls numerso HEX en ascii del numeor que se manda
+
+        while(temp>0){
+
+            residuo = temp%16;
+
+            _HEX_ASCII[_stack_point_]= residuo;
+            _stack_point_--;
+            temp/=16;
+        }
+
+        //ahora sacamos los valores de la tabal y los ponemos
+        //en su posicion en el puntador
+
+        uint8_t i=0;
+        uint8_t j=0;
+
+        while(j<item_HEX){
+            str[i] = HEX[_HEX_ASCII[j]];
+            i++;
+            j++;
+        }
+        str[i]='\0'; //el ultimo lo remplazamos con el cracter nulo
 	}
 
 }
