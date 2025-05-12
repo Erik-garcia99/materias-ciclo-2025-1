@@ -301,7 +301,7 @@ void UART_gets(uint8_t com, char *str){
 		if(i<127){
 
 			str[i++]= c;
-			putchar(com, c);
+			//UART_putchar(com, c);
 		}
 
 	}
@@ -384,6 +384,8 @@ UART_setColor(uint8_t com, uint8_t color){
 
 
 // Utils
+
+/*
 void itoa(uint16_t number, char* str, uint8_t base){
 
 
@@ -419,6 +421,9 @@ void itoa(uint16_t number, char* str, uint8_t base){
     uint8_t temp=number;
     uint8_t item_HEX=0;
 
+    char *aux=str;
+
+
 
     //necsito una pila porque el primer dato que sale sera le ultimo
 
@@ -430,6 +435,13 @@ void itoa(uint16_t number, char* str, uint8_t base){
 
 
 
+    //en caso que el numero sea 0
+    uint8_t index= 0;
+    if(number == 0){
+        aux[index++] ='0';
+        aux[index] = '\0';
+    }
+
 
 
 	if(base == 2){
@@ -439,11 +451,11 @@ void itoa(uint16_t number, char* str, uint8_t base){
 	}
 
 
-	/*else if(number == 8){
+	else if(number == 8){
         //octal
 
 
-	}*/
+	}
 
 	else if(base == 16){
 
@@ -482,16 +494,21 @@ void itoa(uint16_t number, char* str, uint8_t base){
         uint8_t j=0;
 
         while(j<item_HEX){
-            str[i] = HEX[_HEX_ASCII[j]];
+            aux[i] = HEX[_HEX_ASCII[j]];
             i++;
             j++;
         }
-        str[i]='\0'; //el ultimo lo remplazamos con el cracter nulo
+        aux[i]='\0'; //el ultimo lo remplazamos con el cracter nulo
 	}
 
 }
 
+*/
+
+
 uint16_t atoi(char *str){
+
+    char *aux= str;
 
     //primero debemos hacer este que devolvera un numero decimal de 16 bits
 
@@ -511,10 +528,10 @@ uint16_t atoi(char *str){
 
     uint8_t cantidad=0;
 
-    while(*str!='\0'){
+    while(*aux!='\0'){
 
         cantidad++;
-        *str++;
+        *aux++;
     }
 
     uint8_t items[cantidad]; //arreglo reservado
@@ -527,16 +544,18 @@ uint16_t atoi(char *str){
     uint8_t idx= cantidad-1; //me indica en que pisicion del arreglo va
 
     //aseguramos doble
-    while(*str !='\0' && idx >=0){
+    while(*aux !='\0' && idx >=0){
 
-        num= *str - 48;
+        num= *aux - 48;
 
         items[idx]= num; // en la posicion idx ya items
         //exp*=10;
         //ya se agrego recoremos nustro arreglo
         idx--;
-        *str++;
+        *aux++;
     }
+
+    aux=str;
 
     //[3,2,5] -> ejemplo
 
