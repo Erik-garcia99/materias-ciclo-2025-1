@@ -3,27 +3,27 @@ practica6.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000038  00800200  00000722  00000796  2**0
+  0 .data         00000048  00800200  00000842  000008b6  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         00000722  00000000  00000000  00000074  2**1
+  1 .text         00000842  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .debug_aranges 00000040  00000000  00000000  000007ce  2**0
+  2 .debug_aranges 00000040  00000000  00000000  000008fe  2**0
                   CONTENTS, READONLY, DEBUGGING
-  3 .debug_pubnames 000000ef  00000000  00000000  0000080e  2**0
+  3 .debug_pubnames 000000ef  00000000  00000000  0000093e  2**0
                   CONTENTS, READONLY, DEBUGGING
-  4 .debug_info   000009e6  00000000  00000000  000008fd  2**0
+  4 .debug_info   000009f6  00000000  00000000  00000a2d  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_abbrev 00000345  00000000  00000000  000012e3  2**0
+  5 .debug_abbrev 00000341  00000000  00000000  00001423  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_line   00000688  00000000  00000000  00001628  2**0
+  6 .debug_line   000006cb  00000000  00000000  00001764  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_frame  000000f0  00000000  00000000  00001cb0  2**2
+  7 .debug_frame  000000f0  00000000  00000000  00001e30  2**2
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_str    00000255  00000000  00000000  00001da0  2**0
+  8 .debug_str    00000248  00000000  00000000  00001f20  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_loc    000005d7  00000000  00000000  00001ff5  2**0
+  9 .debug_loc    0000068d  00000000  00000000  00002168  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_ranges 000001b0  00000000  00000000  000025cc  2**0
+ 10 .debug_ranges 000001b0  00000000  00000000  000027f5  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -101,18 +101,18 @@ Disassembly of section .text:
   f4:	12 e0       	ldi	r17, 0x02	; 2
   f6:	a0 e0       	ldi	r26, 0x00	; 0
   f8:	b2 e0       	ldi	r27, 0x02	; 2
-  fa:	e2 e2       	ldi	r30, 0x22	; 34
-  fc:	f7 e0       	ldi	r31, 0x07	; 7
+  fa:	e2 e4       	ldi	r30, 0x42	; 66
+  fc:	f8 e0       	ldi	r31, 0x08	; 8
   fe:	00 e0       	ldi	r16, 0x00	; 0
  100:	0b bf       	out	0x3b, r16	; 59
  102:	02 c0       	rjmp	.+4      	; 0x108 <__do_copy_data+0x14>
  104:	07 90       	elpm	r0, Z+
  106:	0d 92       	st	X+, r0
- 108:	a8 33       	cpi	r26, 0x38	; 56
+ 108:	a8 34       	cpi	r26, 0x48	; 72
  10a:	b1 07       	cpc	r27, r17
  10c:	d9 f7       	brne	.-10     	; 0x104 <__do_copy_data+0x10>
  10e:	0e 94 8d 00 	call	0x11a	; 0x11a <main>
- 112:	0c 94 8f 03 	jmp	0x71e	; 0x71e <_exit>
+ 112:	0c 94 1f 04 	jmp	0x83e	; 0x83e <_exit>
 
 00000116 <__bad_interrupt>:
  116:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -263,7 +263,7 @@ int main( void )
         itoa(num,cad,16);
  1f6:	b8 01       	movw	r22, r16
  1f8:	40 e1       	ldi	r20, 0x10	; 16
- 1fa:	0e 94 3d 03 	call	0x67a	; 0x67a <itoa>
+ 1fa:	0e 94 39 03 	call	0x672	; 0x672 <itoa>
 
         UART_gotoxy(0,5,4);
  1fe:	80 e0       	ldi	r24, 0x00	; 0
@@ -420,7 +420,7 @@ UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t s
  2de:	90 e0       	ldi	r25, 0x00	; 0
  2e0:	a6 01       	movw	r20, r12
  2e2:	95 01       	movw	r18, r10
- 2e4:	0e 94 6d 03 	call	0x6da	; 0x6da <__udivmodsi4>
+ 2e4:	0e 94 fd 03 	call	0x7fa	; 0x7fa <__udivmodsi4>
  2e8:	21 50       	subi	r18, 0x01	; 1
  2ea:	30 40       	sbci	r19, 0x00	; 0
     myUART->UBRR = v_UBRR;
@@ -892,7 +892,7 @@ void UART_putnum(uint8_t com, uint8_t num){
         UART_putchar(com, '0'+(num/100));
  47a:	82 2f       	mov	r24, r18
  47c:	64 e6       	ldi	r22, 0x64	; 100
- 47e:	0e 94 61 03 	call	0x6c2	; 0x6c2 <__udivmodqi4>
+ 47e:	0e 94 dd 03 	call	0x7ba	; 0x7ba <__udivmodqi4>
  482:	80 5d       	subi	r24, 0xD0	; 208
 
     //va a esperar hasta que se vacie por completo
@@ -908,7 +908,7 @@ void UART_putnum(uint8_t com, uint8_t num){
         UART_putchar(com, '0'+(num/100));
         num%=100;
  486:	82 2f       	mov	r24, r18
- 488:	0e 94 61 03 	call	0x6c2	; 0x6c2 <__udivmodqi4>
+ 488:	0e 94 dd 03 	call	0x7ba	; 0x7ba <__udivmodqi4>
  48c:	29 2f       	mov	r18, r25
     }
     if(num>=10){
@@ -946,7 +946,7 @@ void UART_putnum(uint8_t com, uint8_t num){
         UART_putchar(com, '0'+(num/10));
  4aa:	82 2f       	mov	r24, r18
  4ac:	6a e0       	ldi	r22, 0x0A	; 10
- 4ae:	0e 94 61 03 	call	0x6c2	; 0x6c2 <__udivmodqi4>
+ 4ae:	0e 94 dd 03 	call	0x7ba	; 0x7ba <__udivmodqi4>
  4b2:	80 5d       	subi	r24, 0xD0	; 208
 
     //va a esperar hasta que se vacie por completo
@@ -962,7 +962,7 @@ void UART_putnum(uint8_t com, uint8_t num){
         UART_putchar(com, '0'+(num/10));
         num%=10;
  4b6:	82 2f       	mov	r24, r18
- 4b8:	0e 94 61 03 	call	0x6c2	; 0x6c2 <__udivmodqi4>
+ 4b8:	0e 94 dd 03 	call	0x7ba	; 0x7ba <__udivmodqi4>
  4bc:	29 2f       	mov	r18, r25
 	//que el registro esta vacio,
 
@@ -1162,7 +1162,7 @@ UART_setColor(uint8_t com, uint8_t color){
     UART_putchar(com, '0'+(color/10));
  572:	80 2f       	mov	r24, r16
  574:	6a e0       	ldi	r22, 0x0A	; 10
- 576:	0e 94 61 03 	call	0x6c2	; 0x6c2 <__udivmodqi4>
+ 576:	0e 94 dd 03 	call	0x7ba	; 0x7ba <__udivmodqi4>
  57a:	80 5d       	subi	r24, 0xD0	; 208
 
     //va a esperar hasta que se vacie por completo
@@ -1202,7 +1202,7 @@ UART_setColor(uint8_t com, uint8_t color){
     UART_putchar(com,'0'+(color%10));
  594:	80 2f       	mov	r24, r16
  596:	6a e0       	ldi	r22, 0x0A	; 10
- 598:	0e 94 61 03 	call	0x6c2	; 0x6c2 <__udivmodqi4>
+ 598:	0e 94 dd 03 	call	0x7ba	; 0x7ba <__udivmodqi4>
  59c:	90 5d       	subi	r25, 0xD0	; 208
 
     //va a esperar hasta que se vacie por completo
@@ -1248,324 +1248,511 @@ UART_setColor(uint8_t com, uint8_t color){
  5ba:	08 95       	ret
 
 000005bc <atoi>:
-        aux[i]='\0'; //el ultimo lo remplazamos con el cracter nulo
-	}
 
-}
+
+
+
 
 uint16_t atoi(char *str){
- 5bc:	cf 92       	push	r12
- 5be:	df 92       	push	r13
- 5c0:	ef 92       	push	r14
- 5c2:	ff 92       	push	r15
- 5c4:	1f 93       	push	r17
- 5c6:	df 93       	push	r29
- 5c8:	cf 93       	push	r28
- 5ca:	cd b7       	in	r28, 0x3d	; 61
- 5cc:	de b7       	in	r29, 0x3e	; 62
- 5ce:	58 2f       	mov	r21, r24
-        acum += actual;
+ 5bc:	ef 92       	push	r14
+ 5be:	ff 92       	push	r15
+ 5c0:	0f 93       	push	r16
+ 5c2:	1f 93       	push	r17
+ 5c4:	df 93       	push	r29
+ 5c6:	cf 93       	push	r28
+ 5c8:	cd b7       	in	r28, 0x3d	; 61
+ 5ca:	de b7       	in	r29, 0x3e	; 62
+ 5cc:	58 2f       	mov	r21, r24
+ 5ce:	79 2f       	mov	r23, r25
+        exp*=10;
 
     }
 
     return acum; //retornarme el acumulador
 }
- 5d0:	cd b6       	in	r12, 0x3d	; 61
- 5d2:	de b6       	in	r13, 0x3e	; 62
-        aux[i]='\0'; //el ultimo lo remplazamos con el cracter nulo
-	}
+ 5d0:	ed b6       	in	r14, 0x3d	; 61
+ 5d2:	fe b6       	in	r15, 0x3e	; 62
 
-}
+
+
+
 
 uint16_t atoi(char *str){
- 5d4:	28 2f       	mov	r18, r24
- 5d6:	39 2f       	mov	r19, r25
- 5d8:	d9 01       	movw	r26, r18
- 5da:	01 c0       	rjmp	.+2      	; 0x5de <atoi+0x22>
+ 5d4:	9c 01       	movw	r18, r24
+ 5d6:	f9 01       	movw	r30, r18
+ 5d8:	01 c0       	rjmp	.+2      	; 0x5dc <atoi+0x20>
     uint8_t cantidad=0;
 
     while(*aux!='\0'){
 
         cantidad++;
         *aux++;
- 5dc:	11 96       	adiw	r26, 0x01	; 1
- 5de:	1a 2f       	mov	r17, r26
- 5e0:	15 1b       	sub	r17, r21
+ 5da:	31 96       	adiw	r30, 0x01	; 1
+ 5dc:	6e 2f       	mov	r22, r30
+ 5de:	65 1b       	sub	r22, r21
 
 
 
     uint8_t cantidad=0;
 
     while(*aux!='\0'){
- 5e2:	8c 91       	ld	r24, X
- 5e4:	88 23       	and	r24, r24
- 5e6:	d1 f7       	brne	.-12     	; 0x5dc <atoi+0x20>
-
-        cantidad++;
+ 5e0:	80 81       	ld	r24, Z
+ 5e2:	88 23       	and	r24, r24
+ 5e4:	d1 f7       	brne	.-12     	; 0x5da <atoi+0x1e>
         *aux++;
     }
 
+    aux=str;
+
     uint8_t items[cantidad]; //arreglo reservado
- 5e8:	8d b7       	in	r24, 0x3d	; 61
- 5ea:	9e b7       	in	r25, 0x3e	; 62
- 5ec:	81 1b       	sub	r24, r17
- 5ee:	91 09       	sbc	r25, r1
- 5f0:	0f b6       	in	r0, 0x3f	; 63
- 5f2:	f8 94       	cli
- 5f4:	9e bf       	out	0x3e, r25	; 62
- 5f6:	0f be       	out	0x3f, r0	; 63
- 5f8:	8d bf       	out	0x3d, r24	; 61
- 5fa:	ed b6       	in	r14, 0x3d	; 61
- 5fc:	fe b6       	in	r15, 0x3e	; 62
- 5fe:	08 94       	sec
- 600:	e1 1c       	adc	r14, r1
- 602:	f1 1c       	adc	r15, r1
+ 5e6:	8d b7       	in	r24, 0x3d	; 61
+ 5e8:	9e b7       	in	r25, 0x3e	; 62
+ 5ea:	86 1b       	sub	r24, r22
+ 5ec:	91 09       	sbc	r25, r1
+ 5ee:	0f b6       	in	r0, 0x3f	; 63
+ 5f0:	f8 94       	cli
+ 5f2:	9e bf       	out	0x3e, r25	; 62
+ 5f4:	0f be       	out	0x3f, r0	; 63
+ 5f6:	8d bf       	out	0x3d, r24	; 61
+ 5f8:	0d b7       	in	r16, 0x3d	; 61
+ 5fa:	1e b7       	in	r17, 0x3e	; 62
+ 5fc:	0f 5f       	subi	r16, 0xFF	; 255
+ 5fe:	1f 4f       	sbci	r17, 0xFF	; 255
     //recorrera cad caraacter a mi parecer desde el inicio hasta el final por lo que debemos de hacer
     //como una pila ingresar desde la ultima ubicacion,
 
     uint8_t num; // guardada el numero actual y este al ser multiplicado por el exponente sera agregado al la pia
 
     uint8_t idx= cantidad-1; //me indica en que pisicion del arreglo va
- 604:	91 2f       	mov	r25, r17
- 606:	91 50       	subi	r25, 0x01	; 1
- 608:	07 c0       	rjmp	.+14     	; 0x618 <atoi+0x5c>
+ 600:	46 2f       	mov	r20, r22
+ 602:	41 50       	subi	r20, 0x01	; 1
+ 604:	85 2f       	mov	r24, r21
+ 606:	97 2f       	mov	r25, r23
+ 608:	9c 01       	movw	r18, r24
+ 60a:	d9 01       	movw	r26, r18
+ 60c:	07 c0       	rjmp	.+14     	; 0x61c <atoi+0x60>
     //aseguramos doble
     while(*aux !='\0' && idx >=0){
 
-        num= *aux - 48;
+        //num= *aux - 48;
 
-        items[idx]= num; // en la posicion idx ya items
- 60a:	f7 01       	movw	r30, r14
- 60c:	e9 0f       	add	r30, r25
- 60e:	f1 1d       	adc	r31, r1
- 610:	80 53       	subi	r24, 0x30	; 48
- 612:	80 83       	st	Z, r24
+        items[idx]= *aux - '0'; // en la posicion idx ya items
+ 60e:	f8 01       	movw	r30, r16
+ 610:	e4 0f       	add	r30, r20
+ 612:	f1 1d       	adc	r31, r1
+ 614:	80 53       	subi	r24, 0x30	; 48
+ 616:	80 83       	st	Z, r24
         //exp*=10;
         //ya se agrego recoremos nustro arreglo
         idx--;
- 614:	91 50       	subi	r25, 0x01	; 1
+ 618:	41 50       	subi	r20, 0x01	; 1
         *aux++;
- 616:	11 96       	adiw	r26, 0x01	; 1
+ 61a:	11 96       	adiw	r26, 0x01	; 1
     uint8_t num; // guardada el numero actual y este al ser multiplicado por el exponente sera agregado al la pia
 
     uint8_t idx= cantidad-1; //me indica en que pisicion del arreglo va
 
     //aseguramos doble
     while(*aux !='\0' && idx >=0){
- 618:	8c 91       	ld	r24, X
- 61a:	88 23       	and	r24, r24
- 61c:	b1 f7       	brne	.-20     	; 0x60a <atoi+0x4e>
- 61e:	41 e0       	ldi	r20, 0x01	; 1
- 620:	50 e0       	ldi	r21, 0x00	; 0
- 622:	70 e0       	ldi	r23, 0x00	; 0
- 624:	60 e0       	ldi	r22, 0x00	; 0
- 626:	18 c0       	rjmp	.+48     	; 0x658 <atoi+0x9c>
-    for(uint8_t i=0; i< cantidad; i++){
-        //vamos a recorrer la pila y calcular ese exponente
-
-        actual = items[i];
-
-        actual*=exp;
- 628:	f7 01       	movw	r30, r14
- 62a:	e6 0f       	add	r30, r22
- 62c:	f1 1d       	adc	r31, r1
- 62e:	80 81       	ld	r24, Z
- 630:	90 e0       	ldi	r25, 0x00	; 0
- 632:	84 9f       	mul	r24, r20
- 634:	90 01       	movw	r18, r0
- 636:	85 9f       	mul	r24, r21
- 638:	30 0d       	add	r19, r0
- 63a:	94 9f       	mul	r25, r20
- 63c:	30 0d       	add	r19, r0
- 63e:	11 24       	eor	r1, r1
-
+ 61c:	8c 91       	ld	r24, X
+ 61e:	88 23       	and	r24, r24
+ 620:	b1 f7       	brne	.-20     	; 0x60e <atoi+0x52>
+ 622:	21 e0       	ldi	r18, 0x01	; 1
+ 624:	30 e0       	ldi	r19, 0x00	; 0
+ 626:	50 e0       	ldi	r21, 0x00	; 0
+ 628:	40 e0       	ldi	r20, 0x00	; 0
+ 62a:	13 c0       	rjmp	.+38     	; 0x652 <atoi+0x96>
         exp*=10; //lo elevamos a la 10 en cada iteracion, pero este tendra un limite claro, cunado ya no cabe en 16 bits
- 640:	ca 01       	movw	r24, r20
- 642:	88 0f       	add	r24, r24
- 644:	99 1f       	adc	r25, r25
- 646:	33 e0       	ldi	r19, 0x03	; 3
- 648:	44 0f       	add	r20, r20
- 64a:	55 1f       	adc	r21, r21
- 64c:	3a 95       	dec	r19
- 64e:	e1 f7       	brne	.-8      	; 0x648 <atoi+0x8c>
- 650:	48 0f       	add	r20, r24
- 652:	59 1f       	adc	r21, r25
         //con al esperanza de que no sean numereos mas grandes de 4 digitos
 
-        acum += actual;
- 654:	72 0f       	add	r23, r18
+        acum += actual;*/
+
+        acum += items[i] *exp;
+ 62c:	f8 01       	movw	r30, r16
+ 62e:	e4 0f       	add	r30, r20
+ 630:	f1 1d       	adc	r31, r1
+ 632:	80 81       	ld	r24, Z
+ 634:	82 9f       	mul	r24, r18
+ 636:	80 2d       	mov	r24, r0
+ 638:	11 24       	eor	r1, r1
+ 63a:	58 0f       	add	r21, r24
+        exp*=10;
+ 63c:	c9 01       	movw	r24, r18
+ 63e:	88 0f       	add	r24, r24
+ 640:	99 1f       	adc	r25, r25
+ 642:	73 e0       	ldi	r23, 0x03	; 3
+ 644:	22 0f       	add	r18, r18
+ 646:	33 1f       	adc	r19, r19
+ 648:	7a 95       	dec	r23
+ 64a:	e1 f7       	brne	.-8      	; 0x644 <atoi+0x88>
+ 64c:	28 0f       	add	r18, r24
+ 64e:	39 1f       	adc	r19, r25
 
 
     uint16_t exp=1; //el esponente es para poder sumar al final y este represente decimales, decenas, centenas, millaes, etc.
     uint8_t acum = 0;
-    uint8_t actual;
+    //uint8_t actual;
     for(uint8_t i=0; i< cantidad; i++){
- 656:	6f 5f       	subi	r22, 0xFF	; 255
- 658:	61 17       	cp	r22, r17
- 65a:	30 f3       	brcs	.-52     	; 0x628 <atoi+0x6c>
-        acum += actual;
+ 650:	4f 5f       	subi	r20, 0xFF	; 255
+ 652:	46 17       	cp	r20, r22
+ 654:	58 f3       	brcs	.-42     	; 0x62c <atoi+0x70>
+        exp*=10;
 
     }
 
     return acum; //retornarme el acumulador
 }
- 65c:	87 2f       	mov	r24, r23
- 65e:	90 e0       	ldi	r25, 0x00	; 0
- 660:	0f b6       	in	r0, 0x3f	; 63
- 662:	f8 94       	cli
- 664:	de be       	out	0x3e, r13	; 62
- 666:	0f be       	out	0x3f, r0	; 63
- 668:	cd be       	out	0x3d, r12	; 61
- 66a:	cf 91       	pop	r28
- 66c:	df 91       	pop	r29
- 66e:	1f 91       	pop	r17
- 670:	ff 90       	pop	r15
- 672:	ef 90       	pop	r14
- 674:	df 90       	pop	r13
- 676:	cf 90       	pop	r12
- 678:	08 95       	ret
+ 656:	85 2f       	mov	r24, r21
+ 658:	90 e0       	ldi	r25, 0x00	; 0
+ 65a:	0f b6       	in	r0, 0x3f	; 63
+ 65c:	f8 94       	cli
+ 65e:	fe be       	out	0x3e, r15	; 62
+ 660:	0f be       	out	0x3f, r0	; 63
+ 662:	ed be       	out	0x3d, r14	; 61
+ 664:	cf 91       	pop	r28
+ 666:	df 91       	pop	r29
+ 668:	1f 91       	pop	r17
+ 66a:	0f 91       	pop	r16
+ 66c:	ff 90       	pop	r15
+ 66e:	ef 90       	pop	r14
+ 670:	08 95       	ret
 
-0000067a <itoa>:
+00000672 <itoa>:
+}
+*/
 
+//vamos a probar solo con HEX
 
-
-
-// Utils
 void itoa(uint16_t number, char* str, uint8_t base){
- 67a:	df 93       	push	r29
- 67c:	cf 93       	push	r28
- 67e:	cd b7       	in	r28, 0x3d	; 61
- 680:	de b7       	in	r29, 0x3e	; 62
- 682:	9c 01       	movw	r18, r24
- 684:	fb 01       	movw	r30, r22
-            j++;
-        }
-        aux[i]='\0'; //el ultimo lo remplazamos con el cracter nulo
-	}
+ 672:	5f 92       	push	r5
+ 674:	6f 92       	push	r6
+ 676:	7f 92       	push	r7
+ 678:	8f 92       	push	r8
+ 67a:	9f 92       	push	r9
+ 67c:	af 92       	push	r10
+ 67e:	bf 92       	push	r11
+ 680:	cf 92       	push	r12
+ 682:	df 92       	push	r13
+ 684:	ef 92       	push	r14
+ 686:	ff 92       	push	r15
+ 688:	0f 93       	push	r16
+ 68a:	1f 93       	push	r17
+ 68c:	df 93       	push	r29
+ 68e:	cf 93       	push	r28
+ 690:	cd b7       	in	r28, 0x3d	; 61
+ 692:	de b7       	in	r29, 0x3e	; 62
+ 694:	60 97       	sbiw	r28, 0x10	; 16
+ 696:	0f b6       	in	r0, 0x3f	; 63
+ 698:	f8 94       	cli
+ 69a:	de bf       	out	0x3e, r29	; 62
+ 69c:	0f be       	out	0x3f, r0	; 63
+ 69e:	cd bf       	out	0x3d, r28	; 61
+ 6a0:	7c 01       	movw	r14, r24
+ 6a2:	6b 01       	movw	r12, r22
+ 6a4:	94 2e       	mov	r9, r20
+        j++;
+    }
+
+    aux[i]='`\0';*/
 
 }
- 686:	6d b7       	in	r22, 0x3d	; 61
- 688:	7e b7       	in	r23, 0x3e	; 62
+ 6a6:	6d b6       	in	r6, 0x3d	; 61
+ 6a8:	7e b6       	in	r7, 0x3e	; 62
+}
+*/
+
+//vamos a probar solo con HEX
+
+void itoa(uint16_t number, char* str, uint8_t base){
+ 6aa:	8d b6       	in	r8, 0x3d	; 61
+ 6ac:	5e b6       	in	r5, 0x3e	; 62
+
+    //vamos a probar de la otra forma
+
+    //char HEX[]={"0123456789ABCDEF"};
+
+    char HEX[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+ 6ae:	de 01       	movw	r26, r28
+ 6b0:	11 96       	adiw	r26, 0x01	; 1
+ 6b2:	e7 e3       	ldi	r30, 0x37	; 55
+ 6b4:	f2 e0       	ldi	r31, 0x02	; 2
+ 6b6:	80 e1       	ldi	r24, 0x10	; 16
+ 6b8:	01 90       	ld	r0, Z+
+ 6ba:	0d 92       	st	X+, r0
+ 6bc:	81 50       	subi	r24, 0x01	; 1
+ 6be:	e1 f7       	brne	.-8      	; 0x6b8 <itoa+0x46>
 
 
 
-    //en caso que el numero sea 0
-    uint8_t index= 0;
-    if(number == 0){
- 68a:	00 97       	sbiw	r24, 0x00	; 0
- 68c:	19 f4       	brne	.+6      	; 0x694 <itoa+0x1a>
-        aux[index++] ='0';
- 68e:	80 e3       	ldi	r24, 0x30	; 48
- 690:	80 83       	st	Z, r24
-        aux[index] = '\0';
- 692:	11 82       	std	Z+1, r1	; 0x01
+    //caso especal cunado el numero es 0
+
+    if(number ==0){
+ 6c0:	e1 14       	cp	r14, r1
+ 6c2:	f1 04       	cpc	r15, r1
+ 6c4:	69 f4       	brne	.+26     	; 0x6e0 <itoa+0x6e>
+        aux[0]='0';
+ 6c6:	80 e3       	ldi	r24, 0x30	; 48
+ 6c8:	f6 01       	movw	r30, r12
+ 6ca:	80 83       	st	Z, r24
+        aux[1]= '\0';
+ 6cc:	11 82       	std	Z+1, r1	; 0x01
+ 6ce:	28 2d       	mov	r18, r8
+ 6d0:	35 2d       	mov	r19, r5
+ 6d2:	c9 01       	movw	r24, r18
+ 6d4:	0f b6       	in	r0, 0x3f	; 63
+ 6d6:	f8 94       	cli
+ 6d8:	9e bf       	out	0x3e, r25	; 62
+ 6da:	0f be       	out	0x3f, r0	; 63
+ 6dc:	8d bf       	out	0x3d, r24	; 61
+ 6de:	52 c0       	rjmp	.+164    	; 0x784 <itoa+0x112>
+        return ;
+ 6e0:	c7 01       	movw	r24, r14
+ 6e2:	40 e0       	ldi	r20, 0x00	; 0
+    //quiero que sea del tamanio exacto
+    uint8_t _len_hex_=0;
+    uint16_t temp= number;
+    while(temp>0){
+
+        temp/=base;
+ 6e4:	69 2d       	mov	r22, r9
+ 6e6:	70 e0       	ldi	r23, 0x00	; 0
+ 6e8:	0e 94 e9 03 	call	0x7d2	; 0x7d2 <__udivmodhi4>
+ 6ec:	cb 01       	movw	r24, r22
+        _len_hex_++;
+ 6ee:	4f 5f       	subi	r20, 0xFF	; 255
+
+
+    //quiero que sea del tamanio exacto
+    uint8_t _len_hex_=0;
+    uint16_t temp= number;
+    while(temp>0){
+ 6f0:	61 15       	cp	r22, r1
+ 6f2:	71 05       	cpc	r23, r1
+ 6f4:	b9 f7       	brne	.-18     	; 0x6e4 <itoa+0x72>
     }
 
 
 
-	if(base == 2){
- 694:	42 30       	cpi	r20, 0x02	; 2
- 696:	69 f0       	breq	.+26     	; 0x6b2 <itoa+0x38>
-        //octal
+    //almacenar residuos en orden inverso
+    char _Idx_Hex_[_len_hex_];
+ 6f6:	04 2f       	mov	r16, r20
+ 6f8:	10 e0       	ldi	r17, 0x00	; 0
+ 6fa:	8d b7       	in	r24, 0x3d	; 61
+ 6fc:	9e b7       	in	r25, 0x3e	; 62
+ 6fe:	80 1b       	sub	r24, r16
+ 700:	91 0b       	sbc	r25, r17
+ 702:	0f b6       	in	r0, 0x3f	; 63
+ 704:	f8 94       	cli
+ 706:	9e bf       	out	0x3e, r25	; 62
+ 708:	0f be       	out	0x3f, r0	; 63
+ 70a:	8d bf       	out	0x3d, r24	; 61
+ 70c:	ad b6       	in	r10, 0x3d	; 61
+ 70e:	be b6       	in	r11, 0x3e	; 62
+ 710:	08 94       	sec
+ 712:	a1 1c       	adc	r10, r1
+ 714:	b1 1c       	adc	r11, r1
+ 716:	41 50       	subi	r20, 0x01	; 1
+ 718:	e4 2f       	mov	r30, r20
+ 71a:	ff 27       	eor	r31, r31
+ 71c:	e7 fd       	sbrc	r30, 7
+ 71e:	f0 95       	com	r31
+ 720:	4f 5f       	subi	r20, 0xFF	; 255
+ 722:	ea 0d       	add	r30, r10
+ 724:	fb 1d       	adc	r31, r11
+ 726:	97 01       	movw	r18, r14
+    int8_t _stack_pointer= _len_hex_-1;
 
+    while(temp > 0){
 
-	}*/
+        uint8_t residuo = temp%base;
+        _Idx_Hex_[_stack_pointer]= residuo;
+ 728:	c9 01       	movw	r24, r18
+ 72a:	69 2d       	mov	r22, r9
+ 72c:	70 e0       	ldi	r23, 0x00	; 0
+ 72e:	0e 94 e9 03 	call	0x7d2	; 0x7d2 <__udivmodhi4>
+ 732:	80 83       	st	Z, r24
+        _stack_pointer--;
+        temp/=base;
+ 734:	c9 01       	movw	r24, r18
+ 736:	69 2d       	mov	r22, r9
+ 738:	70 e0       	ldi	r23, 0x00	; 0
+ 73a:	0e 94 e9 03 	call	0x7d2	; 0x7d2 <__udivmodhi4>
+ 73e:	9b 01       	movw	r18, r22
+ 740:	31 97       	sbiw	r30, 0x01	; 1
+    //almacenar residuos en orden inverso
+    char _Idx_Hex_[_len_hex_];
+    temp= number; //recargamos temp
+    int8_t _stack_pointer= _len_hex_-1;
 
-	else if(base == 16){
- 698:	40 31       	cpi	r20, 0x10	; 16
- 69a:	59 f4       	brne	.+22     	; 0x6b2 <itoa+0x38>
+    while(temp > 0){
+ 742:	61 15       	cp	r22, r1
+ 744:	71 05       	cpc	r23, r1
+ 746:	81 f7       	brne	.-32     	; 0x728 <itoa+0xb6>
+ 748:	d6 01       	movw	r26, r12
+ 74a:	90 e0       	ldi	r25, 0x00	; 0
+        temp/=base;
+    }
 
+    //convertir residuo a cracteres
+     for (uint8_t i = 0; i < _len_hex_; i++) {
+        aux[i] = HEX[_Idx_Hex_[i]];
+ 74c:	9e 01       	movw	r18, r28
+ 74e:	2f 5f       	subi	r18, 0xFF	; 255
+ 750:	3f 4f       	sbci	r19, 0xFF	; 255
+ 752:	0a c0       	rjmp	.+20     	; 0x768 <itoa+0xf6>
+ 754:	f5 01       	movw	r30, r10
+ 756:	e9 0f       	add	r30, r25
+ 758:	f1 1d       	adc	r31, r1
+ 75a:	80 81       	ld	r24, Z
+ 75c:	f9 01       	movw	r30, r18
+ 75e:	e8 0f       	add	r30, r24
+ 760:	f1 1d       	adc	r31, r1
+ 762:	80 81       	ld	r24, Z
+ 764:	8d 93       	st	X+, r24
+        _stack_pointer--;
+        temp/=base;
+    }
 
-        while(temp > 0){
- 69c:	21 11       	cpse	r18, r1
- 69e:	ff cf       	rjmp	.-2      	; 0x69e <itoa+0x24>
-        while(j<item_HEX){
-            aux[i] = HEX[_HEX_ASCII[j]];
-            i++;
-            j++;
-        }
-        aux[i]='\0'; //el ultimo lo remplazamos con el cracter nulo
- 6a0:	10 82       	st	Z, r1
- 6a2:	8d b7       	in	r24, 0x3d	; 61
- 6a4:	9e b7       	in	r25, 0x3e	; 62
- 6a6:	9c 01       	movw	r18, r24
- 6a8:	0f b6       	in	r0, 0x3f	; 63
- 6aa:	f8 94       	cli
- 6ac:	3e bf       	out	0x3e, r19	; 62
- 6ae:	0f be       	out	0x3f, r0	; 63
- 6b0:	2d bf       	out	0x3d, r18	; 61
-	}
+    //convertir residuo a cracteres
+     for (uint8_t i = 0; i < _len_hex_; i++) {
+ 766:	9f 5f       	subi	r25, 0xFF	; 255
+ 768:	94 17       	cp	r25, r20
+ 76a:	a0 f3       	brcs	.-24     	; 0x754 <itoa+0xe2>
+        aux[i] = HEX[_Idx_Hex_[i]];
+    }
+    aux[_len_hex_] = '\0'; // Terminador correcto
+ 76c:	0c 0d       	add	r16, r12
+ 76e:	1d 1d       	adc	r17, r13
+ 770:	f8 01       	movw	r30, r16
+ 772:	10 82       	st	Z, r1
+ 774:	88 2d       	mov	r24, r8
+ 776:	95 2d       	mov	r25, r5
+ 778:	9c 01       	movw	r18, r24
+ 77a:	0f b6       	in	r0, 0x3f	; 63
+ 77c:	f8 94       	cli
+ 77e:	3e bf       	out	0x3e, r19	; 62
+ 780:	0f be       	out	0x3f, r0	; 63
+ 782:	2d bf       	out	0x3d, r18	; 61
+        j++;
+    }
+
+    aux[i]='`\0';*/
 
 }
- 6b2:	0f b6       	in	r0, 0x3f	; 63
- 6b4:	f8 94       	cli
- 6b6:	7e bf       	out	0x3e, r23	; 62
- 6b8:	0f be       	out	0x3f, r0	; 63
- 6ba:	6d bf       	out	0x3d, r22	; 61
- 6bc:	cf 91       	pop	r28
- 6be:	df 91       	pop	r29
- 6c0:	08 95       	ret
+ 784:	0f b6       	in	r0, 0x3f	; 63
+ 786:	f8 94       	cli
+ 788:	7e be       	out	0x3e, r7	; 62
+ 78a:	0f be       	out	0x3f, r0	; 63
+ 78c:	6d be       	out	0x3d, r6	; 61
+ 78e:	60 96       	adiw	r28, 0x10	; 16
+ 790:	0f b6       	in	r0, 0x3f	; 63
+ 792:	f8 94       	cli
+ 794:	de bf       	out	0x3e, r29	; 62
+ 796:	0f be       	out	0x3f, r0	; 63
+ 798:	cd bf       	out	0x3d, r28	; 61
+ 79a:	cf 91       	pop	r28
+ 79c:	df 91       	pop	r29
+ 79e:	1f 91       	pop	r17
+ 7a0:	0f 91       	pop	r16
+ 7a2:	ff 90       	pop	r15
+ 7a4:	ef 90       	pop	r14
+ 7a6:	df 90       	pop	r13
+ 7a8:	cf 90       	pop	r12
+ 7aa:	bf 90       	pop	r11
+ 7ac:	af 90       	pop	r10
+ 7ae:	9f 90       	pop	r9
+ 7b0:	8f 90       	pop	r8
+ 7b2:	7f 90       	pop	r7
+ 7b4:	6f 90       	pop	r6
+ 7b6:	5f 90       	pop	r5
+ 7b8:	08 95       	ret
 
-000006c2 <__udivmodqi4>:
- 6c2:	99 1b       	sub	r25, r25
- 6c4:	79 e0       	ldi	r23, 0x09	; 9
- 6c6:	04 c0       	rjmp	.+8      	; 0x6d0 <__udivmodqi4_ep>
+000007ba <__udivmodqi4>:
+ 7ba:	99 1b       	sub	r25, r25
+ 7bc:	79 e0       	ldi	r23, 0x09	; 9
+ 7be:	04 c0       	rjmp	.+8      	; 0x7c8 <__udivmodqi4_ep>
 
-000006c8 <__udivmodqi4_loop>:
- 6c8:	99 1f       	adc	r25, r25
- 6ca:	96 17       	cp	r25, r22
- 6cc:	08 f0       	brcs	.+2      	; 0x6d0 <__udivmodqi4_ep>
- 6ce:	96 1b       	sub	r25, r22
+000007c0 <__udivmodqi4_loop>:
+ 7c0:	99 1f       	adc	r25, r25
+ 7c2:	96 17       	cp	r25, r22
+ 7c4:	08 f0       	brcs	.+2      	; 0x7c8 <__udivmodqi4_ep>
+ 7c6:	96 1b       	sub	r25, r22
 
-000006d0 <__udivmodqi4_ep>:
- 6d0:	88 1f       	adc	r24, r24
- 6d2:	7a 95       	dec	r23
- 6d4:	c9 f7       	brne	.-14     	; 0x6c8 <__udivmodqi4_loop>
- 6d6:	80 95       	com	r24
- 6d8:	08 95       	ret
+000007c8 <__udivmodqi4_ep>:
+ 7c8:	88 1f       	adc	r24, r24
+ 7ca:	7a 95       	dec	r23
+ 7cc:	c9 f7       	brne	.-14     	; 0x7c0 <__udivmodqi4_loop>
+ 7ce:	80 95       	com	r24
+ 7d0:	08 95       	ret
 
-000006da <__udivmodsi4>:
- 6da:	a1 e2       	ldi	r26, 0x21	; 33
- 6dc:	1a 2e       	mov	r1, r26
- 6de:	aa 1b       	sub	r26, r26
- 6e0:	bb 1b       	sub	r27, r27
- 6e2:	fd 01       	movw	r30, r26
- 6e4:	0d c0       	rjmp	.+26     	; 0x700 <__udivmodsi4_ep>
+000007d2 <__udivmodhi4>:
+ 7d2:	aa 1b       	sub	r26, r26
+ 7d4:	bb 1b       	sub	r27, r27
+ 7d6:	51 e1       	ldi	r21, 0x11	; 17
+ 7d8:	07 c0       	rjmp	.+14     	; 0x7e8 <__udivmodhi4_ep>
 
-000006e6 <__udivmodsi4_loop>:
- 6e6:	aa 1f       	adc	r26, r26
- 6e8:	bb 1f       	adc	r27, r27
- 6ea:	ee 1f       	adc	r30, r30
- 6ec:	ff 1f       	adc	r31, r31
- 6ee:	a2 17       	cp	r26, r18
- 6f0:	b3 07       	cpc	r27, r19
- 6f2:	e4 07       	cpc	r30, r20
- 6f4:	f5 07       	cpc	r31, r21
- 6f6:	20 f0       	brcs	.+8      	; 0x700 <__udivmodsi4_ep>
- 6f8:	a2 1b       	sub	r26, r18
- 6fa:	b3 0b       	sbc	r27, r19
- 6fc:	e4 0b       	sbc	r30, r20
- 6fe:	f5 0b       	sbc	r31, r21
+000007da <__udivmodhi4_loop>:
+ 7da:	aa 1f       	adc	r26, r26
+ 7dc:	bb 1f       	adc	r27, r27
+ 7de:	a6 17       	cp	r26, r22
+ 7e0:	b7 07       	cpc	r27, r23
+ 7e2:	10 f0       	brcs	.+4      	; 0x7e8 <__udivmodhi4_ep>
+ 7e4:	a6 1b       	sub	r26, r22
+ 7e6:	b7 0b       	sbc	r27, r23
 
-00000700 <__udivmodsi4_ep>:
- 700:	66 1f       	adc	r22, r22
- 702:	77 1f       	adc	r23, r23
- 704:	88 1f       	adc	r24, r24
- 706:	99 1f       	adc	r25, r25
- 708:	1a 94       	dec	r1
- 70a:	69 f7       	brne	.-38     	; 0x6e6 <__udivmodsi4_loop>
- 70c:	60 95       	com	r22
- 70e:	70 95       	com	r23
- 710:	80 95       	com	r24
- 712:	90 95       	com	r25
- 714:	9b 01       	movw	r18, r22
- 716:	ac 01       	movw	r20, r24
- 718:	bd 01       	movw	r22, r26
- 71a:	cf 01       	movw	r24, r30
- 71c:	08 95       	ret
+000007e8 <__udivmodhi4_ep>:
+ 7e8:	88 1f       	adc	r24, r24
+ 7ea:	99 1f       	adc	r25, r25
+ 7ec:	5a 95       	dec	r21
+ 7ee:	a9 f7       	brne	.-22     	; 0x7da <__udivmodhi4_loop>
+ 7f0:	80 95       	com	r24
+ 7f2:	90 95       	com	r25
+ 7f4:	bc 01       	movw	r22, r24
+ 7f6:	cd 01       	movw	r24, r26
+ 7f8:	08 95       	ret
 
-0000071e <_exit>:
- 71e:	f8 94       	cli
+000007fa <__udivmodsi4>:
+ 7fa:	a1 e2       	ldi	r26, 0x21	; 33
+ 7fc:	1a 2e       	mov	r1, r26
+ 7fe:	aa 1b       	sub	r26, r26
+ 800:	bb 1b       	sub	r27, r27
+ 802:	fd 01       	movw	r30, r26
+ 804:	0d c0       	rjmp	.+26     	; 0x820 <__udivmodsi4_ep>
 
-00000720 <__stop_program>:
- 720:	ff cf       	rjmp	.-2      	; 0x720 <__stop_program>
+00000806 <__udivmodsi4_loop>:
+ 806:	aa 1f       	adc	r26, r26
+ 808:	bb 1f       	adc	r27, r27
+ 80a:	ee 1f       	adc	r30, r30
+ 80c:	ff 1f       	adc	r31, r31
+ 80e:	a2 17       	cp	r26, r18
+ 810:	b3 07       	cpc	r27, r19
+ 812:	e4 07       	cpc	r30, r20
+ 814:	f5 07       	cpc	r31, r21
+ 816:	20 f0       	brcs	.+8      	; 0x820 <__udivmodsi4_ep>
+ 818:	a2 1b       	sub	r26, r18
+ 81a:	b3 0b       	sbc	r27, r19
+ 81c:	e4 0b       	sbc	r30, r20
+ 81e:	f5 0b       	sbc	r31, r21
+
+00000820 <__udivmodsi4_ep>:
+ 820:	66 1f       	adc	r22, r22
+ 822:	77 1f       	adc	r23, r23
+ 824:	88 1f       	adc	r24, r24
+ 826:	99 1f       	adc	r25, r25
+ 828:	1a 94       	dec	r1
+ 82a:	69 f7       	brne	.-38     	; 0x806 <__udivmodsi4_loop>
+ 82c:	60 95       	com	r22
+ 82e:	70 95       	com	r23
+ 830:	80 95       	com	r24
+ 832:	90 95       	com	r25
+ 834:	9b 01       	movw	r18, r22
+ 836:	ac 01       	movw	r20, r24
+ 838:	bd 01       	movw	r22, r26
+ 83a:	cf 01       	movw	r24, r30
+ 83c:	08 95       	ret
+
+0000083e <_exit>:
+ 83e:	f8 94       	cli
+
+00000840 <__stop_program>:
+ 840:	ff cf       	rjmp	.-2      	; 0x840 <__stop_program>

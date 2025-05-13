@@ -5,7 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/Styles/syles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- En el <head> añade este enlace -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.8/css/line.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- 
+    garcia chavez erik 01275863
+    aplicaciones web 
+    practica 5 pagina AXIT
+    -->
+
+
     <title>Axit</title>
 </head>
 <body>
@@ -252,7 +263,8 @@
                 <!-- Feature 1 -->
                 <div class="feature-card">
                     <div class="icon-wrapper">
-                        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+                        <!-- <i class="fa fa-lightbulb-o" aria-hidden="true"></i> -->
+                        <i class="fa-regular fa-lightbulb"></i>
                     </div>
                     <h3>Thoughtful Design</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.</p>
@@ -261,7 +273,9 @@
                 <!-- Feature 2 -->
                 <div class="feature-card">
                     <div class="icon-wrapper">
-                        <i class="fa fa-keyboard-o" aria-hidden="true"></i>
+                        <!-- <i class="fa fa-keyboard-o" aria-hidden="true"></i> -->
+
+                        <i class="fa-regular fa-keyboard"></i>
                     </div>
                     <h3>Well Crafted</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.</p>
@@ -281,61 +295,61 @@
 
 
     <section id="pricing">
-        <div class="container">
-
-            <div class="superior">
-                <h2>PRICING OPTIONS</h2>
-                <span class="line"></span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, mollitia, provident qui </p>
-
-            </div>
-
-            <div class="content_price">
-                <article>
-                    <h3>Basic</h3>
-                    <h1><span>$</span>0</h1>
-                    <h4>Free for Life</h4>
-                    <p>1 gb of space</p>
-                    <p>10 gb of bandwidth</p>
-                    <p>3 websites</p>
-                    <p>Basic Customization</p>
-                    <p>wordpress integration</p>
-                    <p>email suport</p>
-                </article>
-            </div>
-
-
-            <div class="content_price">
-                <article id="topamr">
-                    <h3>Professional</h3>
-                    <h1><span>$</span>19</h1>
-                    <h4>Monthly Payment</h4>
-                    <h5>OUR MOST POPULAR</h5>
-                    <p>5 gb of space</p>
-                    <p>50 gb of bandwidth</p>
-                    <p>12 websites</p>
-                    <p>Advanced Customization</p>
-                    <p>wordpress integration</p>
-                    <p>email suport</p>
-                </article>
-            </div>
-
-            <div class="content_price">
-                <article>
-                    <h3>Enterprise</h3>
-                    <h1><span>$</span>70</h1>
-                    <h4>Monthly Payment</h4>
-                    <p>Unlimited space</p>
-                    <p>Unlimited bandwidth</p>
-                    <p>100 websites</p>
-                    <p>Advanced Customization</p>
-                    <p>wordpress integration</p>
-                    <p>24/7 customer support</p>
-                </article>
-            </div>
-
+    <div class="container">
+        <div class="superior">
+            <h2>PRICING OPTIONS</h2>
+            <span class="line"></span>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
         </div>
-    </section>
+
+        <div class="content_price">
+            <article>
+                <h3>Basic</h3>
+                <div class="price">$0<span>Free for Life</span></div>
+                <div class="highlight"></div>
+                <ul>
+                    <li>1 gb of space</li>
+                    <li>10 gb of bandwidth</li>
+                    <li>3 websites</li>
+                    <li>Basic Customization</li>
+                    <li>wordpress integration</li>
+                    <li>email support</li>
+                </ul>
+            </article>
+
+            <article id="topmar">
+                <h3>Professional</h3>
+                <div class="price">$19<span>Monthly Payment</span></div>
+                <div class="highlight">OUR MOST POPULAR</div>
+                <ul>
+                    <li>5 gb of space</li>
+                    <li>50 gb of bandwidth</li>
+                    <li>12 websites</li>
+                    <li>Advanced Customization</li>
+                    <li>wordpress integration</li>
+                    <li>email support</li>
+                </ul>
+            </article>
+
+            <article>
+                <h3>Enterprise</h3>
+                <div class="price">$70<span>Monthly Payment</span></div>
+                <div class="highlight"></div>
+                <ul>
+                    <li>Unlimited space</li>
+                    <li>Unlimited bandwidth</li>
+                    <li>100 websites</li>
+                    <li>Advanced Customization</li>
+                    <li>wordpress integration</li>
+                    <li>24/7 customer support</li>
+                </ul>
+            </article>
+        </div>
+    </div>
+</section>
+
+
+
 
     <section id="customer">
         
@@ -408,33 +422,35 @@
         </div>
     </aside>
 
-
     <section id="contact">
+    <div class="container">
+        <div class="superior">
+            <h2>Contact Us</h2>
+            <span class="line"></span>
+            <p class="bottom">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
 
-        <div class="container">
-
-            <div class="superior">
-                <h2>Contact Us</h2>
-                <span class="line"></span>
-                <p class="bottom">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-
-            <div class="contact_form">
+        <div class="contact_form">
+            <div class="form-column inputs-group">
                 <input type="text" placeholder="Name" />
-                <input type="text" placeholder="Email" />
+                <input type="email" placeholder="Email" />
                 <input type="text" placeholder="Subject" />
-
-                <div id="send_contact">
-                    <a href="#">Send Message</a>
-                </div>
+            </div>
+            
+            <div class="form-column">
+                <textarea placeholder="Message"></textarea>
             </div>
         </div>
-    </section>
+        <div id="send_contact">
+            <a href="#">Send Message</a>
+        </div>
+    </div>
+</section>
 
     <footer>
         <div class="container">
 
-            <div id="social_network">
+            <div id="bottomsocial">
 
                 <a href="#"><i class="fa-brands fa-facebook-f fa-2xl"></i></i></a> 
                 

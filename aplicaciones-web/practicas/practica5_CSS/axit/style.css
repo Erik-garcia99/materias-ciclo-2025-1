@@ -334,6 +334,8 @@ p.bottom{padding-bottom:70px;}
 	font-size:30px;
 }
 #awesome h3{padding:25px 0;}
+
+
 #pricing{
 	background:#f5f5f5;
 	padding:100px 0;
@@ -380,6 +382,8 @@ p.bottom{padding-bottom:70px;}
 	text-transform:uppercase;
 }
 #topmar{margin-top:-30px;}
+
+
 #customer{
 	padding:80px 0;
 	text-align:center; 	
@@ -411,6 +415,8 @@ p.arrow_box:after {
 .hlfside{width:30%; float:left;}
 .athrhalf{width:70%; float:left; text-align:left;}
 .athrhalf h3{padding-top:15px; padding-bottom:5px;}
+
+
 #design{
 	background:url(images/news.jpg) no-repeat center center;
 	min-height:	320px;

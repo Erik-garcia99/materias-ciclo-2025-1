@@ -412,7 +412,6 @@ void itoa(uint16_t number, char* str, uint8_t base){
 
     //nota importar reducir dividir entre 16 porque nomas se saca el modulo y sigue el mismo valor
 
-    //********************************************************************
     // variables
     char HEX[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
 
@@ -428,8 +427,6 @@ void itoa(uint16_t number, char* str, uint8_t base){
 
 
 
-
-    //********************************************************************
 
 
 
@@ -518,6 +515,59 @@ void itoa(uint16_t number, char* str, uint8_t base){
 
 
 
+    //caso especal cunado el numero es 0
+
+    if(number ==0){
+        aux[0]='0';
+        aux[1]= '\0';
+        return ;
+    }
+
+
+
+    //quiero que sea del tamanio exacto
+    uint8_t _len_hex_=0;
+    uint16_t temp= number;
+    while(temp>0){
+
+        temp/=base;
+        _len_hex_++;
+    }
+
+
+
+    //almacenar residuos en orden inverso
+    char _Idx_Hex_[_len_hex_];
+    temp= number; //recargamos temp
+    int8_t _stack_pointer= _len_hex_-1;
+
+    while(temp > 0){
+
+        uint8_t residuo = temp%base;
+        _Idx_Hex_[_stack_pointer]= residuo;
+        _stack_pointer--;
+        temp/=base;
+    }
+
+    //convertir residuo a cracteres
+     for (uint8_t i = 0; i < _len_hex_; i++) {
+        aux[i] = HEX[_Idx_Hex_[i]];
+    }
+    aux[_len_hex_] = '\0'; // Terminador correcto
+
+
+    /*uint8_t i=0;
+
+    uint8_t j=0;
+
+    while(j< _len_hex_){
+
+        aux[i]=HEX[_Idx_Hex_[j]];
+        i++;
+        j++;
+    }
+
+    aux[i]='`\0';*/
 
 }
 
@@ -553,6 +603,8 @@ uint16_t atoi(char *str){
         *aux++;
     }
 
+    aux=str;
+
     uint8_t items[cantidad]; //arreglo reservado
 
     //recorrera cad caraacter a mi parecer desde el inicio hasta el final por lo que debemos de hacer
@@ -565,9 +617,9 @@ uint16_t atoi(char *str){
     //aseguramos doble
     while(*aux !='\0' && idx >=0){
 
-        num= *aux - 48;
+        //num= *aux - 48;
 
-        items[idx]= num; // en la posicion idx ya items
+        items[idx]= *aux - '0'; // en la posicion idx ya items
         //exp*=10;
         //ya se agrego recoremos nustro arreglo
         idx--;
@@ -581,18 +633,21 @@ uint16_t atoi(char *str){
 
     uint16_t exp=1; //el esponente es para poder sumar al final y este represente decimales, decenas, centenas, millaes, etc.
     uint8_t acum = 0;
-    uint8_t actual;
+    //uint8_t actual;
     for(uint8_t i=0; i< cantidad; i++){
         //vamos a recorrer la pila y calcular ese exponente
 
-        actual = items[i];
+        /*actual = items[i];
 
         actual*=exp;
 
         exp*=10; //lo elevamos a la 10 en cada iteracion, pero este tendra un limite claro, cunado ya no cabe en 16 bits
         //con al esperanza de que no sean numereos mas grandes de 4 digitos
 
-        acum += actual;
+        acum += actual;*/
+
+        acum += items[i] *exp;
+        exp*=10;
 
     }
 

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS app</title>
+
+    <script>
+
+        function showOver(){
+            document.outputForm.readItHere.value= "Over"
+        }
+
+        function showOut(){
+
+            document.outputForm.readItHere.value="out "
+
+        }
+
+
+    </script>
+
+</head>
+<body>
+    <h1>App Name</h1>
+    <p>App Description</p>
+
+    <img src="img/imagen1.jpg" alt="JavaScriptTest"  onmouseover="showOver()" onmouseout="showOut()" style="width: 500px;">
+
+    <form id="outputForm" name="outputForm">
+        <input type="text" id="readItHere" name="readItHere" value="Nada">
+    </form>
+
+
+</body>
+</html>

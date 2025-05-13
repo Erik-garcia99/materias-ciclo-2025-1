@@ -1,3 +1,9 @@
+/* 
+
+ garcia chavez erik 01275863
+    aplicaciones web 
+    practica 5 pagina AXIT
+*/
 html{
     font-size: 62.5%;
 }
@@ -6,20 +12,7 @@ body{
     font-size: 16px;
 }
 
-/* .container {
-    max-width: 1200px;
-    margin-right: auto;
-    margin-left: auto;
-    padding-left: 15px;
-    padding-right: 15px;
-} */
 
-/* .container{
-    margin-left: auto;
-    margin-left: auto;
-    padding-left: 17px;
-    padding-right: 17px;
-} */
 
 .container {
     max-width: 1200px;
@@ -92,12 +85,7 @@ header{
     padding: 110px 0 135px;
 }
 
-/* #Banner .content{
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 20px;
-} */
+
 
 .banner-content {
     display: flex;
@@ -110,33 +98,13 @@ header{
     flex: 1;
     max-width: 650px;
 }
-/* .form_banner{
-    flex: 0 0 360;
-    background: #fff;
-    border-radius: 20px;
-    margin-top: 40px;
-} */
-/* .form_banner {
-    flex: 0 0 360px;
-    background: #fff;
-    border-radius: 8px;
-    padding: 20px;
-    margin-top: 0; /* Elimina margen superior 
-} */
 
 
 #Banner img{
     max-width: 200px;
     margin-bottom: 20px;
 }
-/* 
-#Banner h2{
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #fff;
-    /* text-align: left; 
-    margin: 25px 0;
-} */
+
 #Banner h2 {
     font-size: 3.6rem; /* Tamaño original */
     color: #fff;
@@ -151,13 +119,6 @@ header{
     margin: 30px 0;
 }
 
-/* #Banner p{
-    color: rgba(255,255,255,0.80);
-	margin-bottom: 35px;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin: 25px 0;
-} */
 
 #Banner p {
     color: rgba(255,255,255,0.80);
@@ -275,6 +236,9 @@ header{
     gap: 30px;
 }
 
+.display-tabs{
+    display: inline-block;
+}
 .tab-content .content-wrapper{
     display: flex;
     align-items: center;
@@ -566,5 +530,331 @@ sec1
 
 */
 
+/* pricing 
+
+
+/* Sección de precios - Diseño actualizado */
+#pricing {
+    padding: 80px 0;
+    background: #f5f5f5;
+}
+
+#pricing .superior {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+#pricing .superior h2 {
+    font-size: 2.4rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#pricing .superior .divider {
+    width: 64px;
+    height: 2px;
+    background: #ff8b38;
+    margin: 0 auto 25px;
+}
+
+#pricing .superior p {
+    color: #666;
+    font-size: 1.4rem;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.content_price {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+#pricing article {
+    width: 100%;
+    max-width: 340px;
+    background: #fff;
+    border-radius: 3px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+#pricing article h3 {
+
+    background: #333;
+    color: white !important;
+    margin: 0;
+    padding: 25px 0;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.price {
+
+
+    background: #333;
+    color: white;
+    padding: 30px 0;
+    border-bottom: 4px solid #ff8b38;
+    font-size: 60px;
+
+
+}
+
+.price span:first-child {
+    font-size: 6rem;
+    font-weight: 700;
+    display: block;
+    line-height: 1;
+}
+
+.price span:last-child {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    display: block;
+    margin-top: 10px;
+}
+
+
+.highlight {
+    background: #ff8b38;
+    color: white !important;
+    padding: 15px 0;
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+article ul {
+    list-style: none;
+    padding: 20px 0;
+    margin: 0;
+    text-align: center;
+}
+
+article ul li {
+    padding: 15px 0;
+    color: #666;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid #eee;
+    margin: 0 25px;
+    
+}
+
+article ul li:last-child {
+    border-bottom: none;
+}
+
+
+#topmar {
+    margin-bottom: -20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0,0.1);
+    position: relative;
+
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .content_price {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    article {
+        margin-bottom: 30px;
+    }
+}
+
+
+/* customer */
+
+#customer{
+
+    padding: 80px 0;
+    text-align: center;
+    
+
+}
+
+#customer article {
+	max-width: 300px;
+	margin: 0 auto 20px;
+	width: 100%;
+}
+
+.customer_content{
+    display: inline-block;
+    margin: 60px;
+
+}
+
+p.arrow_box{
+    position: relative;
+    background: #f5f5f5;
+    padding: 15px;
+    text-align: left;
+    max-width: 282px;
+}
+
+p.arrow_box::after{
+    top: 100%;
+    left: 20%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(245,245,245,0);
+    border-top-color:#f5f5f5 ;
+    border-width: 15px;
+    margin-left: -15px;
+}
+
+.mainhald{
+    margin-top: 20px;
+}
+
+
+/* desing */
+
+#desing{
+    background: url(/img/news.jpg) no-repeat center center;
+    min-height: 320px;
+    background-size: cover;
+    padding: 70px 0;
+    color: #fff;
+    text-align: center;
+}
+
+#desing h2{
+    color: #fff;
+}
+
+#desing a{
+    width: 135px;
+    height: 42px;
+    line-height: 40px;
+    border: 2px solid #fff;
+    text-align: center;
+    color: #fff;
+    font-size: 15px;
+    margin: 30px auto 0;
+    display: block;
+    text-decoration: none;
+}
+
+#desing span.line {
+    background: #fff;
+}
+
+#desing a:hover{
+    background: #fff;
+    color: #232323;
+    transition: all 0.5s;
+}
+
+/* contact */
+#contact{
+    padding: 100px 0 80px;
+}
+
+.contact_form{
+    display: flex;
+    gap: 30px;
+}
+
+.form-column{
+    flex: 1;
+}
+
+
+
+#contact p{
+    text-align: center;
+}
+
+#contact input, #contact textarea{ 
+    width: 100%;
+    border: 0;
+    outline: 0;
+    border-bottom: 1px solid #d6d6d6;
+    margin-bottom: 20px;
+    padding: 13px;
+}
+#contact textarea{
+    height: 100%px;
+    min-height: 180px;
+    margin-bottom: 0;
+}
+
+.form-column:first-child{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+#contact a{
+    width: 148px;
+    height: 46px;
+    line-height: 46px;
+    text-align: center;
+    color: #fff;
+    background: #ff8b38;
+    border-radius: 3px;
+    font-size: 15px;
+    display: block;
+    margin: 20px auto 0;
+    text-decoration: none;
+}
+#contact a:hover{
+    background: #232323;
+    color: #fff;
+    transition: all 0.5s;
+}
+
+#contact input:focus, #contact textarea:focus{
+    border-bottom: 1px solid #ff8b38;
+} 
+
+
+/* footer */
+
+footer{
+    padding: 20px 0;
+    background: #000;
+    text-align: center;
+    columns: #fff;
+}
+
+footer a i{
+    padding: 0 10px;
+    font-size: 20px !important;
+    color:#fff;
+}
+
+footer a i:hover{
+    color: #ff8b38;
+}
+
+footer p, footer p a{
+    color: rgba(255,255,255,0.50);
+    font-size: 12px;
+}
+
+.bottomsocial{
+    margin: 10px;
+}
+
+footer p a:hover{
+    color: #fff;
+}
 
 
