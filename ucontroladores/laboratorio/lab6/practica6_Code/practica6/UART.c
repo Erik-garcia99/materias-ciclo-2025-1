@@ -382,274 +382,75 @@ UART_setColor(uint8_t com, uint8_t color){
 
 
 
-/*
+
 // Utils
 void itoa(uint16_t number, char* str, uint8_t base){
 
+    if(base == 16){
 
-	//primero debo saber sobre que base se va a operar
-	//convierte Función que convierte una numero de 16 bits a su
-	//representación ASCII en la base
-    //especificada
+        //asignamos un arreglo con las representaciones de los numero HEX en ASCI
+        char hex[] = "0123456789ABCDEF";
+        uint8_t index = 0;
+        uint16_t temp = number; //hacemos un backup de number para trbajar con el y no pereder el valor original
 
-	//pimeor debemos saber que base es
-
-	//recibe un caracter con terminacion '\0'
-
-    //arreglo con los caractrers de HEX
-
-	//char codigo;
-
-    //uint8_t caracter=48; //le ponemos 0 solo para que entre al bucle despues de esto debe de cambiar
-    //entonces sonostro vamos a tener un valro decimal, no un caracter ascii
-
-
-
-
-    //lo cinvertimos a decimla y es lo que recibimos y tenemos que converitr en su valor HEX, octal o binaria pero en ASCII
-
-    //a la idea que tengo necesito una pila, porque saco residui
-
-    //nota importar reducir dividir entre 16 porque nomas se saca el modulo y sigue el mismo valor
-
-    // variables
-    char HEX[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
-
-    uint8_t temp=number;
-    uint8_t item_HEX=0;
-
-    char *aux=str;
-
-
-
-    //necsito una pila porque el primer dato que sale sera le ultimo
-
-
-
-
-
-
-
-    //en caso que el numero sea 0
-    uint8_t index= 0;
-    if(number == 0){
-        aux[index++] ='0';
-        aux[index] = '\0';
-    }
-
-
-
-	if(base == 2){
-        //binario
-        HEX[1];
-
-	}
-
-
-	/*else if(number == 8){
-        //octal
-
-
-	}
-
-	else if(base == 16){
-
-
-        while(temp > 0){
-
-            temp/16;
-            item_HEX++;
-
+        // Manejar el caso cuando el número es 0
+        if (temp == 0) {
+            str[index++] = '0';
+            str[index] = '\0';
+            return;
         }
 
-        temp=number; //volvemos a cagar a temp del valor que nos manda itoa
 
-        char _HEX_ASCII[item_HEX];
+        //este buffer guardara los numeros HEX en asci del resultado de la divicion de modulo,
+        //osea el resto de la diviciion con el cual se saca la representacion HEX de un numero deicmla
 
+        //asi como un idx el cual controla cunatos digitiso tiene el numero
+        char buffer[16];
+        uint8_t buf_idx = 0;
 
-        uint8_t _stack_point_=item_HEX-1;
-
-        uint8_t residuo= temp;
-
-        //empieza el algoritmo que dica cuales seran ls numerso HEX en ascii del numeor que se manda
-
-        while(temp>0){
-
-            residuo = temp%16;
-
-            _HEX_ASCII[_stack_point_]= residuo;
-            _stack_point_--;
-            temp/=16;
+        while (temp > 0) {
+            buffer[buf_idx++] = hex[temp % base];
+            temp /= base;
         }
 
-        //ahora sacamos los valores de la tabal y los ponemos
-        //en su posicion en el puntador
 
-        uint8_t i=0;
-        uint8_t j=0;
+        //como de lo que se saca de la divicion la priemra divicion es lo ultimo que es de a reosetnacion por ejemplo 523
 
-        while(j<item_HEX){
-            aux[i] = HEX[_HEX_ASCII[j]];
-            i++;
-            j++;
-        }\
-        aux[i]='\0'; //el ultimo lo remplazamos con el cracter nulo
-	}
+        /*
+            523 se puede diviir 3 veces por 16 el cual da en la primea 11 - 0 - 2
 
-}
-*/
-
-//vamos a probar solo con HEX
-
-void itoa(uint16_t number, char* str, uint8_t base){
-
-    //vamos a probar de la otra forma
-
-    //char HEX[]={"0123456789ABCDEF"};
-
-    char HEX[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
-    char *aux = str; // trabajamos con un apuntador aux
+            pero 523 en HEX es -  20B, por lo uqe haceos como si fuera una pila si lo podemos ver asi
+        */
+        // Invertir la cadena
+        for (int i = buf_idx - 1; i >= 0; i--) {
+            str[index++] = buffer[i];
+        }
+        str[index] = '\0'; // Terminar con nulo
 
 
-    uint8_t idx=0;
-
-
-
-    //caso especal cunado el numero es 0
-
-    if(number ==0){
-        aux[0]='0';
-        aux[1]= '\0';
-        return ;
     }
 
 
+    else if(base == 2){
 
-    //quiero que sea del tamanio exacto
-    uint8_t _len_hex_=0;
-    uint16_t temp= number;
-    while(temp>0){
 
-        temp/=base;
-        _len_hex_++;
+
+
+
     }
-
-
-
-    //almacenar residuos en orden inverso
-    char _Idx_Hex_[_len_hex_];
-    temp= number; //recargamos temp
-    int8_t _stack_pointer= _len_hex_-1;
-
-    while(temp > 0){
-
-        uint8_t residuo = temp%base;
-        _Idx_Hex_[_stack_pointer]= residuo;
-        _stack_pointer--;
-        temp/=base;
-    }
-
-    //convertir residuo a cracteres
-     for (uint8_t i = 0; i < _len_hex_; i++) {
-        aux[i] = HEX[_Idx_Hex_[i]];
-    }
-    aux[_len_hex_] = '\0'; // Terminador correcto
-
-
-    /*uint8_t i=0;
-
-    uint8_t j=0;
-
-    while(j< _len_hex_){
-
-        aux[i]=HEX[_Idx_Hex_[j]];
-        i++;
-        j++;
-    }
-
-    aux[i]='`\0';*/
 
 }
 
 
 
-
-
-uint16_t atoi(char *str){
-
-    char *aux= str;
-
-    //primero debemos hacer este que devolvera un numero decimal de 16 bits
-
-    //recibe una cadena y lo convierte en su parte decimal
-
-
-    /*
-        543
-
-        '5'
-
-    */
-
-    //hacemos un arreglo para poder almacenar los elementos que se del tamanio del string enviado
-
-
-
-    uint8_t cantidad=0;
-
-    while(*aux!='\0'){
-
-        cantidad++;
-        *aux++;
+uint16_t atoi(char *str) {
+    uint16_t result = 0;
+    while (*str != '\0') {
+        if (*str >= '0' && *str <= '9') {
+            result = result * 10 + (*str - '0');
+        }
+        str++;
     }
-
-    aux=str;
-
-    uint8_t items[cantidad]; //arreglo reservado
-
-    //recorrera cad caraacter a mi parecer desde el inicio hasta el final por lo que debemos de hacer
-    //como una pila ingresar desde la ultima ubicacion,
-
-    uint8_t num; // guardada el numero actual y este al ser multiplicado por el exponente sera agregado al la pia
-
-    uint8_t idx= cantidad-1; //me indica en que pisicion del arreglo va
-
-    //aseguramos doble
-    while(*aux !='\0' && idx >=0){
-
-        //num= *aux - 48;
-
-        items[idx]= *aux - '0'; // en la posicion idx ya items
-        //exp*=10;
-        //ya se agrego recoremos nustro arreglo
-        idx--;
-        *aux++;
-    }
-
-    aux=str;
-
-    //[3,2,5] -> ejemplo
-
-
-    uint16_t exp=1; //el esponente es para poder sumar al final y este represente decimales, decenas, centenas, millaes, etc.
-    uint8_t acum = 0;
-    //uint8_t actual;
-    for(uint8_t i=0; i< cantidad; i++){
-        //vamos a recorrer la pila y calcular ese exponente
-
-        /*actual = items[i];
-
-        actual*=exp;
-
-        exp*=10; //lo elevamos a la 10 en cada iteracion, pero este tendra un limite claro, cunado ya no cabe en 16 bits
-        //con al esperanza de que no sean numereos mas grandes de 4 digitos
-
-        acum += actual;*/
-
-        acum += items[i] *exp;
-        exp*=10;
-
-    }
-
-    return acum; //retornarme el acumulador
+    return result;
 }
+

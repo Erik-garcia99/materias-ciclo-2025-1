@@ -1,0 +1,11 @@
+funcion de versomilitud
+
+el menos de la ecuacion del logaritmo es para minimizar la probabilidad.
+
+
+
+media, varianza y desviacion estandar son los parametros mas comnes de una funcion de probabilidad 
+
+x^alfa-1 es la probabilidad que pase el evento 
+
+el elevado a beta e sla probabilidad que no pase.
