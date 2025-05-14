@@ -41,7 +41,7 @@ int main( void )
         UART_setColor(0,BLUE);
         UART_puts(0,"Hex: ");
         UART_puts(0,cad);
-        //itoa(num,cad,2);
+        itoa(num,cad,2);
 
         UART_gotoxy(0,5,5);
         UART_puts(0,"Bin: ");

@@ -386,6 +386,9 @@ UART_setColor(uint8_t com, uint8_t color){
 // Utils
 void itoa(uint16_t number, char* str, uint8_t base){
 
+
+    char *aux= str;
+
     if(base == 16){
 
         //asignamos un arreglo con las representaciones de los numero HEX en ASCI
@@ -395,8 +398,8 @@ void itoa(uint16_t number, char* str, uint8_t base){
 
         // Manejar el caso cuando el número es 0
         if (temp == 0) {
-            str[index++] = '0';
-            str[index] = '\0';
+            aux[index++] = '0';
+            aux[index] = '\0';
             return;
         }
 
@@ -423,9 +426,9 @@ void itoa(uint16_t number, char* str, uint8_t base){
         */
         // Invertir la cadena
         for (int i = buf_idx - 1; i >= 0; i--) {
-            str[index++] = buffer[i];
+            aux[index++] = buffer[i];
         }
-        str[index] = '\0'; // Terminar con nulo
+        aux[index] = '\0'; // Terminar con nulo
 
 
     }
@@ -434,7 +437,47 @@ void itoa(uint16_t number, char* str, uint8_t base){
     else if(base == 2){
 
 
+        uint8_t index = 0;
+        uint16_t temp = number;
 
+        char buffer[17]; //tiene tamaño 16 porque el number es un numero de 16 bits, el caracter nulo
+        //se agrega despues en el apuntador
+
+        uint8_t buf_idx=0;
+
+        //con el binario es un poco mas sencillo pero el proceso es el mismo
+
+        //verificamos si el numero es 0 entonces volvemos a mandar le 0 no tiene caso que
+        //se pierda tiempo en un proceso que incluso nos puede dar error
+        if(number ==0){
+
+            aux[index++] = '0';
+            aux[index] = '\0';
+            return;
+        }
+
+
+
+        while(temp > 0){
+
+            buffer[buf_idx++]= (temp%2)?'1':'0';
+            temp/=2;
+        }
+
+
+        //rellenar con ceros a la izqueirda
+
+        while(buf_idx < 16){
+            buffer[buf_idx++]= '0';
+        }
+
+        index=0;
+
+        for(int8_t i = buf_idx-1 ; i >= 0 ; i--){
+            aux[index++] = buffer[i];
+        }
+
+        aux[index]='\0';
 
 
     }

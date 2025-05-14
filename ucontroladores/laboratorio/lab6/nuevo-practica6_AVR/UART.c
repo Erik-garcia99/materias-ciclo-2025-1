@@ -386,21 +386,28 @@ UART_setColor(uint8_t com, uint8_t color){
 // Utils
 void itoa(uint16_t number, char* str, uint8_t base){
 
+
+    char *aux= str;
+
     if(base == 16){
-		
-		//asignamos un arerglo con las representaciones
+
+        //asignamos un arreglo con las representaciones de los numero HEX en ASCI
         char hex[] = "0123456789ABCDEF";
         uint8_t index = 0;
-        uint16_t temp = number;
+        uint16_t temp = number; //hacemos un backup de number para trbajar con el y no pereder el valor original
 
         // Manejar el caso cuando el número es 0
         if (temp == 0) {
-            str[index++] = '0';
-            str[index] = '\0';
+            aux[index++] = '0';
+            aux[index] = '\0';
             return;
         }
 
 
+        //este buffer guardara los numeros HEX en asci del resultado de la divicion de modulo,
+        //osea el resto de la diviciion con el cual se saca la representacion HEX de un numero deicmla
+
+        //asi como un idx el cual controla cunatos digitiso tiene el numero
         char buffer[16];
         uint8_t buf_idx = 0;
 
@@ -409,11 +416,68 @@ void itoa(uint16_t number, char* str, uint8_t base){
             temp /= base;
         }
 
+
+        //como de lo que se saca de la divicion la priemra divicion es lo ultimo que es de a reosetnacion por ejemplo 523
+
+        /*
+            523 se puede diviir 3 veces por 16 el cual da en la primea 11 - 0 - 2
+
+            pero 523 en HEX es -  20B, por lo uqe haceos como si fuera una pila si lo podemos ver asi
+        */
         // Invertir la cadena
         for (int i = buf_idx - 1; i >= 0; i--) {
-            str[index++] = buffer[i];
+            aux[index++] = buffer[i];
         }
-        str[index] = '\0'; // Terminar con nulo
+        aux[index] = '\0'; // Terminar con nulo
+
+
+    }
+
+
+    else if(base == 2){
+
+
+        uint8_t index = 0;
+        uint16_t temp = number;
+
+        char buffer[17]; //tiene tamaño 16 porque el number es un numero de 16 bits, el caracter nulo
+        //se agrega despues en el apuntador
+
+        uint8_t buf_idx=0;
+
+        //con el binario es un poco mas sencillo pero el proceso es el mismo
+
+        //verificamos si el numero es 0 entonces volvemos a mandar le 0 no tiene caso que
+        //se pierda tiempo en un proceso que incluso nos puede dar error
+        if(number ==0){
+
+            aux[index++] = '0';
+            aux[index] = '\0';
+            return;
+        }
+
+
+
+        while(temp > 0){
+
+            buffer[buf_idx++]= (temp%2)?'1':'0';
+            temp/=2;
+        }
+
+
+        //rellenar con ceros a la izqueirda
+
+        while(buf_idx < 16){
+            buffer[buf_idx++]= '0';
+        }
+
+        index=0;
+
+        for(int8_t i = buf_idx-1 ; i >= 0 ; i--){
+            aux[index++] = buffer[i];
+        }
+
+        aux[index]='\0';
 
 
     }
