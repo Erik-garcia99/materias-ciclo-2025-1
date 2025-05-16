@@ -1,3 +1,5 @@
+/* son estilos que todas las pginas vana a tenre como el colorde fondo, asi como los colres formas,tamanios del nav  */
+
 html {
     box-sizing: border-box;
     /* tamanio de HTML */
@@ -10,4 +12,20 @@ body{
     /* estas 2 reglas podemos defini que 1 rem = 10px */
     font-size: 16px;
 }
+.container{
+    margin:20px;
+    padding: 10px;
+}
+
+.Logo img{
+    display: left;
+    width: 200px;
+}
+
+body{
+    background-color: #366076;
+}
+
+
+
 

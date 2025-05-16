@@ -1,0 +1,64 @@
+clasificador 
+
+-los datos estan asociados con una etiqueta 
+
+tipos de calsificacion 
+
+
+estan asociadso a un unico objeto
+binario: tiene 2 valores (true o false)
+
+multclase- se agregan las caracterisitcas y veo si esta el objeto 
+
+
+multi etiqueta - se tienen mas de 2 elementos 
+
+
+algoritmos sensibles a los cosot, el como actualiza los pesos de loa parametros, 
+
+cuantitavias funciona para un modelo de regresion. 
+
+
+cualitativas, 
+
+
+probabilidad logisitica 
+
+p = 1/ 1+ e ^-h(-) -> S
+
+
+
+mini lotes 
+
+se tines los datos 
+
+inputs         targets
+x1,x2...xn | y1, y2, ..., yn 
+
+A = [x | 1 ] lotes
+
+A = [Xp:,|1] online 
+
+A^mini = [X ^mini | 1] minilote tiene Q datos, minilotes_max = Q / sizeSMB 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
