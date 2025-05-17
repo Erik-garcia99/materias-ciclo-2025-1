@@ -258,6 +258,7 @@ void UART_gets(uint8_t com, char *str){
 
 	char c; //este va a capturar el valor del char que se introdujo
 	uint8_t i=0;
+	uint8_t dot_flag = 0; // Bandera para detectar punto
 
 	while(1){
         c=UART_getchar(com);
@@ -274,6 +275,20 @@ void UART_gets(uint8_t com, char *str){
 
 		*/
 		//verificamos si se quiere borrar que en efecto haya algo que borrar
+
+		if(dot_flag){
+
+             if (c == '\r' || c == '\n') {
+                str[i] = '\0';
+                UART_putchar(com, '\r');
+                UART_putchar(com, '\n');
+                break;
+            }
+            continue;
+		}
+
+
+
 		if(c=='\b'){
 			if(i>0){
 
@@ -286,6 +301,11 @@ void UART_gets(uint8_t com, char *str){
 			continue; // si no hay nada que borrar o si hay algoq ue borrar sigue con el ciclo
 		}
 
+		 if (c == '.') {
+            dot_flag = 1;
+            continue; // No muestra el punto
+        }
+
 		UART_putchar(com,c);
 
 		if(c == '\r' || c== '\n'){
@@ -297,26 +317,16 @@ void UART_gets(uint8_t com, char *str){
 			UART_putchar(com,'\n'); //salto de linea
 			break; //rompesmos el ciclo y a esperar que se vuelva a escribir algo
 		}
-
-<<<<<<< HEAD
-
-
-
-=======
 		//para 20 caracteres, si no lo regresamos a 127
->>>>>>> ad0a36142b3f6d62dcb0505fd014903bc41e2581
+
 		if(i<19){
 
 			str[i++]= c;
 			//UART_putchar(com, c);
+
+
 		}
 		else {
-            // Máximo alcanzado, terminamos la captura automáticamente
-           	/*str[i] = '\0';
-            UART_putchar(com, '\r');
-            UART_putchar(com, '\n');
-            break;*/
-			//UART_putchar(com, '\a');
 
 			/*
 				el proceso para que ya no captrue mas caracteres sera algo parecido a que si se borrara

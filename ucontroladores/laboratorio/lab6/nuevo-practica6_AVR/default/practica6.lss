@@ -3,27 +3,27 @@ practica6.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000048  00800200  000007ba  0000082e  2**0
+  0 .data         00000048  00800200  00000808  0000087c  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         000007ba  00000000  00000000  00000074  2**1
+  1 .text         00000808  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .debug_aranges 00000040  00000000  00000000  00000876  2**0
+  2 .debug_aranges 00000040  00000000  00000000  000008c4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  3 .debug_pubnames 000000ef  00000000  00000000  000008b6  2**0
+  3 .debug_pubnames 000000ef  00000000  00000000  00000904  2**0
                   CONTENTS, READONLY, DEBUGGING
-  4 .debug_info   00000a6d  00000000  00000000  000009a5  2**0
+  4 .debug_info   00000ae9  00000000  00000000  000009f3  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_abbrev 0000032d  00000000  00000000  00001412  2**0
+  5 .debug_abbrev 0000032d  00000000  00000000  000014dc  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_line   00000709  00000000  00000000  0000173f  2**0
+  6 .debug_line   00000769  00000000  00000000  00001809  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_frame  000000f0  00000000  00000000  00001e48  2**2
+  7 .debug_frame  000000f0  00000000  00000000  00001f74  2**2
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_str    00000226  00000000  00000000  00001f38  2**0
+  8 .debug_str    0000022e  00000000  00000000  00002064  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_loc    00000708  00000000  00000000  0000215e  2**0
+  9 .debug_loc    00000773  00000000  00000000  00002292  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_ranges 000001b0  00000000  00000000  00002866  2**0
+ 10 .debug_ranges 000001b0  00000000  00000000  00002a05  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -101,8 +101,8 @@ Disassembly of section .text:
   f4:	12 e0       	ldi	r17, 0x02	; 2
   f6:	a0 e0       	ldi	r26, 0x00	; 0
   f8:	b2 e0       	ldi	r27, 0x02	; 2
-  fa:	ea eb       	ldi	r30, 0xBA	; 186
-  fc:	f7 e0       	ldi	r31, 0x07	; 7
+  fa:	e8 e0       	ldi	r30, 0x08	; 8
+  fc:	f8 e0       	ldi	r31, 0x08	; 8
   fe:	00 e0       	ldi	r16, 0x00	; 0
  100:	0b bf       	out	0x3b, r16	; 59
  102:	02 c0       	rjmp	.+4      	; 0x108 <__do_copy_data+0x14>
@@ -112,7 +112,7 @@ Disassembly of section .text:
  10a:	b1 07       	cpc	r27, r17
  10c:	d9 f7       	brne	.-10     	; 0x104 <__do_copy_data+0x10>
  10e:	0e 94 8d 00 	call	0x11a	; 0x11a <main>
- 112:	0c 94 db 03 	jmp	0x7b6	; 0x7b6 <_exit>
+ 112:	0c 94 02 04 	jmp	0x804	; 0x804 <_exit>
 
 00000116 <__bad_interrupt>:
  116:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -205,17 +205,17 @@ int main( void )
  18a:	0e 94 bc 01 	call	0x378	; 0x378 <UART_getchar>
         UART_clrscr(0);
  18e:	80 e0       	ldi	r24, 0x00	; 0
- 190:	0e 94 45 02 	call	0x48a	; 0x48a <UART_clrscr>
+ 190:	0e 94 6c 02 	call	0x4d8	; 0x4d8 <UART_clrscr>
 
         UART_gotoxy(0,2,2);
  194:	80 e0       	ldi	r24, 0x00	; 0
  196:	62 e0       	ldi	r22, 0x02	; 2
  198:	42 e0       	ldi	r20, 0x02	; 2
- 19a:	0e 94 93 02 	call	0x526	; 0x526 <UART_gotoxy>
+ 19a:	0e 94 ba 02 	call	0x574	; 0x574 <UART_gotoxy>
         UART_setColor(0,YELLOW);
  19e:	80 e0       	ldi	r24, 0x00	; 0
  1a0:	61 e2       	ldi	r22, 0x21	; 33
- 1a2:	0e 94 c9 02 	call	0x592	; 0x592 <UART_setColor>
+ 1a2:	0e 94 f0 02 	call	0x5e0	; 0x5e0 <UART_setColor>
         UART_puts(0,"Introduce un n?mero:"); //terminamos con un caracter nulo, funciona bien puts
  1a6:	80 e0       	ldi	r24, 0x00	; 0
  1a8:	60 e0       	ldi	r22, 0x00	; 0
@@ -226,11 +226,11 @@ int main( void )
  1b0:	80 e0       	ldi	r24, 0x00	; 0
  1b2:	66 e1       	ldi	r22, 0x16	; 22
  1b4:	42 e0       	ldi	r20, 0x02	; 2
- 1b6:	0e 94 93 02 	call	0x526	; 0x526 <UART_gotoxy>
+ 1b6:	0e 94 ba 02 	call	0x574	; 0x574 <UART_gotoxy>
         UART_setColor(0,GREEN);
  1ba:	80 e0       	ldi	r24, 0x00	; 0
  1bc:	60 e2       	ldi	r22, 0x20	; 32
- 1be:	0e 94 c9 02 	call	0x592	; 0x592 <UART_setColor>
+ 1be:	0e 94 f0 02 	call	0x5e0	; 0x5e0 <UART_setColor>
         UART_gets(0,cad); //vreremos si este funciona correcto
  1c2:	80 e0       	ldi	r24, 0x00	; 0
  1c4:	b7 01       	movw	r22, r14
@@ -254,7 +254,7 @@ int main( void )
  1e4:	80 e0       	ldi	r24, 0x00	; 0
  1e6:	65 e0       	ldi	r22, 0x05	; 5
  1e8:	43 e0       	ldi	r20, 0x03	; 3
- 1ea:	0e 94 93 02 	call	0x526	; 0x526 <UART_gotoxy>
+ 1ea:	0e 94 ba 02 	call	0x574	; 0x574 <UART_gotoxy>
         UART_puts(0,cadUart3);
  1ee:	80 e0       	ldi	r24, 0x00	; 0
  1f0:	b6 01       	movw	r22, r12
@@ -262,22 +262,22 @@ int main( void )
 // -------------------------------------------
         num = atoi(cad);
  1f6:	c7 01       	movw	r24, r14
- 1f8:	0e 94 8f 03 	call	0x71e	; 0x71e <atoi>
+ 1f8:	0e 94 b6 03 	call	0x76c	; 0x76c <atoi>
  1fc:	8c 01       	movw	r16, r24
         itoa(num,cad,16);
  1fe:	b7 01       	movw	r22, r14
  200:	40 e1       	ldi	r20, 0x10	; 16
- 202:	0e 94 03 03 	call	0x606	; 0x606 <itoa>
+ 202:	0e 94 2a 03 	call	0x654	; 0x654 <itoa>
 
         UART_gotoxy(0,5,4);
  206:	80 e0       	ldi	r24, 0x00	; 0
  208:	65 e0       	ldi	r22, 0x05	; 5
  20a:	44 e0       	ldi	r20, 0x04	; 4
- 20c:	0e 94 93 02 	call	0x526	; 0x526 <UART_gotoxy>
+ 20c:	0e 94 ba 02 	call	0x574	; 0x574 <UART_gotoxy>
         UART_setColor(0,BLUE);
  210:	80 e0       	ldi	r24, 0x00	; 0
  212:	62 e2       	ldi	r22, 0x22	; 34
- 214:	0e 94 c9 02 	call	0x592	; 0x592 <UART_setColor>
+ 214:	0e 94 f0 02 	call	0x5e0	; 0x5e0 <UART_setColor>
         UART_puts(0,"Hex: ");
  218:	80 e0       	ldi	r24, 0x00	; 0
  21a:	67 e1       	ldi	r22, 0x17	; 23
@@ -291,13 +291,13 @@ int main( void )
  22a:	c8 01       	movw	r24, r16
  22c:	b7 01       	movw	r22, r14
  22e:	42 e0       	ldi	r20, 0x02	; 2
- 230:	0e 94 03 03 	call	0x606	; 0x606 <itoa>
+ 230:	0e 94 2a 03 	call	0x654	; 0x654 <itoa>
 
         UART_gotoxy(0,5,5);
  234:	80 e0       	ldi	r24, 0x00	; 0
  236:	65 e0       	ldi	r22, 0x05	; 5
  238:	45 e0       	ldi	r20, 0x05	; 5
- 23a:	0e 94 93 02 	call	0x526	; 0x526 <UART_gotoxy>
+ 23a:	0e 94 ba 02 	call	0x574	; 0x574 <UART_gotoxy>
         UART_puts(0,"Bin: ");
  23e:	80 e0       	ldi	r24, 0x00	; 0
  240:	6d e1       	ldi	r22, 0x1D	; 29
@@ -428,7 +428,7 @@ UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t s
  2f0:	90 e0       	ldi	r25, 0x00	; 0
  2f2:	a6 01       	movw	r20, r12
  2f4:	95 01       	movw	r18, r10
- 2f6:	0e 94 b9 03 	call	0x772	; 0x772 <__udivmodsi4>
+ 2f6:	0e 94 e0 03 	call	0x7c0	; 0x7c0 <__udivmodsi4>
  2fa:	21 50       	subi	r18, 0x01	; 1
  2fc:	30 40       	sbci	r19, 0x00	; 0
     myUART->UBRR = v_UBRR;
@@ -598,238 +598,242 @@ char UART_getchar(uint8_t com) {
 void UART_gets(uint8_t com, char *str){
  394:	cf 93       	push	r28
  396:	df 93       	push	r29
- 398:	ab 01       	movw	r20, r22
- 39a:	20 e0       	ldi	r18, 0x00	; 0
+ 398:	9b 01       	movw	r18, r22
+ 39a:	40 e0       	ldi	r20, 0x00	; 0
+ 39c:	60 e0       	ldi	r22, 0x00	; 0
 	return myUART->UDR;
 }*/
 
 
 char UART_getchar(uint8_t com) {
     UART_reg_t *myUART = UART_offset[com];
- 39c:	c8 2f       	mov	r28, r24
- 39e:	d0 e0       	ldi	r29, 0x00	; 0
- 3a0:	de 01       	movw	r26, r28
- 3a2:	aa 0f       	add	r26, r26
- 3a4:	bb 1f       	adc	r27, r27
- 3a6:	a0 5c       	subi	r26, 0xC0	; 192
- 3a8:	bd 4f       	sbci	r27, 0xFD	; 253
+ 39e:	c8 2f       	mov	r28, r24
+ 3a0:	d0 e0       	ldi	r29, 0x00	; 0
+ 3a2:	de 01       	movw	r26, r28
+ 3a4:	aa 0f       	add	r26, r26
+ 3a6:	bb 1f       	adc	r27, r27
+ 3a8:	a0 5c       	subi	r26, 0xC0	; 192
+ 3aa:	bd 4f       	sbci	r27, 0xFD	; 253
 
     //va a esperar hasta que se vacie por completo
 	while (!(myUART->UCSRA & (1 << udre_bit)));
 		; //espera a que el periferico este vacio
 
 	myUART->UDR= data;
- 3aa:	38 e0       	ldi	r19, 0x08	; 8
+ 3ac:	58 e0       	ldi	r21, 0x08	; 8
+    while (!(myUART->UCSRA & (1 << RXC0))); // Espera dato
+    return myUART->UDR;
+}
+
+
+void UART_gets(uint8_t com, char *str){
+ 3ae:	70 e2       	ldi	r23, 0x20	; 32
+ 3b0:	01 c0       	rjmp	.+2      	; 0x3b4 <UART_gets+0x20>
+ 3b2:	61 e0       	ldi	r22, 0x01	; 1
 	return myUART->UDR;
 }*/
 
 
 char UART_getchar(uint8_t com) {
     UART_reg_t *myUART = UART_offset[com];
- 3ac:	60 e2       	ldi	r22, 0x20	; 32
- 3ae:	ed 91       	ld	r30, X+
- 3b0:	fc 91       	ld	r31, X
- 3b2:	11 97       	sbiw	r26, 0x01	; 1
+ 3b4:	ed 91       	ld	r30, X+
+ 3b6:	fc 91       	ld	r31, X
+ 3b8:	11 97       	sbiw	r26, 0x01	; 1
     while (!(myUART->UCSRA & (1 << RXC0))); // Espera dato
- 3b4:	80 81       	ld	r24, Z
- 3b6:	87 ff       	sbrs	r24, 7
- 3b8:	fd cf       	rjmp	.-6      	; 0x3b4 <UART_gets+0x20>
+ 3ba:	80 81       	ld	r24, Z
+ 3bc:	87 ff       	sbrs	r24, 7
+ 3be:	fd cf       	rjmp	.-6      	; 0x3ba <UART_gets+0x26>
     return myUART->UDR;
- 3ba:	96 81       	ldd	r25, Z+6	; 0x06
-
+ 3c0:	96 81       	ldd	r25, Z+6	; 0x06
 		-cuando se limpia la pantalla
 
 		*/
 		//verificamos si se quiere borrar que en efecto haya algo que borrar
+
+		if(dot_flag){
+ 3c2:	66 23       	and	r22, r22
+ 3c4:	f9 f0       	breq	.+62     	; 0x404 <UART_gets+0x70>
+
+             if (c == '\r' || c == '\n') {
+ 3c6:	9d 30       	cpi	r25, 0x0D	; 13
+ 3c8:	11 f0       	breq	.+4      	; 0x3ce <UART_gets+0x3a>
+ 3ca:	9a 30       	cpi	r25, 0x0A	; 10
+ 3cc:	91 f7       	brne	.-28     	; 0x3b2 <UART_gets+0x1e>
+                str[i] = '\0';
+ 3ce:	24 0f       	add	r18, r20
+ 3d0:	31 1d       	adc	r19, r1
+ 3d2:	f9 01       	movw	r30, r18
+ 3d4:	10 82       	st	Z, r1
+	//que el registro esta vacio,
+
+	//entonces el ciclo va a espear para cunado este se vacie por completo
+	//lo que hace es esperar mientras haya datos dentro del buffer
+
+	UART_reg_t *myUART = UART_offset[com];
+ 3d6:	fe 01       	movw	r30, r28
+ 3d8:	ee 0f       	add	r30, r30
+ 3da:	ff 1f       	adc	r31, r31
+ 3dc:	e0 5c       	subi	r30, 0xC0	; 192
+ 3de:	fd 4f       	sbci	r31, 0xFD	; 253
+ 3e0:	01 90       	ld	r0, Z+
+ 3e2:	f0 81       	ld	r31, Z
+ 3e4:	e0 2d       	mov	r30, r0
+    uint8_t udre_bit = (com == 0) ? UDRE0 :
+                      (com == 1) ? UDRE1 :
+                      (com == 2) ? UDRE2 : UDRE3;
+
+    //va a esperar hasta que se vacie por completo
+	while (!(myUART->UCSRA & (1 << udre_bit)));
+ 3e6:	80 81       	ld	r24, Z
+ 3e8:	85 ff       	sbrs	r24, 5
+ 3ea:	fd cf       	rjmp	.-6      	; 0x3e6 <UART_gets+0x52>
+		; //espera a que el periferico este vacio
+
+	myUART->UDR= data;
+ 3ec:	8d e0       	ldi	r24, 0x0D	; 13
+ 3ee:	86 83       	std	Z+6, r24	; 0x06
+	//que el registro esta vacio,
+
+	//entonces el ciclo va a espear para cunado este se vacie por completo
+	//lo que hace es esperar mientras haya datos dentro del buffer
+
+	UART_reg_t *myUART = UART_offset[com];
+ 3f0:	cc 0f       	add	r28, r28
+ 3f2:	dd 1f       	adc	r29, r29
+ 3f4:	c0 5c       	subi	r28, 0xC0	; 192
+ 3f6:	dd 4f       	sbci	r29, 0xFD	; 253
+ 3f8:	e8 81       	ld	r30, Y
+ 3fa:	f9 81       	ldd	r31, Y+1	; 0x01
+    uint8_t udre_bit = (com == 0) ? UDRE0 :
+                      (com == 1) ? UDRE1 :
+                      (com == 2) ? UDRE2 : UDRE3;
+
+    //va a esperar hasta que se vacie por completo
+	while (!(myUART->UCSRA & (1 << udre_bit)));
+ 3fc:	80 81       	ld	r24, Z
+ 3fe:	85 ff       	sbrs	r24, 5
+ 400:	fd cf       	rjmp	.-6      	; 0x3fc <UART_gets+0x68>
+ 402:	43 c0       	rjmp	.+134    	; 0x48a <UART_gets+0xf6>
+            continue;
+		}
+
+
+
 		if(c=='\b'){
- 3bc:	98 30       	cpi	r25, 0x08	; 8
- 3be:	e1 f4       	brne	.+56     	; 0x3f8 <UART_gets+0x64>
+ 404:	98 30       	cpi	r25, 0x08	; 8
+ 406:	e1 f4       	brne	.+56     	; 0x440 <UART_gets+0xac>
 			if(i>0){
- 3c0:	22 23       	and	r18, r18
- 3c2:	a9 f3       	breq	.-22     	; 0x3ae <UART_gets+0x1a>
+ 408:	44 23       	and	r20, r20
+ 40a:	a1 f2       	breq	.-88     	; 0x3b4 <UART_gets+0x20>
 
 				str[--i] = '\0'; //sustitumos el utlimo caracter con el nulo
- 3c4:	21 50       	subi	r18, 0x01	; 1
- 3c6:	fa 01       	movw	r30, r20
- 3c8:	e2 0f       	add	r30, r18
- 3ca:	f1 1d       	adc	r31, r1
- 3cc:	10 82       	st	Z, r1
+ 40c:	41 50       	subi	r20, 0x01	; 1
+ 40e:	f9 01       	movw	r30, r18
+ 410:	e4 0f       	add	r30, r20
+ 412:	f1 1d       	adc	r31, r1
+ 414:	10 82       	st	Z, r1
 	//que el registro esta vacio,
 
 	//entonces el ciclo va a espear para cunado este se vacie por completo
 	//lo que hace es esperar mientras haya datos dentro del buffer
 
 	UART_reg_t *myUART = UART_offset[com];
- 3ce:	ed 91       	ld	r30, X+
- 3d0:	fc 91       	ld	r31, X
- 3d2:	11 97       	sbiw	r26, 0x01	; 1
+ 416:	ed 91       	ld	r30, X+
+ 418:	fc 91       	ld	r31, X
+ 41a:	11 97       	sbiw	r26, 0x01	; 1
     uint8_t udre_bit = (com == 0) ? UDRE0 :
                       (com == 1) ? UDRE1 :
                       (com == 2) ? UDRE2 : UDRE3;
 
     //va a esperar hasta que se vacie por completo
 	while (!(myUART->UCSRA & (1 << udre_bit)));
- 3d4:	80 81       	ld	r24, Z
- 3d6:	85 ff       	sbrs	r24, 5
- 3d8:	fd cf       	rjmp	.-6      	; 0x3d4 <UART_gets+0x40>
+ 41c:	80 81       	ld	r24, Z
+ 41e:	85 ff       	sbrs	r24, 5
+ 420:	fd cf       	rjmp	.-6      	; 0x41c <UART_gets+0x88>
 		; //espera a que el periferico este vacio
 
 	myUART->UDR= data;
- 3da:	36 83       	std	Z+6, r19	; 0x06
+ 422:	56 83       	std	Z+6, r21	; 0x06
 	//que el registro esta vacio,
 
 	//entonces el ciclo va a espear para cunado este se vacie por completo
 	//lo que hace es esperar mientras haya datos dentro del buffer
 
 	UART_reg_t *myUART = UART_offset[com];
- 3dc:	ed 91       	ld	r30, X+
- 3de:	fc 91       	ld	r31, X
- 3e0:	11 97       	sbiw	r26, 0x01	; 1
+ 424:	ed 91       	ld	r30, X+
+ 426:	fc 91       	ld	r31, X
+ 428:	11 97       	sbiw	r26, 0x01	; 1
     uint8_t udre_bit = (com == 0) ? UDRE0 :
                       (com == 1) ? UDRE1 :
                       (com == 2) ? UDRE2 : UDRE3;
 
     //va a esperar hasta que se vacie por completo
 	while (!(myUART->UCSRA & (1 << udre_bit)));
- 3e2:	80 81       	ld	r24, Z
- 3e4:	85 ff       	sbrs	r24, 5
- 3e6:	fd cf       	rjmp	.-6      	; 0x3e2 <UART_gets+0x4e>
+ 42a:	80 81       	ld	r24, Z
+ 42c:	85 ff       	sbrs	r24, 5
+ 42e:	fd cf       	rjmp	.-6      	; 0x42a <UART_gets+0x96>
 		; //espera a que el periferico este vacio
 
 	myUART->UDR= data;
- 3e8:	66 83       	std	Z+6, r22	; 0x06
+ 430:	76 83       	std	Z+6, r23	; 0x06
 	//que el registro esta vacio,
 
 	//entonces el ciclo va a espear para cunado este se vacie por completo
 	//lo que hace es esperar mientras haya datos dentro del buffer
 
 	UART_reg_t *myUART = UART_offset[com];
- 3ea:	ed 91       	ld	r30, X+
- 3ec:	fc 91       	ld	r31, X
- 3ee:	11 97       	sbiw	r26, 0x01	; 1
+ 432:	ed 91       	ld	r30, X+
+ 434:	fc 91       	ld	r31, X
+ 436:	11 97       	sbiw	r26, 0x01	; 1
     uint8_t udre_bit = (com == 0) ? UDRE0 :
                       (com == 1) ? UDRE1 :
                       (com == 2) ? UDRE2 : UDRE3;
 
     //va a esperar hasta que se vacie por completo
 	while (!(myUART->UCSRA & (1 << udre_bit)));
- 3f0:	80 81       	ld	r24, Z
- 3f2:	85 ff       	sbrs	r24, 5
- 3f4:	fd cf       	rjmp	.-6      	; 0x3f0 <UART_gets+0x5c>
- 3f6:	47 c0       	rjmp	.+142    	; 0x486 <UART_gets+0xf2>
-		; //espera a que el periferico este vacio
+ 438:	80 81       	ld	r24, Z
+ 43a:	85 ff       	sbrs	r24, 5
+ 43c:	fd cf       	rjmp	.-6      	; 0x438 <UART_gets+0xa4>
+ 43e:	4a c0       	rjmp	.+148    	; 0x4d4 <UART_gets+0x140>
+			}
 
-	myUART->UDR= data;
- 3f8:	80 81       	ld	r24, Z
- 3fa:	85 ff       	sbrs	r24, 5
- 3fc:	fd cf       	rjmp	.-6      	; 0x3f8 <UART_gets+0x64>
- 3fe:	96 83       	std	Z+6, r25	; 0x06
 			continue; // si no hay nada que borrar o si hay algoq ue borrar sigue con el ciclo
 		}
+
+		 if (c == '.') {
+ 440:	9e 32       	cpi	r25, 0x2E	; 46
+ 442:	09 f4       	brne	.+2      	; 0x446 <UART_gets+0xb2>
+ 444:	b6 cf       	rjmp	.-148    	; 0x3b2 <UART_gets+0x1e>
+    uint8_t udre_bit = (com == 0) ? UDRE0 :
+                      (com == 1) ? UDRE1 :
+                      (com == 2) ? UDRE2 : UDRE3;
+
+    //va a esperar hasta que se vacie por completo
+	while (!(myUART->UCSRA & (1 << udre_bit)));
+ 446:	80 81       	ld	r24, Z
+ 448:	85 ff       	sbrs	r24, 5
+ 44a:	fd cf       	rjmp	.-6      	; 0x446 <UART_gets+0xb2>
+		; //espera a que el periferico este vacio
+
+	myUART->UDR= data;
+ 44c:	96 83       	std	Z+6, r25	; 0x06
+            continue; // No muestra el punto
+        }
 
 		UART_putchar(com,c);
 
 		if(c == '\r' || c== '\n'){
- 400:	9d 30       	cpi	r25, 0x0D	; 13
- 402:	11 f0       	breq	.+4      	; 0x408 <UART_gets+0x74>
- 404:	9a 30       	cpi	r25, 0x0A	; 10
- 406:	f9 f4       	brne	.+62     	; 0x446 <UART_gets+0xb2>
+ 44e:	9d 30       	cpi	r25, 0x0D	; 13
+ 450:	11 f0       	breq	.+4      	; 0x456 <UART_gets+0xc2>
+ 452:	9a 30       	cpi	r25, 0x0A	; 10
+ 454:	f9 f4       	brne	.+62     	; 0x494 <UART_gets+0x100>
 		//retorno de carro o salto de linea lo que quiere decir que se terminao de escribir el
 		//texto actual.
 
 			str[i]='\0'; //caracter nulo denotando que la
- 408:	42 0f       	add	r20, r18
- 40a:	51 1d       	adc	r21, r1
- 40c:	fa 01       	movw	r30, r20
- 40e:	10 82       	st	Z, r1
-	//que el registro esta vacio,
-
-	//entonces el ciclo va a espear para cunado este se vacie por completo
-	//lo que hace es esperar mientras haya datos dentro del buffer
-
-	UART_reg_t *myUART = UART_offset[com];
- 410:	fe 01       	movw	r30, r28
- 412:	ee 0f       	add	r30, r30
- 414:	ff 1f       	adc	r31, r31
- 416:	e0 5c       	subi	r30, 0xC0	; 192
- 418:	fd 4f       	sbci	r31, 0xFD	; 253
- 41a:	01 90       	ld	r0, Z+
- 41c:	f0 81       	ld	r31, Z
- 41e:	e0 2d       	mov	r30, r0
-    uint8_t udre_bit = (com == 0) ? UDRE0 :
-                      (com == 1) ? UDRE1 :
-                      (com == 2) ? UDRE2 : UDRE3;
-
-    //va a esperar hasta que se vacie por completo
-	while (!(myUART->UCSRA & (1 << udre_bit)));
- 420:	80 81       	ld	r24, Z
- 422:	85 ff       	sbrs	r24, 5
- 424:	fd cf       	rjmp	.-6      	; 0x420 <UART_gets+0x8c>
-		; //espera a que el periferico este vacio
-
-	myUART->UDR= data;
- 426:	8d e0       	ldi	r24, 0x0D	; 13
- 428:	86 83       	std	Z+6, r24	; 0x06
-	//que el registro esta vacio,
-
-	//entonces el ciclo va a espear para cunado este se vacie por completo
-	//lo que hace es esperar mientras haya datos dentro del buffer
-
-	UART_reg_t *myUART = UART_offset[com];
- 42a:	cc 0f       	add	r28, r28
- 42c:	dd 1f       	adc	r29, r29
- 42e:	c0 5c       	subi	r28, 0xC0	; 192
- 430:	dd 4f       	sbci	r29, 0xFD	; 253
- 432:	e8 81       	ld	r30, Y
- 434:	f9 81       	ldd	r31, Y+1	; 0x01
-    uint8_t udre_bit = (com == 0) ? UDRE0 :
-                      (com == 1) ? UDRE1 :
-                      (com == 2) ? UDRE2 : UDRE3;
-
-    //va a esperar hasta que se vacie por completo
-	while (!(myUART->UCSRA & (1 << udre_bit)));
- 436:	80 81       	ld	r24, Z
- 438:	85 ff       	sbrs	r24, 5
- 43a:	fd cf       	rjmp	.-6      	; 0x436 <UART_gets+0xa2>
-		; //espera a que el periferico este vacio
-
-	myUART->UDR= data;
- 43c:	8a e0       	ldi	r24, 0x0A	; 10
- 43e:	86 83       	std	Z+6, r24	; 0x06
-			UART_putchar(com,'\b');
-        }
-
-	}
-
-}
- 440:	df 91       	pop	r29
- 442:	cf 91       	pop	r28
- 444:	08 95       	ret
- 446:	e2 2f       	mov	r30, r18
- 448:	f0 e0       	ldi	r31, 0x00	; 0
-			UART_putchar(com,'\n'); //salto de linea
-			break; //rompesmos el ciclo y a esperar que se vuelva a escribir algo
-		}
-
-		//para 20 caracteres, si no lo regresamos a 127
-		if(i<19){
- 44a:	23 31       	cpi	r18, 0x13	; 19
- 44c:	28 f4       	brcc	.+10     	; 0x458 <UART_gets+0xc4>
-
-			str[i++]= c;
- 44e:	e4 0f       	add	r30, r20
- 450:	f5 1f       	adc	r31, r21
- 452:	90 83       	st	Z, r25
- 454:	2f 5f       	subi	r18, 0xFF	; 255
- 456:	ab cf       	rjmp	.-170    	; 0x3ae <UART_gets+0x1a>
-            UART_putchar(com, '\r');
-            UART_putchar(com, '\n');
-            break;*/
-			//UART_putchar(com, '\a'); 
-
-			str[i] = '\0'; //sustitumos el utlimo caracter con el nulo
- 458:	e4 0f       	add	r30, r20
- 45a:	f5 1f       	adc	r31, r21
+ 456:	24 0f       	add	r18, r20
+ 458:	31 1d       	adc	r19, r1
+ 45a:	f9 01       	movw	r30, r18
  45c:	10 82       	st	Z, r1
 	//que el registro esta vacio,
 
@@ -837,863 +841,952 @@ char UART_getchar(uint8_t com) {
 	//lo que hace es esperar mientras haya datos dentro del buffer
 
 	UART_reg_t *myUART = UART_offset[com];
- 45e:	ed 91       	ld	r30, X+
- 460:	fc 91       	ld	r31, X
- 462:	11 97       	sbiw	r26, 0x01	; 1
+ 45e:	fe 01       	movw	r30, r28
+ 460:	ee 0f       	add	r30, r30
+ 462:	ff 1f       	adc	r31, r31
+ 464:	e0 5c       	subi	r30, 0xC0	; 192
+ 466:	fd 4f       	sbci	r31, 0xFD	; 253
+ 468:	01 90       	ld	r0, Z+
+ 46a:	f0 81       	ld	r31, Z
+ 46c:	e0 2d       	mov	r30, r0
     uint8_t udre_bit = (com == 0) ? UDRE0 :
                       (com == 1) ? UDRE1 :
                       (com == 2) ? UDRE2 : UDRE3;
 
     //va a esperar hasta que se vacie por completo
 	while (!(myUART->UCSRA & (1 << udre_bit)));
- 464:	80 81       	ld	r24, Z
- 466:	85 ff       	sbrs	r24, 5
- 468:	fd cf       	rjmp	.-6      	; 0x464 <UART_gets+0xd0>
+ 46e:	80 81       	ld	r24, Z
+ 470:	85 ff       	sbrs	r24, 5
+ 472:	fd cf       	rjmp	.-6      	; 0x46e <UART_gets+0xda>
 		; //espera a que el periferico este vacio
 
 	myUART->UDR= data;
- 46a:	36 83       	std	Z+6, r19	; 0x06
+ 474:	8d e0       	ldi	r24, 0x0D	; 13
+ 476:	86 83       	std	Z+6, r24	; 0x06
 	//que el registro esta vacio,
 
 	//entonces el ciclo va a espear para cunado este se vacie por completo
 	//lo que hace es esperar mientras haya datos dentro del buffer
 
 	UART_reg_t *myUART = UART_offset[com];
- 46c:	ed 91       	ld	r30, X+
- 46e:	fc 91       	ld	r31, X
- 470:	11 97       	sbiw	r26, 0x01	; 1
+ 478:	cc 0f       	add	r28, r28
+ 47a:	dd 1f       	adc	r29, r29
+ 47c:	c0 5c       	subi	r28, 0xC0	; 192
+ 47e:	dd 4f       	sbci	r29, 0xFD	; 253
+ 480:	e8 81       	ld	r30, Y
+ 482:	f9 81       	ldd	r31, Y+1	; 0x01
     uint8_t udre_bit = (com == 0) ? UDRE0 :
                       (com == 1) ? UDRE1 :
                       (com == 2) ? UDRE2 : UDRE3;
 
     //va a esperar hasta que se vacie por completo
 	while (!(myUART->UCSRA & (1 << udre_bit)));
- 472:	80 81       	ld	r24, Z
- 474:	85 ff       	sbrs	r24, 5
- 476:	fd cf       	rjmp	.-6      	; 0x472 <UART_gets+0xde>
+ 484:	80 81       	ld	r24, Z
+ 486:	85 ff       	sbrs	r24, 5
+ 488:	fd cf       	rjmp	.-6      	; 0x484 <UART_gets+0xf0>
 		; //espera a que el periferico este vacio
 
 	myUART->UDR= data;
- 478:	66 83       	std	Z+6, r22	; 0x06
+ 48a:	8a e0       	ldi	r24, 0x0A	; 10
+ 48c:	86 83       	std	Z+6, r24	; 0x06
+			UART_putchar(com, ' ');
+			UART_putchar(com,'\b');
+        }
+	}
+
+}
+ 48e:	df 91       	pop	r29
+ 490:	cf 91       	pop	r28
+ 492:	08 95       	ret
+ 494:	e4 2f       	mov	r30, r20
+ 496:	f0 e0       	ldi	r31, 0x00	; 0
+			UART_putchar(com,'\n'); //salto de linea
+			break; //rompesmos el ciclo y a esperar que se vuelva a escribir algo
+		}
+		//para 20 caracteres, si no lo regresamos a 127
+
+		if(i<19){
+ 498:	43 31       	cpi	r20, 0x13	; 19
+ 49a:	28 f4       	brcc	.+10     	; 0x4a6 <UART_gets+0x112>
+
+			str[i++]= c;
+ 49c:	e2 0f       	add	r30, r18
+ 49e:	f3 1f       	adc	r31, r19
+ 4a0:	90 83       	st	Z, r25
+ 4a2:	4f 5f       	subi	r20, 0xFF	; 255
+ 4a4:	87 cf       	rjmp	.-242    	; 0x3b4 <UART_gets+0x20>
+				esta en el indece maximo +1 entonces lo que hace es como el borraro de ese sigueitne
+				caractere por lo que parece que no se esta capturando pero lo que hace es que se esta borrando
+				constantement lo que se captrua despues
+			*/
+
+			str[i] = '\0'; //sustitumos el utlimo caracter con el nulo
+ 4a6:	e2 0f       	add	r30, r18
+ 4a8:	f3 1f       	adc	r31, r19
+ 4aa:	10 82       	st	Z, r1
 	//que el registro esta vacio,
 
 	//entonces el ciclo va a espear para cunado este se vacie por completo
 	//lo que hace es esperar mientras haya datos dentro del buffer
 
 	UART_reg_t *myUART = UART_offset[com];
- 47a:	ed 91       	ld	r30, X+
- 47c:	fc 91       	ld	r31, X
- 47e:	11 97       	sbiw	r26, 0x01	; 1
+ 4ac:	ed 91       	ld	r30, X+
+ 4ae:	fc 91       	ld	r31, X
+ 4b0:	11 97       	sbiw	r26, 0x01	; 1
     uint8_t udre_bit = (com == 0) ? UDRE0 :
                       (com == 1) ? UDRE1 :
                       (com == 2) ? UDRE2 : UDRE3;
 
     //va a esperar hasta que se vacie por completo
 	while (!(myUART->UCSRA & (1 << udre_bit)));
- 480:	80 81       	ld	r24, Z
- 482:	85 ff       	sbrs	r24, 5
- 484:	fd cf       	rjmp	.-6      	; 0x480 <UART_gets+0xec>
+ 4b2:	80 81       	ld	r24, Z
+ 4b4:	85 ff       	sbrs	r24, 5
+ 4b6:	fd cf       	rjmp	.-6      	; 0x4b2 <UART_gets+0x11e>
 		; //espera a que el periferico este vacio
 
 	myUART->UDR= data;
- 486:	36 83       	std	Z+6, r19	; 0x06
- 488:	92 cf       	rjmp	.-220    	; 0x3ae <UART_gets+0x1a>
+ 4b8:	56 83       	std	Z+6, r21	; 0x06
+	//que el registro esta vacio,
 
-0000048a <UART_clrscr>:
+	//entonces el ciclo va a espear para cunado este se vacie por completo
+	//lo que hace es esperar mientras haya datos dentro del buffer
+
+	UART_reg_t *myUART = UART_offset[com];
+ 4ba:	ed 91       	ld	r30, X+
+ 4bc:	fc 91       	ld	r31, X
+ 4be:	11 97       	sbiw	r26, 0x01	; 1
+    uint8_t udre_bit = (com == 0) ? UDRE0 :
+                      (com == 1) ? UDRE1 :
+                      (com == 2) ? UDRE2 : UDRE3;
+
+    //va a esperar hasta que se vacie por completo
+	while (!(myUART->UCSRA & (1 << udre_bit)));
+ 4c0:	80 81       	ld	r24, Z
+ 4c2:	85 ff       	sbrs	r24, 5
+ 4c4:	fd cf       	rjmp	.-6      	; 0x4c0 <UART_gets+0x12c>
+		; //espera a que el periferico este vacio
+
+	myUART->UDR= data;
+ 4c6:	76 83       	std	Z+6, r23	; 0x06
+	//que el registro esta vacio,
+
+	//entonces el ciclo va a espear para cunado este se vacie por completo
+	//lo que hace es esperar mientras haya datos dentro del buffer
+
+	UART_reg_t *myUART = UART_offset[com];
+ 4c8:	ed 91       	ld	r30, X+
+ 4ca:	fc 91       	ld	r31, X
+ 4cc:	11 97       	sbiw	r26, 0x01	; 1
+    uint8_t udre_bit = (com == 0) ? UDRE0 :
+                      (com == 1) ? UDRE1 :
+                      (com == 2) ? UDRE2 : UDRE3;
+
+    //va a esperar hasta que se vacie por completo
+	while (!(myUART->UCSRA & (1 << udre_bit)));
+ 4ce:	80 81       	ld	r24, Z
+ 4d0:	85 ff       	sbrs	r24, 5
+ 4d2:	fd cf       	rjmp	.-6      	; 0x4ce <UART_gets+0x13a>
+		; //espera a que el periferico este vacio
+
+	myUART->UDR= data;
+ 4d4:	56 83       	std	Z+6, r21	; 0x06
+ 4d6:	6e cf       	rjmp	.-292    	; 0x3b4 <UART_gets+0x20>
+
+000004d8 <UART_clrscr>:
 
 }
 
 
 // Escape sequences
 UART_clrscr( uint8_t com ){
- 48a:	1f 93       	push	r17
- 48c:	18 2f       	mov	r17, r24
+ 4d8:	1f 93       	push	r17
+ 4da:	18 2f       	mov	r17, r24
         que con ESC[2J se borra toda la pantalla
 
         lo mismo para con posicionar al inicio de la termianl
         sin parametros H se estbalce en la fila1 - columna1
     */
     UART_puts(com,"\x1B[2J"); //borra toda la pantalla
- 48e:	63 e2       	ldi	r22, 0x23	; 35
- 490:	72 e0       	ldi	r23, 0x02	; 2
- 492:	0e 94 8a 01 	call	0x314	; 0x314 <UART_puts>
+ 4dc:	63 e2       	ldi	r22, 0x23	; 35
+ 4de:	72 e0       	ldi	r23, 0x02	; 2
+ 4e0:	0e 94 8a 01 	call	0x314	; 0x314 <UART_puts>
     UART_puts(com,"\x1B[H"); // poen el curso al incio fila 1, columna 1
- 496:	81 2f       	mov	r24, r17
- 498:	68 e2       	ldi	r22, 0x28	; 40
- 49a:	72 e0       	ldi	r23, 0x02	; 2
- 49c:	0e 94 8a 01 	call	0x314	; 0x314 <UART_puts>
+ 4e4:	81 2f       	mov	r24, r17
+ 4e6:	68 e2       	ldi	r22, 0x28	; 40
+ 4e8:	72 e0       	ldi	r23, 0x02	; 2
+ 4ea:	0e 94 8a 01 	call	0x314	; 0x314 <UART_puts>
 
 
 }
- 4a0:	1f 91       	pop	r17
- 4a2:	08 95       	ret
+ 4ee:	1f 91       	pop	r17
+ 4f0:	08 95       	ret
 
-000004a4 <UART_putnum>:
+000004f2 <UART_putnum>:
 
 
 void UART_putnum(uint8_t com, uint8_t num){
- 4a4:	38 2f       	mov	r19, r24
- 4a6:	26 2f       	mov	r18, r22
+ 4f2:	38 2f       	mov	r19, r24
+ 4f4:	26 2f       	mov	r18, r22
 
     if(num >= 100){
- 4a8:	64 36       	cpi	r22, 0x64	; 100
- 4aa:	b0 f0       	brcs	.+44     	; 0x4d8 <UART_putnum+0x34>
+ 4f6:	64 36       	cpi	r22, 0x64	; 100
+ 4f8:	b0 f0       	brcs	.+44     	; 0x526 <UART_putnum+0x34>
 	//que el registro esta vacio,
 
 	//entonces el ciclo va a espear para cunado este se vacie por completo
 	//lo que hace es esperar mientras haya datos dentro del buffer
 
 	UART_reg_t *myUART = UART_offset[com];
- 4ac:	e8 2f       	mov	r30, r24
- 4ae:	f0 e0       	ldi	r31, 0x00	; 0
- 4b0:	ee 0f       	add	r30, r30
- 4b2:	ff 1f       	adc	r31, r31
- 4b4:	e0 5c       	subi	r30, 0xC0	; 192
- 4b6:	fd 4f       	sbci	r31, 0xFD	; 253
- 4b8:	01 90       	ld	r0, Z+
- 4ba:	f0 81       	ld	r31, Z
- 4bc:	e0 2d       	mov	r30, r0
+ 4fa:	e8 2f       	mov	r30, r24
+ 4fc:	f0 e0       	ldi	r31, 0x00	; 0
+ 4fe:	ee 0f       	add	r30, r30
+ 500:	ff 1f       	adc	r31, r31
+ 502:	e0 5c       	subi	r30, 0xC0	; 192
+ 504:	fd 4f       	sbci	r31, 0xFD	; 253
+ 506:	01 90       	ld	r0, Z+
+ 508:	f0 81       	ld	r31, Z
+ 50a:	e0 2d       	mov	r30, r0
     uint8_t udre_bit = (com == 0) ? UDRE0 :
                       (com == 1) ? UDRE1 :
                       (com == 2) ? UDRE2 : UDRE3;
 
     //va a esperar hasta que se vacie por completo
 	while (!(myUART->UCSRA & (1 << udre_bit)));
- 4be:	80 81       	ld	r24, Z
- 4c0:	85 ff       	sbrs	r24, 5
- 4c2:	fd cf       	rjmp	.-6      	; 0x4be <UART_putnum+0x1a>
+ 50c:	80 81       	ld	r24, Z
+ 50e:	85 ff       	sbrs	r24, 5
+ 510:	fd cf       	rjmp	.-6      	; 0x50c <UART_putnum+0x1a>
 
 
 void UART_putnum(uint8_t com, uint8_t num){
 
     if(num >= 100){
         UART_putchar(com, '0'+(num/100));
- 4c4:	82 2f       	mov	r24, r18
- 4c6:	64 e6       	ldi	r22, 0x64	; 100
- 4c8:	0e 94 ad 03 	call	0x75a	; 0x75a <__udivmodqi4>
- 4cc:	80 5d       	subi	r24, 0xD0	; 208
+ 512:	82 2f       	mov	r24, r18
+ 514:	64 e6       	ldi	r22, 0x64	; 100
+ 516:	0e 94 d4 03 	call	0x7a8	; 0x7a8 <__udivmodqi4>
+ 51a:	80 5d       	subi	r24, 0xD0	; 208
 
     //va a esperar hasta que se vacie por completo
 	while (!(myUART->UCSRA & (1 << udre_bit)));
 		; //espera a que el periferico este vacio
 
 	myUART->UDR= data;
- 4ce:	86 83       	std	Z+6, r24	; 0x06
+ 51c:	86 83       	std	Z+6, r24	; 0x06
 
 void UART_putnum(uint8_t com, uint8_t num){
 
     if(num >= 100){
         UART_putchar(com, '0'+(num/100));
         num%=100;
- 4d0:	82 2f       	mov	r24, r18
- 4d2:	0e 94 ad 03 	call	0x75a	; 0x75a <__udivmodqi4>
- 4d6:	29 2f       	mov	r18, r25
+ 51e:	82 2f       	mov	r24, r18
+ 520:	0e 94 d4 03 	call	0x7a8	; 0x7a8 <__udivmodqi4>
+ 524:	29 2f       	mov	r18, r25
     }
     if(num>=10){
- 4d8:	2a 30       	cpi	r18, 0x0A	; 10
- 4da:	b0 f0       	brcs	.+44     	; 0x508 <UART_putnum+0x64>
+ 526:	2a 30       	cpi	r18, 0x0A	; 10
+ 528:	b0 f0       	brcs	.+44     	; 0x556 <UART_putnum+0x64>
 	//que el registro esta vacio,
 
 	//entonces el ciclo va a espear para cunado este se vacie por completo
 	//lo que hace es esperar mientras haya datos dentro del buffer
 
 	UART_reg_t *myUART = UART_offset[com];
- 4dc:	e3 2f       	mov	r30, r19
- 4de:	f0 e0       	ldi	r31, 0x00	; 0
- 4e0:	ee 0f       	add	r30, r30
- 4e2:	ff 1f       	adc	r31, r31
- 4e4:	e0 5c       	subi	r30, 0xC0	; 192
- 4e6:	fd 4f       	sbci	r31, 0xFD	; 253
- 4e8:	01 90       	ld	r0, Z+
- 4ea:	f0 81       	ld	r31, Z
- 4ec:	e0 2d       	mov	r30, r0
+ 52a:	e3 2f       	mov	r30, r19
+ 52c:	f0 e0       	ldi	r31, 0x00	; 0
+ 52e:	ee 0f       	add	r30, r30
+ 530:	ff 1f       	adc	r31, r31
+ 532:	e0 5c       	subi	r30, 0xC0	; 192
+ 534:	fd 4f       	sbci	r31, 0xFD	; 253
+ 536:	01 90       	ld	r0, Z+
+ 538:	f0 81       	ld	r31, Z
+ 53a:	e0 2d       	mov	r30, r0
     uint8_t udre_bit = (com == 0) ? UDRE0 :
                       (com == 1) ? UDRE1 :
                       (com == 2) ? UDRE2 : UDRE3;
 
     //va a esperar hasta que se vacie por completo
 	while (!(myUART->UCSRA & (1 << udre_bit)));
- 4ee:	80 81       	ld	r24, Z
- 4f0:	85 ff       	sbrs	r24, 5
- 4f2:	fd cf       	rjmp	.-6      	; 0x4ee <UART_putnum+0x4a>
+ 53c:	80 81       	ld	r24, Z
+ 53e:	85 ff       	sbrs	r24, 5
+ 540:	fd cf       	rjmp	.-6      	; 0x53c <UART_putnum+0x4a>
     if(num >= 100){
         UART_putchar(com, '0'+(num/100));
         num%=100;
     }
     if(num>=10){
         UART_putchar(com, '0'+(num/10));
- 4f4:	82 2f       	mov	r24, r18
- 4f6:	6a e0       	ldi	r22, 0x0A	; 10
- 4f8:	0e 94 ad 03 	call	0x75a	; 0x75a <__udivmodqi4>
- 4fc:	80 5d       	subi	r24, 0xD0	; 208
+ 542:	82 2f       	mov	r24, r18
+ 544:	6a e0       	ldi	r22, 0x0A	; 10
+ 546:	0e 94 d4 03 	call	0x7a8	; 0x7a8 <__udivmodqi4>
+ 54a:	80 5d       	subi	r24, 0xD0	; 208
 
     //va a esperar hasta que se vacie por completo
 	while (!(myUART->UCSRA & (1 << udre_bit)));
 		; //espera a que el periferico este vacio
 
 	myUART->UDR= data;
- 4fe:	86 83       	std	Z+6, r24	; 0x06
+ 54c:	86 83       	std	Z+6, r24	; 0x06
         UART_putchar(com, '0'+(num/100));
         num%=100;
     }
     if(num>=10){
         UART_putchar(com, '0'+(num/10));
         num%=10;
- 500:	82 2f       	mov	r24, r18
- 502:	0e 94 ad 03 	call	0x75a	; 0x75a <__udivmodqi4>
- 506:	29 2f       	mov	r18, r25
+ 54e:	82 2f       	mov	r24, r18
+ 550:	0e 94 d4 03 	call	0x7a8	; 0x7a8 <__udivmodqi4>
+ 554:	29 2f       	mov	r18, r25
 	//que el registro esta vacio,
 
 	//entonces el ciclo va a espear para cunado este se vacie por completo
 	//lo que hace es esperar mientras haya datos dentro del buffer
 
 	UART_reg_t *myUART = UART_offset[com];
- 508:	e3 2f       	mov	r30, r19
- 50a:	f0 e0       	ldi	r31, 0x00	; 0
- 50c:	ee 0f       	add	r30, r30
- 50e:	ff 1f       	adc	r31, r31
- 510:	e0 5c       	subi	r30, 0xC0	; 192
- 512:	fd 4f       	sbci	r31, 0xFD	; 253
- 514:	01 90       	ld	r0, Z+
- 516:	f0 81       	ld	r31, Z
- 518:	e0 2d       	mov	r30, r0
+ 556:	e3 2f       	mov	r30, r19
+ 558:	f0 e0       	ldi	r31, 0x00	; 0
+ 55a:	ee 0f       	add	r30, r30
+ 55c:	ff 1f       	adc	r31, r31
+ 55e:	e0 5c       	subi	r30, 0xC0	; 192
+ 560:	fd 4f       	sbci	r31, 0xFD	; 253
+ 562:	01 90       	ld	r0, Z+
+ 564:	f0 81       	ld	r31, Z
+ 566:	e0 2d       	mov	r30, r0
     uint8_t udre_bit = (com == 0) ? UDRE0 :
                       (com == 1) ? UDRE1 :
                       (com == 2) ? UDRE2 : UDRE3;
 
     //va a esperar hasta que se vacie por completo
 	while (!(myUART->UCSRA & (1 << udre_bit)));
- 51a:	80 81       	ld	r24, Z
- 51c:	85 ff       	sbrs	r24, 5
- 51e:	fd cf       	rjmp	.-6      	; 0x51a <UART_putnum+0x76>
+ 568:	80 81       	ld	r24, Z
+ 56a:	85 ff       	sbrs	r24, 5
+ 56c:	fd cf       	rjmp	.-6      	; 0x568 <UART_putnum+0x76>
     if(num>=10){
         UART_putchar(com, '0'+(num/10));
         num%=10;
     }
 
     UART_putchar(com,'0'+num);
- 520:	20 5d       	subi	r18, 0xD0	; 208
+ 56e:	20 5d       	subi	r18, 0xD0	; 208
 
     //va a esperar hasta que se vacie por completo
 	while (!(myUART->UCSRA & (1 << udre_bit)));
 		; //espera a que el periferico este vacio
 
 	myUART->UDR= data;
- 522:	26 83       	std	Z+6, r18	; 0x06
+ 570:	26 83       	std	Z+6, r18	; 0x06
         num%=10;
     }
 
     UART_putchar(com,'0'+num);
 
 }
- 524:	08 95       	ret
+ 572:	08 95       	ret
 
-00000526 <UART_gotoxy>:
+00000574 <UART_gotoxy>:
 
 
 UART_gotoxy(uint8_t com, uint8_t x, uint8_t y){
- 526:	ff 92       	push	r15
- 528:	0f 93       	push	r16
- 52a:	1f 93       	push	r17
- 52c:	cf 93       	push	r28
- 52e:	df 93       	push	r29
- 530:	08 2f       	mov	r16, r24
- 532:	f6 2e       	mov	r15, r22
- 534:	14 2f       	mov	r17, r20
+ 574:	ff 92       	push	r15
+ 576:	0f 93       	push	r16
+ 578:	1f 93       	push	r17
+ 57a:	cf 93       	push	r28
+ 57c:	df 93       	push	r29
+ 57e:	08 2f       	mov	r16, r24
+ 580:	f6 2e       	mov	r15, r22
+ 582:	14 2f       	mov	r17, r20
 
     UART_puts(com,"\x1B["); //inicio de la secuencia de esapce
- 536:	6c e2       	ldi	r22, 0x2C	; 44
- 538:	72 e0       	ldi	r23, 0x02	; 2
- 53a:	0e 94 8a 01 	call	0x314	; 0x314 <UART_puts>
+ 584:	6c e2       	ldi	r22, 0x2C	; 44
+ 586:	72 e0       	ldi	r23, 0x02	; 2
+ 588:	0e 94 8a 01 	call	0x314	; 0x314 <UART_puts>
 
     UART_putnum(com,y+1); //convertir a caracter
- 53e:	1f 5f       	subi	r17, 0xFF	; 255
- 540:	80 2f       	mov	r24, r16
- 542:	61 2f       	mov	r22, r17
- 544:	0e 94 52 02 	call	0x4a4	; 0x4a4 <UART_putnum>
+ 58c:	1f 5f       	subi	r17, 0xFF	; 255
+ 58e:	80 2f       	mov	r24, r16
+ 590:	61 2f       	mov	r22, r17
+ 592:	0e 94 79 02 	call	0x4f2	; 0x4f2 <UART_putnum>
 	//que el registro esta vacio,
 
 	//entonces el ciclo va a espear para cunado este se vacie por completo
 	//lo que hace es esperar mientras haya datos dentro del buffer
 
 	UART_reg_t *myUART = UART_offset[com];
- 548:	c0 2f       	mov	r28, r16
- 54a:	d0 e0       	ldi	r29, 0x00	; 0
- 54c:	fe 01       	movw	r30, r28
- 54e:	ee 0f       	add	r30, r30
- 550:	ff 1f       	adc	r31, r31
- 552:	e0 5c       	subi	r30, 0xC0	; 192
- 554:	fd 4f       	sbci	r31, 0xFD	; 253
- 556:	01 90       	ld	r0, Z+
- 558:	f0 81       	ld	r31, Z
- 55a:	e0 2d       	mov	r30, r0
+ 596:	c0 2f       	mov	r28, r16
+ 598:	d0 e0       	ldi	r29, 0x00	; 0
+ 59a:	fe 01       	movw	r30, r28
+ 59c:	ee 0f       	add	r30, r30
+ 59e:	ff 1f       	adc	r31, r31
+ 5a0:	e0 5c       	subi	r30, 0xC0	; 192
+ 5a2:	fd 4f       	sbci	r31, 0xFD	; 253
+ 5a4:	01 90       	ld	r0, Z+
+ 5a6:	f0 81       	ld	r31, Z
+ 5a8:	e0 2d       	mov	r30, r0
     uint8_t udre_bit = (com == 0) ? UDRE0 :
                       (com == 1) ? UDRE1 :
                       (com == 2) ? UDRE2 : UDRE3;
 
     //va a esperar hasta que se vacie por completo
 	while (!(myUART->UCSRA & (1 << udre_bit)));
- 55c:	80 81       	ld	r24, Z
- 55e:	85 ff       	sbrs	r24, 5
- 560:	fd cf       	rjmp	.-6      	; 0x55c <UART_gotoxy+0x36>
+ 5aa:	80 81       	ld	r24, Z
+ 5ac:	85 ff       	sbrs	r24, 5
+ 5ae:	fd cf       	rjmp	.-6      	; 0x5aa <UART_gotoxy+0x36>
 		; //espera a que el periferico este vacio
 
 	myUART->UDR= data;
- 562:	8b e3       	ldi	r24, 0x3B	; 59
- 564:	86 83       	std	Z+6, r24	; 0x06
+ 5b0:	8b e3       	ldi	r24, 0x3B	; 59
+ 5b2:	86 83       	std	Z+6, r24	; 0x06
 
     UART_puts(com,"\x1B["); //inicio de la secuencia de esapce
 
     UART_putnum(com,y+1); //convertir a caracter
     UART_putchar(com,';');
     UART_putnum(com,x+1);
- 566:	f3 94       	inc	r15
- 568:	80 2f       	mov	r24, r16
- 56a:	6f 2d       	mov	r22, r15
- 56c:	0e 94 52 02 	call	0x4a4	; 0x4a4 <UART_putnum>
+ 5b4:	f3 94       	inc	r15
+ 5b6:	80 2f       	mov	r24, r16
+ 5b8:	6f 2d       	mov	r22, r15
+ 5ba:	0e 94 79 02 	call	0x4f2	; 0x4f2 <UART_putnum>
 	//que el registro esta vacio,
 
 	//entonces el ciclo va a espear para cunado este se vacie por completo
 	//lo que hace es esperar mientras haya datos dentro del buffer
 
 	UART_reg_t *myUART = UART_offset[com];
- 570:	cc 0f       	add	r28, r28
- 572:	dd 1f       	adc	r29, r29
- 574:	c0 5c       	subi	r28, 0xC0	; 192
- 576:	dd 4f       	sbci	r29, 0xFD	; 253
- 578:	e8 81       	ld	r30, Y
- 57a:	f9 81       	ldd	r31, Y+1	; 0x01
+ 5be:	cc 0f       	add	r28, r28
+ 5c0:	dd 1f       	adc	r29, r29
+ 5c2:	c0 5c       	subi	r28, 0xC0	; 192
+ 5c4:	dd 4f       	sbci	r29, 0xFD	; 253
+ 5c6:	e8 81       	ld	r30, Y
+ 5c8:	f9 81       	ldd	r31, Y+1	; 0x01
     uint8_t udre_bit = (com == 0) ? UDRE0 :
                       (com == 1) ? UDRE1 :
                       (com == 2) ? UDRE2 : UDRE3;
 
     //va a esperar hasta que se vacie por completo
 	while (!(myUART->UCSRA & (1 << udre_bit)));
- 57c:	80 81       	ld	r24, Z
- 57e:	85 ff       	sbrs	r24, 5
- 580:	fd cf       	rjmp	.-6      	; 0x57c <UART_gotoxy+0x56>
+ 5ca:	80 81       	ld	r24, Z
+ 5cc:	85 ff       	sbrs	r24, 5
+ 5ce:	fd cf       	rjmp	.-6      	; 0x5ca <UART_gotoxy+0x56>
 		; //espera a que el periferico este vacio
 
 	myUART->UDR= data;
- 582:	88 e4       	ldi	r24, 0x48	; 72
- 584:	86 83       	std	Z+6, r24	; 0x06
+ 5d0:	88 e4       	ldi	r24, 0x48	; 72
+ 5d2:	86 83       	std	Z+6, r24	; 0x06
     UART_putnum(com,y+1); //convertir a caracter
     UART_putchar(com,';');
     UART_putnum(com,x+1);
     UART_putchar(com,'H'); //final de la secuencia
 
 }
- 586:	df 91       	pop	r29
- 588:	cf 91       	pop	r28
- 58a:	1f 91       	pop	r17
- 58c:	0f 91       	pop	r16
- 58e:	ff 90       	pop	r15
- 590:	08 95       	ret
+ 5d4:	df 91       	pop	r29
+ 5d6:	cf 91       	pop	r28
+ 5d8:	1f 91       	pop	r17
+ 5da:	0f 91       	pop	r16
+ 5dc:	ff 90       	pop	r15
+ 5de:	08 95       	ret
 
-00000592 <UART_setColor>:
+000005e0 <UART_setColor>:
 
 
 
 
 
 UART_setColor(uint8_t com, uint8_t color){
- 592:	0f 93       	push	r16
- 594:	1f 93       	push	r17
- 596:	18 2f       	mov	r17, r24
- 598:	06 2f       	mov	r16, r22
+ 5e0:	0f 93       	push	r16
+ 5e2:	1f 93       	push	r17
+ 5e4:	18 2f       	mov	r17, r24
+ 5e6:	06 2f       	mov	r16, r22
 
 
     UART_puts(com,"\x1B["); //incio del comando espace
- 59a:	6c e2       	ldi	r22, 0x2C	; 44
- 59c:	72 e0       	ldi	r23, 0x02	; 2
- 59e:	0e 94 8a 01 	call	0x314	; 0x314 <UART_puts>
+ 5e8:	6c e2       	ldi	r22, 0x2C	; 44
+ 5ea:	72 e0       	ldi	r23, 0x02	; 2
+ 5ec:	0e 94 8a 01 	call	0x314	; 0x314 <UART_puts>
 	//que el registro esta vacio,
 
 	//entonces el ciclo va a espear para cunado este se vacie por completo
 	//lo que hace es esperar mientras haya datos dentro del buffer
 
 	UART_reg_t *myUART = UART_offset[com];
- 5a2:	a1 2f       	mov	r26, r17
- 5a4:	b0 e0       	ldi	r27, 0x00	; 0
- 5a6:	fd 01       	movw	r30, r26
- 5a8:	ee 0f       	add	r30, r30
- 5aa:	ff 1f       	adc	r31, r31
- 5ac:	e0 5c       	subi	r30, 0xC0	; 192
- 5ae:	fd 4f       	sbci	r31, 0xFD	; 253
- 5b0:	01 90       	ld	r0, Z+
- 5b2:	f0 81       	ld	r31, Z
- 5b4:	e0 2d       	mov	r30, r0
+ 5f0:	a1 2f       	mov	r26, r17
+ 5f2:	b0 e0       	ldi	r27, 0x00	; 0
+ 5f4:	fd 01       	movw	r30, r26
+ 5f6:	ee 0f       	add	r30, r30
+ 5f8:	ff 1f       	adc	r31, r31
+ 5fa:	e0 5c       	subi	r30, 0xC0	; 192
+ 5fc:	fd 4f       	sbci	r31, 0xFD	; 253
+ 5fe:	01 90       	ld	r0, Z+
+ 600:	f0 81       	ld	r31, Z
+ 602:	e0 2d       	mov	r30, r0
     uint8_t udre_bit = (com == 0) ? UDRE0 :
                       (com == 1) ? UDRE1 :
                       (com == 2) ? UDRE2 : UDRE3;
 
     //va a esperar hasta que se vacie por completo
 	while (!(myUART->UCSRA & (1 << udre_bit)));
- 5b6:	80 81       	ld	r24, Z
- 5b8:	85 ff       	sbrs	r24, 5
- 5ba:	fd cf       	rjmp	.-6      	; 0x5b6 <UART_setColor+0x24>
+ 604:	80 81       	ld	r24, Z
+ 606:	85 ff       	sbrs	r24, 5
+ 608:	fd cf       	rjmp	.-6      	; 0x604 <UART_setColor+0x24>
 
 UART_setColor(uint8_t com, uint8_t color){
 
 
     UART_puts(com,"\x1B["); //incio del comando espace
     UART_putchar(com, '0'+(color/10));
- 5bc:	80 2f       	mov	r24, r16
- 5be:	6a e0       	ldi	r22, 0x0A	; 10
- 5c0:	0e 94 ad 03 	call	0x75a	; 0x75a <__udivmodqi4>
- 5c4:	80 5d       	subi	r24, 0xD0	; 208
+ 60a:	80 2f       	mov	r24, r16
+ 60c:	6a e0       	ldi	r22, 0x0A	; 10
+ 60e:	0e 94 d4 03 	call	0x7a8	; 0x7a8 <__udivmodqi4>
+ 612:	80 5d       	subi	r24, 0xD0	; 208
 
     //va a esperar hasta que se vacie por completo
 	while (!(myUART->UCSRA & (1 << udre_bit)));
 		; //espera a que el periferico este vacio
 
 	myUART->UDR= data;
- 5c6:	86 83       	std	Z+6, r24	; 0x06
+ 614:	86 83       	std	Z+6, r24	; 0x06
 	//que el registro esta vacio,
 
 	//entonces el ciclo va a espear para cunado este se vacie por completo
 	//lo que hace es esperar mientras haya datos dentro del buffer
 
 	UART_reg_t *myUART = UART_offset[com];
- 5c8:	fd 01       	movw	r30, r26
- 5ca:	ee 0f       	add	r30, r30
- 5cc:	ff 1f       	adc	r31, r31
- 5ce:	e0 5c       	subi	r30, 0xC0	; 192
- 5d0:	fd 4f       	sbci	r31, 0xFD	; 253
- 5d2:	01 90       	ld	r0, Z+
- 5d4:	f0 81       	ld	r31, Z
- 5d6:	e0 2d       	mov	r30, r0
+ 616:	fd 01       	movw	r30, r26
+ 618:	ee 0f       	add	r30, r30
+ 61a:	ff 1f       	adc	r31, r31
+ 61c:	e0 5c       	subi	r30, 0xC0	; 192
+ 61e:	fd 4f       	sbci	r31, 0xFD	; 253
+ 620:	01 90       	ld	r0, Z+
+ 622:	f0 81       	ld	r31, Z
+ 624:	e0 2d       	mov	r30, r0
     uint8_t udre_bit = (com == 0) ? UDRE0 :
                       (com == 1) ? UDRE1 :
                       (com == 2) ? UDRE2 : UDRE3;
 
     //va a esperar hasta que se vacie por completo
 	while (!(myUART->UCSRA & (1 << udre_bit)));
- 5d8:	80 81       	ld	r24, Z
- 5da:	85 ff       	sbrs	r24, 5
- 5dc:	fd cf       	rjmp	.-6      	; 0x5d8 <UART_setColor+0x46>
+ 626:	80 81       	ld	r24, Z
+ 628:	85 ff       	sbrs	r24, 5
+ 62a:	fd cf       	rjmp	.-6      	; 0x626 <UART_setColor+0x46>
 UART_setColor(uint8_t com, uint8_t color){
 
 
     UART_puts(com,"\x1B["); //incio del comando espace
     UART_putchar(com, '0'+(color/10));
     UART_putchar(com,'0'+(color%10));
- 5de:	80 2f       	mov	r24, r16
- 5e0:	6a e0       	ldi	r22, 0x0A	; 10
- 5e2:	0e 94 ad 03 	call	0x75a	; 0x75a <__udivmodqi4>
- 5e6:	90 5d       	subi	r25, 0xD0	; 208
+ 62c:	80 2f       	mov	r24, r16
+ 62e:	6a e0       	ldi	r22, 0x0A	; 10
+ 630:	0e 94 d4 03 	call	0x7a8	; 0x7a8 <__udivmodqi4>
+ 634:	90 5d       	subi	r25, 0xD0	; 208
 
     //va a esperar hasta que se vacie por completo
 	while (!(myUART->UCSRA & (1 << udre_bit)));
 		; //espera a que el periferico este vacio
 
 	myUART->UDR= data;
- 5e8:	96 83       	std	Z+6, r25	; 0x06
+ 636:	96 83       	std	Z+6, r25	; 0x06
 	//que el registro esta vacio,
 
 	//entonces el ciclo va a espear para cunado este se vacie por completo
 	//lo que hace es esperar mientras haya datos dentro del buffer
 
 	UART_reg_t *myUART = UART_offset[com];
- 5ea:	aa 0f       	add	r26, r26
- 5ec:	bb 1f       	adc	r27, r27
- 5ee:	a0 5c       	subi	r26, 0xC0	; 192
- 5f0:	bd 4f       	sbci	r27, 0xFD	; 253
- 5f2:	ed 91       	ld	r30, X+
- 5f4:	fc 91       	ld	r31, X
+ 638:	aa 0f       	add	r26, r26
+ 63a:	bb 1f       	adc	r27, r27
+ 63c:	a0 5c       	subi	r26, 0xC0	; 192
+ 63e:	bd 4f       	sbci	r27, 0xFD	; 253
+ 640:	ed 91       	ld	r30, X+
+ 642:	fc 91       	ld	r31, X
     uint8_t udre_bit = (com == 0) ? UDRE0 :
                       (com == 1) ? UDRE1 :
                       (com == 2) ? UDRE2 : UDRE3;
 
     //va a esperar hasta que se vacie por completo
 	while (!(myUART->UCSRA & (1 << udre_bit)));
- 5f6:	80 81       	ld	r24, Z
- 5f8:	85 ff       	sbrs	r24, 5
- 5fa:	fd cf       	rjmp	.-6      	; 0x5f6 <UART_setColor+0x64>
+ 644:	80 81       	ld	r24, Z
+ 646:	85 ff       	sbrs	r24, 5
+ 648:	fd cf       	rjmp	.-6      	; 0x644 <UART_setColor+0x64>
 		; //espera a que el periferico este vacio
 
 	myUART->UDR= data;
- 5fc:	8d e6       	ldi	r24, 0x6D	; 109
- 5fe:	86 83       	std	Z+6, r24	; 0x06
+ 64a:	8d e6       	ldi	r24, 0x6D	; 109
+ 64c:	86 83       	std	Z+6, r24	; 0x06
 
     UART_puts(com,"\x1B["); //incio del comando espace
     UART_putchar(com, '0'+(color/10));
     UART_putchar(com,'0'+(color%10));
     UART_putchar(com,'m'); //final del comando
  }
- 600:	1f 91       	pop	r17
- 602:	0f 91       	pop	r16
- 604:	08 95       	ret
+ 64e:	1f 91       	pop	r17
+ 650:	0f 91       	pop	r16
+ 652:	08 95       	ret
 
-00000606 <itoa>:
+00000654 <itoa>:
 
 
 
 
 // Utils
 void itoa(uint16_t number, char* str, uint8_t base){
- 606:	0f 93       	push	r16
- 608:	1f 93       	push	r17
- 60a:	df 93       	push	r29
- 60c:	cf 93       	push	r28
- 60e:	cd b7       	in	r28, 0x3d	; 61
- 610:	de b7       	in	r29, 0x3e	; 62
- 612:	a1 97       	sbiw	r28, 0x21	; 33
- 614:	0f b6       	in	r0, 0x3f	; 63
- 616:	f8 94       	cli
- 618:	de bf       	out	0x3e, r29	; 62
- 61a:	0f be       	out	0x3f, r0	; 63
- 61c:	cd bf       	out	0x3d, r28	; 61
+ 654:	0f 93       	push	r16
+ 656:	1f 93       	push	r17
+ 658:	df 93       	push	r29
+ 65a:	cf 93       	push	r28
+ 65c:	cd b7       	in	r28, 0x3d	; 61
+ 65e:	de b7       	in	r29, 0x3e	; 62
+ 660:	a1 97       	sbiw	r28, 0x21	; 33
+ 662:	0f b6       	in	r0, 0x3f	; 63
+ 664:	f8 94       	cli
+ 666:	de bf       	out	0x3e, r29	; 62
+ 668:	0f be       	out	0x3f, r0	; 63
+ 66a:	cd bf       	out	0x3d, r28	; 61
 
 
     char *aux= str;
 
     if(base == 16){
- 61e:	40 31       	cpi	r20, 0x10	; 16
- 620:	a1 f5       	brne	.+104    	; 0x68a <itoa+0x84>
+ 66c:	40 31       	cpi	r20, 0x10	; 16
+ 66e:	a1 f5       	brne	.+104    	; 0x6d8 <itoa+0x84>
 
         //asignamos un arreglo con las representaciones de los numero HEX en ASCI
         char hex[] = "0123456789ABCDEF";
- 622:	de 01       	movw	r26, r28
- 624:	51 96       	adiw	r26, 0x11	; 17
- 626:	ef e2       	ldi	r30, 0x2F	; 47
- 628:	f2 e0       	ldi	r31, 0x02	; 2
- 62a:	21 e1       	ldi	r18, 0x11	; 17
- 62c:	01 90       	ld	r0, Z+
- 62e:	0d 92       	st	X+, r0
- 630:	21 50       	subi	r18, 0x01	; 1
- 632:	e1 f7       	brne	.-8      	; 0x62c <itoa+0x26>
+ 670:	de 01       	movw	r26, r28
+ 672:	51 96       	adiw	r26, 0x11	; 17
+ 674:	ef e2       	ldi	r30, 0x2F	; 47
+ 676:	f2 e0       	ldi	r31, 0x02	; 2
+ 678:	21 e1       	ldi	r18, 0x11	; 17
+ 67a:	01 90       	ld	r0, Z+
+ 67c:	0d 92       	st	X+, r0
+ 67e:	21 50       	subi	r18, 0x01	; 1
+ 680:	e1 f7       	brne	.-8      	; 0x67a <itoa+0x26>
         uint8_t index = 0;
         uint16_t temp = number; //hacemos un backup de number para trbajar con el y no pereder el valor original
 
         // Manejar el caso cuando el número es 0
         if (temp == 0) {
- 634:	00 97       	sbiw	r24, 0x00	; 0
- 636:	69 f1       	breq	.+90     	; 0x692 <itoa+0x8c>
+ 682:	00 97       	sbiw	r24, 0x00	; 0
+ 684:	69 f1       	breq	.+90     	; 0x6e0 <itoa+0x8c>
             aux[index++] = '0';
             aux[index] = '\0';
             return;
- 638:	9c 01       	movw	r18, r24
- 63a:	90 e0       	ldi	r25, 0x00	; 0
+ 686:	9c 01       	movw	r18, r24
+ 688:	90 e0       	ldi	r25, 0x00	; 0
         //asi como un idx el cual controla cunatos digitiso tiene el numero
         char buffer[16];
         uint8_t buf_idx = 0;
 
         while (temp > 0) {
             buffer[buf_idx++] = hex[temp % base];
- 63c:	ae 01       	movw	r20, r28
- 63e:	4f 5f       	subi	r20, 0xFF	; 255
- 640:	5f 4f       	sbci	r21, 0xFF	; 255
- 642:	8e 01       	movw	r16, r28
- 644:	0f 5e       	subi	r16, 0xEF	; 239
- 646:	1f 4f       	sbci	r17, 0xFF	; 255
- 648:	fa 01       	movw	r30, r20
- 64a:	e9 0f       	add	r30, r25
- 64c:	f1 1d       	adc	r31, r1
- 64e:	d9 01       	movw	r26, r18
- 650:	af 70       	andi	r26, 0x0F	; 15
- 652:	b0 70       	andi	r27, 0x00	; 0
- 654:	a0 0f       	add	r26, r16
- 656:	b1 1f       	adc	r27, r17
- 658:	8c 91       	ld	r24, X
- 65a:	80 83       	st	Z, r24
- 65c:	9f 5f       	subi	r25, 0xFF	; 255
+ 68a:	ae 01       	movw	r20, r28
+ 68c:	4f 5f       	subi	r20, 0xFF	; 255
+ 68e:	5f 4f       	sbci	r21, 0xFF	; 255
+ 690:	8e 01       	movw	r16, r28
+ 692:	0f 5e       	subi	r16, 0xEF	; 239
+ 694:	1f 4f       	sbci	r17, 0xFF	; 255
+ 696:	fa 01       	movw	r30, r20
+ 698:	e9 0f       	add	r30, r25
+ 69a:	f1 1d       	adc	r31, r1
+ 69c:	d9 01       	movw	r26, r18
+ 69e:	af 70       	andi	r26, 0x0F	; 15
+ 6a0:	b0 70       	andi	r27, 0x00	; 0
+ 6a2:	a0 0f       	add	r26, r16
+ 6a4:	b1 1f       	adc	r27, r17
+ 6a6:	8c 91       	ld	r24, X
+ 6a8:	80 83       	st	Z, r24
+ 6aa:	9f 5f       	subi	r25, 0xFF	; 255
             temp /= base;
- 65e:	e4 e0       	ldi	r30, 0x04	; 4
- 660:	36 95       	lsr	r19
- 662:	27 95       	ror	r18
- 664:	ea 95       	dec	r30
- 666:	e1 f7       	brne	.-8      	; 0x660 <itoa+0x5a>
+ 6ac:	e4 e0       	ldi	r30, 0x04	; 4
+ 6ae:	36 95       	lsr	r19
+ 6b0:	27 95       	ror	r18
+ 6b2:	ea 95       	dec	r30
+ 6b4:	e1 f7       	brne	.-8      	; 0x6ae <itoa+0x5a>
 
         //asi como un idx el cual controla cunatos digitiso tiene el numero
         char buffer[16];
         uint8_t buf_idx = 0;
 
         while (temp > 0) {
- 668:	21 15       	cp	r18, r1
- 66a:	31 05       	cpc	r19, r1
- 66c:	69 f7       	brne	.-38     	; 0x648 <itoa+0x42>
- 66e:	fa 01       	movw	r30, r20
- 670:	e9 0f       	add	r30, r25
- 672:	f1 1d       	adc	r31, r1
- 674:	db 01       	movw	r26, r22
- 676:	02 c0       	rjmp	.+4      	; 0x67c <itoa+0x76>
+ 6b6:	21 15       	cp	r18, r1
+ 6b8:	31 05       	cpc	r19, r1
+ 6ba:	69 f7       	brne	.-38     	; 0x696 <itoa+0x42>
+ 6bc:	fa 01       	movw	r30, r20
+ 6be:	e9 0f       	add	r30, r25
+ 6c0:	f1 1d       	adc	r31, r1
+ 6c2:	db 01       	movw	r26, r22
+ 6c4:	02 c0       	rjmp	.+4      	; 0x6ca <itoa+0x76>
 
             pero 523 en HEX es -  20B, por lo uqe haceos como si fuera una pila si lo podemos ver asi
         */
         // Invertir la cadena
         for (int i = buf_idx - 1; i >= 0; i--) {
             aux[index++] = buffer[i];
- 678:	80 81       	ld	r24, Z
- 67a:	8d 93       	st	X+, r24
- 67c:	31 97       	sbiw	r30, 0x01	; 1
+ 6c6:	80 81       	ld	r24, Z
+ 6c8:	8d 93       	st	X+, r24
+ 6ca:	31 97       	sbiw	r30, 0x01	; 1
             523 se puede diviir 3 veces por 16 el cual da en la primea 11 - 0 - 2
 
             pero 523 en HEX es -  20B, por lo uqe haceos como si fuera una pila si lo podemos ver asi
         */
         // Invertir la cadena
         for (int i = buf_idx - 1; i >= 0; i--) {
- 67e:	ec 17       	cp	r30, r28
- 680:	fd 07       	cpc	r31, r29
- 682:	d1 f7       	brne	.-12     	; 0x678 <itoa+0x72>
+ 6cc:	ec 17       	cp	r30, r28
+ 6ce:	fd 07       	cpc	r31, r29
+ 6d0:	d1 f7       	brne	.-12     	; 0x6c6 <itoa+0x72>
             aux[index++] = buffer[i];
         }
         aux[index] = '\0'; // Terminar con nulo
- 684:	69 0f       	add	r22, r25
- 686:	71 1d       	adc	r23, r1
- 688:	3d c0       	rjmp	.+122    	; 0x704 <itoa+0xfe>
+ 6d2:	69 0f       	add	r22, r25
+ 6d4:	71 1d       	adc	r23, r1
+ 6d6:	3d c0       	rjmp	.+122    	; 0x752 <itoa+0xfe>
 
 
     }
 
 
     else if(base == 2){
- 68a:	42 30       	cpi	r20, 0x02	; 2
- 68c:	e9 f5       	brne	.+122    	; 0x708 <itoa+0x102>
+ 6d8:	42 30       	cpi	r20, 0x02	; 2
+ 6da:	e9 f5       	brne	.+122    	; 0x756 <itoa+0x102>
 
         //con el binario es un poco mas sencillo pero el proceso es el mismo
 
         //verificamos si el numero es 0 entonces volvemos a mandar le 0 no tiene caso que
         //se pierda tiempo en un proceso que incluso nos puede dar error
         if(number ==0){
- 68e:	00 97       	sbiw	r24, 0x00	; 0
- 690:	29 f4       	brne	.+10     	; 0x69c <itoa+0x96>
+ 6dc:	00 97       	sbiw	r24, 0x00	; 0
+ 6de:	29 f4       	brne	.+10     	; 0x6ea <itoa+0x96>
 
             aux[index++] = '0';
- 692:	80 e3       	ldi	r24, 0x30	; 48
- 694:	fb 01       	movw	r30, r22
- 696:	80 83       	st	Z, r24
+ 6e0:	80 e3       	ldi	r24, 0x30	; 48
+ 6e2:	fb 01       	movw	r30, r22
+ 6e4:	80 83       	st	Z, r24
             aux[index] = '\0';
- 698:	11 82       	std	Z+1, r1	; 0x01
- 69a:	36 c0       	rjmp	.+108    	; 0x708 <itoa+0x102>
+ 6e6:	11 82       	std	Z+1, r1	; 0x01
+ 6e8:	36 c0       	rjmp	.+108    	; 0x756 <itoa+0x102>
             return;
- 69c:	20 e0       	ldi	r18, 0x00	; 0
+ 6ea:	20 e0       	ldi	r18, 0x00	; 0
 
 
 
         while(temp > 0){
 
             buffer[buf_idx++]= (temp%2)?'1':'0';
- 69e:	ae 01       	movw	r20, r28
- 6a0:	4f 5e       	subi	r20, 0xEF	; 239
- 6a2:	5f 4f       	sbci	r21, 0xFF	; 255
- 6a4:	80 fd       	sbrc	r24, 0
- 6a6:	02 c0       	rjmp	.+4      	; 0x6ac <itoa+0xa6>
- 6a8:	30 e3       	ldi	r19, 0x30	; 48
- 6aa:	01 c0       	rjmp	.+2      	; 0x6ae <itoa+0xa8>
- 6ac:	31 e3       	ldi	r19, 0x31	; 49
- 6ae:	fa 01       	movw	r30, r20
- 6b0:	e2 0f       	add	r30, r18
- 6b2:	f1 1d       	adc	r31, r1
- 6b4:	30 83       	st	Z, r19
- 6b6:	2f 5f       	subi	r18, 0xFF	; 255
+ 6ec:	ae 01       	movw	r20, r28
+ 6ee:	4f 5e       	subi	r20, 0xEF	; 239
+ 6f0:	5f 4f       	sbci	r21, 0xFF	; 255
+ 6f2:	80 fd       	sbrc	r24, 0
+ 6f4:	02 c0       	rjmp	.+4      	; 0x6fa <itoa+0xa6>
+ 6f6:	30 e3       	ldi	r19, 0x30	; 48
+ 6f8:	01 c0       	rjmp	.+2      	; 0x6fc <itoa+0xa8>
+ 6fa:	31 e3       	ldi	r19, 0x31	; 49
+ 6fc:	fa 01       	movw	r30, r20
+ 6fe:	e2 0f       	add	r30, r18
+ 700:	f1 1d       	adc	r31, r1
+ 702:	30 83       	st	Z, r19
+ 704:	2f 5f       	subi	r18, 0xFF	; 255
             temp/=2;
- 6b8:	96 95       	lsr	r25
- 6ba:	87 95       	ror	r24
+ 706:	96 95       	lsr	r25
+ 708:	87 95       	ror	r24
             return;
         }
 
 
 
         while(temp > 0){
- 6bc:	00 97       	sbiw	r24, 0x00	; 0
- 6be:	91 f7       	brne	.-28     	; 0x6a4 <itoa+0x9e>
- 6c0:	06 c0       	rjmp	.+12     	; 0x6ce <itoa+0xc8>
+ 70a:	00 97       	sbiw	r24, 0x00	; 0
+ 70c:	91 f7       	brne	.-28     	; 0x6f2 <itoa+0x9e>
+ 70e:	06 c0       	rjmp	.+12     	; 0x71c <itoa+0xc8>
 
 
         //rellenar con ceros a la izqueirda
 
         while(buf_idx < 16){
             buffer[buf_idx++]= '0';
- 6c2:	fc 01       	movw	r30, r24
- 6c4:	e2 0f       	add	r30, r18
- 6c6:	f1 1d       	adc	r31, r1
- 6c8:	30 83       	st	Z, r19
- 6ca:	2f 5f       	subi	r18, 0xFF	; 255
- 6cc:	03 c0       	rjmp	.+6      	; 0x6d4 <itoa+0xce>
- 6ce:	ce 01       	movw	r24, r28
- 6d0:	41 96       	adiw	r24, 0x11	; 17
- 6d2:	30 e3       	ldi	r19, 0x30	; 48
+ 710:	fc 01       	movw	r30, r24
+ 712:	e2 0f       	add	r30, r18
+ 714:	f1 1d       	adc	r31, r1
+ 716:	30 83       	st	Z, r19
+ 718:	2f 5f       	subi	r18, 0xFF	; 255
+ 71a:	03 c0       	rjmp	.+6      	; 0x722 <itoa+0xce>
+ 71c:	ce 01       	movw	r24, r28
+ 71e:	41 96       	adiw	r24, 0x11	; 17
+ 720:	30 e3       	ldi	r19, 0x30	; 48
         }
 
 
         //rellenar con ceros a la izqueirda
 
         while(buf_idx < 16){
- 6d4:	20 31       	cpi	r18, 0x10	; 16
- 6d6:	a8 f3       	brcs	.-22     	; 0x6c2 <itoa+0xbc>
+ 722:	20 31       	cpi	r18, 0x10	; 16
+ 724:	a8 f3       	brcs	.-22     	; 0x710 <itoa+0xbc>
             buffer[buf_idx++]= '0';
         }
 
         index=0;
 
         for(int8_t i = buf_idx-1 ; i >= 0 ; i--){
- 6d8:	42 2f       	mov	r20, r18
- 6da:	41 50       	subi	r20, 0x01	; 1
- 6dc:	a4 2f       	mov	r26, r20
- 6de:	bb 27       	eor	r27, r27
- 6e0:	a7 fd       	sbrc	r26, 7
- 6e2:	b0 95       	com	r27
- 6e4:	a8 0f       	add	r26, r24
- 6e6:	b9 1f       	adc	r27, r25
- 6e8:	56 2f       	mov	r21, r22
- 6ea:	cb 01       	movw	r24, r22
- 6ec:	fc 01       	movw	r30, r24
- 6ee:	04 c0       	rjmp	.+8      	; 0x6f8 <itoa+0xf2>
+ 726:	42 2f       	mov	r20, r18
+ 728:	41 50       	subi	r20, 0x01	; 1
+ 72a:	a4 2f       	mov	r26, r20
+ 72c:	bb 27       	eor	r27, r27
+ 72e:	a7 fd       	sbrc	r26, 7
+ 730:	b0 95       	com	r27
+ 732:	a8 0f       	add	r26, r24
+ 734:	b9 1f       	adc	r27, r25
+ 736:	56 2f       	mov	r21, r22
+ 738:	cb 01       	movw	r24, r22
+ 73a:	fc 01       	movw	r30, r24
+ 73c:	04 c0       	rjmp	.+8      	; 0x746 <itoa+0xf2>
             aux[index++] = buffer[i];
- 6f0:	8c 91       	ld	r24, X
- 6f2:	81 93       	st	Z+, r24
+ 73e:	8c 91       	ld	r24, X
+ 740:	81 93       	st	Z+, r24
             buffer[buf_idx++]= '0';
         }
 
         index=0;
 
         for(int8_t i = buf_idx-1 ; i >= 0 ; i--){
- 6f4:	41 50       	subi	r20, 0x01	; 1
- 6f6:	11 97       	sbiw	r26, 0x01	; 1
- 6f8:	8e 2f       	mov	r24, r30
- 6fa:	85 1b       	sub	r24, r21
- 6fc:	47 ff       	sbrs	r20, 7
- 6fe:	f8 cf       	rjmp	.-16     	; 0x6f0 <itoa+0xea>
+ 742:	41 50       	subi	r20, 0x01	; 1
+ 744:	11 97       	sbiw	r26, 0x01	; 1
+ 746:	8e 2f       	mov	r24, r30
+ 748:	85 1b       	sub	r24, r21
+ 74a:	47 ff       	sbrs	r20, 7
+ 74c:	f8 cf       	rjmp	.-16     	; 0x73e <itoa+0xea>
             aux[index++] = buffer[i];
         }
 
         aux[index]='\0';
- 700:	68 0f       	add	r22, r24
- 702:	71 1d       	adc	r23, r1
- 704:	fb 01       	movw	r30, r22
- 706:	10 82       	st	Z, r1
+ 74e:	68 0f       	add	r22, r24
+ 750:	71 1d       	adc	r23, r1
+ 752:	fb 01       	movw	r30, r22
+ 754:	10 82       	st	Z, r1
 
 
     }
 
 }
- 708:	a1 96       	adiw	r28, 0x21	; 33
- 70a:	0f b6       	in	r0, 0x3f	; 63
- 70c:	f8 94       	cli
- 70e:	de bf       	out	0x3e, r29	; 62
- 710:	0f be       	out	0x3f, r0	; 63
- 712:	cd bf       	out	0x3d, r28	; 61
- 714:	cf 91       	pop	r28
- 716:	df 91       	pop	r29
- 718:	1f 91       	pop	r17
- 71a:	0f 91       	pop	r16
- 71c:	08 95       	ret
+ 756:	a1 96       	adiw	r28, 0x21	; 33
+ 758:	0f b6       	in	r0, 0x3f	; 63
+ 75a:	f8 94       	cli
+ 75c:	de bf       	out	0x3e, r29	; 62
+ 75e:	0f be       	out	0x3f, r0	; 63
+ 760:	cd bf       	out	0x3d, r28	; 61
+ 762:	cf 91       	pop	r28
+ 764:	df 91       	pop	r29
+ 766:	1f 91       	pop	r17
+ 768:	0f 91       	pop	r16
+ 76a:	08 95       	ret
 
-0000071e <atoi>:
+0000076c <atoi>:
 
 
 
 uint16_t atoi(char *str) {
- 71e:	fc 01       	movw	r30, r24
- 720:	20 e0       	ldi	r18, 0x00	; 0
- 722:	30 e0       	ldi	r19, 0x00	; 0
- 724:	15 c0       	rjmp	.+42     	; 0x750 <atoi+0x32>
+ 76c:	fc 01       	movw	r30, r24
+ 76e:	20 e0       	ldi	r18, 0x00	; 0
+ 770:	30 e0       	ldi	r19, 0x00	; 0
+ 772:	15 c0       	rjmp	.+42     	; 0x79e <atoi+0x32>
     uint16_t result = 0;
     while (*str != '\0') {
         if (*str >= '0' && *str <= '9') {
- 726:	84 2f       	mov	r24, r20
- 728:	80 53       	subi	r24, 0x30	; 48
- 72a:	8a 30       	cpi	r24, 0x0A	; 10
- 72c:	80 f4       	brcc	.+32     	; 0x74e <atoi+0x30>
+ 774:	84 2f       	mov	r24, r20
+ 776:	80 53       	subi	r24, 0x30	; 48
+ 778:	8a 30       	cpi	r24, 0x0A	; 10
+ 77a:	80 f4       	brcc	.+32     	; 0x79c <atoi+0x30>
             result = result * 10 + (*str - '0');
- 72e:	c9 01       	movw	r24, r18
- 730:	b3 e0       	ldi	r27, 0x03	; 3
- 732:	88 0f       	add	r24, r24
- 734:	99 1f       	adc	r25, r25
- 736:	ba 95       	dec	r27
- 738:	e1 f7       	brne	.-8      	; 0x732 <atoi+0x14>
- 73a:	22 0f       	add	r18, r18
- 73c:	33 1f       	adc	r19, r19
- 73e:	82 0f       	add	r24, r18
- 740:	93 1f       	adc	r25, r19
- 742:	24 2f       	mov	r18, r20
- 744:	30 e0       	ldi	r19, 0x00	; 0
- 746:	20 53       	subi	r18, 0x30	; 48
- 748:	30 40       	sbci	r19, 0x00	; 0
- 74a:	28 0f       	add	r18, r24
- 74c:	39 1f       	adc	r19, r25
+ 77c:	c9 01       	movw	r24, r18
+ 77e:	b3 e0       	ldi	r27, 0x03	; 3
+ 780:	88 0f       	add	r24, r24
+ 782:	99 1f       	adc	r25, r25
+ 784:	ba 95       	dec	r27
+ 786:	e1 f7       	brne	.-8      	; 0x780 <atoi+0x14>
+ 788:	22 0f       	add	r18, r18
+ 78a:	33 1f       	adc	r19, r19
+ 78c:	82 0f       	add	r24, r18
+ 78e:	93 1f       	adc	r25, r19
+ 790:	24 2f       	mov	r18, r20
+ 792:	30 e0       	ldi	r19, 0x00	; 0
+ 794:	20 53       	subi	r18, 0x30	; 48
+ 796:	30 40       	sbci	r19, 0x00	; 0
+ 798:	28 0f       	add	r18, r24
+ 79a:	39 1f       	adc	r19, r25
         }
         str++;
- 74e:	31 96       	adiw	r30, 0x01	; 1
+ 79c:	31 96       	adiw	r30, 0x01	; 1
 
 
 
 uint16_t atoi(char *str) {
     uint16_t result = 0;
     while (*str != '\0') {
- 750:	40 81       	ld	r20, Z
- 752:	44 23       	and	r20, r20
- 754:	41 f7       	brne	.-48     	; 0x726 <atoi+0x8>
+ 79e:	40 81       	ld	r20, Z
+ 7a0:	44 23       	and	r20, r20
+ 7a2:	41 f7       	brne	.-48     	; 0x774 <atoi+0x8>
             result = result * 10 + (*str - '0');
         }
         str++;
     }
     return result;
 }
- 756:	c9 01       	movw	r24, r18
- 758:	08 95       	ret
+ 7a4:	c9 01       	movw	r24, r18
+ 7a6:	08 95       	ret
 
-0000075a <__udivmodqi4>:
- 75a:	99 1b       	sub	r25, r25
- 75c:	79 e0       	ldi	r23, 0x09	; 9
- 75e:	04 c0       	rjmp	.+8      	; 0x768 <__udivmodqi4_ep>
+000007a8 <__udivmodqi4>:
+ 7a8:	99 1b       	sub	r25, r25
+ 7aa:	79 e0       	ldi	r23, 0x09	; 9
+ 7ac:	04 c0       	rjmp	.+8      	; 0x7b6 <__udivmodqi4_ep>
 
-00000760 <__udivmodqi4_loop>:
- 760:	99 1f       	adc	r25, r25
- 762:	96 17       	cp	r25, r22
- 764:	08 f0       	brcs	.+2      	; 0x768 <__udivmodqi4_ep>
- 766:	96 1b       	sub	r25, r22
+000007ae <__udivmodqi4_loop>:
+ 7ae:	99 1f       	adc	r25, r25
+ 7b0:	96 17       	cp	r25, r22
+ 7b2:	08 f0       	brcs	.+2      	; 0x7b6 <__udivmodqi4_ep>
+ 7b4:	96 1b       	sub	r25, r22
 
-00000768 <__udivmodqi4_ep>:
- 768:	88 1f       	adc	r24, r24
- 76a:	7a 95       	dec	r23
- 76c:	c9 f7       	brne	.-14     	; 0x760 <__udivmodqi4_loop>
- 76e:	80 95       	com	r24
- 770:	08 95       	ret
+000007b6 <__udivmodqi4_ep>:
+ 7b6:	88 1f       	adc	r24, r24
+ 7b8:	7a 95       	dec	r23
+ 7ba:	c9 f7       	brne	.-14     	; 0x7ae <__udivmodqi4_loop>
+ 7bc:	80 95       	com	r24
+ 7be:	08 95       	ret
 
-00000772 <__udivmodsi4>:
- 772:	a1 e2       	ldi	r26, 0x21	; 33
- 774:	1a 2e       	mov	r1, r26
- 776:	aa 1b       	sub	r26, r26
- 778:	bb 1b       	sub	r27, r27
- 77a:	fd 01       	movw	r30, r26
- 77c:	0d c0       	rjmp	.+26     	; 0x798 <__udivmodsi4_ep>
+000007c0 <__udivmodsi4>:
+ 7c0:	a1 e2       	ldi	r26, 0x21	; 33
+ 7c2:	1a 2e       	mov	r1, r26
+ 7c4:	aa 1b       	sub	r26, r26
+ 7c6:	bb 1b       	sub	r27, r27
+ 7c8:	fd 01       	movw	r30, r26
+ 7ca:	0d c0       	rjmp	.+26     	; 0x7e6 <__udivmodsi4_ep>
 
-0000077e <__udivmodsi4_loop>:
- 77e:	aa 1f       	adc	r26, r26
- 780:	bb 1f       	adc	r27, r27
- 782:	ee 1f       	adc	r30, r30
- 784:	ff 1f       	adc	r31, r31
- 786:	a2 17       	cp	r26, r18
- 788:	b3 07       	cpc	r27, r19
- 78a:	e4 07       	cpc	r30, r20
- 78c:	f5 07       	cpc	r31, r21
- 78e:	20 f0       	brcs	.+8      	; 0x798 <__udivmodsi4_ep>
- 790:	a2 1b       	sub	r26, r18
- 792:	b3 0b       	sbc	r27, r19
- 794:	e4 0b       	sbc	r30, r20
- 796:	f5 0b       	sbc	r31, r21
+000007cc <__udivmodsi4_loop>:
+ 7cc:	aa 1f       	adc	r26, r26
+ 7ce:	bb 1f       	adc	r27, r27
+ 7d0:	ee 1f       	adc	r30, r30
+ 7d2:	ff 1f       	adc	r31, r31
+ 7d4:	a2 17       	cp	r26, r18
+ 7d6:	b3 07       	cpc	r27, r19
+ 7d8:	e4 07       	cpc	r30, r20
+ 7da:	f5 07       	cpc	r31, r21
+ 7dc:	20 f0       	brcs	.+8      	; 0x7e6 <__udivmodsi4_ep>
+ 7de:	a2 1b       	sub	r26, r18
+ 7e0:	b3 0b       	sbc	r27, r19
+ 7e2:	e4 0b       	sbc	r30, r20
+ 7e4:	f5 0b       	sbc	r31, r21
 
-00000798 <__udivmodsi4_ep>:
- 798:	66 1f       	adc	r22, r22
- 79a:	77 1f       	adc	r23, r23
- 79c:	88 1f       	adc	r24, r24
- 79e:	99 1f       	adc	r25, r25
- 7a0:	1a 94       	dec	r1
- 7a2:	69 f7       	brne	.-38     	; 0x77e <__udivmodsi4_loop>
- 7a4:	60 95       	com	r22
- 7a6:	70 95       	com	r23
- 7a8:	80 95       	com	r24
- 7aa:	90 95       	com	r25
- 7ac:	9b 01       	movw	r18, r22
- 7ae:	ac 01       	movw	r20, r24
- 7b0:	bd 01       	movw	r22, r26
- 7b2:	cf 01       	movw	r24, r30
- 7b4:	08 95       	ret
+000007e6 <__udivmodsi4_ep>:
+ 7e6:	66 1f       	adc	r22, r22
+ 7e8:	77 1f       	adc	r23, r23
+ 7ea:	88 1f       	adc	r24, r24
+ 7ec:	99 1f       	adc	r25, r25
+ 7ee:	1a 94       	dec	r1
+ 7f0:	69 f7       	brne	.-38     	; 0x7cc <__udivmodsi4_loop>
+ 7f2:	60 95       	com	r22
+ 7f4:	70 95       	com	r23
+ 7f6:	80 95       	com	r24
+ 7f8:	90 95       	com	r25
+ 7fa:	9b 01       	movw	r18, r22
+ 7fc:	ac 01       	movw	r20, r24
+ 7fe:	bd 01       	movw	r22, r26
+ 800:	cf 01       	movw	r24, r30
+ 802:	08 95       	ret
 
-000007b6 <_exit>:
- 7b6:	f8 94       	cli
+00000804 <_exit>:
+ 804:	f8 94       	cli
 
-000007b8 <__stop_program>:
- 7b8:	ff cf       	rjmp	.-2      	; 0x7b8 <__stop_program>
+00000806 <__stop_program>:
+ 806:	ff cf       	rjmp	.-2      	; 0x806 <__stop_program>
