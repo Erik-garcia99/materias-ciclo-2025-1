@@ -298,9 +298,13 @@ void UART_gets(uint8_t com, char *str){
 			break; //rompesmos el ciclo y a esperar que se vuelva a escribir algo
 		}
 
+<<<<<<< HEAD
 
 
 
+=======
+		//para 20 caracteres, si no lo regresamos a 127
+>>>>>>> ad0a36142b3f6d62dcb0505fd014903bc41e2581
 		if(i<19){
 
 			str[i++]= c;

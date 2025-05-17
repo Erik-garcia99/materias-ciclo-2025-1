@@ -1,6 +1,82 @@
 
 diapositiva 1: 
 
-el problema identificado es cunado una empresa que esta en vias de expander su negocio al mundo digitial, en el mercado hay muchos productos 
-entonces los emprendedeores no estan seguros que software se adecua a sus necesidades, pude que un emprendedor comple un producto y tiene cosas 
-las cuales no sabe como utilizar o tienes cosas de menos o no es lo que  
+el problema identificado es cunado una empresa que esta en vias de expander su negocio al mundo digitial, en el mercado hay muchos productos entonces los emprendedeores no 
+estan seguros que software se adecua a sus necesidades, pude que un emprendedor comple un producto y tiene cosas las cuales no sabe como utilizar o tienes cosas de menos 
+o no es lo que esoeraban, nuestra propuesta es la que mas se acerca hacia lo que necesitan. 
+
+
+segmenteo del mercado: 
+ 
+nuestro proyecto entiende las necesidades unicas de cada cliente, nos cnetramos en 3 segmentos clave que buscan soluciones tecnologicas accesibles, agiles y personalizadas 
+para impulsar su crecimineto. 
+
+segmentto 1:
+PyMEs en proceso de modernización
+
+nuestro prinicpal aliado, dado que son las empresas que estan dando el salto hacia la modernización en busca se ser mas productivos y optmizar procesos, con un buen software
+ese proceso puede significar en una buena experincia, muchas mas ganancias
+
+segmento 2: empredores en etapa incial
+
+Apoyamos a quienes están dando sus primeros pasos en el mundo empresarial, un emprendedor que requiera una aplicacion o un sitio web para dar formalidar a su idea de
+negocio, 
+
+segmento 3: profesionales e instiruciones con necesidades especificas
+
+emplesas ya establecidad en el mercado, pero el software que esta afuera no se alinea a sus necesidades, por lo que demandna herrmainetas especialzadas como sistemas de gestion para 
+consultorias o software educativos para instituciones 
+
+
+ventaja competitiva: 
+
+dado a la metodologia de desarrollo de nuestros productos el cliente esta siempre precente durante el proceso, por lo que puede ver como esta el avance, cada x tiempo que pueden ser
+un par de semanas tiene software que el puede usar y dar feedback sobre el, por lo que si es lo que esperaba y le da el visto bueno se sigue avanzando si no, se hacen las correcciones 
+
+los preciones se buscan que no sean tan elevados, lo mas accesibles posibles con un plan de pagos personalizado con cada cliente, 
+
+para lograr relazar software de calidad moderno se usan las herramietnas mas actuales que hay en el mercado, el perosnal esta en constante actualizacion sobre tendencias y avnces 
+en la tecnologia para poder implementarlo en futuros proyectos y lograr que las empresas nacioneles logen el nivel para poder competir com las empresas extranjeras
+
+
+analisis de la competenteicas 
+
+las empresas se desarrollo de software grandes ofrecen software muy elevado de precio para el emprendedor que busca avanzar hacia la modernidad, por lo que se es imposible poder costiar
+un software de X empresa, una gran mayoria esta enfoada en empresas grandes, por lo que dejan el mercado minoristea olvidado, 
+
+estan los freelancer que son personas que desarrollan software de manera indivual, como autonomos, estos en una gran mayoria son responsables pero muchas veces son estudiantes o empleados
+que buscan un dinero extra por lo que el proceso puede demorarme mas de lo acordado y eso puede trar incomodidad al cliente 
+
+existen las plataformas que ofrecen el desarrollar paginas web no-code, lo que qiere decir que es como hacer un powerpoint, la persnoalizacion es muy poca, para una persona que carece 
+de conocimiento sobre este mundo puede desarrollar un software de muy baja calidad, que funcione no signifique que este correcto 
+
+
+
+validacion de la propuesta:
+
+
+
+
+modelo de negocio: 
+
+nuestro modelo de negocio es el desarrollo de software para X empresa, cunado este se termina la empresa es duenia del software 
+pero nosotros como desarrolladores nos comprometemos a 1 anio de soporte para errores,, fallas tecnicas, este no incluye  nuevas funciones ni
+cambios en el funecionamiento del programa, 
+
+apartir de ese anio se puede contratar a la misma para poder dar mantenimineto anualmente, en cuestiones de seguridad, mejoras menores,
+asistencias tecnica.
+
+
+
+beneficos de la solucion: 
+
+al reducir la dependecia de soluciones genericas las empresas pueden reducir el consumo de recurso incesearios, por lo que puede adquisir equipos 
+que se ajusten justo a los programas que ellos necesitan. 
+
+
+
+
+recursos: 
+
+https://esemanal.mx/2023/10/en-2024-el-mercado-de-software-en-mexico-alcanzara-un-valor-de-70-mil-millones-de-pesos/
+
