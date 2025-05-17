@@ -298,12 +298,34 @@ void UART_gets(uint8_t com, char *str){
 			break; //rompesmos el ciclo y a esperar que se vuelva a escribir algo
 		}
 
-		if(i<127){
+
+
+
+		if(i<19){
 
 			str[i++]= c;
 			//UART_putchar(com, c);
 		}
+		else {
+            // Máximo alcanzado, terminamos la captura automáticamente
+           	/*str[i] = '\0';
+            UART_putchar(com, '\r');
+            UART_putchar(com, '\n');
+            break;*/
+			//UART_putchar(com, '\a');
 
+			/*
+				el proceso para que ya no captrue mas caracteres sera algo parecido a que si se borrara
+				esta en el indece maximo +1 entonces lo que hace es como el borraro de ese sigueitne
+				caractere por lo que parece que no se esta capturando pero lo que hace es que se esta borrando
+				constantement lo que se captrua despues
+			*/
+
+			str[i] = '\0'; //sustitumos el utlimo caracter con el nulo
+			UART_putchar(com,'\b');
+			UART_putchar(com, ' ');
+			UART_putchar(com,'\b');
+        }
 	}
 
 }
