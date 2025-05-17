@@ -1,0 +1,23 @@
+
+/*
+
+firmware 
+
+
+arquitecturas de firmware
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+

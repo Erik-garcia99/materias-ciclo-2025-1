@@ -298,7 +298,8 @@ void UART_gets(uint8_t com, char *str){
 			break; //rompesmos el ciclo y a esperar que se vuelva a escribir algo
 		}
 
-		if(i<127){
+		//para 20 caracteres, si no lo regresamos a 127
+		if(i<19){
 
 			str[i++]= c;
 			//UART_putchar(com, c);
