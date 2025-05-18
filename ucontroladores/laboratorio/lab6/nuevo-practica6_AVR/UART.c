@@ -276,16 +276,7 @@ void UART_gets(uint8_t com, char *str){
 		*/
 		//verificamos si se quiere borrar que en efecto haya algo que borrar
 
-		if(dot_flag){
 
-             if (c == '\r' || c == '\n') {
-                str[i] = '\0';
-                UART_putchar(com, '\r');
-                UART_putchar(com, '\n');
-                break;
-            }
-            continue;
-		}
 
 
 
@@ -301,10 +292,7 @@ void UART_gets(uint8_t com, char *str){
 			continue; // si no hay nada que borrar o si hay algoq ue borrar sigue con el ciclo
 		}
 
-		 if (c == '.') {
-            dot_flag = 1;
-            continue; // No muestra el punto
-        }
+
 
 		UART_putchar(com,c);
 
@@ -317,6 +305,33 @@ void UART_gets(uint8_t com, char *str){
 			UART_putchar(com,'\n'); //salto de linea
 			break; //rompesmos el ciclo y a esperar que se vuelva a escribir algo
 		}
+
+		if (c == '.') {
+            dot_flag = 1;
+            continue; // No muestra el punto
+        }
+
+        if(dot_flag){
+
+             /*if (c == '\r' || c == '\n') {
+                str[i] = '\0';
+                UART_putchar(com, '\r');
+                UART_putchar(com, '\n');
+                break;
+            }
+            continue;*/
+
+            /*
+            lo que voy a hacer es que despues del punto sera coindierado 0,
+
+            va amostrar por el UART pero despues lo cambiaremos a un caracter nulo todos los demas
+            */
+
+            str[i++] = '\0'; //desoues de este punto ya no lo tomara en cuenta
+            dot_flag = 0; //para que ya no enre aqui
+		}
+
+
 		//para 20 caracteres, si no lo regresamos a 127
 
 		if(i<19){

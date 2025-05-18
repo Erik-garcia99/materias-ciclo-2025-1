@@ -16,22 +16,8 @@ typedef struct{
 }UART_reg_t;
 
 
-/*
-para poder acceder a ;ps registros
-
-*/
-
 extern uint8_t *UART_offset[];
 
-/*
-uint8_t *UART_offset[]=
-{
-	(uint8_t*)&UCSR0A,
-	(uint8_t*)&UCSR1A,
-	(uint8_t*)&UCSR2A,
-	(uint8_t*)&UCSR3A
-
-};*/
 
 
 // Prototypes
