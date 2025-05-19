@@ -1,4 +1,5 @@
 #include <avr/io.h>
+#include<avr/interrupt.h>
 
 
 /*
@@ -7,6 +8,25 @@ funcion a agregar : ISR
 
 
 funciones amodificar putchar, getchar
+
+
+*****************************************************************************
+
+primero, la cola circular como bamos a saber cunado esta llena?,
+
+
+in_idx -> sera la cabeza del arreglo y lo ponemos en el indeice 0
+
+-recordando que una cola ingresa por la parte posterior, por lo que debemos de al final cunado saquemos datos de la cola sera dese el indice
+0 porque para mi esa seria mi cola,
+
+out_idx sera el la cola, es en donde actualmente tenemos datos, este no sera el eu sale
+
+si no que sacamos desde in_idx, podremos usar otra varibale con el que saquemos
+
+
+
+
 
 */
 
@@ -17,6 +37,7 @@ funciones amodificar putchar, getchar
 typedef struct{
 
     char buffer[BUFFER_SIZE]; //espacio reservado
+    //indican en donde estamos
     volatile unsigned char in_dx; //indice de entrada (head)
     volatile unsigned char out_dx; //indice de salida (tail)
 }ring_buffer;
@@ -82,7 +103,6 @@ UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t s
     myUART->UBRR = v_UBRR;
 
 
-
     //para empezar este UART debe de tener habilitado las interrupcioens
 
     sei(); //con esta funcionse habilitan las interruciones de manerja global
@@ -93,7 +113,8 @@ UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t s
 
 //la ISR debe de accionarse, dependiod a que UART le correxponde la interrupcion.
 //ahora mismo el perifereico esta listo para mandar una interrupcion, por lo que ahora le toca a la ISR atender esa interrupcion
-ISR(){
+ISR(UART0_UDR0_VEC){
+    //estara hecho para el UART0
 
 
 }
@@ -158,7 +179,7 @@ UART_gotoxy(uint8_t com, uint8_t x, uint8_t y){
 
 }
 
-/**************************************************************************************************
+//**************************************************************************************************
 
 
 // Utils

@@ -191,8 +191,6 @@ uint8_t UART3_ReadByte(void){
 	while(!(UCSR0A & (1<< RXC0)))
 		;
 	return UDR0;
-	
-	
 }
 
 
