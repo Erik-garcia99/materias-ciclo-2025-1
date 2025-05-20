@@ -69,8 +69,14 @@ def lectura(URL):
      # Normalizar 
     X_mean, X_std = X_matrix.mean(axis=0), X_matrix.std(axis=0)
     Y_mean, Y_std = Y.mean(axis=0), Y.std(axis=0)
+    # X_normalized = (X_matrix - X_mean) / X_std
+    # Y_normalized = (Y - Y_mean) / Y_std
+
+    X_std[X_std == 0] = 1e-10  # Evitar división por cero
+    Y_std[Y_std == 0] = 1e-10
     X_normalized = (X_matrix - X_mean) / X_std
     Y_normalized = (Y - Y_mean) / Y_std
+
 
 
     unos = np.ones((X_normalized.shape[0], 1))
@@ -86,20 +92,29 @@ def hipotesis(A, THETA):
     return A @ THETA
 
 
-def funcion_costo(Y, Y_hat, theta,  lambda_reg=0.01):
+# def funcion_costo(Y, Y_hat, theta,  lambda_reg=0.01):
 
-    E= Y-Y_hat #calcula el error que seria XI matriz de erroes distribuida normalemnte 
+#     E= Y-Y_hat #calcula el error que seria XI matriz de erroes distribuida normalemnte 
 
-    E_vector_F= E.flatten(order='F') #matriz vectorizada en forma de fila
-    E_vector_C=E.flatten(order='F').reshape(-1, 1) #matriz vectroizada en manera de columna
+#     E_vector_F= E.flatten(order='F') #matriz vectorizada en forma de fila
+#     E_vector_C=E.flatten(order='F').reshape(-1, 1) #matriz vectroizada en manera de columna
     
-    #SEE = E_vector_F @ E_vector_C #multiplicacion para calcular el costo
+#     #SEE = E_vector_F @ E_vector_C #multiplicacion para calcular el costo
 
-    SEE = np.sum(E**2) + lambda_reg * np.sum(theta**2)
-    g=Y.shape[0] #entradas
-    m=Y.shape[1] #salidas
+#     SEE = np.sum(E**2) + lambda_reg * np.sum(theta**2)
+#     g=Y.shape[0] #entradas
+#     m=Y.shape[1] #salidas
 
-    MSE = SEE/(g*m)
+#     MSE = SEE/(g*m)
+#     RMSE = np.sqrt(MSE)     
+#     return E, SEE, MSE, RMSE
+
+def funcion_costo(Y, Y_hat):  # Cambiar lambda_reg a 0.0
+    E = Y - Y_hat
+    SEE = np.sum(E**2)  # Eliminar el término de regularización
+    g = Y.shape[0]
+    m = Y.shape[1]
+    MSE = SEE / (g * m)
     RMSE = np.sqrt(MSE)     
     return E, SEE, MSE, RMSE
 
@@ -109,11 +124,17 @@ def fcnGrad(A,E):
 
 
 
+# def calcular_r2(Y_real, Y_pred):
+#     ss_res = np.sum((Y_real - Y_pred)**2)
+#     ss_tot = np.sum((Y_real - np.mean(Y_real, axis=0))**2)
+#     return 1 - (ss_res / ss_tot)
+
 def calcular_r2(Y_real, Y_pred):
     ss_res = np.sum((Y_real - Y_pred)**2)
     ss_tot = np.sum((Y_real - np.mean(Y_real, axis=0))**2)
-    return 1 - (ss_res / ss_tot)
-
+    r2 = 1 - (ss_res / ss_tot)
+    r2 = np.clip(r2, -1, 1)  # Evitar valores fuera de rango por errores numéricos
+    return r2
 
 
 def calcular_jacobiana(A, m):
@@ -163,12 +184,15 @@ def trainLM(x0,A,Y, max_iter, show, lr_init=1e-4, lr_dec=0.1, lr_inc=10.0, gamma
     performance = [] #alamaena el valor de al funcion en cada iteracion 
     gamma = lr_init
 
+
+
     for epoch in range(max_iter):
         try:
 
             resisual, J, norm_grad = objfcnjac_reg(x,A,Y)
             current_performance=objfcn_reg(x,A,Y)
             performance.append(current_performance)
+
 
             if verbose and (epoch % show ==0):
                 
@@ -181,7 +205,9 @@ def trainLM(x0,A,Y, max_iter, show, lr_init=1e-4, lr_dec=0.1, lr_inc=10.0, gamma
 
             A_lm = J.T @ J + gamma * np.eye(len(x))
             b = -J.T @ resisual
-            delta = np.linalg.solve(A_lm, b) # utilizado para resolver el sistema de ecuaciones lineales. donde A es una matriz cuadrada y b un arreglo unideimencional o matriz bidimensional 
+            delta = np.linalg.lstsq(A_lm, b, rcond=None)[0]
+
+            # delta = np.linalg.solve(A_lm, b) # utilizado para resolver el sistema de ecuaciones lineales. donde A es una matriz cuadrada y b un arreglo unideimencional o matriz bidimensional 
            
             x_new = x + delta  # Asegurar que delta tenga la misma forma que x
             new_performance = objfcn_reg(x_new,A,Y)
@@ -215,7 +241,6 @@ def main():
 
 
     URL="data/challenge01_syntheticdataset22.txt"
- 
 
 
     A, Y_normalized, X_mean, X_std, Y_mean, Y_std = lectura(URL)
