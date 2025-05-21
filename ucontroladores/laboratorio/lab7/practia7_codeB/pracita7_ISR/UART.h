@@ -1,9 +1,7 @@
 
 #ifndef UART_H
 #define UART_H
-
-
-
+#define BUFFER_SIZE 64
 
 //estrucutra que define a los distintos uarts
 typedef struct{
@@ -17,23 +15,16 @@ typedef struct{
 
 }UART_reg_t;
 
-
-/*
-para poder acceder a ;ps registros
-
-*/
-
 extern uint8_t *UART_offset[];
 
-/*
-uint8_t *UART_offset[]=
-{
-	(uint8_t*)&UCSR0A,
-	(uint8_t*)&UCSR1A,
-	(uint8_t*)&UCSR2A,
-	(uint8_t*)&UCSR3A
+typedef struct{
 
-};*/
+    char buffer[BUFFER_SIZE]; //espacio reservado
+    //indican en donde estamos
+    volatile unsigned char in_dx; //indice de entrada (head)
+    volatile unsigned char out_dx; //indice de salida (tail)
+}ring_buffer;
+
 
 
 // Prototypes

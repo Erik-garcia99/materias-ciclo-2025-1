@@ -15,32 +15,31 @@ funciones amodificar putchar, getchar
 primero, la cola circular como bamos a saber cunado esta llena?,
 
 
-in_idx -> sera la cabeza del arreglo y lo ponemos en el indeice 0
+out_idx -> sera la cabeza del arreglo y lo ponemos en el indeice 0
 
--recordando que una cola ingresa por la parte posterior, por lo que debemos de al final cunado saquemos datos de la cola sera dese el indice
-0 porque para mi esa seria mi cola,
+-recordando que una cola ingresa por la parte posterior, por lo que debemos de al final cunado saquemos datos de la cola sera dese el
+indice 0 porque para mi esa seria mi cola,
 
-out_idx sera el la cola, es en donde actualmente tenemos datos, este no sera el eu sale
-
-si no que sacamos desde in_idx, podremos usar otra varibale con el que saquemos
+in_idx sera el la cola, es en donde actualmente tenemos datos, este no sera el eu sale
 
 
 
 
+
+
+****************************************************************************************
+funciones a mosificar
+
+2 ISR (USART0_UDRE_vet) -> para TX - ISR(USRT0_RX_vect) -> para RX
+
+putchar y getchar
 
 */
 
-#define BUFFER_SIZE 64
 
-
-
-typedef struct{
-
-    char buffer[BUFFER_SIZE]; //espacio reservado
-    //indican en donde estamos
-    volatile unsigned char in_dx; //indice de entrada (head)
-    volatile unsigned char out_dx; //indice de salida (tail)
-}ring_buffer;
+// Definición de colas
+ring_buffer_t tx_buffers[4] = {{0}};
+ring_buffer_t rx_buffers[4] = {{0}};
 
 
 
@@ -65,7 +64,8 @@ UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t s
 
     UART_reg_t *myUART = UART_offset[com]; // eligo a mi UART
 
-    myUART->UCSRB = (1 << TXEN0) | (1 << RXEN0); // Habilita TX y RX para UART0
+    //habilitar las interrupciones de RX
+    myUART->UCSRB = (1 << TXEN0) | (1 << RXEN0) | (1 << RXCIE0); // Habilita TX y RX para UART0
 
     uint8_t parity_mode=0;
 
@@ -118,15 +118,143 @@ ISR(UART0_UDR0_VEC){
 
 
 }
-// Send
-void UART_puts(uint8_t com, char *str);
-void UART_putchar(uint8_t com, char data);
+
+
+//interrupcion para RX
+ISR(USART0_RX_vect){
+
+
+
+}
+
+
+
+//send
+/*
+lo que hace la funcion putchar seria enviar el caracter a la cola TX y hbaulutar la interrupcion UDRE
+
+*/
+void UART_putchar(uint8_t com, char data){
+
+
+    ring_buffer *tx = &tx_buffers[com]; //va a elegir sobre cual UART se mandara.
+
+    //calculamos cobre que indice esta in_dx esta actualmente.
+    uint8_t next_int = (tx->in_dx +1 ) % BUFFER_SIZE;
+
+    /*
+        lo que esta pasando es que esta esperando si el buffer esta llegno, como podemos saber si el buffer esta lleno,
+
+    */
+    while(next_int == tx->out_dx);
+
+
+    //una vez que se hayan liberados espapcios en el buffer ingresamos el sigueite dato
+
+    tx->buffer[tx->in_dx] = data;
+    tx->in_dx = next_int;
+
+    //habilitamos la interrupcion UDRE
+
+    UART_reg_t *myUART = UART_offset[com];
+
+    if(!(myUART->UCSRB & (1 << UDRIE0))){
+        myUART->UCSRB |= (1 << UDRIE0);
+    }else{
+          UCSR0B &= ~(1 << UDRIE0); // Deshabilitar interrupción si no hay datos, para que no este pasando la interrupcion siempre
+    }
+
+}
+
+
 
 // Received
 uint8_t UART_available(uint8_t com);
-char UART_getchar(uint8_t com );
-void UART_gets(uint8_t com, char *str);
 
+
+char UART_getchar(uint8_t com );
+
+
+// Send
+void UART_puts(uint8_t com, char *str)
+{
+
+    // TXn trasmitir el contenido
+    while (*str != '\0')
+    {
+        // mientras haya contenido en el apuntador, que sea diferente a NULL
+        UART_putchar(com, *str++);
+    }
+}
+
+
+void UART_gets(uint8_t com, char *str)
+{
+
+    char c; // este va a capturar el valor del char que se introdujo
+    uint8_t i = 0;
+    uint8_t dot_flag = 0; // Bandera para detectar punto
+
+    while (1)
+    {
+        c = UART_getchar(com);
+        if (c == '\b')
+        {
+            if (i > 0)
+            {
+
+                str[--i] = '\0'; // sustitumos el utlimo caracter con el nulo
+                UART_putchar(com, '\b');
+                UART_putchar(com, ' ');
+                UART_putchar(com, '\b');
+            }
+
+            continue; // si no hay nada que borrar o si hay algoq ue borrar sigue con el ciclo
+        }
+
+        UART_putchar(com, c);
+
+        if (c == '\r' || c == '\n')
+        {
+            // retorno de carro o salto de linea lo que quiere decir que se terminao de escribir el
+            // texto actual.
+
+            str[i] = '\0';           // caracter nulo denotando que la
+            UART_putchar(com, '\r'); // vuelve al inicio de la linea
+            UART_putchar(com, '\n'); // salto de linea
+            break;                   // rompesmos el ciclo y a esperar que se vuelva a escribir algo
+        }
+
+        if (c == '.')
+        {
+            dot_flag = 1;
+            continue; // No muestra el punto
+        }
+
+        if (dot_flag)
+        {
+
+            str[i++] = '\0'; // desoues de este punto ya no lo tomara en cuenta
+            dot_flag = 0;    // para que ya no enre aqui
+        }
+
+        // para 20 caracteres, si no lo regresamos a 127
+
+        if (i < 19)
+        {
+
+            str[i++] = c;
+            // UART_putchar(com, c);
+        }
+        else
+        {
+            str[i] = '\0'; // sustitumos el utlimo caracter con el nulo
+            UART_putchar(com, '\b');
+            UART_putchar(com, ' ');
+            UART_putchar(com, '\b');
+        }
+    }
+}
 
 //*****************************************************************************************************
 
