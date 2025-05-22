@@ -1,0 +1,33 @@
+
+
+16.5.3 
+
+dado que escribir en TCNT0 en cualquier modo de operacion bloqueara todas las compraciones de coincidencia durante un ciclo de reloj del temporizador
+si el valor escrito en TCNT0 es igual al valor de OCR0x se perdera la comparacion de coincidencia. de igual manera no se escribe el valor de TCNT0 igual
+a BOTTOM. 
+
+la configuracion del OC0x debe realizarse antes d configurar el registro de direccion de datos para que el pin del puerto sea de salida. 
+es decri para que el TIMER tenga efectos en el exterior debemos configurar el PIN asociado a la salida de este como salida este no 
+sobre escribe el comportamineto de un PIN como con UART. 
+
+16.6 comparar la unidad de salida de coincidencia 
+
+los bits del modo de salida de comprarcion (COM0x1:0) tiene DOS FUNCIONES. el generador de fromas de onda urilizada los bits COM0x1:0 para definir el 
+estado de comparacion de salida (OC0x) en la proxima coincidencia de comparacion. ademas los bits COM0x1 controlan ka fuente de salida del pin OCOx
+
+la funcion general del puerto de I/O es anulada por la comparacion de salida (OC0x) del generador de onsa si alguno de los bits COM0x1:0 esta configurado
+
+sin embargo la direccion del pin (OC0x - entrada o salida) todavia esta controlado por el registro de direccion de datos (DDR)
+
+
+
+
+
+
+
+
+
+
+
+
+

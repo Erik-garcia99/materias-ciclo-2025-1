@@ -1,5 +1,9 @@
 #include <avr/io.h>
 #include<avr/interrupt.h>
+#include "UART.h"
+
+#define FOSC 16000000
+
 
 
 /*
@@ -38,8 +42,8 @@ putchar y getchar
 
 
 // Definición de colas
-ring_buffer_t tx_buffers[4] = {{0}};
-ring_buffer_t rx_buffers[4] = {{0}};
+ring_buffer tx_buffers[4] = {{0}};
+ring_buffer rx_buffers[4] = {{0}};
 
 
 
@@ -65,7 +69,7 @@ UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t s
     UART_reg_t *myUART = UART_offset[com]; // eligo a mi UART
 
     //habilitar las interrupciones de RX
-    myUART->UCSRB = (1 << TXEN0) | (1 << RXEN0) | (1 << RXCIE0); // Habilita TX y RX para UART0
+    myUART->UCSRB = (1 << TXEN0) | (1 << RXEN0) | (1 << RXCIE0) | (1 << UDRIE0); // Habilita TX y RX para UART0
 
     uint8_t parity_mode=0;
 
@@ -105,7 +109,7 @@ UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t s
 
     //para empezar este UART debe de tener habilitado las interrupcioens
 
-    sei(); //con esta funcionse habilitan las interruciones de manerja global
+
 
 }
 
@@ -113,18 +117,50 @@ UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t s
 
 //la ISR debe de accionarse, dependiod a que UART le correxponde la interrupcion.
 //ahora mismo el perifereico esta listo para mandar una interrupcion, por lo que ahora le toca a la ISR atender esa interrupcion
-ISR(UART0_UDR0_VEC){
+ISR(USART0_UDRE_vect){
     //estara hecho para el UART0
+    //escribe en el registro. por lo que responde a la de PUTCHAR()
 
+    /*tenemos nuestro buffer circular ya establecido, se introdujo un dato dentro del buffer
+
+    por lo que la ISR lo que hara es tomar el dato que este en la la salida y ponerlo en el TX
+     */
+
+     //primero lo que haremos es traer ese dato
+
+     ring_buffer *tx = &tx_buffers[0]; //seleccionamos el apuntador que esta en la estrucutra 0 que es
+     //el del UART 0
+
+     if(tx->in_dx != tx->out_dx){
+
+        UDR0 = tx->buffer[tx->out_dx];
+        tx->out_dx = (tx->out_dx + 1) % BUFFER_SIZE;
+     }else{
+
+        UCSR0B &=~(1<< UDRIE0); // deshabilitamos interrupcion si no hay datos
+     }
 
 }
 
 
+//empezemos por la ISR como vamos  tratar cunado hay un dato denotr
 //interrupcion para RX
 ISR(USART0_RX_vect){
+/*
+lo primeor que se encoentrara cunado se ingresa algo es esta ISR
+*/
+    ring_buffer *rx = &rx_buffers[0]; //terminal conectado con UART0
+    char data = UDR0; //guardamos el dato que esta en el buffer en una varibale
+
+    uint8_t next_in = (rx->in_dx +1 ) % BUFFER_SIZE; //calculamos un valor 1 mas del in actual
+    //este nos funcionara para saber si aun no ha llegado al tome de la cola
 
 
+    if(next_in != rx->out_dx){
 
+        rx->buffer[rx->in_dx] = data;
+        rx->in_dx = next_in;
+    }
 }
 
 
@@ -169,10 +205,32 @@ void UART_putchar(uint8_t com, char data){
 
 
 // Received
-uint8_t UART_available(uint8_t com);
+//como saber si existen datos en la cola ciruclar, es sencillo esta vez, si el in_dx esta
+//desplzado es que hay al menos 1 dato dentro
+uint8_t UART_available(uint8_t com) {
+    ring_buffer_t *rx = &rx_buffers[com]; // Usar rx_buffers, no tx_buffers
+    return (rx->in_idx != rx->out_idx) ? 1 : 0;
+}
 
 
-char UART_getchar(uint8_t com );
+/*
+
+*/
+char UART_getchar(uint8_t com ){
+
+
+    //este gecvhar sera para cualquier puerto
+
+    ring_buffer *rx = &rx_buffers[com];
+
+    while(rx->in_dx == rx->out_dx);
+
+    char data = rx->buffer[rx->out_dx];
+
+    rx->out_dx = (rx->out_dx + 1) % BUFFER_SIZE;
+
+    return data;
+}
 
 
 // Send
@@ -239,6 +297,8 @@ void UART_gets(uint8_t com, char *str)
         }
 
         // para 20 caracteres, si no lo regresamos a 127
+
+
 
         if (i < 19)
         {
