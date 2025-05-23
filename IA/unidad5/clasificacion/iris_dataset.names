@@ -1,0 +1,30 @@
+Iris flower dataset
+
+Pattern recognition is the process of training a neural network to assign
+the correct target classes to a set of input patterns.  Once trained the
+network can be used to classify patterns it has not seen before.
+
+This dataset can be used to create a neural network that classifies iris
+flowers into three species.
+
+loads these two variables:
+
+  irisInputs - a 4x150 matrix of four attributes of 150 flowers.
+
+     1. Sepal length in cm
+     2. Sepal width in cm
+     3. Petal length in cm
+     4. Petal width in cm
+
+   irisTargets - a 3x150 matrix of 150 associated class vectors
+   defining which of three classes each input is assigned to.  Classes
+   are represented by a 1 in one of three rows, with zeros in the others.
+
+This data is available from the UCI Machine Learning Repository.
+
+   http://mlearn.ics.uci.edu/MLRepository.html
+
+Murphy,P.M., Aha, D.W. (1994). UCI Repository of machine learning
+databases [http://www.ics.uci.edu/~mlearn/MLRepository.html].
+Irvine, CA: University of California,  Department of Information
+and Computer Science.

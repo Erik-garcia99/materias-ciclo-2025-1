@@ -16,7 +16,6 @@ void_delay_750ms(){
 	for(uint16_t counter = 0; counter< 750 ; counter++){
 		while((TIFR0 & (1 << OCF0A) ) //SOLO me interesa ese bit que representea que OCRA llego a su valor establecido
 			;
-			
 		//debemos limpiar la bandera 
 		
 		TIFR0 |= (1 << OCF0A);

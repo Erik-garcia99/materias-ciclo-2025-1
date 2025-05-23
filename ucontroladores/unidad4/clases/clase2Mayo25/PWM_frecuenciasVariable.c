@@ -1,4 +1,4 @@
-/*
+./*
 FRECUEICNAI VARIABLE SOLO PUDE SALIR POR B por lo que sale por B, sera el ancho de B por el tope de B 
 PG5 PWN variable con frecuencia variable 
 
