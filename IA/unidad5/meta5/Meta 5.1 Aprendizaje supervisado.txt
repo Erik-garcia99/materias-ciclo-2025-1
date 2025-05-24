@@ -1,0 +1,27 @@
+UNIDAD V. Aprendizaje supervisado
+
+Competencia: Diseñar soluciones que involucren técnicas de aprendizaje automático, para solucionar problemas que requieran toma de decisión y automatización de procesos, mediante un análisis de datos, de forma ética y socialmente responsable.
+
+Meta 5.1 Diseñar e implementar un modelo predictivo con aprendizaje supervisado para problemas de regresión polinomial multivariada (Usar los datos Engine behavior: engine_dataset.mat y challenge04_syntheticdataset22.txt) y clasificación polinomial multivariada (Usar los datos Breast cancer y Dermatology) que incluya mas de un algoritmo de entrenamiento asignado (SGD with U-Clip, Adamax, Adam, Adadelta, AdamW, Adagrad, ...); técnicas de regularización (L1, L2, ...); parada temprana de entrenamiento; pre-procesamiento de datos (normalización, selección de tasas de entrenamiento, validación y prueba); formas de aprendizaje (online, batch y minibatch); métricas de desempeño (regresión: SSE, MSE, RMSE y R2; clasificación: matriz de confusion, ROC, entropia cruzada categorica). Genere un reporte para documentar el diseño del modelo predictivo de regresión y clasificación. En el apartado de diseño experimental describa los modelos y en el apartado de Análisis o discusión de resultados agregue sus resultados y análisis.
+
+1. ALCARAZ DELGADO JESUS MAURICIO
+Adam, SGD with U-Clip (Véase el archivo: Optimization Algorithms.pdf)
+
+2. FIGUEROA ROMERO CARLOS
+Adamax, EXAdam (Véase el archivo: Optimization Algorithms.pdf)
+
+3. GARCÍA CHÁVEZ ERIK
+AdamD, Variable Learning Rate Gradient Descent (Véase el archivo: Optimization Algorithms.pdf)
+
+4. LEYVA GUTIERREZ BRYAN GIOVANI
+AdamW, RAdam (Véase el archivo: Optimization Algorithms.pdf)
+
+5. MACHADO MERAZ ULISES JOEL
+Lion, Adagrad (Véase el archivo: Optimization Algorithms.pdf)
+
+6. ROBLERO ESCALANTE SANDI GUILMA
+SMORMS3, SGD (Véase el archivo: Optimization Algorithms.pdf)
+
+
+Fechas de Avance: 20, 21, 22, 27 de Mayo 2025.
+Fecha de presentación y entrega: 29-Mayo-2025

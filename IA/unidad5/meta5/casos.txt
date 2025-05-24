@@ -1,0 +1,23 @@
+Regrecion: 
+normalizados 
+
+GDX con .mat 
+
+GDX con .txt
+----------------------
+Adam con .mat 
+
+Adam con .txt
+
+
+//////////////////////////////
+
+
+no normalizadpss
+
+GDX con .mat <- OK
+
+GDX con .txt 
+-------------------------
+Adam con .mat
+Adam con .txt
