@@ -157,6 +157,7 @@ def gdx_optimization(
             # Y_pred = model(A_batch, THETA)
             # E_batch = Y_batch - Y_pred
 
+            #calcular la gradiente 
             A_batch = designMatrix(tau, X_batch)  # (batch_size, rho)
             Y_pred = model(A_batch, THETA)  # (batch_size, m)
             E_batch = Y_batch - Y_pred  # (batch_size, m)
@@ -193,12 +194,23 @@ inputs  = mat['engineInputs'].T
 targets = mat['engineTargets'].T
 
 
+#------------------------------------------------------------------------------
+
+
+# Normalizar datos
+scaler_X = RobustScaler()
+scaler_y = RobustScaler()
+
+# Normalizar inputs y targets
+inputs = scaler_X.fit_transform(inputs)
+targets = scaler_y.fit_transform(targets)
 
 #------------------------------------------------------------------------------
 
 # Train and Test Split Data
-inputs_train, inputs_test, targets_train, targets_test = train_test_split(inputs, targets, random_state = 1, test_size = 0.4)
+#inputs_train, inputs_test, targets_train, targets_test = train_test_split(inputs, targets, random_state = 1, test_size = 0.4)
 
+inputs_train, inputs_test, targets_train, targets_test = train_test_split(inputs, targets, random_state=1, test_size=0.4)
 
 
 #------------------------------------------------------------------------------
@@ -298,20 +310,24 @@ A_test = designMatrix(tau,xTest)
 outputTest = model(A_test,THETA)
 
 
+#-----------------------------------------------------------------------
 
+# Desnormalizar predicciones
+outputTrain_descaled = scaler_y.inverse_transform(outputTrain)
+outputTest_descaled = scaler_y.inverse_transform(outputTest)
 
 #------------------------------------------------------------------------------
 
 
 # R2 for raw train data
-R2_train = r2_score(tTrain.reshape(-1, 1),outputTrain.reshape(-1, 1))
+R2_train = r2_score(tTrain.reshape(-1, 1),outputTrain_descaled.reshape(-1, 1))
 print(R2_train)
 
 
 #------------------------------------------------------------------------------
 
 # MSE for raw train data
-MSE_train = mean_squared_error(tTrain.reshape(-1, 1),outputTrain.reshape(-1, 1))
+MSE_train = mean_squared_error(tTrain.reshape(-1, 1),outputTrain_descaled.reshape(-1, 1))
 print(MSE_train)
 
 
@@ -319,7 +335,7 @@ print(MSE_train)
 
 
 # R2 for raw test data
-R2_test = r2_score(tTest.reshape(-1, 1),outputTest.reshape(-1, 1))
+R2_test = r2_score(tTest.reshape(-1, 1),outputTest_descaled.reshape(-1, 1))
 print(R2_test)
 
 
@@ -331,7 +347,7 @@ print(R2_test)
 
 
 # MSE for raw test data
-MSE_test = mean_squared_error(tTest.reshape(-1, 1),outputTest.reshape(-1, 1))
+MSE_test = mean_squared_error(tTest.reshape(-1, 1),outputTest_descaled.reshape(-1, 1))
 print(MSE_test)
 
 #------------------------------------------------------------------------------ 

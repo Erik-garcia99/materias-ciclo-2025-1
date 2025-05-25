@@ -1,7 +1,7 @@
 Regrecion: 
 normalizados 
 
-GDX con .mat 
+GDX con .mat (esta dando resultados muy pobres hay que ver que onda) 
 
 GDX con .txt
 ----------------------
@@ -15,9 +15,18 @@ Adam con .txt
 
 no normalizadpss
 
-GDX con .mat <- OK
+GDX con .mat (O ML L) <- OK
 
 GDX con .txt 
 -------------------------
 Adam con .mat
 Adam con .txt
+
+
+
+#########################################
+clasificacion 
+
+
+
+
