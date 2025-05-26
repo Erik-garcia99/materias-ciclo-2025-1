@@ -221,8 +221,8 @@ tTest = targets_test
 
 
 
-"""
-mini batch
+
+#mini batch
 # Find the optimal parameters m and b with RMSprop
 tau = 1
 lambda_param = 0.1
@@ -241,11 +241,11 @@ THETA = gdx_optimization(
     lr_inc=1.05,
     max_perf_inc=1.04,
     stopping_threshold=1e-6,
-)"""
+)
 #------------------------------------------------------------------------------
 
 #ONLINE (1 a 1)
-
+"""
 tau = 2
 lambda_param = 0.001
 THETA = gdx_optimization(
@@ -262,8 +262,7 @@ THETA = gdx_optimization(
     lr_inc=1.05,
     max_perf_inc=1.04,
     stopping_threshold=1e-6,
-)
-
+)"""
 
 #-----------------------------------------------------------------------
 
