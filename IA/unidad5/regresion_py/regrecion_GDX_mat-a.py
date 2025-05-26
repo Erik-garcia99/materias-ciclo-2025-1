@@ -68,15 +68,17 @@ def powerVector(Tau, V):
 #         s = s + val
 #     return int(s)
 
-def polyParamsNumber(n,tau):
-    s = 0
-    for l in range(tau+1):
-        val = math.factorial(l + n - 1) / (math.factorial(n - 1) * math.factorial(l))
-        val = val / math.factorial(l)  # Usar math en lugar de np.math
-        s += val
-    return int(s)
 
+# def polyParamsNumber(n,tau):
+#     s = 0
+#     for l in range(tau+1):
+#         val = math.factorial(l + n - 1) / (math.factorial(n - 1) * math.factorial(l))
+#         val = val / math.factorial(l)  # Usar math en lugar de np.math
+#         s += val
+#     return int(s)
 
+def polyParamsNumber(n, tau):
+    return int(math.comb(n + tau, tau))
 
 
 
@@ -126,7 +128,7 @@ def gdx_optimization(
     m = Y.shape[1]
     rho = polyParamsNumber(n, tau)
     #rho me esta dando porbelmas 
-    THETA = np.random.randn(rho, m)
+    THETA = np.random.randn(rho, m) *0.01 #reduce la escala de la inicalizaciones de los pesos
     delta_THETA = np.zeros((rho, m))
     lr = learning_rate
     q = X.shape[0]
@@ -161,7 +163,8 @@ def gdx_optimization(
             Y_pred = model(A_batch, THETA)  # (batch_size, m)
             E_batch = Y_batch - Y_pred  # (batch_size, m)
             Grad = gradient(A_batch, E_batch, THETA, lambda_param)
-
+            #evitar desbordamienteos 
+            Grad = np.clip(Grad, -1e3, 1e3)
             delta_THETA = momentum * delta_THETA - (1 - momentum) * lr * Grad
             THETA += delta_THETA
 
@@ -242,47 +245,46 @@ THETA = gdx_optimization(
 #------------------------------------------------------------------------------
 
 #ONLINE (1 a 1)
-"""
-tau = 1
-lambda_param = 0.1
+
+tau = 2
+lambda_param = 0.001
 THETA = gdx_optimization(
     xTrain,
     tTrain,
     tau=tau,
     lambda_param=lambda_param,
-    maxEpochs=10000,
-    show=500,
+    maxEpochs=100000,
+    show=1000,
     batch_size=1,
-    learning_rate=1e-7,
-    momentum=0.8,          
+    learning_rate=1e-6,
+    momentum=0.9,          
     lr_dec=0.5,           
-    lr_inc=1.02,
-    max_perf_inc=1.02,
+    lr_inc=1.05,
+    max_perf_inc=1.04,
     stopping_threshold=1e-6,
 )
-"""
 
 
 #-----------------------------------------------------------------------
 
-#lote
-tau = 1
-lambda_param = 0.1
-THETA = gdx_optimization(
-    xTrain,
-    tTrain,
-    tau=tau,
-    lambda_param=lambda_param,
-    maxEpochs=10000,
-    show=500,
-    batch_size=xTrain.shape[0],
-    learning_rate=1e-7,
-    momentum=0.8,          
-    lr_dec=0.5,           
-    lr_inc=1.02,
-    max_perf_inc=1.02,
-    stopping_threshold=1e-6,
-)
+# #lote
+# tau = 1
+# lambda_param = 0.001
+# THETA = gdx_optimization(
+#     xTrain,
+#     tTrain,
+#     tau=tau,
+#     lambda_param=lambda_param,
+#     maxEpochs=10000,
+#     show=500,
+#     batch_size=xTrain.shape[0],
+#     learning_rate=1e-4,
+#     momentum=0.9,          
+#     lr_dec=0.5,           
+#     lr_inc=1.05,
+#     max_perf_inc=1.04,
+#     stopping_threshold=1e-6,
+# )
 
 
 
