@@ -1,27 +1,51 @@
-Regrecion: 
-normalizados 
+Regrecion:  
 
-GDX con .mat (volver a hacer, no se a que le movi que ahora me esta dando valores como que no van. ) 
+GDX con engine.mat <
+tiene que quedar como 
+online (OK)
+mini bacth (OK) 
+lotes (OK)
 
-GDX con .txt
+tau =1 - tau = 2 no normlaizado  (OK)
+
+tau =1 - tau = 2 normlizado 
+> 
+
+
+GDX con syntetic.mat <
+tiene que quedar como 
+online (OK)
+mini bacth (OK) 
+lotes (OK)
+
+tau =1 - tau = 2 no normlaizado  (OK)
+
+tau =1 - tau = 2 normlizado 
+> 
+
+
 ----------------------
-Adam con .mat 
+Adam con engine.mat  <
+tiene que quedar como 
+online 
+mini bacth  
+lotes 
 
-Adam con .txt
+tau =1 - tau = 2 no normlaizado  
+tau =1 - tau = 2 normlizado 
+> 
 
 
-//////////////////////////////
+Adam con syntetic.mat
+ <
+tiene que quedar como 
+online 
+mini bacth  
+lotes 
 
-
-no normalizadpss
-
-GDX con .mat (O ML L) <- OK [al parecer cunado tau es 1 esta bien, pero si aparece cosas raras cunado es 2 haremos 
-otro archivo para modificarlo y despues ver como podemos hacer 1 solo]
-
-GDX con .txt 
--------------------------
-Adam con .mat
-Adam con .txt
+tau =1 - tau = 2 no normlaizado  
+tau =1 - tau = 2 normlizado 
+> 
 
 
 

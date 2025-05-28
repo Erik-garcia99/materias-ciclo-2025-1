@@ -1,5 +1,5 @@
 #este documento contiene datos no normalizados con el formato .mat por lo que es un poco diferente. 
-
+#este docuemnto utiliza el engine_dataset.mat
 #------------------------------------------------------------------------------
 import numpy as np
 import scipy.io as sp

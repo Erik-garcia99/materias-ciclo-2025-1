@@ -1,5 +1,5 @@
 #este documento contiene datos no normalizados con el formato .mat por lo que es un poco diferente. 
-
+#este docuemnto utiliza el engine_dataset.mat
 #------------------------------------------------------------------------------
 import numpy as np
 import scipy.io as sp
@@ -11,7 +11,19 @@ import matplotlib.pyplot as plt
 import math 
 
 #------------------------------------------------------------------------------
+#modificacion 
 
+# Normalización y división de datos
+def normalize_and_split_data(inputs, targets):
+    scaler_X = RobustScaler()
+    scaler_y = RobustScaler()
+    inputs = scaler_X.fit_transform(inputs)
+    targets = scaler_y.fit_transform(targets)
+    inputs_train, inputs_test, targets_train, targets_test = train_test_split(inputs, targets, random_state=1, test_size=0.4)
+    return inputs_train, inputs_test, targets_train, targets_test, scaler_X, scaler_y
+
+
+#---------------------------------------------------------------------------------
 def model(A, THETA):
     """
     Multivariate Linear Regression Model, Yh = A*THETA
@@ -68,15 +80,17 @@ def powerVector(Tau, V):
 #         s = s + val
 #     return int(s)
 
-def polyParamsNumber(n,tau):
-    s = 0
-    for l in range(tau+1):
-        val = math.factorial(l + n - 1) / (math.factorial(n - 1) * math.factorial(l))
-        val = val / math.factorial(l)  # Usar math en lugar de np.math
-        s += val
-    return int(s)
 
+# def polyParamsNumber(n,tau):
+#     s = 0
+#     for l in range(tau+1):
+#         val = math.factorial(l + n - 1) / (math.factorial(n - 1) * math.factorial(l))
+#         val = val / math.factorial(l)  # Usar math en lugar de np.math
+#         s += val
+#     return int(s)
 
+def polyParamsNumber(n, tau):
+    return int(math.comb(n + tau, tau))
 
 
 
@@ -126,7 +140,7 @@ def gdx_optimization(
     m = Y.shape[1]
     rho = polyParamsNumber(n, tau)
     #rho me esta dando porbelmas 
-    THETA = np.random.randn(rho, m)
+    THETA = np.random.randn(rho, m) *0.01 #reduce la escala de la inicalizaciones de los pesos
     delta_THETA = np.zeros((rho, m))
     lr = learning_rate
     q = X.shape[0]
@@ -157,12 +171,12 @@ def gdx_optimization(
             # Y_pred = model(A_batch, THETA)
             # E_batch = Y_batch - Y_pred
 
-            #calcular la gradiente 
             A_batch = designMatrix(tau, X_batch)  # (batch_size, rho)
             Y_pred = model(A_batch, THETA)  # (batch_size, m)
             E_batch = Y_batch - Y_pred  # (batch_size, m)
             Grad = gradient(A_batch, E_batch, THETA, lambda_param)
-
+            #evitar desbordamienteos 
+            Grad = np.clip(Grad, -1e3, 1e3)
             delta_THETA = momentum * delta_THETA - (1 - momentum) * lr * Grad
             THETA += delta_THETA
 
@@ -194,23 +208,14 @@ inputs  = mat['engineInputs'].T
 targets = mat['engineTargets'].T
 
 
-#------------------------------------------------------------------------------
-
-
-# Normalizar datos
-scaler_X = RobustScaler()
-scaler_y = RobustScaler()
-
-# Normalizar inputs y targets
-inputs = scaler_X.fit_transform(inputs)
-targets = scaler_y.fit_transform(targets)
 
 #------------------------------------------------------------------------------
 
-# Train and Test Split Data
-#inputs_train, inputs_test, targets_train, targets_test = train_test_split(inputs, targets, random_state = 1, test_size = 0.4)
+#------------------------------------------------------------------------------
 
-inputs_train, inputs_test, targets_train, targets_test = train_test_split(inputs, targets, random_state=1, test_size=0.4)
+# Train and Test Split Data modificacion
+#inputs_train, inputs_test, targets_train, targets_test = train_test_split(inputs, targets, random_state=1, test_size=0.4)
+inputs_train, inputs_test, targets_train, targets_test, scaler_X, scaler_y = normalize_and_split_data(inputs, targets)
 
 
 #------------------------------------------------------------------------------
@@ -230,8 +235,8 @@ tTest = targets_test
 
 
 
-"""
-mini batch
+
+#mini batch
 # Find the optimal parameters m and b with RMSprop
 tau = 1
 lambda_param = 0.1
@@ -242,7 +247,7 @@ THETA = gdx_optimization(
     tau=tau,
     lambda_param=lambda_param,
     maxEpochs=10000,
-    show=500,
+    show=100,
     batch_size=256,
     learning_rate=1e-8,
     momentum=0.9,          
@@ -250,51 +255,49 @@ THETA = gdx_optimization(
     lr_inc=1.05,
     max_perf_inc=1.04,
     stopping_threshold=1e-6,
-)"""
+)
 #------------------------------------------------------------------------------
 
 #ONLINE (1 a 1)
 """
-tau = 1
-lambda_param = 0.1
+tau = 2
+lambda_param = 0.001
 THETA = gdx_optimization(
     xTrain,
     tTrain,
     tau=tau,
     lambda_param=lambda_param,
-    maxEpochs=10000,
-    show=500,
+    maxEpochs=100000,
+    show=1000,
     batch_size=1,
-    learning_rate=1e-7,
-    momentum=0.8,          
+    learning_rate=1e-6,
+    momentum=0.9,          
     lr_dec=0.5,           
-    lr_inc=1.02,
-    max_perf_inc=1.02,
+    lr_inc=1.05,
+    max_perf_inc=1.04,
     stopping_threshold=1e-6,
-)
-"""
-
+)"""
 
 #-----------------------------------------------------------------------
 
-#lote
-tau = 1
-lambda_param = 0.1
-THETA = gdx_optimization(
-    xTrain,
-    tTrain,
-    tau=tau,
-    lambda_param=lambda_param,
-    maxEpochs=10000,
-    show=500,
-    batch_size=xTrain.shape[0],
-    learning_rate=1e-7,
-    momentum=0.8,          
-    lr_dec=0.5,           
-    lr_inc=1.02,
-    max_perf_inc=1.02,
-    stopping_threshold=1e-6,
-)
+# #lote
+# tau = 1
+# lambda_param = 0.001
+# THETA = gdx_optimization(
+#     xTrain,
+#     tTrain,
+#     tau=tau,
+#     lambda_param=lambda_param,
+#     maxEpochs=10000,
+#     show=500,
+#     batch_size=xTrain.shape[0],
+#     learning_rate=1e-4,
+#     momentum=0.9,          
+#     lr_dec=0.5,           
+#     lr_inc=1.05,
+#     max_perf_inc=1.04,
+#     stopping_threshold=1e-6,
+# )
 
 
 
@@ -309,35 +312,38 @@ outputTrain = model(A_train,THETA)
 A_test = designMatrix(tau,xTest)
 outputTest = model(A_test,THETA)
 
-
 #-----------------------------------------------------------------------
 
-# Desnormalizar predicciones
+#desnormalizacion predicciones 
 outputTrain_descaled = scaler_y.inverse_transform(outputTrain)
 outputTest_descaled = scaler_y.inverse_transform(outputTest)
+
+
+#---------------------------------------------------------------------------
+# desnormlaizar reales
+
+targets_train_descaled = scaler_y.inverse_transform(targets_train).reshape(-1, 1)
+targets_test_descaled = scaler_y.inverse_transform(targets_test).reshape(-1, 1)
 
 #------------------------------------------------------------------------------
 
 
 # R2 for raw train data
-R2_train = r2_score(tTrain.reshape(-1, 1),outputTrain_descaled.reshape(-1, 1))
+R2_train = r2_score(targets_train_descaled, outputTrain_descaled.reshape(-1, 1))
 print(R2_train)
-
 
 #------------------------------------------------------------------------------
 
 # MSE for raw train data
-MSE_train = mean_squared_error(tTrain.reshape(-1, 1),outputTrain_descaled.reshape(-1, 1))
+MSE_train = mean_squared_error(targets_train_descaled, outputTrain_descaled.reshape(-1, 1))
 print(MSE_train)
-
 
 #------------------------------------------------------------------------------ 
 
 
 # R2 for raw test data
-R2_test = r2_score(tTest.reshape(-1, 1),outputTest_descaled.reshape(-1, 1))
+R2_test = r2_score(targets_test_descaled, outputTest_descaled.reshape(-1, 1))
 print(R2_test)
-
 
 
 
@@ -347,9 +353,8 @@ print(R2_test)
 
 
 # MSE for raw test data
-MSE_test = mean_squared_error(tTest.reshape(-1, 1),outputTest_descaled.reshape(-1, 1))
+MSE_test = mean_squared_error(targets_test_descaled, outputTest_descaled.reshape(-1, 1))
 print(MSE_test)
-
 #------------------------------------------------------------------------------ 
 
 
