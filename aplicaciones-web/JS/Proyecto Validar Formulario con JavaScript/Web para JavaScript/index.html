@@ -1,0 +1,121 @@
+<!-- 
+erik garcia chavez 01275863
+practica validacion con JS 
+
+apicaciones web 2025-1
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogDeCafé</title>
+    <meta name="description" content="Página web de carpinteria">
+    <link rel="stylesheet" href="css/normalize.css">
+   
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap"  crossorigin="crossorigin" as="font">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="css/style.css" as="style">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="contenedor">
+            <div class="barra">
+                <a class="logo" href="index.html">
+                    <h1 class="logo__nombre no-margin centrar-texto">Woodworking<span class="logo__bold">Shop</span></h1>
+                </a>
+                <nav class="navegacion">
+                    <a href="nosotros.html" class="navegacion__enlace">Nosotros</a>
+                    <a href="cursos.html" class="navegacion__enlace">Cursos</a>
+                    <a href="contacto.html" class="navegacion__enlace">Contacto</a>
+                </nav>
+            </div>
+        </div>
+        <div class="header__texto">
+            <h2 class="no-margin">Blog de carpinteria consejos practicos</h2>
+            <p class="no-margin">Aprende de los expertos con las mejores técnicas y consejos</p>
+        </div>
+    </header>
+    <main class="contenedor">
+
+        <h3 class="centrar-texto">Contacto</h3>
+        <div class="contacto-bg"></div>
+
+        <form class="formulario" id="formularioRegistro">
+            <!-- conbre completo -->
+            <div class="campo">
+                <label class="campo__label" for="nombre">Nombre</label>
+                <input class="campo__field" type="text" placeholder="Tu Nombre" id="nombre">
+                <div id="errorNombre" class="mensaje-error"></div>
+                
+            </div>
+            <!-- email -->
+            <div class="campo">
+                <label class="campo__label" for="email">E-mail</label>
+                <input class="campo__field" type="text" placeholder="Tu E-mail" id="email">
+                <div id="errorEmail" class="mensaje-error"></div>
+            </div>
+
+            <div class="campo">
+                <label class="campo__label" for="password">password</label>
+
+                <input class="campo__field" id="password" type="password" name="password" placeholder="constrasenia">
+
+                 <div id="errorContrasena" class="mensaje-error"></div>
+
+            </div>
+
+            <div class="campo">
+                    <label class="campo__label" for="confirmarContrasena">Confirmar contraseña</label>
+                    
+                    <input type="password" class="campo__field"
+                    id="confirmarContrasena" name="confirmarContrasena" placeholder="Repite tu contraseña">
+                    <div id="errorConfirmarContrasena" class="mensaje-error"></div>
+                </div>
+
+                <!-- Términos y condiciones -->
+                <div class="terminos">
+                    <input type="checkbox" id="terminos" name="terminos">
+                    <label for="terminos">Acepto los términos y condiciones</label>
+                </div>
+                 <div id="errorTerminos" class="mensaje-error"></div>
+
+            <!-- <div class="campo">
+                <input type="submit" value="Enviar" class="boton boton--primario">
+            </div> -->
+
+            <button type="submit" id="botonEnviar" class="boton" disabled>Registrarse</button>
+        </form>
+
+
+        <!-- Resumen de datos -->
+            <div id="resumenDatos" class="resumen">
+                <h3>¡Registro exitoso!</h3>
+                <p>Nombre: <span id="resNombre"></span></p>
+                <p>Email: <span id="resEmail"></span></p>
+                <p>Gracias por registrarte en WoodworkingShop.</p>
+            </div>
+        </div>
+        
+    </main>
+    <footer class="footer">
+        <div class="contenedor">
+            <div class="barra">
+                <a class="logo" href="index.html">
+                    <h1 class="logo__nombre no-margin centrar-texto">Woodworking<span class="logo__bold">Shop</S></span></h1>
+                </a>
+                <nav class="navegacion">
+                    <a href="nosotros.html" class="navegacion__enlace">Nosotros</a>
+                    <a href="cursos.html" class="navegacion__enlace">Cursos</a>
+                    <a href="contacto.html" class="navegacion__enlace">Contacto</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+    <script src="JS/modernizr.js"></script>
+    <script src="JS/script.js"></script>
+</body>
+</html>

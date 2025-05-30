@@ -190,10 +190,15 @@ def gdx_optimization(
 #------------------------------------------------------------------------------
 
 # Load dataset
-mat = sp.loadmat('engine_dataset.mat')
-#print(mat.keys())
-inputs  = mat['engineInputs'].T
-targets = mat['engineTargets'].T
+# mat = sp.loadmat('engine_dataset.mat')
+# print(mat.keys())
+# # inputs  = mat['engineInputs'].T
+# # targets = mat['engineTargets'].T
+
+mat = sp.loadmat('challenge04_syntheticdataset22.mat')
+# print(mat.keys())
+inputs  = mat['inputs'].T
+targets = mat['targets'].T
 
 
 

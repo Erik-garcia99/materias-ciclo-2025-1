@@ -27,12 +27,12 @@ tau =1 - tau = 2 normlizado
 ----------------------
 Adam con engine.mat  <
 tiene que quedar como 
-online 
-mini bacth  
-lotes 
+online (OK)
+mini bacth (OK)  
+lotes (OK)
 
-tau =1 - tau = 2 no normlaizado  
-tau =1 - tau = 2 normlizado 
+tau =1 - tau = 2 no normlaizado  (OK)
+tau =1 - tau = 2 normlizado (OK)
 > 
 
 
@@ -52,6 +52,60 @@ tau =1 - tau = 2 normlizado
 #########################################
 clasificacion 
 
+GDX con cancer_dataset.dat <
+tiene que quedar como 
+online 
+mini bacth 
+lotes 
 
+logicRegresion (online lote minilote ) OK
+softMax (Online lote minilote) OK 
+> 
+
+
+GDX con dermater.dat <
+tiene que quedar como 
+online 
+mini bacth 
+lotes 
+
+logicRegresion (online mini lotes) OK
+softMax  (online mini lotes) OK (resultados muy raros)
+> 
+
+---------------------------------
+
+Adam con cancer_dataset.dat  <
+tiene que quedar como 
+online ok
+mini bacth 
+lotes 
+
+logicRegresion (online mini lote ) OK
+softMax (online mini lote) OK 
+> 
+
+############################
+
+-AdamD con deratrolgy OK
+Adam con dermalogit.mat
+ <
+tiene que quedar como 
+online 
+mini bacth  
+lotes 
+
+logicRegresion (online lote mini) OK
+softMax  (online lote mini) OK
+> 
+##################################
+
+
+
+
+###########################
+omplicaciones 
+
+- regrecion con systetic data, me da un error de "RecursionError: maximum recursion depth exceede" veremos como lo solucionamos. 
 
 

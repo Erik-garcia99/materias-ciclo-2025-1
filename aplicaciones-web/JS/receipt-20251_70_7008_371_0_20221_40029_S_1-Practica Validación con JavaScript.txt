@@ -1,0 +1,8 @@
+Your submission was successful!
+Course: 20251_70_7008_371_0_20221_40029_S_1, Aplicaciones Web(371)
+Assessment: Practica: Validación con JavaScript
+
+Submission date: 5/28/25, 12:10 PM
+Submission size: 846.9 KB
+Submitter: ERIK GARCÍA CHÁVEZ
+Confirmation number: 660bb63b3fee419981df3abeab0975fb
