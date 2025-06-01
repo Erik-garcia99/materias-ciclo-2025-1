@@ -56,17 +56,33 @@ def designMatrix(Tau,X):
 #             terms.append(term * (W ** k))
 #     return np.array(terms)
 
+# def powerVector(Tau, V):
+#     if V.size == 0 or Tau == 0:
+#         return np.array([[1.0]])  # Asegurar 2D
+#     Z = V[:-1]
+#     W = V[-1]
+#     terms = []
+#     for k in range(Tau + 1):
+#         sub_terms = powerVector(Tau - k, Z)
+#         for term in sub_terms.flatten():  # Manejar sub_terms 2D
+#             terms.append(term * (W ** k))
+#     return np.array([terms])  # Devolver como 2D (1, n_terms)
+
 def powerVector(Tau, V):
     if V.size == 0 or Tau == 0:
-        return np.array([[1.0]])  # Asegurar 2D
-    Z = V[:-1]
-    W = V[-1]
+        return np.array([[1.0]])  # Término constante
+    
+    Z = V[:-1]  # Primeras n-1 variables
+    W = V[-1]   # Última variable
     terms = []
+    
     for k in range(Tau + 1):
-        sub_terms = powerVector(Tau - k, Z)
-        for term in sub_terms.flatten():  # Manejar sub_terms 2D
-            terms.append(term * (W ** k))
-    return np.array([terms])  # Devolver como 2D (1, n_terms)
+        # Llamada recursiva para las primeras n-1 variables
+        sub_terms = powerVector(Tau - k, Z)  
+        for term in sub_terms.flatten():
+            terms.append(term * (W ** k))  # Multiplica por W^k
+    
+    return np.array([terms])
 
 
 #------------------------------------------------------------------------------
@@ -216,6 +232,22 @@ targets = mat['engineTargets'].T
 # Train and Test Split Data modificacion
 #inputs_train, inputs_test, targets_train, targets_test = train_test_split(inputs, targets, random_state=1, test_size=0.4)
 inputs_train, inputs_test, targets_train, targets_test, scaler_X, scaler_y = normalize_and_split_data(inputs, targets)
+
+
+
+#------------------------------------------------------------------------------
+
+
+input_scaler = RobustScaler()
+output_scaler = RobustScaler()
+
+inputs_train_normalized = input_scaler.fit_transform(inputs_train)
+targets_train_normalized = output_scaler.fit_transform(targets_train)
+
+
+inputs_test_normalized = input_scaler.transform(inputs_test)
+targets_test_normalized = output_scaler.transform(targets_test)
+
 
 
 #------------------------------------------------------------------------------

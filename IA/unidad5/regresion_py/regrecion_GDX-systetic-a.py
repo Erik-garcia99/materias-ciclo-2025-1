@@ -15,7 +15,10 @@ import matplotlib.pyplot as plt
 import math 
 #agregacion
 from itertools import combinations_with_replacement
-#------------------------------------------------------------------------------
+from sklearn.preprocessing import RobustScaler
+from sklearn.preprocessing import PolynomialFeatures
+#---------------------------------------------------
+# ---------------------------
 
 def model(A, THETA):
     """
@@ -40,17 +43,26 @@ def designMatrix(Tau,X):
 #funcion modificada
 
 
+# def designMatrix(tau, X):
+#     """Matriz de diseño con términos polinómicos"""
+#     q, n = X.shape
+#     A_list = []
+#     for p in range(q):
+#         row = X[p, :]
+#         poly_terms = generate_polynomial_terms(row, tau)
+#         A_list.append(poly_terms)
+#     return np.vstack(A_list)
+
 def designMatrix(tau, X):
-    """Matriz de diseño con términos polinómicos"""
-    q, n = X.shape
-    A_list = []
-    for p in range(q):
-        row = X[p, :]
-        poly_terms = generate_polynomial_terms(row, tau)
-        A_list.append(poly_terms)
-    return np.vstack(A_list)
-
-
+    """Matriz de diseño optimizada para grados bajos"""
+    n_samples, n_features = X.shape
+    n_terms = polyParamsNumber(n_features, tau)
+    A = np.empty((n_samples, n_terms))
+    
+    for i in range(n_samples):
+        A[i] = generate_polynomial_terms(X[i], tau)
+    
+    return A
 
 
 
@@ -99,19 +111,45 @@ def powerVector(Tau, V):
 
 
 #Generar términos polinómicos de manera iterativa -> esta sustituyendo a powerVector
+# def generate_polynomial_terms(V, degree):
+#     """Genera términos polinómicos multivariados hasta el grado especificado"""
+#     n_features = len(V)
+#     terms = [1.0]  # Término constante
+    
+#     for deg in range(1, degree + 1):
+#         for indices in combinations_with_replacement(range(n_features), deg):
+#             term = 1.0
+#             for idx in indices:
+#                 term *= V[idx]
+#             terms.append(term)
+    
+#     return np.array(terms)
+
+
+
 def generate_polynomial_terms(V, degree):
     """Genera términos polinómicos multivariados hasta el grado especificado"""
     n_features = len(V)
     terms = [1.0]  # Término constante
     
-    for deg in range(1, degree + 1):
-        for indices in combinations_with_replacement(range(n_features), deg):
-            term = 1.0
-            for idx in indices:
-                term *= V[idx]
-            terms.append(term)
+    # Generar términos de grado 1
+    if degree >= 1:
+        terms.extend(V)
+    
+    # Generar términos de grado 2 y superiores
+    if degree >= 2:
+        # Términos cuadráticos puros
+        terms.extend(V[i]*V[i] for i in range(n_features))
+        
+        # Términos cruzados
+        for i in range(n_features):
+            for j in range(i+1, n_features):
+                terms.append(V[i] * V[j])
     
     return np.array(terms)
+
+
+
 
 #------------------------------------------------------------------------------
 #Polynomial parameter number
@@ -134,8 +172,15 @@ def generate_polynomial_terms(V, degree):
 #     return int(s)
 
 def polyParamsNumber(n, tau):
-    return sum(math.comb(n + d - 1, d) for d in range(tau + 1))
-
+    """Calcula eficientemente el número de parámetros"""
+    # Fórmula cerrada para grados bajos
+    if tau == 1:
+        return n + 1
+    elif tau == 2:
+        return (n * (n + 1)) // 2 + n + 1
+    else:
+        # Método general para grados más altos (aunque no se recomienda para tau > 2)
+        return sum(math.comb(n + d - 1, d) for d in range(tau + 1))
 
 
 
@@ -167,72 +212,149 @@ def gradient(A,E,THETA,lambda_param):
 #------------------------------------------------------------------------------
 #GDX
 
+# def gdx_optimization(X, Y, tau, lambda_param=0.0, maxEpochs=100, show=10, 
+#                      batch_size=64, learning_rate=0.01, momentum=0.9, 
+#                      lr_dec=0.5, lr_inc=1.05, max_perf_inc=1.04, 
+#                      stopping_threshold=1e-6):
+    
+#     A_full = designMatrix(tau, X)
+#     rho = A_full.shape[1]
+#     n_features = X.shape[1]
+#     n_outputs = Y.shape[1]
+    
+   
+    
+#     THETA = np.random.randn(rho, n_outputs) * 0.01
+#     delta_THETA = np.zeros((rho, n_outputs))
+#     lr = learning_rate
+#     n_samples = X.shape[0]
+#     previous_loss = np.inf
+
+   
+#     for epoch in range(maxEpochs + 1):
+#         THETA_prev = THETA.copy()
+        
+        
+#         indices = np.random.permutation(n_samples)
+#         # X_shuffled = X[indices]
+#         # Y_shuffled = Y[indices]
+        
+#         # Procesamiento por lotes
+#         for start in range(0, n_samples, batch_size):
+#             end = min(start + batch_size, n_samples)
+#             # X_batch = X_shuffled[start:end]
+#             # Y_batch = Y_shuffled[start:end]
+            
+#             # 5. Generar matriz de diseño para el lote actual
+#             # A_batch = designMatrix(tau, X_batch)
+
+#             A_batch = A_full[batch_idx]
+#             Y_batch = Y[batch_idx]
+            
+#             # 6. Predicción y cálculo de error
+#             Y_pred = model(A_batch, THETA)
+#             E_batch = Y_batch - Y_pred
+            
+#             # 7. Cálculo y ajuste del gradiente
+#             Grad = gradient(A_batch, E_batch, THETA, lambda_param)
+#             Grad = np.clip(Grad, -1e3, 1e3)  # Prevenir desbordamientos
+            
+#             # 8. Actualización de parámetros con momento
+#             delta_THETA = momentum * delta_THETA - (1 - momentum) * lr * Grad
+#             THETA += delta_THETA
+        
+#         # 9. Cálculo de pérdida completa después de la época
+#         A_full = designMatrix(tau, X)
+#         Y_pred_full = model(A_full, THETA)
+#         current_loss = loss(Y, Y_pred_full, THETA, lambda_param)
+        
+#         # 10. Ajuste dinámico de tasa de aprendizaje
+#         if current_loss > previous_loss * max_perf_inc:
+#             THETA = THETA_prev
+#             lr *= lr_dec
+#         elif current_loss < previous_loss:
+#             lr *= lr_inc
+        
+#         # 11. Monitoreo del progreso
+#         if epoch % show == 0:
+#             print(f"Epoch {epoch}: Loss={current_loss:.3e}, lr={lr:.2e}")
+        
+#         # 12. Criterio de parada temprana
+#         if abs(previous_loss - current_loss) < stopping_threshold:
+#             print(f"Early stopping at epoch {epoch}")
+#             break
+            
+#         previous_loss = current_loss
+
+#     return THETA
+
 def gdx_optimization(X, Y, tau, lambda_param=0.0, maxEpochs=100, show=10, 
                      batch_size=64, learning_rate=0.01, momentum=0.9, 
                      lr_dec=0.5, lr_inc=1.05, max_perf_inc=1.04, 
                      stopping_threshold=1e-6):
-    """Optimizador GDX con dimensiones corregidas"""
-    # 1. Determinar dimensiones correctamente
-    n_features = X.shape[1]
+ 
+
+    n_samples, n_features = X.shape
     n_outputs = Y.shape[1]
-    
-    # 2. Calcular número de parámetros polinómicos
     rho = polyParamsNumber(n_features, tau)
     
-    # 3. Inicialización de parámetros
+
+    print(f"precalculando matriz de disenio (tau={tau}, terminos={rho})...")
+    A_full = designMatrix(tau, X)
+    print("matriz de disenio precalculada")
+    
+
     THETA = np.random.randn(rho, n_outputs) * 0.01
     delta_THETA = np.zeros((rho, n_outputs))
     lr = learning_rate
-    n_samples = X.shape[0]
     previous_loss = np.inf
-
-    # 4. Bucle de entrenamiento
+    n_batches = (n_samples + batch_size - 1) // batch_size  
+    
+   
     for epoch in range(maxEpochs + 1):
         THETA_prev = THETA.copy()
         
-        # Mezclar datos en cada época
+        # Mezclar índices
         indices = np.random.permutation(n_samples)
-        X_shuffled = X[indices]
-        Y_shuffled = Y[indices]
         
-        # Procesamiento por lotes
-        for start in range(0, n_samples, batch_size):
-            end = min(start + batch_size, n_samples)
-            X_batch = X_shuffled[start:end]
-            Y_batch = Y_shuffled[start:end]
+        
+        for batch_idx in range(n_batches):
+            start = batch_idx * batch_size
+            end = min((batch_idx + 1) * batch_size, n_samples)
+            idx = indices[start:end]
             
-            # 5. Generar matriz de diseño para el lote actual
-            A_batch = designMatrix(tau, X_batch)
             
-            # 6. Predicción y cálculo de error
+            A_batch = A_full[idx]
+            Y_batch = Y[idx]
+            
+          
             Y_pred = model(A_batch, THETA)
             E_batch = Y_batch - Y_pred
             
-            # 7. Cálculo y ajuste del gradiente
+          
             Grad = gradient(A_batch, E_batch, THETA, lambda_param)
-            Grad = np.clip(Grad, -1e3, 1e3)  # Prevenir desbordamientos
+            Grad = np.clip(Grad, -1e3, 1e3)
             
-            # 8. Actualización de parámetros con momento
+           
             delta_THETA = momentum * delta_THETA - (1 - momentum) * lr * Grad
             THETA += delta_THETA
         
-        # 9. Cálculo de pérdida completa después de la época
-        A_full = designMatrix(tau, X)
+       
         Y_pred_full = model(A_full, THETA)
         current_loss = loss(Y, Y_pred_full, THETA, lambda_param)
         
-        # 10. Ajuste dinámico de tasa de aprendizaje
+       
         if current_loss > previous_loss * max_perf_inc:
             THETA = THETA_prev
             lr *= lr_dec
+            print(f"Reduciendo lr a {lr:.2e}")
         elif current_loss < previous_loss:
             lr *= lr_inc
-        
-        # 11. Monitoreo del progreso
-        if epoch % show == 0:
+    
+        if epoch % show == 0 or epoch == maxEpochs:
             print(f"Epoch {epoch}: Loss={current_loss:.3e}, lr={lr:.2e}")
         
-        # 12. Criterio de parada temprana
+        
         if abs(previous_loss - current_loss) < stopping_threshold:
             print(f"Early stopping at epoch {epoch}")
             break
@@ -271,14 +393,24 @@ inputs_train, inputs_test, targets_train, targets_test = train_test_split(inputs
 
 
 #------------------------------------------------------------------------------
+#normlaizar datos
 
-# Train and Test Data
-# Train Data
-xTrain = inputs_train
-tTrain = targets_train
-# Test Data
-xTest = inputs_test
-tTest = targets_test
+scaler_x = RobustScaler()
+scaler_t = RobustScaler()
+xTrain = scaler_x.fit_transform(inputs_train)
+tTrain = scaler_t.fit_transform(targets_train)
+xTest = scaler_x.transform(inputs_test)
+tTest = scaler_t.transform(targets_test)
+
+#------------------------------------------------------------------------------
+
+# # Train and Test Data
+# # Train Data
+# xTrain = inputs_train
+# tTrain = targets_train
+# # Test Data
+# xTest = inputs_test
+# tTest = targets_test
 
 
 
@@ -290,7 +422,7 @@ tTest = targets_test
 
 #mini batch
 # Find the optimal parameters m and b with RMSprop
-tau = 1
+tau = 2
 lambda_param = 0.1
 
 THETA = gdx_optimization(
@@ -298,9 +430,9 @@ THETA = gdx_optimization(
     tTrain,
     tau=tau,
     lambda_param=lambda_param,
-    maxEpochs=10000,
-    show=500,
-    batch_size=256,
+    maxEpochs=10,
+    show=1,
+    batch_size=10,
     learning_rate=1e-8,
     momentum=0.9,          
     lr_dec=0.5,           
@@ -358,27 +490,34 @@ THETA = gdx_optimization(
 #-----------------------------------------------------------------------
 # Make predictions
 # Train data
-A_train = designMatrix(tau,xTrain)
-outputTrain = model(A_train,THETA)
-# Test data
-A_test = designMatrix(tau,xTest)
-outputTest = model(A_test,THETA)
+A_train = designMatrix(tau, xTrain)
+A_test = designMatrix(tau, xTest)
+
+# Predecir
+outputTrain_scaled = model(A_train, THETA)
+outputTest_scaled = model(A_test, THETA)
 
 
+#------------------------------------------------------------------------------
+#desnormalizar
 
+outputTrain = scaler_t.inverse_transform(outputTrain_scaled)
+outputTest = scaler_t.inverse_transform(outputTest_scaled)
+tTrain_orig = scaler_t.inverse_transform(tTrain)
+tTest_orig = scaler_t.inverse_transform(tTest)
 
 #------------------------------------------------------------------------------
 
 
 # R2 for raw train data
-R2_train = r2_score(tTrain.reshape(-1, 1),outputTrain.reshape(-1, 1))
+R2_train = r2_score(tTrain_orig.reshape(-1, 1),outputTrain.reshape(-1, 1))
 print(R2_train)
 
 
 #------------------------------------------------------------------------------
 
 # MSE for raw train data
-MSE_train = mean_squared_error(tTrain.reshape(-1, 1),outputTrain.reshape(-1, 1))
+MSE_train = mean_squared_error(tTrain_orig.reshape(-1, 1),outputTrain.reshape(-1, 1))
 print(MSE_train)
 
 
@@ -386,7 +525,7 @@ print(MSE_train)
 
 
 # R2 for raw test data
-R2_test = r2_score(tTest.reshape(-1, 1),outputTest.reshape(-1, 1))
+R2_test = r2_score(tTest_orig.reshape(-1, 1),outputTest.reshape(-1, 1))
 print(R2_test)
 
 
@@ -398,7 +537,7 @@ print(R2_test)
 
 
 # MSE for raw test data
-MSE_test = mean_squared_error(tTest.reshape(-1, 1),outputTest.reshape(-1, 1))
+MSE_test = mean_squared_error(tTest_orig.reshape(-1, 1),outputTest.reshape(-1, 1))
 print(MSE_test)
 
 #------------------------------------------------------------------------------ 

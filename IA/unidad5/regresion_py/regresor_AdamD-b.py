@@ -206,7 +206,27 @@ tTest = targets_test_normalized
 
 #mini lote
 # Find the optimal parameters with AdamD
-tau = 1
+# tau = 2
+# lambda_param = 0.1
+
+# THETA = adamd_optimization(
+#     xTrain,
+#     tTrain,
+#     tau=tau,
+#     lambda_param=lambda_param,
+#     maxEpochs=10000,
+#     show=500,
+#     batch_size=64,
+#     learning_rate=0.001,
+#     beta1=0.9,
+#     beta2=0.999,
+#     epsilon=1e-8,
+#     stopping_threshold=1e-6,
+# )
+
+
+
+tau = 2
 lambda_param = 0.1
 
 THETA = adamd_optimization(
@@ -216,7 +236,7 @@ THETA = adamd_optimization(
     lambda_param=lambda_param,
     maxEpochs=10000,
     show=500,
-    batch_size=64,
+    batch_size=len(xTrain),
     learning_rate=0.001,
     beta1=0.9,
     beta2=0.999,

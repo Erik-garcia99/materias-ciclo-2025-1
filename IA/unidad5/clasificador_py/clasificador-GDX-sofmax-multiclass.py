@@ -292,12 +292,25 @@ A_test  = np.c_[np.ones(len(x_test)), x_test]
 
 # Parámetros para el constructor
 
+#minilot4es
+# Hiperparámetros GDX (SOLO para fit())
+# lambda_param = 0.1  # Regularización L2
+# fit_params = {
+#     'learning_rate': 0.01,
+#     'momentum': 0.95,
+#     'lr_dec': 0.5,
+#     'lr_inc': 1.05,
+#     'max_perf_inc': 1.04,
+#     'epochs': 1000,
+#     'batch_size': 64,
+#     'show_step': 100,
+#     'stopping_threshold': 1e-6,
+#     'verbose': True
+# }
 
 
 #online
-#  Hiperparámetros GDX (SOLO para fit())
-lambda_param = 0.01  # Regularización L2
-
+lambda_param = 0.1  # Regularización L2
 fit_params = {
     'learning_rate': 0.01,
     'momentum': 0.95,
@@ -312,33 +325,15 @@ fit_params = {
 }
 
 
-#minilonte
-#lambda_param = 0.01  # Regularización L2
-# Hiperparámetros GDX (SOLO para fit())
-# fit_params = {
-#     'learning_rate': 0.01,
-#     'momentum': 0.95,
-#     'lr_dec': 0.5,
-#     'lr_inc': 1.05,
-#     'max_perf_inc': 1.04,
-#     'epochs': 1000,
-#     'batch_size': 64,
-#     'show_step': 100,
-#     'stopping_threshold': 1e-6,
-#     'verbose': True
-# }
-
 #lote
-
-# lambda_param = 1.0 # Regularización L2
-# # Hiperparámetros GDX (SOLO para fit())
+# lambda_param = 0.1  # Regularización L2
 # fit_params = {
 #     'learning_rate': 0.1,
 #     'momentum': 0.95,
 #     'lr_dec': 0.5,
 #     'lr_inc': 1.05,
 #     'max_perf_inc': 1.04,
-#     'epochs': 500,
+#     'epochs': 300,
 #     'batch_size': len(y_train),
 #     'show_step': 50,
 #     'stopping_threshold': 1e-4,
@@ -420,14 +415,16 @@ print(classification_report(y_test, test_pred))
 #------------------------------------------------------------------------------------
 
 # Gráfica de pérdida
+# Gráfica de pérdida
 plt.figure(figsize=(12, 6))
-for i, loss_list in enumerate(model.losses):
-    plt.plot(loss_list, label=f'Clase {i}')
-plt.title('Evolución de la Pérdida por Época (AdamD Multiclase)')
-plt.xlabel('Época')
-plt.ylabel('Pérdida (Entropía Cruzada Binaria)')
-plt.legend()
+plt.subplot(1, 2, 1)
+plt.plot(epoch_loss, 'b-', linewidth=2)
+plt.title('evolución de la Perdida por epoca')
+plt.xlabel('epoca')
+plt.ylabel('perdida (entropia eruzada binaria)')
 plt.grid(True)
-plt.show()
 
+plt.tight_layout()
+plt.savefig('loss_evolution.png', dpi=300)
+plt.show()
 
