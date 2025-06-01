@@ -54,13 +54,14 @@ def designMatrix(Tau,X):
 #     return np.vstack(A_list)
 
 def designMatrix(tau, X):
-    """Matriz de diseño optimizada para grados bajos"""
     n_samples, n_features = X.shape
     n_terms = polyParamsNumber(n_features, tau)
     A = np.empty((n_samples, n_terms))
     
     for i in range(n_samples):
-        A[i] = generate_polynomial_terms(X[i], tau)
+        terms = generate_polynomial_terms(X[i], tau)
+        terms = np.nan_to_num(terms, nan=0.0, posinf=1e10, neginf=-1e10)
+        A[i] = terms
     
     return A
 
@@ -148,7 +149,12 @@ def generate_polynomial_terms(V, degree):
     
     return np.array(terms)
 
+#-------------------------------------------------------------------------------
 
+def initialize_theta(rho, n_outputs):
+    # Inicialización Xavier/Glorot
+    stdv = 1. / np.sqrt(rho)
+    return np.random.uniform(-stdv, stdv, size=(rho, n_outputs))
 
 
 #------------------------------------------------------------------------------
@@ -187,27 +193,49 @@ def polyParamsNumber(n, tau):
 #------------------------------------------------------------------------------
 
 
+# def loss(Y_true, Y_pred, THETA, lambda_param):
+#     """ Mean Squared Error """
+#     E = Y_true - Y_pred
+#     SSE = np.square(np.linalg.norm(E, 'fro'))
+#     Reg = (lambda_param/(2*E.shape[0]))*np.square(np.linalg.norm(THETA[1:,:], 'fro'))
+#     MSE = SSE/(2*E.shape[0]) + Reg
+#     return MSE
+
 def loss(Y_true, Y_pred, THETA, lambda_param):
-    """ Mean Squared Error """
     E = Y_true - Y_pred
     SSE = np.square(np.linalg.norm(E, 'fro'))
-    Reg = (lambda_param/(2*E.shape[0]))*np.square(np.linalg.norm(THETA[1:,:], 'fro'))
-    MSE = SSE/(2*E.shape[0]) + Reg
+    n = E.shape[0]
+    if n == 0:  # Evitar división por cero
+        n = 1
+    Reg = (lambda_param / (2 * n)) * np.square(np.linalg.norm(THETA[1:, :], 'fro'))
+    MSE = SSE / (2 * n) + Reg
     return MSE
-
 
 #------------------------------------------------------------------------------
 
-def gradient(A,E,THETA,lambda_param):
-    """ MSE Gradient """
-    SSEGrad = -1.0*(A.T).dot(E)
-    MSEGrad = SSEGrad/E.shape[0]
-    #modificacion en la condicion
-    if THETA.shape[0] > 1:  # Evitar error si no hay parámetros para regularizar
-        MSEGrad[1:,:] += (lambda_param / A.shape[0]) * THETA[1:,:]
-    return MSEGrad
+# def gradient(A,E,THETA,lambda_param):
+#     """ MSE Gradient """
+#     SSEGrad = -1.0*(A.T).dot(E)
+#     MSEGrad = SSEGrad/E.shape[0]
+#     #modificacion en la condicion
+#     if THETA.shape[0] > 1:  # Evitar error si no hay parámetros para regularizar
+#         MSEGrad[1:,:] += (lambda_param / A.shape[0]) * THETA[1:,:]
+#     return MSEGrad
 
-
+def gradient(A, E, THETA, lambda_param):
+    n_samples = A.shape[0]
+    if n_samples == 0:  # Evitar división por cero
+        n_samples = 1
+    
+    SSEGrad = -1.0 * (A.T).dot(E)
+    MSEGrad = SSEGrad / n_samples
+    
+    if THETA.shape[0] > 1:
+        # Solo regularizar si hay suficientes parámetros
+        MSEGrad[1:, :] += (lambda_param / n_samples) * THETA[1:, :]
+    
+    # Clip más estricto para evitar desbordamientos
+    return np.clip(MSEGrad, -1e2, 1e2)
 
 #------------------------------------------------------------------------------
 #GDX
@@ -304,7 +332,7 @@ def gdx_optimization(X, Y, tau, lambda_param=0.0, maxEpochs=100, show=10,
     print("matriz de disenio precalculada")
     
 
-    THETA = np.random.randn(rho, n_outputs) * 0.01
+    THETA = THETA = initialize_theta(rho, n_outputs)
     delta_THETA = np.zeros((rho, n_outputs))
     lr = learning_rate
     previous_loss = np.inf
@@ -422,8 +450,8 @@ tTest = scaler_t.transform(targets_test)
 
 #mini batch
 # Find the optimal parameters m and b with RMSprop
-tau = 2
-lambda_param = 0.1
+tau = 1
+lambda_param = 0.01
 
 THETA = gdx_optimization(
     xTrain,
@@ -432,8 +460,8 @@ THETA = gdx_optimization(
     lambda_param=lambda_param,
     maxEpochs=10,
     show=1,
-    batch_size=10,
-    learning_rate=1e-8,
+    batch_size=256,
+    learning_rate=1e-4,
     momentum=0.9,          
     lr_dec=0.5,           
     lr_inc=1.05,
@@ -510,22 +538,24 @@ tTest_orig = scaler_t.inverse_transform(tTest)
 
 
 # R2 for raw train data
-R2_train = r2_score(tTrain_orig.reshape(-1, 1),outputTrain.reshape(-1, 1))
+# R2_train = r2_score(tTrain_orig.reshape(-1, 1),outputTrain.reshape(-1, 1))
+R2_train = r2_score(tTrain_orig, outputTrain)
 print(R2_train)
 
 
 #------------------------------------------------------------------------------
 
 # MSE for raw train data
-MSE_train = mean_squared_error(tTrain_orig.reshape(-1, 1),outputTrain.reshape(-1, 1))
+# MSE_train = mean_squared_error(tTrain_orig.reshape(-1, 1),outputTrain.reshape(-1, 1))
+MSE_train = mean_squared_error(tTrain_orig, outputTrain)
 print(MSE_train)
 
 
 #------------------------------------------------------------------------------ 
 
-
 # R2 for raw test data
-R2_test = r2_score(tTest_orig.reshape(-1, 1),outputTest.reshape(-1, 1))
+# R2_test = r2_score(tTest_orig.reshape(-1, 1),outputTest.reshape(-1, 1))
+R2_test = r2_score(tTest_orig, outputTest)
 print(R2_test)
 
 
@@ -536,8 +566,10 @@ print(R2_test)
 
 
 
+
 # MSE for raw test data
-MSE_test = mean_squared_error(tTest_orig.reshape(-1, 1),outputTest.reshape(-1, 1))
+# MSE_test = mean_squared_error(tTest_orig.reshape(-1, 1),outputTest.reshape(-1, 1))
+MSE_test = mean_squared_error(tTest_orig, outputTest)
 print(MSE_test)
 
 #------------------------------------------------------------------------------ 
