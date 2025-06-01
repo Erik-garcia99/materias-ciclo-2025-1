@@ -1,4 +1,4 @@
-#include<avr/avr/io.h>
+#include<avr/io.h>
 #include "UART.h"
 
 
@@ -20,7 +20,7 @@ uint8_t *UART_offset[]={
 };
 
 
-##incilaisacion del UART
+//incilaisacion del UART
 
 
 UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t stop){
@@ -31,15 +31,7 @@ UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t s
 
     UART_reg_t *myUART = UART_offset[com];
 
-    //la funcion recibe el baudaje que se quiere llegar, pero debemos aplicar el prescalador (UBBR)
-    //haremos con velcidad doble
-    volatile uint16_t UBRR_value = (FOSC / (8 * baudrate )- 1;
 
-    myUART->UBRR = UBRR_value;
-
-    //habiitadmos le velcidad doble
-
-    myUART->UCSRA = (1 << U2X0);
 
 
     //configureacion del regstro UCSRB
@@ -47,7 +39,7 @@ UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t s
     //habilitamos el bit para eltransmisor y el receptor
 
 
-    myUART->UCSRB= (3 << TXEN0);
+    myUART->UCSRB = (1 << TXEN0) | (1 << RXEN0);
 
     //registro UCSRC
 
@@ -55,7 +47,7 @@ UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t s
 
     uint8_t parity_mode = 0;
 
-    swtich(parity){
+    switch(parity){
 
         //1 en parity es impar
         case 1 : parity_mode = 3; break;
@@ -67,7 +59,7 @@ UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t s
         default : break;
     }
 
-    myUART->UCSRC= (parity_mode << UPM0);
+    myUART->UCSRC |= (parity_mode << UPM00);
 
 
     //establecer el stop bit
@@ -76,25 +68,36 @@ UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t s
     //si se manda
     volatile uint8_t stop_bit = (stop == 1)? 1:0;
 
-    myUART->UCSRC = (stop_bit << USBS0);
+    myUART->UCSRC |= (stop_bit << USBS0);
 
 
     //caracter el frame  de 5 - 8
-    uint8_t ch_size = 0
+    uint8_t ch_size = 0;
     switch(size){
 
-        case 5 : myUART->UCSRC = (ch_size << UCSZ00);break;
+        case 5 : myUART->UCSRC |= (ch_size << UCSZ00);break;
 
         case 6 : ch_size = 1;
-                myUART->UCSRC = (ch_size << UCSZ00);break;
+                myUART->UCSRC |= (ch_size << UCSZ00);break;
 
 
         case 7: ch_size = 2;
-                myUART->UCSRC = (ch_size << UCSZ00);break;
+                myUART->UCSRC |= (ch_size << UCSZ00);break;
         case 8: ch_size=3;
 
-                myUART->UCSRC = (ch_size << UCSZ00);break;
+                myUART->UCSRC |= (ch_size << UCSZ00);break;
     }
+
+
+      //la funcion recibe el baudaje que se quiere llegar, pero debemos aplicar el prescalador (UBBR)
+    //haremos con velcidad doble
+    volatile uint16_t UBRR_value = (FOSC / (8 * baudrate ))- 1;
+
+    myUART->UBRR |= UBRR_value;
+
+    //habiitadmos le velcidad doble
+
+    myUART->UCSRA = (1 << U2X0);
 }
 
 
@@ -137,10 +140,10 @@ void UART_puts(uint8_t com, char *str){
 
     por lo que mandmos llamar a putchar tantas veces hata que se llegue al caracter nulo
     */
-    while(*str != '/0'){
+    while(*str != '\0'){
 
         UART_putchar(com,*str);
-        *str++;
+        str++;
     }
 }
 
@@ -197,7 +200,7 @@ void UART_gets(uint8_t com, char *str){
 
     while(1){
 
-        c = UART_getchar(com); //caracter que entro por UART
+        char c = UART_getchar(com); //caracter que entro por UART
         uint8_t i = 0; //indice del arreglo donde esta la cadena
 
         /*
@@ -208,7 +211,7 @@ void UART_gets(uint8_t com, char *str){
         si el suario da (enter) quiere decir que ya no quiere capturar mas.
         */
 
-        if(c = '\n'){
+        if(c == '\n'){
 
             if(i != 0){
                 //para finalizar debe haber almenos un dato razonable, en este caso
@@ -224,7 +227,7 @@ void UART_gets(uint8_t com, char *str){
         }
 
         //borrar los datos
-        if(c = '\b'){
+        if(c == '\b'){
 
             //para borrar algo antes debe haber algo que borrar
             if(i != 0){
@@ -238,7 +241,7 @@ void UART_gets(uint8_t com, char *str){
 
         }
 
-        if(c = '.'){
+        if(c == '.'){
 
             str[i++] = '\0';
         }
