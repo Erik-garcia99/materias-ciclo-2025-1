@@ -25,6 +25,12 @@ uint8_t *UART_offset[]={
 
 UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t stop){
 
+    //algo esta oasando en el inicio, por lo que mejor pongamos todos los valores dentro de vairbales
+
+    uint16_t UBRR_value = 0;
+    uint8_t cha_size= 0;
+    uint8_t parity_mode = 0 ;
+    uint8_t stop_bit = 0;
 
 
     //que dice la lieteratura, debemos establecer la velcdad del baudaje
@@ -32,8 +38,50 @@ UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t s
     UART_reg_t *myUART = UART_offset[com];
 
 
+    //establecemos la veolicad del baudaje
+
+    UBRR_value = (FOSC / (16 * baudrate) ) - 1;
+
+    //calculamos cual seria el bit de paridad
+    //con default esta en 0, desactivado
+
+    switch(parity){
+
+        //caso 1 impar
+        case 1 : parity_mode = 3; break;
+
+        case 2 : parity_mode = 2; break;
+
+    }
 
 
+    //stop bit stop = 1 -> 0, stop = 2 -> 1
+
+    stop_bit = (stop == 1) ? 0: 1;
+
+
+    //caracter size
+
+    //por default esta para 5, porque la variabel tiene 0
+    switch(size){
+
+        case 6: cha_size =1; break;
+
+        case 7: cha_size= 2; break;
+
+        case 8: cha_size=3;break;
+    }
+
+    //registro UCSRB - habilitar RX y TX
+
+    myUART->UCSRB = (1 << RXEN0) | (1<<TXEN0);
+
+    myUART->UCSRC = (parity_mode << UPM00) | (stop_bit << USBS0) | (cha_size << UCSZ00);
+    myUART->UBRR = UBRR_value;
+
+
+
+    /*
     //configureacion del regstro UCSRB
 
     //habilitamos el bit para eltransmisor y el receptor
@@ -45,7 +93,7 @@ UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t s
 
     //estabelcer los bits de apridad
 
-    uint8_t parity_mode = 0;
+    uint8_t parity_mode = 0; //desactivado
 
     switch(parity){
 
@@ -53,7 +101,7 @@ UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t s
         case 1 : parity_mode = 3; break;
 
         //2 es par
-        case 2 : parity_mode =2 ; break;
+        case 2 : parity_mode = 2 ; break;
 
         //en caso que sea 0 esta deshabilitado y salimos de la condicion
         default : break;
@@ -66,7 +114,7 @@ UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t s
 
 
     //si se manda
-    volatile uint8_t stop_bit = (stop == 1)? 1:0;
+    volatile uint8_t stop_bit = (stop == 1)? 0:1;
 
     myUART->UCSRC |= (stop_bit << USBS0);
 
@@ -98,6 +146,9 @@ UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t s
     //habiitadmos le velcidad doble
 
     myUART->UCSRA = (1 << U2X0);
+    */
+
+
 }
 
 
@@ -198,10 +249,14 @@ char UART_getchar(uint8_t com ){
 void UART_gets(uint8_t com, char *str){
 
 
+    char c; //caracter que entro por UART
+    uint8_t i = 0; //indice del arreglo donde esta la cadena
+
+
+
     while(1){
 
-        char c = UART_getchar(com); //caracter que entro por UART
-        uint8_t i = 0; //indice del arreglo donde esta la cadena
+		c = UART_getchar(com);
 
         /*
         cuales son los tispo de condiciones que nos podemos entronctrar
@@ -211,14 +266,14 @@ void UART_gets(uint8_t com, char *str){
         si el suario da (enter) quiere decir que ya no quiere capturar mas.
         */
 
-        if(c == '\n'){
+        if(c == '\n' || c == '\r'){
 
-            if(i != 0){
+            if(i >0){
                 //para finalizar debe haber almenos un dato razonable, en este caso
                 //algun digito decimal que guardar
-                str[i++] =  '\0';
-                UART_putchar(com, '\r');
+                str[i] =  '\0';
                 UART_putchar(com, '\n');
+                UART_putchar(com,  '\r');
                 break;
             }
             //si no va a volver hasta que haya algo dentro de UDR lo cual sea logico para el
@@ -230,7 +285,7 @@ void UART_gets(uint8_t com, char *str){
         if(c == '\b'){
 
             //para borrar algo antes debe haber algo que borrar
-            if(i != 0){
+            if(i > 0){
                 str[--i]= '\0';
                 UART_putchar(com,'\b'); //regresa
                 UART_putchar(com,' ');
@@ -243,7 +298,7 @@ void UART_gets(uint8_t com, char *str){
 
         if(c == '.'){
 
-            str[i++] = '\0';
+            str[i++] = "\0";
         }
 
 
@@ -257,8 +312,8 @@ void UART_gets(uint8_t com, char *str){
             //este hara el efecto de que ya no puede capturar mas
 
             str[i] = '\0';
-            UART_putchar(com,'\b');
-            UART_putchar(com,' ');
+            UART_putchar(com,'\b'); //regresa
+            UART_putchar(com, ' ');
             UART_putchar(com,'\b');
         }
 

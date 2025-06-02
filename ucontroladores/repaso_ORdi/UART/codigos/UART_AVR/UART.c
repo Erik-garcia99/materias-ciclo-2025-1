@@ -10,13 +10,13 @@
 
 uint8_t *UART_offset[]={
 
-    //este arreglo reresenta la direccion del registro princiapl de cada UART
-    //para poder acceder a ese esapcio de memoria de cada UART
+//este arreglo reresenta la direccion del registro princiapl de cada UART
+//para poder acceder a ese esapcio de memoria de cada UART
 
-    (uint8_t*)&UCSR0A,
-    (uint8_t*)&UCSR1A,
-    (uint8_t*)&UCSR2A,
-    (uint8_t*)&UCSR3A,
+(uint8_t*)&UCSR0A,
+(uint8_t*)&UCSR1A,
+(uint8_t*)&UCSR2A,
+(uint8_t*)&UCSR3A,
 };
 
 
@@ -25,79 +25,130 @@ uint8_t *UART_offset[]={
 
 UART_Ini(uint8_t com, uint32_t baudrate, uint8_t size, uint8_t parity, uint8_t stop){
 
+//algo esta oasando en el inicio, por lo que mejor pongamos todos los valores dentro de vairbales
+
+uint16_t UBRR_value = 0;
+uint8_t cha_size= 0;
+uint8_t parity_mode = 0 ;
+uint8_t stop_bit = 0;
 
 
-    //que dice la lieteratura, debemos establecer la velcdad del baudaje
+//que dice la lieteratura, debemos establecer la velcdad del baudaje
 
-    UART_reg_t *myUART = UART_offset[com];
-
-
+UART_reg_t *myUART = UART_offset[com];
 
 
-    //configureacion del regstro UCSRB
+//establecemos la veolicad del baudaje
 
-    //habilitamos el bit para eltransmisor y el receptor
+UBRR_value = (FOSC / (16 * baudrate) ) - 1;
 
+//calculamos cual seria el bit de paridad
+//con default esta en 0, desactivado
 
-    myUART->UCSRB = (1 << TXEN0) | (1 << RXEN0);
+switch(parity){
 
-    //registro UCSRC
+    //caso 1 impar
+    case 1 : parity_mode = 3; break;
 
-    //estabelcer los bits de apridad
+    case 2 : parity_mode = 2; break;
 
-    uint8_t parity_mode = 0;
-
-    switch(parity){
-
-        //1 en parity es impar
-        case 1 : parity_mode = 3; break;
-
-        //2 es par
-        case 2 : parity_mode =2 ; break;
-
-        //en caso que sea 0 esta deshabilitado y salimos de la condicion
-        default : break;
-    }
-
-    myUART->UCSRC |= (parity_mode << UPM00);
+}
 
 
-    //establecer el stop bit
+//stop bit stop = 1 -> 0, stop = 2 -> 1
+
+stop_bit = (stop == 1) ? 0: 1;
 
 
-    //si se manda
-    volatile uint8_t stop_bit = (stop == 1)? 1:0;
+//caracter size
 
-    myUART->UCSRC |= (stop_bit << USBS0);
+//por default esta para 5, porque la variabel tiene 0
+switch(size){
 
+    case 6: cha_size =1; break;
 
-    //caracter el frame  de 5 - 8
-    uint8_t ch_size = 0;
-    switch(size){
+    case 7: cha_size= 2; break;
 
-        case 5 : myUART->UCSRC |= (ch_size << UCSZ00);break;
+    case 8: cha_size=3;break;
+}
 
-        case 6 : ch_size = 1;
-                myUART->UCSRC |= (ch_size << UCSZ00);break;
+//registro UCSRB - habilitar RX y TX
 
+myUART->UCSRB = (1 << RXEN0) | (1<<TXEN0);
 
-        case 7: ch_size = 2;
-                myUART->UCSRC |= (ch_size << UCSZ00);break;
-        case 8: ch_size=3;
-
-                myUART->UCSRC |= (ch_size << UCSZ00);break;
-    }
+myUART->UCSRC = (parity_mode << UPM00) | (stop_bit << USBS0) | (cha_size << UCSZ00);
+myUART->UBRR = UBRR_value;
 
 
-      //la funcion recibe el baudaje que se quiere llegar, pero debemos aplicar el prescalador (UBBR)
-    //haremos con velcidad doble
-    volatile uint16_t UBRR_value = (FOSC / (8 * baudrate ))- 1;
 
-    myUART->UBRR |= UBRR_value;
+/*
+//configureacion del regstro UCSRB
 
-    //habiitadmos le velcidad doble
+//habilitamos el bit para eltransmisor y el receptor
 
-    myUART->UCSRA = (1 << U2X0);
+
+myUART->UCSRB = (1 << TXEN0) | (1 << RXEN0);
+
+//registro UCSRC
+
+//estabelcer los bits de apridad
+
+uint8_t parity_mode = 0; //desactivado
+
+switch(parity){
+
+    //1 en parity es impar
+    case 1 : parity_mode = 3; break;
+
+    //2 es par
+    case 2 : parity_mode = 2 ; break;
+
+    //en caso que sea 0 esta deshabilitado y salimos de la condicion
+    default : break;
+}
+
+myUART->UCSRC |= (parity_mode << UPM00);
+
+
+//establecer el stop bit
+
+
+//si se manda
+volatile uint8_t stop_bit = (stop == 1)? 0:1;
+
+myUART->UCSRC |= (stop_bit << USBS0);
+
+
+//caracter el frame  de 5 - 8
+uint8_t ch_size = 0;
+switch(size){
+
+    case 5 : myUART->UCSRC |= (ch_size << UCSZ00);break;
+
+    case 6 : ch_size = 1;
+            myUART->UCSRC |= (ch_size << UCSZ00);break;
+
+
+    case 7: ch_size = 2;
+            myUART->UCSRC |= (ch_size << UCSZ00);break;
+    case 8: ch_size=3;
+
+            myUART->UCSRC |= (ch_size << UCSZ00);break;
+}
+
+
+  //la funcion recibe el baudaje que se quiere llegar, pero debemos aplicar el prescalador (UBBR)
+//haremos con velcidad doble
+volatile uint16_t UBRR_value = (FOSC / (8 * baudrate ))- 1;
+
+myUART->UBRR |= UBRR_value;
+
+//habiitadmos le velcidad doble
+
+myUART->UCSRA = (1 << U2X0);
+*/
+
+
 }
 
 
@@ -113,38 +164,38 @@ hacia el pin, por medio de la comunicacion serie
 
 void UART_putchar(uint8_t com, char data){
 
-    UART_reg_t *myUART = UART_offset[com];
+UART_reg_t *myUART = UART_offset[com];
 
-    /*
-    UDREn indica si el budder de transmison esta vacio y listo para recibir nuevos datos
+/*
+UDREn indica si el budder de transmison esta vacio y listo para recibir nuevos datos
 
-    este bit esta en 1 quiere decir que est vacio por lo tanto esta listo para recibir nuevos datos
-    UDREn = 0, esta lleno por lo que no puedo recibir nuevos datos
+este bit esta en 1 quiere decir que est vacio por lo tanto esta listo para recibir nuevos datos
+UDREn = 0, esta lleno por lo que no puedo recibir nuevos datos
 
-    porque en la funcion se niega?
-    se esta negando porque si UDREn =0 quiere decri que hay datos dentro del buffer por lo que negamos (!) es para esperar
-    hasta que el buffer este vacio por lo que esta vacio pasa la condicion y manda lo que hay en UDR al pin TX
-    */
-    while (!(myUART->UCSRA & (1 << UDRE0)));
+porque en la funcion se niega?
+se esta negando porque si UDREn =0 quiere decri que hay datos dentro del buffer por lo que negamos (!) es para esperar
+hasta que el buffer este vacio por lo que esta vacio pasa la condicion y manda lo que hay en UDR al pin TX
+*/
+while (!(myUART->UCSRA & (1 << UDRE0)));
 
-    myUART->UDR = data;
+myUART->UDR = data;
 }
 
 
 void UART_puts(uint8_t com, char *str){
 
-    //el puts imprimira una cadena asi que una cadena, como no sabemos exactamente
-    //el tamanio de esta, como e sun apuntador lo que hago es deliminar el final de esta
-    /*
-    con el caracter nulo '/0',
+//el puts imprimira una cadena asi que una cadena, como no sabemos exactamente
+//el tamanio de esta, como e sun apuntador lo que hago es deliminar el final de esta
+/*
+con el caracter nulo '/0',
 
-    por lo que mandmos llamar a putchar tantas veces hata que se llegue al caracter nulo
-    */
-    while(*str != '\0'){
+por lo que mandmos llamar a putchar tantas veces hata que se llegue al caracter nulo
+*/
+while(*str != '\0'){
 
-        UART_putchar(com,*str);
-        str++;
-    }
+    UART_putchar(com,*str);
+    str++;
+}
 }
 
 
@@ -169,16 +220,16 @@ lo va a capturar RX.
 
 uint8_t UART_available(uint8_t com)
 {
-    UART_reg_t *myUART = UART_offset[com];
-    //e periferico es UDR si hay datos dentro de el
+UART_reg_t *myUART = UART_offset[com];
+//e periferico es UDR si hay datos dentro de el
 
-    /*
-        RXC0 es la bandera que indica si la recepcion se ha completado
-        RXC0 esta en 1 (RCX0=1) si hya datos sin leer dentro del buffer
-        (RCX0 = 0) si el buffer esta vacio
-    */
+/*
+    RXC0 es la bandera que indica si la recepcion se ha completado
+    RXC0 esta en 1 (RCX0=1) si hya datos sin leer dentro del buffer
+    (RCX0 = 0) si el buffer esta vacio
+*/
 
-    return (myUART->UCSRA & (1<<RXC0));
+return (myUART->UCSRA & (1<<RXC0));
 }
 
 
@@ -186,83 +237,87 @@ uint8_t UART_available(uint8_t com)
 char UART_getchar(uint8_t com ){
 
 
-    /*
-    lo que llegue, lo pasamos a UDR
-    */
-    UART_reg_t *myUART = UART_offset[com];
-    //este va a eserar hasa que se llene el buffer y entonces mandara la infromacion a UDR
-    while(!(UART_available(com)));
-    return myUART->UDR;
+/*
+lo que llegue, lo pasamos a UDR
+*/
+UART_reg_t *myUART = UART_offset[com];
+//este va a eserar hasa que se llene el buffer y entonces mandara la infromacion a UDR
+while(!(UART_available(com)));
+return myUART->UDR;
 }
 
 void UART_gets(uint8_t com, char *str){
 
 
-    while(1){
+char c; //caracter que entro por UART
+uint8_t i = 0; //indice del arreglo donde esta la cadena
 
-        char c = UART_getchar(com); //caracter que entro por UART
-        uint8_t i = 0; //indice del arreglo donde esta la cadena
 
-        /*
-        cuales son los tispo de condiciones que nos podemos entronctrar
-        cunado el suaurio ingresa datos.
 
-        -que entrara cunado el usuario ya no quiere seguri captiradno
-        si el suario da (enter) quiere decir que ya no quiere capturar mas.
-        */
+while(1){
 
-        if(c == '\n'){
+	c = UART_getchar(com);
 
-            if(i != 0){
-                //para finalizar debe haber almenos un dato razonable, en este caso
-                //algun digito decimal que guardar
-                str[i++] =  '\0';
-                UART_putchar(com, '\r');
-                UART_putchar(com, '\n');
-                break;
-            }
-            //si no va a volver hasta que haya algo dentro de UDR lo cual sea logico para el
-            //el entido del programa
-            continue;
+    /*
+    cuales son los tispo de condiciones que nos podemos entronctrar
+    cunado el suaurio ingresa datos.
+
+    -que entrara cunado el usuario ya no quiere seguri captiradno
+    si el suario da (enter) quiere decir que ya no quiere capturar mas.
+    */
+
+    if(c == '\n' || c == '\r'){
+
+        if(i >0){
+            //para finalizar debe haber almenos un dato razonable, en este caso
+            //algun digito decimal que guardar
+            str[i] =  '\0';
+            UART_putchar(com, '\n');
+            UART_putchar(com,  '\r');
+            break;
         }
+        //si no va a volver hasta que haya algo dentro de UDR lo cual sea logico para el
+        //el entido del programa
+        continue;
+    }
 
-        //borrar los datos
-        if(c == '\b'){
+    //borrar los datos
+    if(c == '\b'){
 
-            //para borrar algo antes debe haber algo que borrar
-            if(i != 0){
-                str[--i]= '\0';
-                UART_putchar(com,'\b'); //regresa
-                UART_putchar(com,' ');
-                UART_putchar(com,'\b');
-            }
-
-            continue;
-
-        }
-
-        if(c == '.'){
-
-            str[i++] = '\0';
-        }
-
-
-        UART_putchar(com,c);
-
-        //canidad defindio en el archivo .h
-        if(i < cantidad){
-            str[i++] = c;
-        }
-        else{
-            //este hara el efecto de que ya no puede capturar mas
-
-            str[i] = '\0';
-            UART_putchar(com,'\b');
+        //para borrar algo antes debe haber algo que borrar
+        if(i > 0){
+            str[--i]= '\0';
+            UART_putchar(com,'\b'); //regresa
             UART_putchar(com,' ');
             UART_putchar(com,'\b');
         }
 
+        continue;
+
     }
+
+    if(c == '.'){
+
+        str[i++] = "\0";
+    }
+
+
+    UART_putchar(com,c);
+
+    //canidad defindio en el archivo .h
+    if(i < cantidad){
+        str[i++] = c;
+    }
+    else{
+        //este hara el efecto de que ya no puede capturar mas
+
+        str[i] = '\0';
+        UART_putchar(com,'\b'); //regresa
+        UART_putchar(com, ' ');
+        UART_putchar(com,'\b');
+    }
+
+}
 
 }
 

@@ -23,7 +23,6 @@ int main( void )
         //UART_gotoxy(0,2,2);
         //UART_setColor(0,YELLOW);
         UART_puts(0,"Introduce un n?mero:"); //terminamos con un caracter nulo, funciona bien puts
-        UART_puts(0,"\n");
         //UART_gotoxy(0,22,2);
         //UART_setColor(0,GREEN);
         UART_gets(0,cad); //vreremos si este funciona correcto
