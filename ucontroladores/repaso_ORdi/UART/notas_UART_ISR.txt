@@ -1,0 +1,87 @@
+
+putchar - puts - ISR 
+en el codigo pasa datos del UARTO el cual tiene un buffer de 64 caracteres
+
+pero UART 2 y 3 no lo tienen, por lo que deberiamos de hacer ISR tambien para estos 2?
+
+
+--> parace que si haremos una ISR para cada UART2 - 3, la cual sera exactamente como la de UART0 solo que seleccionado
+el indice que le corresponde a cada UART. 
+
+-> putchar():
+
+	que es putchar, putchar se ecnarga de IMPRIMIR UN CARACTER POR PANTALLA, en el caso de UART 
+MANDA UN DATO DE UDR HACIA EL PIN ASCIADO CON TX
+por lo que putchar lo se encargara es de gestionar el buffer de transmision, ahora no envia los datos a TX 
+
+
+
+
+-> flujo de transmision
+
+okay, creo que ya entenid lo que va a pasar 
+
+se llamara a puts desde el main, puts-> trae una cadena (*str), entonces putchar(), lo se encargara sera de controlar
+el espacio del arreglo de tx (64) espacios, para ese ttoal de caracteres
+
+por lo que debemos de activar la interripcion de UDR, lo que va a apsar es que
+UDRE se va a establecer señalando que el buffer esta vacio y listo pra receibir datos, por lo que la interrupcioo
+UDRIEN se activra, la ISR entra en accion, la ISR lo que se encarga es de tomar la cabeza de la cola
+que es el dato que debe de salir peimro,y lo transmitiria por medio del pin TX despues 
+el buffer se va a limpiar, lo que de nuevo se ejeuctara la interripcuon, pero se debe de actualizar los indices
+dentroede putchar() para que no vuelva a tomar el mismo valor, si no que se va ir recorriendo
+hasta que el buffer_tx este vacio, como vacio? cunado la cola y la cabeza esten en la misma posicion
+o out_idx una posicion antes que in_idx, porque despues de esa posicion ya estaran en la misma lo que dara 
+que el buffer esta vacio, 
+
+entonces putchsr se encgarga de controlar el espacio del arreglo, 
+
+cuando in_idx y out_idx esten en la misma posicion el buffer esta vacio y deshabiñlitamos la interrupcion 
+
+importante habilitar la interrupcion en putchar para que se pueda imprimir 
+
+-> el buffer_tx esta vacio si son iguales los indices que no, si son 0 que no haya nada o si ya se recorrio todo
+el string, amos me funcionan. 
+
+
+
+
+-puts llama a putchar 
+-
+-la ISR tomara datos de la cola que mandara hacia el pin de TX
+
+---control TX de putchar 
+
+
+-> como puedo saber si el buffer esta lleno, creo ya lo habias predicho, in_idx debe de estar en la ultima posicio
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+RX
+
+ahora que pasa con RX 
+
+la ISR, lo que hara es que tomara el dato que esta UDR y lo ingresara a la cola criuclar 
+
+ahora UART_avaible() se encagara de checar que haya algun dado dentro de la cola corcular, por lo que esta funcion va 
+a cambiar, cambiara y biscara en funcion a que UART se este haciendo referencia 
+
+getchar -> esta funcion va a tomar el dato de salida de la cola, 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

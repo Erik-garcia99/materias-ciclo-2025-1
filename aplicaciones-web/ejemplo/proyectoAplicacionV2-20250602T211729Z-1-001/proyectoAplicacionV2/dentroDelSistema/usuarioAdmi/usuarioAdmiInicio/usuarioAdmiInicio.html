@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/dentroDelSistema/estilosGeneral/estilosG.css">
+    <link rel="stylesheet" href="/dentroDelSistema/usuarioAdmi/funcionesAdmi/estilosAdministrador/estilosAdmi.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    
+    <title>pincipal Administrador</title>
+    
+    <style>
+        
+        .main-content{
+            /*margin-left: 20px;  Deja espacio para la barra lateral */
+            padding-top: 60px; /* Iguala la altura de la barra de navegación */
+            /*padding-left: 20px;  Añade espacio a la izquierda del contenido principal */
+            height: 80vh;  /*Ocupa toda la altura del viewport */
+            padding-top: 80px;
+            
+           
+        }
+
+       
+        
+    </style>
+</head>
+<body id="body-color">
+
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">StockControlX</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                
+                
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/dentroDelSistema/usuarioAdmi/usuarioAdmiInicio/usuarioAdmiInicio.html">inicio - administrador</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link " href="/dentroDelSistema/usuarioAdmi/setting/configuracionCuenta/configuracionNuevaDeCuenta.html">configuracion de cuenta</a>
+                    </li>
+
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/dentroDelSistema/usuarioAdmi/setting/seguridad.html">seguridad</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#confirmLogoutModal">cerrar sesion</a>
+                        
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    
+   
+
+
+    <!-- cunado ya se tiene registrado una empresa, el que puede crear usuarios nuevos, cunado se contrata personal por ejemplo, 
+    <div class="container mt-4 princial-content">
+        
+        
+    </div>-->
+
+    <div class="container">
+        <div class="row justify-content-center main-content">
+            <!-- este div va a corresponder al menu lateral -->
+            <div class="col col-sm-12 col-md-2 col-lg-2 col-xl-2 container-fluid " >
+
+                <ul class="nav flex-column sidebar">
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/dentroDelSistema/usuarioAdmi/funcionesAdmi/crearUsuarios/crearUsuarios.html"><h5>crear usuario</h5></a>
+                    </li>
+
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/dentroDelSistema/usuarioAdmi/funcionesAdmi/supervicionUsuarios/supervisarUsuarios.html"><h5>supervisar usuarios</h5></a>
+                        
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dentroDelSistema/usuarioAdmi/funcionesAdmi/eliminarUsuarios/eliminarUsuarios.html"><h5>eliminar usuarios</h5></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dentroDelSistema/usuarioAdmi/funcionesAdmi/agregar_eliminar-proveedores/agregarEliminarProvee.html"><h5>proveedores</h5></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dentroDelSistema/usuarioAdmi/funcionesAdmi/almacen/almacenAdmi.html"><h5>almacen</h5></a>
+
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dentroDelSistema/usuarioAdmi/funcionesAdmi/ver_estadisticas/esadisticas.html"><h5>ver estadisticas</h5></a>
+
+                    </li>
+                
+                
+                </ul>
+
+            </div>
+
+            <!-- y este correspondera al cotenido principal -->
+            <div class="col col-sm-12 col-md-10 col-lg-10 col-xl-10 container-fluid">
+                <h3>Bienvenido Usuario</h3>
+                <!-- al igual que en usuario general se pretende que este el nombre del usuario -->
+
+                <!-- en esta seccion del dashboard estaran el total de oredenes, ventas,  -->
+                <div class="row mt-4">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-header">
+
+                            </div>
+
+                            <div class="card-body">
+                                <img src="/dentroDelSistema/img/dashboardComoSePlaneaQueSeVea/chiquito1.png" alt="perimro" style="max-width: 100%; height: auto;">
+                            </div>
+                        </div>
+
+                        
+                    </div>
+
+                    <!-- 2da seccion -->
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-header">
+
+                            </div>
+
+                            <div class="card-body">
+                                <img src="/dentroDelSistema/img/dashboardComoSePlaneaQueSeVea/chiquito2.png" alt="segundo" style="max-width: 100%; height: auto;">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- trecera seccion -->
+
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-header">
+
+                            </div>
+
+                            <div class="card-body">
+                                <img src="/dentroDelSistema/img/dashboardComoSePlaneaQueSeVea/chiquito3.png" alt="tercero" style="max-width: 100%; height: auto;"> 
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- ciarta seccion -->
+
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-header">
+
+                            </div>
+
+                            <div class="card-body">
+                                <img src="/dentroDelSistema/img/dashboardComoSePlaneaQueSeVea/cuarto.png" alt="cuarto" style="max-width: 100%; height: auto;">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="row mt-4">
+
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>interaccion en redes sociales</h3>
+                            </div>
+                            <div class="card-body">
+                                <h5>facebook-instagram-X</h5>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- grafica con los productos que mas se han vendido  -->
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>tendencias en productos</h3>
+                            </div>
+                            <div class="card-body">
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <!-- grafica de las ventas en las ultimas semanas  -->
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>grafia de ventas en las ultimas semanas</h3>
+                            </div>
+                            <div class="card-body ">
+                                <h5>ventas totales</h5>
+                                <img src="/dentroDelSistema/usuarioAdmi/img/soloMuestra/blog_Como_hacer_un_reporte_de_ventas6.png" alt="comoSeVeia" style="max-width: 100%; height: auto; ">
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--noticias sobre el mecado en mexico, la region en donde se encuentra y el mundo,  -->
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Ultimo en noticas del mercado</h3>
+                            </div>
+                            <div class="card-body">
+                                <h5>noticas</h5>
+                            </div>
+                        </div>
+                    
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-12">
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>ultimo en tendencias</h3>
+                            </div>
+                            <div class="card-body">
+                                <img src="/dentroDelSistema/img/dashboardComoSePlaneaQueSeVea/mark.png" alt="mark" style="max-width: 100%; height: auto;">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>empleados con mejor trayectoria</h3>
+                            </div>
+                            <div class="card-body">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="card">
+                            <div class="card-header"> 
+                                <h3>algo mas</h3>
+
+                            </div>
+                            <div class="card-body">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- muestra las activiades mas receintes de los usuarios a su mando directo -->
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="card">
+
+                            <div class="card-header">
+                                <h3>
+                                    actividades
+
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <img src="/dentroDelSistema/img/dashboardComoSePlaneaQueSeVea/actividades.png" alt="actividad" style="max-width: 100%; height: auto;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- las tareas que el administrador debe realizar como parte de su trabajo -->
+                    <div class="col-md-6">
+                        <div class="card">
+
+                            <div class="card-header">
+                                <h3>
+                                    Tareas
+
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <img src="/dentroDelSistema/img/dashboardComoSePlaneaQueSeVea/task.png" alt="tarea" style="max-width: 100%; height: auto;">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+    <!-- modal -->
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="confirmLogoutModal" aria-labelledby="confirmLogoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"> Cerrar Sesion</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <p>¿Estas seguro de cerrar sesion?</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="/paguinaPrincipal/index.html" class="btn btn-primary">Cerrar Sesion</a>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">cancelar</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,151 @@
+--paguina principal de la paguina 
+
+constara de 3 alementos en le nav
+1-home <-galeria de imagenes,
+
+    tan solo nos dirige a la paguina prinicpal que servira como una muestra, la paguina principal sera con la cual le mostramos al usuario los aspectos de nuestra aplicacion, asi como la entrada principal
+    a nuestra aplicacion
+
+
+
+2-inicio de sesion <-fomrulario
+
+    (contendra formularios para le inicio de sesion)
+    inicar sesion de 2 maneras, como administrador o como usuario general 
+
+    
+
+    -usuario general: es el tipo de usuario mas comun, este es el empleado que realiza su trbaajo cotidiano, tiene solo ciertos permisos, como el de < vender >, < capturar las entregas de productos>, < revision de alamcen mas no de modificarlo (la modificacion se hace indirectamente con la venta)>, <general facturas (antes se necsita permiso para completar la accion)>,
+        --pueden iniciar con correo o con numero de empleado, pero si inicia como admi, debe estar registrado anteriormente como este tipo de usuario. 
+
+    el usuario general tendra un registro de cunado entra y cunado sale, se necesitara el numero de empleado para hacer alguna de estas acciones, las cales seran registradas. 
+
+    -usuario administrador: seran usuario que administrar el local, como pueden ser gerenetes, supervidores o incluso el dueño mismo. tendra las opciones de < monitorear a los usuarios >,< modificacion de precios >, < periodos para establecer el "inventario" >, < agregar productos, mas no eliminar >, < analisis de las ventas >, < agregar o eliminar usuarios (el administrador es el unico que puede agregar usuarios (contrataciones o despidos), recordandoq ue esta aplicacion esta dirigida a un mercado mucho mas pequeño)>, 
+        --el usuario administrador tiene credenciales especiales, creo que queda bastante claro. 
+
+-------------------------------------------
+en revision no hay que implementarlo
+3-contactanos <-formularios
+
+    es por el medio por el cual el tentativo comprador se pondra en contacto con el equipo de desarrollo para infromarse y posiblemente comprar el producto. 
+------------------------------------------------------
+
+
+-----------------------------------------------------------------------------------------
+--carpeta <CrearUsuarioPrimeraVez>
+    -paguina- <CrearUsuarioPMVZ.html>
+
+        en esta paguian estara el fomrio con el cual un usuario puede crear su cuenta. cual es la diferencia entre lo establecido con un usuario adminstrador que el que puede crear cuentas, que en este caso no se esta creando solo la cuenta si no se esta dando de alta la empresa o el negocio, por lo que como es por primera vez el sistema adminte que se cree la cuenta, esta cuenta tendra permisos de administrador. una vez creada la cuenta y dada de alta la emprea, el formulario de crear la empresa estara dentro de la carptea de dentro del sistema, dado que ya se ecuentran dentro de esta misma.
+
+-----------------------------------------------------------------------------------------
+--carpeta dentroDelSistema
+para este tipo de usuario estaba pensando en que tenga 2 menus, uno en la parte de arriba y otro al lateral izquierdo de la pantalla.
+
+
+
+    -caprpeta establecerEmpresa
+        en esta paguina se encargara solo se pedir la informacion al usuario, los datos sobre su empresa para subirla al sistema y tenerla registrada, para uqe pueda hacer uso de la aplicacion. por ahora el nav va ha hacer el mismo, cunado ya se de alta la empresa, en tonces el nav cambiara, al nav para los usuarios con privilegios de adminstrador.
+
+    -usuarioAdmi
+        que funcionalidades tiene un usuario con privilegios de administrador, estas opciones estaran en un menu que tendra del lado derecho, por lo que podra seleccionar las opciones desde hi.
+
+        el menu lateral tendra las funcionalidades que el super usuario puede realizar 
+        -las que estan mas abajo de <usuarioAdmi>
+
+        -el menu de arriba tendra funcionalidades generales parte de sistema, 
+        como:
+            -<cerrar sesion>, 
+                esta me enviara a home (index)
+
+            -<ir al inicio>, (este inicio sera la pantalla de inicio de admi, no fuera del sistema)
+            
+            -<configueracion de su cuenta (como el cambio de contrasenia, de correo, de numero de telfono)
+            
+            -administrar la seguridad de la ceunta (como en donde se ha iniciado sesion, doble verificacion)>
+
+
+        -creacion de usuarios
+            un usuario administrador puede crear nuevos usuarios, en como va a crear estos usuarios sera por medio de  un fomrulario, de toda la vida, cunando se crea la cuenta pro primera vez se pide un usuario, un nombre el que se desee, pero por ejemplo si es una empresa mediana que puede tener 100, 200 empreados, puede obtar por asignarles numero de empleados, pero eso puede ser oopcional, puede solo asignarles nombre de usuarios o ambos o solo numero de empleado, el que se haga mas conveniente. 
+
+            <lleva formulario>
+
+        -supervision de usuarios
+            por ejemplo queremos ver que usuario hizo que, que haya accedido en sus horarios laborales, etc. cantidad de ventas que realizo. 
+            <lleva un fomrulario sencillo solo de opciones, de que area y el nombre o numero de empleado>
+
+        -eliminar usuarios 
+            puede elimnar usuarios de perosnal que ha sido despedido o renuncio,
+            <igual que en supervision selecciona por area, nombre o numero de empleado>
+
+        -ver estadisticas 
+            el programa podra general estadisiticas con forme a lo que se le pida, si quiere dia, mes, o año sobre ventas, promedio de ventas de algun producto, si tiene varias sucursales cual es la que mas vende, revisar tendencias por temporada asi pude saber que productos se venden mas en que temporada asi poder tener mas de ese producto. revisa qie cambios se han hecho para la productividad y calcula se ha mejorado, empeorado o sigue igual. 
+
+        -alamcen
+            un aspecto importante y funamental del programa es el alamcen, el usuario administrador puede. hacer mas operaciones con el almacen, cambiar precios de productos, elimnar productos, activar la automatizacion del inventario, puede asignar nuevos proveedores a los productos, asignar nueva mercancia, 
+
+        -agegar o elminar proveedores 
+            puede eliminar proveedores que ya no seran solicitados o agregar nuevos con nueva mercancia
+
+    -usuario general: 
+    -menu de la aprte de arriba:
+        el usurio general tendra las mimsas opciones que el <superUsuario> pero a este se le agregara 1 o 2 mas que serviaran para poder llamar a soporte o a un superirior puede ser por diferentes cuestioenes, (formulario para la llamada)
+
+    -menu del lado derecho: 
+        este menu tendras las funcionales que un uusario general (empleado) puede hacer. como son:
+             < vender >, < capturar las entregas de productos>, < revision de alamcen mas no de modificarlo (la modificacion se hace indirectamente con la venta)>, <general facturas (antes se necsita permiso para completar la accion)>, en almacen se puede buscar el articulo el cual tendra una imagen asociada. para verificacion
+
+------------------------------------------------------------------------------------------------
+
+---folder <dentroDelSistema
+    -folder <establecerEmpresa> 
+        como una empresa puede tener mas de 1 empresa. por lo que habra entradas de tipo radio, con la ayuda de JS podremos habilitar o no las opciones para agregar los siguientes locales, los cuales estan organizados de la siguiente manera:
+
+        en caso de que si, como se organizaria eso, cunado se crea una empresa se genera un ID para esa empresa, por lo que el ID de la otra empreza sera una derivada de esta. etonces para poder dar de alta las 2 o mas empresas se generan dsiitintos ID's derivados, habra una opcion de agregar local derivado, en donde se generada ID personalizados para ese local, pero internamnete son parte de la misma compañia.
+
+        --entre la informacion legal que debe de tener la empresa se encuentra: 
+            estos documentos seran archivos, por lo genreal con pdf, que se subiran al sistema para asegurarse que todo este en regla.
+
+            -plan de negocios: 
+                Este documento describirá sus objetivos comerciales, estrategias y cómo planea alcanzarlos. También incluirá proyecciones financieras y detalles sobre su mercado objetivo.
+
+            -contitucion: 
+                La constitución de una empresa es su documento rector. Establece el nombre de la empresa, su domicilio social, los objetivos de la empresa, los poderes de los directores, las reglas para las juntas de accionistas, etc. La constitución es la base de las operaciones de la empresa y debe cumplirse en todo momento.
+
+            -estatutos: 
+                Los estatutos de una empresa son las normas y reglamentos que rigen sus operaciones internas. Por lo general, son adoptados por la junta directiva de la empresa y aprobados por los accionistas. Los estatutos generalmente cubren temas como el número y los términos de los directores, los poderes de la junta, los derechos de los accionistas y los procedimientos de reunión.
+
+            -seguros: 
+                como el propietaio de una Star-up es importante que la compañia este bien asegurada.  Esto incluye seguro de propiedad, seguro de responsabilidad civil, seguro de compensación para trabajadores y cualquier otro tipo de seguro que pueda ser requerido en su industria. 
+        
+                El seguro de propiedad protege los activos físicos de su empresa, como su oficina o tienda, contra daños o robos. 
+        
+                El seguro de responsabilidad civil protege a su empresa de ser responsable de cualquier lesión o daño que ocurra como resultado de las operaciones de su empresa. 
+        
+                El seguro de compensación para trabajadores brinda beneficios a los empleados que se lesionan o se enferman como resultado de su trabajo
+
+    
+
+
+----------------------------------------------------------------
+
+---modal
+--inicio de ssion (general)
+-en el caso de olvidar el correo o la contrasenia un modal pedira datos al usuario para que estos puedan ser enviados a un administrativo y restaure la cuenta. 
+
+
+el modal son anuncios advertenicas, puede ser que puede agregarse al cerrar secion 
+
+---usuario general
+    1-cerrar sesion tando admi como general (PONER EN LAS funcionalidades)  
+    2-
+
+
+---usuarios administrador 
+
+    -anuncio de que se ha cerrado sesion.
+    -en eliminar usuarios tal vez
+    en elminar proveedores
+
+
+--CREAR empresa
+    al momento de que llene todos los datos, mostrasra un modal que muestrelos datos registrados, los mas basicos, y le pregunte al usuaio si estan correstos, entonces este dira que si o no.

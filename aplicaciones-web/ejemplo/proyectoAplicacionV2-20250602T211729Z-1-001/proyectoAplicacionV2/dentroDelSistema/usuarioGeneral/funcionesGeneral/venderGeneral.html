@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/dentroDelSistema/estilosGeneral/estilosG.css">
+    <link rel="stylesheet" href="/dentroDelSistema/usuarioGeneral/estilos/Estilos.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/dentroDelSistema/usuarioGeneral/funcionesJS/funcionVender/menejoFormulario.js"></script>
+
+    
+    <title>pincipal Administrador</title>
+    
+    <style>
+        
+        .main-content{
+            /*margin-left: 20px;  Deja espacio para la barra lateral */
+            padding-top: 60px; /* Iguala la altura de la barra de navegación */
+            /*padding-left: 20px;  Añade espacio a la izquierda del contenido principal */
+            height: 80vh;  /*Ocupa toda la altura del viewport */
+            padding-top: 80px;
+            
+           
+        }
+
+        .princial-content{
+            margin-left: 250px;
+            padding-top: 56px;
+            padding-left: 20px;
+            height: 100vh;
+            background-color: aqua;
+        }
+        
+    </style>
+</head>
+<body id="body-color">
+
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">StockControlX</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                
+                
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/dentroDelSistema/usuarioGeneral/paguinaUsuarioGeneral.html">inicio - general</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link " href="/dentroDelSistema/usuarioGeneral/setting/configuracion.html">configuracion de cuenta</a>
+                    </li>
+
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/dentroDelSistema/usuarioGeneral/setting/seguridadGeneral.html">seguridad</a>
+                    </li>
+
+                    <!-- este tendra un modal con espacios para ingresar (personal administrativo que quiere contactar o general), motivo, cuerpo del contenido, esto puede ser para probelmas o situacoin dentro del sistem -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#SoporteAdministradorInicio" data-whatever="@Aministrador">soporte</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#confirmLogoutModal">cerrar sesion</a>
+                   
+                   </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+   
+
+
+    <!-- cunado ya se tiene registrado una empresa, el que puede crear usuarios nuevos, cunado se contrata personal por ejemplo, 
+    <div class="container mt-4 princial-content">
+        
+        
+    </div>-->
+
+    <div class="container">
+        <div class="row justify-content-center main-content">
+            <!-- este div va a corresponder al menu lateral -->
+            <div class="col col-sm-12 col-md-2 col-lg-2 col-xl-2 container-fluid " >
+
+                <ul class="nav flex-column sidebar">
+
+                     <!-- y este correspondera al cotenido principal 
+
+
+                        (funciones usuario general - vender - capturar entregas producto - revicion de alamcen - general facturas )
+
+                        opciones con formulario
+
+                    -->
+                    <ul class="nav flex-column sidebar">
+
+                        <li class="nav-item">
+
+                            <a class="nav-link" id="NavSlideItem" aria-current="page"  href="/dentroDelSistema/usuarioGeneral/funcionesGeneral/venderGeneral.html"><h5>Vender</h5></a>
+    
+                        </li>
+    
+                        <!-- en esta opcion tan solo revisa existencias que hay en alamcen 
+                        
+                        (formulario)-->
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/dentroDelSistema/usuarioGeneral/funcionesGeneral/revicionAlmacen.html"><h5>Almacen</h5></a>
+    
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/dentroDelSistema/usuarioGeneral/funcionesGeneral/capturarEntregas.html"><h5>Capturar entregas</h5></a>
+
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/dentroDelSistema/usuarioGeneral/funcionesGeneral/generalPedidos.html"><h5>Generar capturas</h5></a>
+
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/dentroDelSistema/usuarioGeneral/funcionesGeneral/generarFacturas.html"><h5>Generar facturas</h5></a>
+                        </li>
+    
+                    </ul>
+
+            </div>
+
+           
+            <div class="col col-sm-12 col-md-10 col-lg-10 col-xl-10 container-fluid">
+                <!-- sera un formulario en donde se ingresara el nombre del articulo y la cantidad de este automaicamante se tendrian que ir agregando hasta que no se ingrese enter que imprime el recibo -->
+                <!-- en esta pagina se planea que aparezca el nombre de la cajera o de la que esta haceindo la operacion, esto en cada seccion, para tener un monitoreo de todo el sistema.  -->
+                <!-- cada que se ingrese un nuervo producto se van agregando abajo donde dice productos Agregados asi se mirara un pre-orden, antes de imprimir el ticket tambien estara la opcion de modificar algun articulo -->
+
+                <form action="">
+                    <div class="form-group mb-4">
+                        <label for="Producto">producto</label>
+                        <input class="form-control" type="text" id="Producto" required>
+                    </div> 
+
+                    <div class="form-group mb-4">
+                        <label for="cantidad">cantidad</label>
+                        <input class="form-control" type="number" id="cantidad" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary float-right">terminar</button>
+
+
+                </form>
+
+                <div id="listaProdcutos">
+                    <h4>Produtos Agregados:</h4>
+                    <div id="productosAgregados">
+
+                    </div>
+
+                </div>
+
+                
+                <div class="row justify-content-end">
+                    <div class="col-auto mb-4">
+                        
+                        <button class="btn btn-secondary">modificar</button>
+                    </div>
+                </div>
+                
+
+
+                   
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+
+    
+    <!-- modal cerrar sesion -->
+
+    <!-- modal -->
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="confirmLogoutModal" aria-labelledby="confirmLogoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"> Cerrar Sesion</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <p>¿Estas seguro de cerrar sesion?</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="/paguinaPrincipal/index.html" class="btn btn-primary">Cerrar Sesion</a>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- modal - soporte -->
+    
+    <div class="modal fade" id="SoporteAdministradorInicio" tabindex="-1" role="dialog" aria-labelledby="SoporteAdministradorInicioLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Receptor:</label>
+                  <input type="text" class="form-control" id="recipient-name" required placeholder="Gerencia">
+                </div>
+    
+                <div class="form-group">
+                    <label for="affair" class="col-form-label">Asunto:</label>       
+                    <input type="text" class="form-control" id="affair" required>
+                </div>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Mensaje:</label>
+                  <textarea class="form-control" id="message-text"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Send message</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+</body>
+</html>
+
+
+
+

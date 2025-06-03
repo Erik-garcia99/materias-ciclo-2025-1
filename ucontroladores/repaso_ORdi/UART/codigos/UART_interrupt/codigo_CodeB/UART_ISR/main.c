@@ -12,8 +12,8 @@ int main( void )
     uint16_t num;
 
     //iniclaizamos los buffers
-    tx_buffer->in_idx, tx_buffer->out_idx =0;
-    rx_buffer->in_idx, tx_buffer->out_idx =0;
+    /*tx_buffer= {{0}};
+    rx_buffer= {{0}};*/
 
 
 

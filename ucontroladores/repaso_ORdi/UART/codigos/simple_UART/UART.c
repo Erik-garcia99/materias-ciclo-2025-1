@@ -298,7 +298,7 @@ void UART_gets(uint8_t com, char *str){
 
         if(c == '.'){
 
-            str[i++] = "\0";
+            str[i++] = '\0';
         }
 
 

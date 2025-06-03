@@ -17,8 +17,8 @@ uso de 2 colas, una para recepcion y otra la transmision
 */
 //incializa sus valores en 0
 //solo funcionaran para el buffer del UART0
-ring_buffer_t *tx_buffer[4];
-ring_buffer_t *rx_buffer[4];
+ring_buffer_t tx_buffer[4]= {{0}};
+ring_buffer_t rx_buffer[4] = {{0}};
 
 
 
@@ -160,6 +160,23 @@ void UART_putchar(uint8_t com, char data){
     //en el cosigo solo hay ISR para UART0 pero y para los demas?, solo pidio UART0 por lo que se puede unca condicion
 
 
+    //como saber si esta lleno
+
+    //le paso los valores que hay en la direccion en donde esta guardada la estrucutra (com)
+    ring_buffer_t *tx = &tx_buffer[com];
+
+
+    while(((tx->in_idx+1) % BUFFER_SIZE) == tx->out_idx); //esperar a que se libere si el buffer esta lleno
+
+    tx->buffer[tx->in_idx] = data;
+
+    //ahora debo de actualizar el indice de entrada
+    //aout no se actualiza aqui, se actualia en la ISR
+    tx->in_idx = (tx->in_idx + 1) % BUFFER_SIZE;
+
+
+    //habilitamos la interrupcion
+    myUART->UCSRB |= (1<< UDRIE0);
 
 
 
@@ -178,16 +195,125 @@ ISR(USART0_UDRE_vect){
     //va a tomar datos del buffer circular y lo mandara al pin a TX
 
     //necesito tomar el dato que esta en mi buffer de transmision
-    ring_buffer_t *tx = tx_buffer[0]; //UART0
+    ring_buffer_t *tx = &tx_buffer[0]; //UART0
     if(tx->in_idx != tx->out_idx){
 
-        myUART->UDR = (tx->out_idx +1 ) %BUFFER_SIZE
+        char data = tx->buffer[tx->out_idx];
+
+        //no se si hya datos dentreo del periferico por lo que necesito saber el buffer esta lleno,
+        //si es asi no esperar hasta que este vacio
+        myUART->UDR = data;
+
+        //actualizar el indice de salida circular
+
+        tx->out_idx = (tx->out_idx + 1) % BUFFER_SIZE;
+
+
+        //VERIFICAMOS SI AUN QUEDAN DATOS
+
+        if(tx->in_idx == tx->out_idx){
+
+            myUART->UCSRB &= ~(1<<UDRE0);
+            tx->in_idx = 0;
+            tx->out_idx = 0;
+        }
+
     }
     else{
         //la interrupcion de desahabilita escribiendo 1 en UDREn
+        //esta queda en duda si deshabilito en total o solo limpio la bandera que causa la interripcion
+
         myUART->UCSRB &= ~(1<<UDRE0);
+        //si desactivamos la interrupcion quiere decir que no hya datos que mandar, por lo que
+        /*
+        el buffer esta vacio o ya se recorrio, todo por lo que mandamos a cero los indices que no
+        */
+        tx->in_idx = 0;
+        tx->out_idx = 0;
+
+
+
     }
 }
+
+
+
+//aplicamos las mismas ISR para UART2 y UAR3
+
+ISR(USART2_UDRE_vect){
+
+    UART_reg_t *myUART = UART_offset[2]; //traigo la estructura del UART2
+
+    ring_buffer_t *tx = &tx_buffer[2]; //UART2
+    if(tx->in_idx != tx->out_idx){
+
+        char data = tx->buffer[tx->out_idx];
+
+        myUART->UDR = data;
+
+        //actualizar el indice de salida circular
+
+        tx->out_idx = (tx->out_idx + 1) % BUFFER_SIZE;
+
+
+        //VERIFICAMOS SI AUN QUEDAN DATOS
+
+        if(tx->in_idx == tx->out_idx){
+
+            myUART->UCSRB &= ~(1<<UDRE0);
+            tx->in_idx = 0;
+            tx->out_idx = 0;
+        }
+
+    }
+    else{
+        myUART->UCSRB &= ~(1<<UDRE0);
+        tx->in_idx = 0;
+        tx->out_idx = 0;
+
+
+
+    }
+}
+
+
+
+ISR(USART3_UDRE_vect){
+
+    UART_reg_t *myUART = UART_offset[3]; //traigo la estructura del UART3
+
+    ring_buffer_t *tx = &tx_buffer[3]; //UART3
+    if(tx->in_idx != tx->out_idx){
+
+        char data = tx->buffer[tx->out_idx];
+
+        myUART->UDR = data;
+
+        //actualizar el indice de salida circular
+
+        tx->out_idx = (tx->out_idx + 1) % BUFFER_SIZE;
+
+
+        //VERIFICAMOS SI AUN QUEDAN DATOS
+
+        if(tx->in_idx == tx->out_idx){
+
+            myUART->UCSRB &= ~(1<<UDRE0);
+            tx->in_idx = 0;
+            tx->out_idx = 0;
+        }
+
+    }
+    else{
+        myUART->UCSRB &= ~(1<<UDRE0);
+        tx->in_idx = 0;
+        tx->out_idx = 0;
+
+
+
+    }
+}
+
 
 
 void UART_puts(uint8_t com, char *str){
@@ -253,6 +379,17 @@ char UART_getchar(uint8_t com ){
     while(!(UART_available(com)));
     return myUART->UDR;
 }
+
+ISR(USART0_RX_vect){
+
+
+    UART_reg_t *myUART = UART_offset[0]; //RX UART0
+
+    ring_buffer_t *tx = tx_buffer[0];
+
+}
+
+
 
 void UART_gets(uint8_t com, char *str){
 

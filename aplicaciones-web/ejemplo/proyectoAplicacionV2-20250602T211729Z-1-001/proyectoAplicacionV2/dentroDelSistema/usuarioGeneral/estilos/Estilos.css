@@ -1,0 +1,47 @@
+
+ /* Estilos para formularios */
+ form {
+    margin: 0 auto; /* Centra el formulario horizontalmente */
+    max-width: 700px; /* Ancho máximo del formulario */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+}
+
+/* Estilos para etiquetas de input en los formularios */
+form .form-group label {
+    margin-bottom: 0.5rem; /* Espaciado inferior mínimo */
+}
+
+/* Estilos para los botones dentro de formularios */
+form button[type="submit"] {
+    width: 100%; /* Botón ocupa todo el ancho del formulario */
+    margin-top: 15px;
+}
+
+/* Estilos para el contenedor de productos */
+#listaProductos {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+}
+
+/* Estilos para cada elemento de producto en la lista */
+.producto {
+    margin-bottom: 10px;
+    padding: 8px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,3 @@
+esta paguina lo que hara tansolo es, notificarle al usuario administrador que un usuario puede ser administrador o general que ha olvidado la contrasenia, no la pondo dentro del sistema, porque podra ser usada para acceder al sistema de una manera malisiosa.
+
+--leva fomrulario

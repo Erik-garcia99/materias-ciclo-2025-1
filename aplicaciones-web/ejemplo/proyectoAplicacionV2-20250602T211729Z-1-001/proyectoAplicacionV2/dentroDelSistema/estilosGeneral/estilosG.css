@@ -1,0 +1,85 @@
+/*este estilo se aplicara para todos los nav en general y admi, en teoria, pero puede variar tal vez con otra etiquetas*/
+#body-color{
+
+    background-color: rgb(247, 247, 247);
+}
+/* Estilos para la barra de navegación */
+.navbar {
+    background-color: #434c54; /* Fondo oscuro */
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+    color: #ffffff; /* Texto blanco */
+    font-size: 16px;
+    padding: 8px 15px;
+    transition: 0.3s; /* Transición suave */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #f8f9fa; /* Cambiar color al pasar el mouse */
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+/* Estilos para el botón del menú desplegable */
+.navbar-toggler-icon {
+    background-color: #434c54; /* Icono del botón blanco */
+}
+
+
+
+/* Estilos para el botón de cierre de sesión */
+.navbar-nav .nav-link:last-child {
+    background-color: #1039de; /* Color rojo para cerrar sesión */
+    border-radius: 5px;
+    padding: 7px 6px;
+}
+
+/* Cambiar color de fondo al pasar el mouse sobre el botón de cerrar sesión */
+.navbar-nav .nav-link:last-child:hover {
+    background-color: #3d58df;
+}
+
+
+
+/*sidebar*/
+
+ /* Estilo adicional si es necesario */
+ .sidebar {
+    height: calc(100vh - 56px);  /*Altura restante del viewport (descontando la altura de la barra de navegación) */
+    /*width: 180px;  Ancho deseado para la barra lateral */
+    /*position: fixed;  Para que la barra lateral se mantenga fija al desplazarse */
+    /*top: 56px;  Altura de la barra de navegación */
+    /*left: 0;*/
+    background-color: #e7f1f3; /* Color de fondo */
+   /* padding-top: 10px;  Espacio para el encabezado */
+
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+/* Estilos para los elementos de la lista */
+.nav-link {
+    color: #1039de; /* Color del texto */
+    padding: 10px 0; /* Espaciado interior */
+    transition: all 0.3s ease; /* Transición suave */
+}
+
+/* Cambio de color al pasar el mouse sobre los enlaces */
+.nav-link:hover {
+    color: #3d58df;
+}
+
+/* Estilos para el enlace activo */
+.nav-link.active {
+    font-weight: bold; /* Texto en negrita para el enlace activo */
+}
+
+
+

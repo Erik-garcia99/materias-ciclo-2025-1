@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/dentroDelSistema/estilosGeneral/estilosG.css">
+    <link rel="stylesheet" href="/estiloExterior/estiloExterior.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <title>establecer los aspectos de la empresa</title>
+</head>
+<body >
+
+    <!--aunque ya este dentro del sistema y ya goza de los privilegios de un usuario administrador, aun faltan datos, como dar de alta a la empresa, una vez hecho esto, ya estaria dentro de la paguina como tal. ppor lo que conserva
+    
+    estos formularios no quedaran asi, son el esquelo, despues podremos diseñarlos mas bonitos para el usuario final.-->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/paguinaPrincipal/index.html">StockControlX</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+  
+          <div class="collapse navbar-collapse" id="navbarNav">
+  
+  
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/inicioSesion/inicioSesion.html">inicio de sesion</a>
+              </li>
+  
+              <li class="nav-item">
+                <a class="nav-link" href="/contacto/contacto.html">contactanos</a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link" href="/CrearUsuarioPrimeraVez/CrearUsuarioPMVZ.html">crear cuenta</a>
+  
+              </li>
+            </ul>
+  
+          </div>
+        </div>
+    </nav>
+
+    <!--formulario para inresar los datos de la empresa.-->
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                <h2 class="text-center" id="titulo">dar de alta a la empresa</h2>
+
+                <form action="/dentroDelSistema/usuarioAdmi/usuarioAdmiInicio/usuarioAdmiInicio.html">
+                    <div class="form-group mb-4">
+                        <label for="InputNameCompany">nombre de la empresa</label>
+                        <input type="text" class="form-control" id="InputNameCompany" placeholder="ejemplo:boutique candy" required>
+
+                    </div>
+                    
+                    <div class="form-group mb-4">
+                        <label for="InputGiro">giro de la empresa</label>
+                        <input type="text" class="form-control" id="InputGiro" placeholder="ejemplo:venta de ropa mayorista" required>
+
+
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label for="InputContry">pais</label>
+                        <input type="text" class="form-control" id="InputContry" placeholder="ejemplo:Mexico" required>
+
+
+                    </div>
+                    
+                    <div class="form-group mb-4">
+                        <label for="InputNIF">numero de identificacion fiscal (persona moral)</label>
+                        <input type="text" class="form-control" name="InputNIF" id="InputNIF" placeholder="XAXX010101000 " required>
+
+                    </div>
+
+                    <!-- documentos legales de la empresa -->
+                    <!-- entre estos se encontraran
+                        -plan de negocios
+                        --contitucion
+                        -seguros
+                            -El seguro de propiedad protege los activos físicos de su empresa
+                            -El seguro de responsabilidad civil
+                            -El seguro de compensación para trabajadores 
+                        -estatutos
+                         
+                        estos son los principales, pero igual se podran poner mas si es que tiene mas documentos legales.
+                    -->
+
+                    <div class="mb-3">
+                        <label for="formFile2" class="form-label">plan de negocios</label>
+                        <input type="file" class="form-control" id="formFile2" required>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">constitucion</label>
+                        <input type="file" class="form-control" id="formFile" required>
+                        
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="formFileMultiple" class="form-label">seguros</label>
+                        <input class="form-control" type="file" id="formFileMultiple" multiple required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="formFiel3" class="form-label">estatutos</label>
+                        <input class="form-control" type="file"  id="formFiel3" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="FormFileOther">otros</label>
+                        <input class="form-control" type="file"  id="FormFileOther" multiple required> 
+
+                    </div>
+
+                    <!-- este lo uqe hara es que le preguntamos al usuario si tiene mas locales, entonces si nos dice que si, habilitamos la opcion de que si quiere que se agregue esa local de igual forma, los 2 estan en sistemas separados pero a su vinculados de que son la misma compania. las existencias no se comparten, los empleados pueden ir de un local al otro, pero ellos estaran registrados en donde fueron dados de alta, si no tiene o no quiere que que conecte, pues no se activa. pero esto creo que hara con JS, con HTML no se como se podria hacer. -->
+                    <p class="text-center">si cuenta con las locales, quiere registrarlos igual al sistema?<br></p>
+                    <div class="form-check mb-4">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                          si
+                        </label>
+                      </div>
+                      <div class="form-check mb-4">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                          no
+                        </label>
+                      </div>
+
+                    <!-- en caso de que si, como se organizaria eso, cunado se crea una empresa se genera un ID para esa empresa, por lo que el ID de la otra empreza sera una derivada de esta. etonces para poder dar de alta las 2 o mas empresas se generan dsiitintos ID's derivados, habra una opcion de agregar local derivado-->
+
+                    <!-- esto es en caso de que si hayan mas locales registrados con el mismo nombre. -->
+
+                    <button type="submit" class="btn btn-primary">crear</button>
+
+
+
+                </form>      
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+    </div>
+    
+        
+
+
+</body>
+</html>
