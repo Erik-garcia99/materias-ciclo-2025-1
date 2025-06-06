@@ -1,0 +1,81 @@
+
+
+//JOSE RAZIEL TRUJEQUE CASTOR - 1276448	
+//EXAMEN 3 - MICROCONTROLADORES
+
+
+void int_TIMER0(void){
+	TCCR0A = 0;
+	TCCR0B |= (1 << WGM1) | (1 << CS01) | (1 << CS00);
+	TCNT = 0;
+	TIMKS = 1 << OCIE0A;
+	OCR0A = 249;
+	sei();
+}
+static uint8_t timerFlag = 0;
+ISR(TIMER0_COMPA_vect){
+	static volatile uint8_t milis = 0;
+	milis++;
+	if(millis ==100)
+	{
+		milis = 0;
+		timerFlag = 1;	
+	}
+}
+void Timer2_Pwm(uint8_t percent){
+	if(percent)
+	{
+		0CR2B = percent * 256 / 100;
+		TCCR2B |= (4 << CS00); //PS = 256
+		TCCR2A |= 4 << CS00; //	
+	}
+	else
+	{
+		TCCR2B = 0:
+		TCCR2A &= ~(3 << COM2B0);
+		PORTH &= ~(1 << PH6);	
+	}
+
+}
+
+void int_ADC(void){
+	ADCSRA |= (1 << ADEN) | (7 << ADSP0); //MAX PRESCALADOR
+	ADMUX |= (2 << REFSO) | (1 << MUX0)
+	ADCSRB |= (1 << MUX5); //ADC9
+}
+
+
+uint8_t read_temp(void){
+	uint32_t result = 0;
+	ADCSRA |= (1 << ADS);
+	while(ADCSRA & (1 << ADSC));
+
+	resulto = ADC;
+	return (uint8_t) ((ADC * 1.1V)*100)/1024;
+}
+
+int main(void){
+	
+	uint32_t samples=0;
+	uint8t_t cnt = 0;
+	int_TIMER0();
+	int_ADC();
+	
+
+	while(timerFlag){
+	
+		samples += read_temp();
+		cnt++)
+		if (cnt == 8)
+		{
+			uint8_t temp = 0;
+			cnt = 0;
+			temp = samples/8;
+			
+			if(temp > 40)
+				Timer2_Pwm(75);
+			else if(temp >30)
+			
+ 		}
+
+}

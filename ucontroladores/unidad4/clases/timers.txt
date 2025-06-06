@@ -23,6 +23,10 @@ TCCR0A : los ultimos 4 bits son para controlar los modos de salia de modo A Y B 
 
 modo normal es cunado el tope de FF 
 
+255 = (time * Fosc / PS) -1
+
+
+
 CTC es el modo definido por OCRA
 
 

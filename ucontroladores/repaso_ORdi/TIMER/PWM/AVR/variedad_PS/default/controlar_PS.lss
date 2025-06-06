@@ -1,0 +1,304 @@
+
+controlar_PS.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000001a8  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .bss          00000001  00800200  00800200  0000021c  2**0
+                  ALLOC
+  2 .debug_aranges 00000020  00000000  00000000  0000021c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  3 .debug_pubnames 00000034  00000000  00000000  0000023c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_info   00000288  00000000  00000000  00000270  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_abbrev 00000105  00000000  00000000  000004f8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_line   000001f2  00000000  00000000  000005fd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_frame  00000030  00000000  00000000  000007f0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_str    00000126  00000000  00000000  00000820  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_loc    000000f2  00000000  00000000  00000946  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_ranges 00000060  00000000  00000000  00000a38  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 72 00 	jmp	0xe4	; 0xe4 <__ctors_end>
+   4:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+   8:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+   c:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  10:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  14:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  18:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  1c:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  20:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  24:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  28:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  2c:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  30:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  34:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  38:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  3c:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  40:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  44:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  48:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  4c:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  50:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  54:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  58:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  5c:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  60:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  64:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  68:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  6c:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  70:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  74:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  78:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  7c:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  80:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  84:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  88:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  8c:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  90:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  94:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  98:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  9c:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  a0:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  a4:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  a8:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  ac:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  b0:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  b4:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  b8:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  bc:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  c0:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  c4:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  c8:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  cc:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  d0:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  d4:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  d8:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  dc:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  e0:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+
+000000e4 <__ctors_end>:
+  e4:	11 24       	eor	r1, r1
+  e6:	1f be       	out	0x3f, r1	; 63
+  e8:	cf ef       	ldi	r28, 0xFF	; 255
+  ea:	d1 e2       	ldi	r29, 0x21	; 33
+  ec:	de bf       	out	0x3e, r29	; 62
+  ee:	cd bf       	out	0x3d, r28	; 61
+  f0:	00 e0       	ldi	r16, 0x00	; 0
+  f2:	0c bf       	out	0x3c, r16	; 60
+
+000000f4 <__do_copy_data>:
+  f4:	12 e0       	ldi	r17, 0x02	; 2
+  f6:	a0 e0       	ldi	r26, 0x00	; 0
+  f8:	b2 e0       	ldi	r27, 0x02	; 2
+  fa:	e8 ea       	ldi	r30, 0xA8	; 168
+  fc:	f1 e0       	ldi	r31, 0x01	; 1
+  fe:	00 e0       	ldi	r16, 0x00	; 0
+ 100:	0b bf       	out	0x3b, r16	; 59
+ 102:	02 c0       	rjmp	.+4      	; 0x108 <__do_copy_data+0x14>
+ 104:	07 90       	elpm	r0, Z+
+ 106:	0d 92       	st	X+, r0
+ 108:	a0 30       	cpi	r26, 0x00	; 0
+ 10a:	b1 07       	cpc	r27, r17
+ 10c:	d9 f7       	brne	.-10     	; 0x104 <__do_copy_data+0x10>
+
+0000010e <__do_clear_bss>:
+ 10e:	12 e0       	ldi	r17, 0x02	; 2
+ 110:	a0 e0       	ldi	r26, 0x00	; 0
+ 112:	b2 e0       	ldi	r27, 0x02	; 2
+ 114:	01 c0       	rjmp	.+2      	; 0x118 <.do_clear_bss_start>
+
+00000116 <.do_clear_bss_loop>:
+ 116:	1d 92       	st	X+, r1
+
+00000118 <.do_clear_bss_start>:
+ 118:	a1 30       	cpi	r26, 0x01	; 1
+ 11a:	b1 07       	cpc	r27, r17
+ 11c:	e1 f7       	brne	.-8      	; 0x116 <.do_clear_bss_loop>
+ 11e:	0e 94 9f 00 	call	0x13e	; 0x13e <main>
+ 122:	0c 94 d2 00 	jmp	0x1a4	; 0x1a4 <_exit>
+
+00000126 <__bad_interrupt>:
+ 126:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000012a <Fast_PWM_init>:
+void Fast_PWM_init(void){
+
+
+
+
+    TCCR0A |= (3<<WGM00) | (1<<COM0A1);
+ 12a:	84 b5       	in	r24, 0x24	; 36
+ 12c:	83 68       	ori	r24, 0x83	; 131
+ 12e:	84 bd       	out	0x24, r24	; 36
+
+    //INICUALMENTE inicamos sin prescalador
+
+    TCCR0B |= (1<<CS00);
+ 130:	85 b5       	in	r24, 0x25	; 37
+ 132:	81 60       	ori	r24, 0x01	; 1
+ 134:	85 bd       	out	0x25, r24	; 37
+
+    //50% el ciclo de trabajo
+
+    OCR0A = 127;
+ 136:	8f e7       	ldi	r24, 0x7F	; 127
+ 138:	87 bd       	out	0x27, r24	; 39
+
+    TCNT0 = 0;
+ 13a:	16 bc       	out	0x26, r1	; 38
+
+    //TIMSK0 |= (1<<TOIE0);
+    //sei();
+
+
+}
+ 13c:	08 95       	ret
+
+0000013e <main>:
+int main(void)
+{
+
+    // Insert code
+
+    DDRB |= 1<<PB7;
+ 13e:	27 9a       	sbi	0x04, 7	; 4
+
+    Fast_PWM_init();
+ 140:	0e 94 95 00 	call	0x12a	; 0x12a <Fast_PWM_init>
+
+
+    while(1){
+
+
+        TCCR0B = (1<<CS00);
+ 144:	f1 e0       	ldi	r31, 0x01	; 1
+    milliseconds can be achieved.
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+ 146:	44 ec       	ldi	r20, 0xC4	; 196
+ 148:	59 e0       	ldi	r21, 0x09	; 9
+        for(uint8_t ctn = 0 ; ctn < 100 ; ctn ++){
+
+            _delay_ms(10);
+        }
+
+        TCCR0B = (2<<CS00); //PS 8
+ 14a:	e2 e0       	ldi	r30, 0x02	; 2
+        for(uint8_t ctn = 0 ; ctn < 100 ; ctn ++){
+
+            _delay_ms(10);
+        }
+
+        TCCR0B = (3<<CS00); //PS 64
+ 14c:	73 e0       	ldi	r23, 0x03	; 3
+        for(uint8_t ctn = 0 ; ctn < 100 ; ctn ++){
+
+            _delay_ms(10);
+        }
+
+        TCCR0B =(4<<CS00); //PS256
+ 14e:	64 e0       	ldi	r22, 0x04	; 4
+        for(uint8_t ctn = 0 ; ctn < 100 ; ctn ++){
+
+            _delay_ms(10);
+        }
+
+        TCCR0B =(5<<CS00); //PS 1024
+ 150:	35 e0       	ldi	r19, 0x05	; 5
+
+
+    while(1){
+
+
+        TCCR0B = (1<<CS00);
+ 152:	f5 bd       	out	0x25, r31	; 37
+ 154:	20 e0       	ldi	r18, 0x00	; 0
+ 156:	ca 01       	movw	r24, r20
+ 158:	01 97       	sbiw	r24, 0x01	; 1
+ 15a:	f1 f7       	brne	.-4      	; 0x158 <main+0x1a>
+
+        for(uint8_t ctn = 0 ; ctn < 100 ; ctn ++){
+ 15c:	2f 5f       	subi	r18, 0xFF	; 255
+ 15e:	24 36       	cpi	r18, 0x64	; 100
+ 160:	d1 f7       	brne	.-12     	; 0x156 <main+0x18>
+
+            _delay_ms(10);
+        }
+
+        TCCR0B = (2<<CS00); //PS 8
+ 162:	e5 bd       	out	0x25, r30	; 37
+ 164:	20 e0       	ldi	r18, 0x00	; 0
+ 166:	ca 01       	movw	r24, r20
+ 168:	01 97       	sbiw	r24, 0x01	; 1
+ 16a:	f1 f7       	brne	.-4      	; 0x168 <main+0x2a>
+
+        for(uint8_t ctn = 0 ; ctn < 100 ; ctn ++){
+ 16c:	2f 5f       	subi	r18, 0xFF	; 255
+ 16e:	24 36       	cpi	r18, 0x64	; 100
+ 170:	d1 f7       	brne	.-12     	; 0x166 <main+0x28>
+
+            _delay_ms(10);
+        }
+
+        TCCR0B = (3<<CS00); //PS 64
+ 172:	75 bd       	out	0x25, r23	; 37
+ 174:	20 e0       	ldi	r18, 0x00	; 0
+ 176:	ca 01       	movw	r24, r20
+ 178:	01 97       	sbiw	r24, 0x01	; 1
+ 17a:	f1 f7       	brne	.-4      	; 0x178 <main+0x3a>
+
+        for(uint8_t ctn = 0 ; ctn < 100 ; ctn ++){
+ 17c:	2f 5f       	subi	r18, 0xFF	; 255
+ 17e:	24 36       	cpi	r18, 0x64	; 100
+ 180:	d1 f7       	brne	.-12     	; 0x176 <main+0x38>
+
+            _delay_ms(10);
+        }
+
+        TCCR0B =(4<<CS00); //PS256
+ 182:	65 bd       	out	0x25, r22	; 37
+ 184:	20 e0       	ldi	r18, 0x00	; 0
+ 186:	ca 01       	movw	r24, r20
+ 188:	01 97       	sbiw	r24, 0x01	; 1
+ 18a:	f1 f7       	brne	.-4      	; 0x188 <main+0x4a>
+
+        for(uint8_t ctn = 0 ; ctn < 100 ; ctn ++){
+ 18c:	2f 5f       	subi	r18, 0xFF	; 255
+ 18e:	24 36       	cpi	r18, 0x64	; 100
+ 190:	d1 f7       	brne	.-12     	; 0x186 <main+0x48>
+
+            _delay_ms(10);
+        }
+
+        TCCR0B =(5<<CS00); //PS 1024
+ 192:	35 bd       	out	0x25, r19	; 37
+ 194:	20 e0       	ldi	r18, 0x00	; 0
+ 196:	ca 01       	movw	r24, r20
+ 198:	01 97       	sbiw	r24, 0x01	; 1
+ 19a:	f1 f7       	brne	.-4      	; 0x198 <main+0x5a>
+
+        for(uint8_t ctn = 0 ; ctn < 100 ; ctn ++){
+ 19c:	2f 5f       	subi	r18, 0xFF	; 255
+ 19e:	24 36       	cpi	r18, 0x64	; 100
+ 1a0:	d1 f7       	brne	.-12     	; 0x196 <main+0x58>
+ 1a2:	d7 cf       	rjmp	.-82     	; 0x152 <main+0x14>
+
+000001a4 <_exit>:
+ 1a4:	f8 94       	cli
+
+000001a6 <__stop_program>:
+ 1a6:	ff cf       	rjmp	.-2      	; 0x1a6 <__stop_program>

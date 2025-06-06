@@ -1,6 +1,11 @@
 //clase 4 de abril 2024 
 //sigueindo TIMER0
 							//-es la frecuencia del oscilador del micro
+							
+	//formula para saber que valor lleva OCR0A -> cunado es modo CTC 
+	//OCR0A es el registro que va a comprarar cunado se haga el match con TCNTn 
+	
+	//formula  -> (Tobj * Focs / PS ) - 1 
 //ticks = 1ms/Tt - 100ms *(16MHz/PS) = 250
 
 
