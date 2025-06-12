@@ -1,0 +1,70 @@
+ADC = (Vin * 1023)/Vref
+ADC + offset = (0 * 1023)/2.56
+
+
+static uint8_t offset = 0;
+//ADC 9, 10 bits
+
+void ADC_Ini(void)
+{
+
+	//PARA PONER 9 SE USA 100001 EN MUX(5-0) PAG 281
+	
+	//ADC calibration
+	ADMUX = (1F << MUX0) |  (3 << REFS0) // - REFSO USAREMOS 2.56 y ponemos 1F para escoger VIN 0v como puerto 
+	ADCSRB |= (1 << MUX5);
+	//Start conversion
+	
+	ADSCRA |= 1 << ADSC;
+	while (ADSCRA & (1 << ADSC));
+	offset = ADC;
+	
+	
+	// PERIDO = 1 / 125KHZ = 0.000008 -> 8*13(TIKS EL CONVERTIR UNA SEÑAL) = 104mS
+	//PAG 285 Bit 7 – ADEN: ADC Enable
+	ADCSRA = (1<<ADEN) | (7 << ADPS0);		//TRABAJAREMOS CON EL PRESCALADOR DE 128 Y NOS DA UNA FRECUENCIA DE 125KHZ
+	
+	DIDR2 = (1 << ADC9D);
+
+}
+
+uint16_ADC_readA9(void){
+	
+	
+	//uint16_t result = 0;
+	//26.8.3 ADCSRA – ADC Control and Status Register A
+	ADSCRA |= 1 << ADSC;
+	/*while (!(ADSCRA & (1 << ADIF))
+		; //wait for ADIF is 0
+	(ADSCRA |= (1 << ADIF); //clear ADC flag*/
+	while (ADSCRA & (1 << ADSC)); //Wait while ADSC is 1
+		
+		
+	// 0000 00HH
+	// LLLL LLLL
+	// HH LLLL LLLL
+	/*result = ADCL;
+	result |= (ADCH << 8);
+	return result;*/
+	
+	return (ADC - offset);
+	
+}
+
+int main(void){
+	uint16_ result = 0;
+	char elf(16);
+	
+	ADC_Ini();
+	
+	while(1){
+		result = ADC_readA9();
+		itoa(result, str);
+		UART_puts(str);
+		UART_puts("\n\r");
+		
+	}
+	
+	
+	
+}

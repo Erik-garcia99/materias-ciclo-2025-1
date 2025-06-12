@@ -1,0 +1,97 @@
+ADC + offset = ((1.1v * 1023)/2.56V)) * gain
+ADC = ((1.1v * 1023)/2.56V)) * gain - offset
+(ADC + offset) / ((1.1V * 1023)/2.56) = gain
+(ADC + offset) * (128*100)/56265 = gain
+
+static uint8_t gain = 0;
+static uint8_t offset = 100;
+//ADC 9, 10 bits
+
+void ADC_Ini(void)
+{
+	ADCSRA = (1<<ADEN) | (7 << ADPS0);		//TRABAJAREMOS CON EL PRESCALADOR DE 128 Y NOS DA UNA FRECUENCIA DE 125KHZ
+	//PARA PONER 9 SE USA 100001 EN MUX(5-0) PAG 281
+	//ADC calibration
+	ADMUX = (1F << MUX0) |  (3 << REFS0) // - REFSO USAREMOS 2.56 y ponemos 1F para escoger VIN 0v como puerto 
+	ADCSRB |= (1 << MUX5);
+	//Start conversion
+	ADSCRA |= 1 << ADSC;
+	while (ADSCRA & (1 << ADSC));
+	offset = ADC;
+	//--------------------------//
+	//Findinf gain
+	ADMUX = (1E << MUX0) |  (3 << REFS0) // VRED = 2.56 (AVCC), VIN = 0v 
+	ADCSRB |= (1 << MUX5);
+	uint8_t = 5;
+	do{
+		ADCSRA |= 1 << ADSC;
+		while (ADSCRA & (1 << ADSC));
+		
+		uint8_t result 
+		itoa(result, str);
+		UART_puts("
+		
+	}
+	
+	
+	ADCSRA |= 1 << ADSC;
+	while (ADSCRA & (1 << ADSC));
+	
+	gain = ((uint32_t) (ADC + offset) * 128000UL) / 56265UL;
+	//-----------------------//
+	ADMUX = (1 << MUX0) |  (1 << REFS0) // - REFSO USAREMOS AVCC 
+	ADCSRB = 1 << MUX5;
+	// PERIDO = 1 / 125KHZ = 0.000008 -> 8*13(TIKS EL CONVERTIR UNA SEÑAL) = 104mS
+	//PAG 285 Bit 7 – ADEN: ADC Enable
+	ADCSRA = (1<<ADEN) | (7 << ADPS0);		//TRABAJAREMOS CON EL PRESCALADOR DE 128 Y NOS DA UNA FRECUENCIA DE 125KHZ
+	
+	DIDR2 = (1 << ADC9D);
+}
+
+uint16_ADC_readA9(void){
+	
+	
+	//uint16_t result = 0;
+	//26.8.3 ADCSRA – ADC Control and Status Register A
+	ADSCRA |= 1 << ADSC;
+	/*while (!(ADSCRA & (1 << ADIF))
+		; //wait for ADIF is 0
+	(ADSCRA |= (1 << ADIF); //clear ADC flag*/
+	while (ADSCRA & (1 << ADSC)); //Wait while ADSC is 1
+		
+		
+	// 0000 00HH
+	// LLLL LLLL
+	// HH LLLL LLLL
+	/*result = ADCL;
+	result |= (ADCH << 8);
+	return result;*/
+	
+	return (uint32_t) (ADC * gain)/100 - offset;
+	
+}
+
+int main(void){
+	uint16_ result = 0;
+	char elf(16);
+	
+	ADC_Ini();
+	itoa(offset, str);
+	UART_puts("ADC Offset = ");
+	UART_puts(str);
+	UART_puts("\n\r");
+	
+	itoa(
+	
+	while(1){
+		
+		result = ADC_readA9();
+		itoa(result, str);
+		UART_puts(str);
+		UART_puts("\n\r");
+		
+	}
+	
+	
+	
+}
