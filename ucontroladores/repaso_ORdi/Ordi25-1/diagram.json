@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-mega", "id": "mega", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 275,
+      "left": -48,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn2",
+      "top": 275,
+      "left": 38.4,
+      "attrs": { "color": "blue" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn3",
+      "top": 275,
+      "left": 124.8,
+      "attrs": { "color": "yellow" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 255.6,
+      "left": 282.2,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": 255.6,
+      "left": 311,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led3",
+      "top": 255.6,
+      "left": 253.4,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led4",
+      "top": 255.6,
+      "left": 349.4,
+      "attrs": { "color": "blue" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led5",
+      "top": 255.6,
+      "left": 378.2,
+      "attrs": { "color": "blue" }
+    },
+    { "type": "wokwi-led", "id": "led6", "top": 255.6, "left": 407, "attrs": { "color": "blue" } },
+    {
+      "type": "wokwi-slide-potentiometer",
+      "id": "pot1",
+      "top": 341,
+      "left": -20.2,
+      "attrs": { "travelLength": "30" }
+    }
+  ],
+  "connections": [
+    [ "btn2:2.l", "btn1:2.r", "black", [ "h0" ] ],
+    [ "btn2:2.r", "btn3:2.l", "black", [ "h0" ] ],
+    [ "btn1:1.r", "mega:A1", "green", [ "v-57.6", "h-12.2" ] ],
+    [ "btn2:1.l", "mega:A2", "blue", [ "h-9.6", "v-38.4", "h198.7" ] ],
+    [ "btn3:1.r", "mega:A3", "gold", [ "v0", "h38.6" ] ],
+    [ "mega:A8", "led2:A", "#8f4814", [ "v55.5", "h55.35", "v57.6" ] ],
+    [ "mega:A9", "led1:A", "red", [ "v65.1", "h16.8", "v48" ] ],
+    [ "mega:A10", "led3:A", "orange", [ "v45.9", "h-21.5", "v67.2" ] ],
+    [ "led3:C", "led1:C", "cyan", [ "v9.6", "h19.6" ] ],
+    [ "led1:C", "led2:C", "cyan", [ "v9.6", "h19.6" ] ],
+    [ "led2:C", "led4:C", "cyan", [ "v9.6", "h29.2" ] ],
+    [ "led4:C", "led5:C", "cyan", [ "v9.6", "h19.6" ] ],
+    [ "led5:C", "led6:C", "cyan", [ "v9.6", "h19.6" ] ],
+    [ "led6:C", "mega:13", "cyan", [ "v9.6", "h29.2", "v-316.8", "h-322.2" ] ],
+    [ "mega:5V", "pot1:VCC", "red", [ "v36.3", "h-241.3", "v163.2" ] ],
+    [ "mega:GND.2", "btn1:2.l", "black", [ "v26.7", "h-279.85", "v96" ] ],
+    [ "pot1:GND", "btn3:2.r", "black", [ "v0", "h34", "v-76.8" ] ],
+    [ "mega:A0", "pot1:SIG", "#8f4814", [ "v17.1", "h-333.3", "v201.6" ] ],
+    [ "led4:A", "mega:53", "#8f4814", [ "h9.6", "v-96", "h-9.6", "v-40.1" ] ],
+    [ "mega:52", "led5:A", "red", [ "v59.3", "h51.8", "v76.8" ] ],
+    [ "led6:A", "mega:51", "orange", [ "h9.6", "v-145.6" ] ]
+  ],
+  "dependencies": {}
+}

@@ -1,5 +1,4 @@
 #include<avr/io.h>
-#include<avr/interrupt.h>
 #include "UART.h"
 
 
@@ -20,17 +19,13 @@ UART_reg_t *UART_offset[]={
 
 void UART_init(uint8_t com,uint32_t BOUD, uint8_t parity, uint8_t stop, uint8_t ch_size){
 
-
-    //ahora recibidos y enviamos por interrupciones?
-    sei();
     UART_reg_t *myUART = UART_offset[com];
 
 
     //habilitamspo RX y TX del UART que estemos usando con myUART
 
-    //habilitemos las interrucpiones por RX y TX -> sera para el UART 0
-    //porque UDR y no TX porque UDRE indica que el buffer de transmiscion, nos indca su estado actual
-    myUART->UCSRB |= (1<<RXEN0) | (1<<TXEN0) | (1<<RXCIE0) | (1<<UDRIE0);
+
+    myUART->UCSRB |= (1<<RXEN0) | (1<<TXEN0);
 
 
     //para el bit de paridas habran 3 casos, en donde no hay, par e impar
@@ -100,8 +95,6 @@ void UART_puts(uint8_t com, char *str){
 }
 
 
-
-
 //todo esto sin interupcioens
 
 
@@ -117,13 +110,6 @@ void UART_putchar(uint8_t com, char data){
 
 
     myUART->UDR = data;
-
-
-}
-
-
-ISR(USART0_UDRE_vect){
-
 
 
 }
