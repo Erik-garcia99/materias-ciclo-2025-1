@@ -14,6 +14,7 @@ OCR0A = (F_cpu / 2 * PS * F_deseasa ) - 1
 si queremos simular el PWM con un ciclo de trabajo ajustado con el que prendemos
 y apagos un PIN la formula para OCR0A seria de
 
+
 OCRxn = (F_cpu / PS * f_INT ) -1
 
 donde f_INT -> la frecuencia que quiero llegar

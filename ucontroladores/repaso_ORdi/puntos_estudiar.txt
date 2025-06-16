@@ -1,0 +1,153 @@
+--vamso a realzar los mismo ejercicos de TIMER0 para TIMER2 para tener encuenta eso, tanto con INT como sin INT
+
+
+-TIMER0
+--realizaremos un ejercicos de softPWM - PWM por medio de cualquier PIN
+--relaizar un delay por medio de TIMER, vamos a podbrar por con 1 soo timer y despues PWM y delay con timer diferentes
+
+PWM -TIMER0
+DELAY-timer2
+
+y el delay y conteo por 1 solo timer leyendo un PIN 
+------------------------------------------------------
+
+ejercicios con TIMER0 - TIMER 2
+Ejercicio 2: Dos Señales con Distinta Frecuencia
+Objetivo:
+Generar dos señales cuadradas simultáneas:
+
+500 Hz en OC0A (PB7).
+
+250 Hz en OC0B (PB6).
+Puntos a considerar:
+
+Usa el modo CTC con TOP = OCR0A (la señal de menor frecuencia define el TOP).
+
+Configura ambos pines (OC0A y OC0B) en modo toggle.
+
+Calcula OCR0A para 250 Hz y OCR0B para 500 Hz (usa el mismo prescaler).
+
+Asegúrate de que 
+OCR0B
+<
+OCR0A
+OCR0B<OCR0A (¿por qué?).
+-----------------------
+
+Ejercicio 4: LED con Duty Cycle Ajustable
+Objetivo:
+Generar una señal con duty cycle del 25% (sin PWM) en un pin digital (ej: PD0) a 10 Hz.
+Puntos a considerar:
+
+Usa dos valores distintos de OCR0A en modo CTC:
+
+Alto: 25% del periodo.
+
+Bajo: 75% del periodo.
+
+Cambia el estado del pin manualmente mediante polling del flag OCF0A.
+
+Secuencia:
+
+Inicia con el pin en alto.
+
+Cuando ocurra el match (OCF0A=1), pon el pin en bajo y cambia OCR0A al valor del 75%.
+
+En el siguiente match, pon el pin en alto y restaura OCR0A al 25%.
+
+Calcula los valores de OCR0A para cada fase (periodo total = 100 ms).
+------------------
+
+Ejercicio 1: Generación de Señal PWM con TIMER0 (Fast PWM)
+Enunciado:
+Configura TIMER0 en modo Fast PWM para generar una señal PWM en el pin OC0A (PD6 en ATmega328P) con una frecuencia de ~62.5 kHz (usando reloj de 16 MHz). Varía el ciclo de trabajo gradualmente del 0% al 100% y viceversa, usando retardos no bloqueantes.
+Partes Clave:
+
+Cálculo del preescaler (usar preescaler 1 para lograr la frecuencia deseada).
+
+Configuración de registro TCCR0A (modo Fast PWM, no-invertido).
+
+Uso del registro OCR0A para controlar el duty cycle.
+------------------
+
+Ejercicio 2: Modulación PWM en TIMER2 (Phase Correct PWM)
+Enunciado:
+Configura TIMER2 en modo Phase Correct PWM en el pin OC2B (PD3) con una frecuencia de ~31.4 kHz (16 MHz). Realiza un barrido automático del duty cycle desde 25% hasta 75% y regresa, con una transición suave cada 500 ms.
+Partes Clave:
+
+Preescaler adecuado (usar preescaler 8).
+
+Registro TCCR2A (modo Phase Correct PWM, no-invertido).
+
+Relación entre el valor de OCR2B y el duty cycle.
+
+--------------------------
+
+Ejercicio 3: Contador por Overflow con TIMER0 (Modo Normal)
+Enunciado:
+Usa TIMER0 en modo normal para generar una interrupción por overflow cada ~16 ms (con preescaler 1024). Haz parpadear un LED cada segundo usando un contador de sobreflujos.
+Partes Clave:
+
+Cálculo de tiempo de overflow: T_overflow = (256 * preescaler) / F_CPU.
+
+Habilitar interrupción TIMER0_OVF.
+
+Contador de overflows para lograr 1 segundo (62 overflows ≈ 1 s).
+
+----------------------------
+
+Ejercicio 4: Generación de Tonos con TIMER2 (Modo CTC)
+Enunciado:
+Configura TIMER2 en modo CTC (Clear Timer on Compare) para generar un tono de 1 kHz en un buzzer conectado a OC2B (PD3). Usa la salida de comparación para toggle automático del pin.
+Partes Clave:
+
+Fórmula para calcular OCR2A: OCR2A = (F_CPU / (2 * preescaler * frecuencia)) - 1.
+
+Preescaler recomendado: 64.
+
+Configuración de TCCR2A para toggle en compare match (COM2B0).
+
+---------------------
+
+Ejercicio 5: PWM Sincronizado con Dos Timers (TIMER0 + TIMER2)
+Enunciado:
+Sincroniza TIMER0 (Fast PWM en OC0A) y TIMER2 (Phase Correct PWM en OC2B). El duty cycle de TIMER2 debe incrementarse un 5% cada vez que el ciclo de TIMER0 alcance el 100%.
+Partes Clave:
+
+Usar interrupción por overflow de TIMER0 para actualizar OCR2B.
+
+Lógica de sincronización:
+
+Cuando OCR0A = 255 (100% duty cycle), incrementar OCR2B en 13 (5% de 255).
+
+Evitar desbordamientos en OCR2B.
+
+-----------------
+
+
+Notas Técnicas:
+Fast PWM vs Phase Correct PWM:
+
+Fast PWM: Frecuencia alta, transiciones rápidas (ideal para control de motores).
+
+Phase Correct PWM: Frecuencia reducida a la mitad, simetría perfecta (ideal para audio).
+
+Registros Clave:
+
+TCCRXA/TCCRXB: Control de modo y preescaler.
+
+OCRXA/OCRXB: Valores de comparación (duty cycle).
+
+TIMSKX: Habilitar interrupciones.
+
+Fórmulas Útiles:
+
+PWM: frecuencia = F_CPU / (preescaler * 256) (Fast PWM).
+
+CTC: frecuencia = F_CPU / (2 * preescaler * (OCR2A + 1)).
+
+---------------
+
+"Retardos no bloqueantes" se refiere a una técnica de programación que permite realizar pausas o esperas sin 
+detener la ejecución del resto del programa. Es clave en sistemas embebidos para mantener la capacidad de respuesta 
+del sistema mientras se gestionan tareas temporizadas. Aquí la explicación detallada:

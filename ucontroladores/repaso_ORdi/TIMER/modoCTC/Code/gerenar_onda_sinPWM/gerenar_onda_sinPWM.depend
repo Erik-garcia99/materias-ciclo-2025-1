@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1749875938 source:c:\users\erikg\documents\ciclo2025-1\materias-ciclo-2025-1\ucontroladores\repaso_ordi\timer\modoctc\code\gerenar_onda_sinpwm\fuse.c
+	<avr/io.h>
+
+1749931301 source:c:\users\erikg\documents\ciclo2025-1\materias-ciclo-2025-1\ucontroladores\repaso_ordi\timer\modoctc\code\gerenar_onda_sinpwm\main.c
+	<avr/io.h>
+	<avr/interrupt.h>
+

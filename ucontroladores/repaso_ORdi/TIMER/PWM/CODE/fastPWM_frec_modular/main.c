@@ -79,8 +79,13 @@ void FAST_PWM_MOD(void){
     TCCR0B |= (1<<CS02) | (1<<CS00);
 
     OCR0A = 155; //para una frecuencia de 100Hz
+    /*
+    calculamos el ciclo de traajo para OCR0B
 
-    OCR0B = 128-1; //50% cycle duty - 25
+
+    OCRxn = ((cycle% / 100)*256)-1
+    */
+    OCR0B = 50; //20% cycle duty
 }
 
 

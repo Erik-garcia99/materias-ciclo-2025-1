@@ -1,58 +1,148 @@
 /*
+
+ejercicio en donde cambiemos la frecueinca en timpo real
+va a cambiar el tiempo que pasa, actualizamos
+
+som INT
  */
 
- //genrear una frecuncia de 1kHz sin PWM con el timer0
 #include <avr/io.h>
-#include<avr/interrupt.h>
+#include<avr/interrumpt.h>
+//usaremos el mismo TIMER para la lecttrua
+
 /*
-la fomrula para conocer OCR0A cunado sabemos la frecueicna es de:
+normal seria
 
-esta formula solo va a funcionar para el ciclo de trabajo de 50%
-OCR0A = (F_cpu / 2 * PS * F_deseasa ) - 1
+1 S
 
+500 ms
 
-si queremos simular el PWM con un ciclo de trabajo ajustado con el que prendemos
-y apagos un PIN la formula para OCR0A seria de
-
-OCRxn = (F_cpu / PS * f_INT ) -1
-
-donde f_INT -> la frecuencia que quiero llegar
+250 ms
 
 
 */
 
 
+volatile uint16_t milis=0;
 
-void TIMER_init(void){
+enum _state{
+    normal=0,
+    mitad,
+    tercio
 
-    //con este usamos el modo CTC, el PWM sera de 50% de trabajo, dado por el toggleo
-    //toggle cada mathc, como CTC (OCR0A -> TOP)
+};
 
-    TCCR0A = (1<<COM0A0) | (1<<WGM01);
 
-    //si el PWM sera de 1KHZ con PS de 64
+volatile uint8_t estado = normal;
 
-    /*
-        OCR0A =(16Mhz / 2 * 64 * 1000)-1;
+//contador para el retardo
+volatile uint8_t delay=0;
 
-    */
+void TIMER_CTC_init(void){
 
-    OCR0A = 124;
-    TCCR0B = (3<<CS00);
-    TCNT0=0;
+    TCCR0A = (1<<WGM01); //modo tcnt
+    //para 1ms
+
+    TCCR0B =(3<<CS00);
+    //usaremos A para el parpaadeo del led
+    OCR0A = 250-1;
+    TCNT0 = 0;
+    //usaremos B para la lectura del pin
+    TIMSK0 = (1<<OCIE0A); //habilitamos la intrrupcion del match
+
+
+    sei();
 }
 
+
+ISR(TIMER0_COMPA_vect){
+
+    milis++;
+    delay++;
+
+    switch(estado){
+
+        case normal:
+
+            if(milis==1000){
+                milis=0;
+                PINB |= 1<<PB7;
+            }
+
+        case mitad:
+            if(milis==200){
+                milis=0;
+                PINB|=1<<PB7;
+
+
+            }
+
+        case tercio:
+
+            if(milis ==150){
+                milis=0;
+                PINB |=1<<PB7;
+            }
+    }
+
+}
+
+
+//devolvera 1 cunado se cumpla un retardo de 10 ms
+uint8_t retardo(){
+
+    if(delay<20){
+        delay=0;
+        return 1;
+    }
+
+    return 0;
+}
+
+
+
+void lectura_BTN(void) {
+
+
+    if(!(PORTF & (1<<PF0))){
+
+        while(!(retardo()));
+
+        if(estado == normal || estado == tercio){
+            milis=0;
+            estado = normal;
+
+        }
+
+        if(estado == normal){
+
+            milis=0;
+            estado= mitad;
+        }
+
+        if(estado == mitad){
+            milis=0;
+            estado= tercio;
+        }
+
+    }
+
+}
 
 int main(void)
 {
 
-    // Insert code
-    TIMER_init();
-    DDRB |=1<<PB7; //OC0A como salida
+    DDRB |=1<<PB7; //pin 7 como salida
 
+    DDRF &=~(1<<PF0);
+    PORTF |= 1<<PF0;
 
-    while(1)
-    ;
+    while(1){
+
+        lectura_BTN();
+
+    }
+
 
     return 0;
 }

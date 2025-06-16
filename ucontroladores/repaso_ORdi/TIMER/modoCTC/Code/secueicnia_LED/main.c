@@ -1,5 +1,7 @@
 /*
-encender 3 LED en secueincia, (sin interrupciones)
+encender 3 LED en secueincia
+
+//vamos a relaizar un programa
 
 
  */
