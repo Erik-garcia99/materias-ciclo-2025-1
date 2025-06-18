@@ -104,37 +104,58 @@ uint8_t _delay(){
 
 void READ_BTN(){
 
-    uint8_t retardo = _delay();
+    //ohhh, entonces el ciclo while es el que
+    static uint8_t bound = 0; //no esta precionado
+    uint8_t var_delay=_delay();
 
 
-    if(!(PINF &(1<<PF3))){
+    /*
+        esta condicion es para que no se bloquee
+        lo que esta haciendo es verificando si el delay se completo, cundao este se complete
+        la funcion regresa 1 cuando esto pase la varibale
 
-        while(!retardo); //se va aquedar hasta que la funcion regerse 1 que sea falsa la condicion
+        "bound" es la que indica que el delay se completo se pone en 1 y el conteo se reinica
+        si no se ha completado para eso sale de la funcion para seguir trabajano
 
-        if(!(PINF & (1<<PF3))){
-            if(_state == ST1 ){
+    */
+
+
+    if(!(PINF & (1<<PF3))){
+        if(var_delay == 1){
+            bound = 1;
+        }
+    }
+
+    /*
+    recordando que es lo que hace esta funcion, solo cambia las variables globales
+
+    entonces si se presiono quiereo cambiar la frecuecnia con la que se tooglea el led y
+    cambiar de led
+    */
+    if(bound == 1){
+
+        switch(_state){
+
+            case ST1 :
                 _state = ST2;
-                //renicia el conteo
-                PORTF &= ~((1 << PF0) | (1 << PF1) | (1 << PF2)); //apagar todos los leds
-                milis = 0;
-            }
-        }
+                bound = 0;
+                milis =0;
+                PORTF &=~((1<<PF0) | (1<<PF1) | (1<<PF2));
+                break;
 
-        if(!(PINF& (1<<PF3))){
-            if(_state == ST2){
+            case ST2:
                 _state = ST3;
-                PORTF &= ~((1 << PF0) | (1 << PF1) | (1 << PF2));
-                milis = 0;
-            }
+                bound=0;
+                milis=0;
+                PORTF &=~((1<<PF0) | (1<<PF1) | (1<<PF2));
+                break;
 
-        }
-
-        if(!(PINF & (1<<PF3))){
-            if(_state == ST3){
-                _state =ST1;
-                PORTF &= ~((1 << PF0) | (1 << PF1) | (1 << PF2));
-                milis = 0;
-            }
+            case ST3:
+                _state= ST1;
+                bound = 0;
+                milis =0;
+                PORTF &=~((1<<PF0) | (1<<PF1) | (1<<PF2));
+                break;
         }
     }
 }

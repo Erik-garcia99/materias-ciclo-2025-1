@@ -48,6 +48,23 @@ VALOR_PCTJ = (cantidad total * porcentaje) / 100 -> (1023 * 40) / 100
 HYSTERESIS = 409.2 -> si pasa de este umbral, que sea menor quiere decri que esta oscuro
  por lo que deberia de prender el LED
 
+
+
+ la configuracion de como esta el LDR por ejemplo tambine importa, no me salia porque
+ la cofiguracion no era la adeciada
+
+ lo tenia peimero como si fuera un "pull up" -> con una reisitenica(10Kohms)
+ a Vcc y de ahi salia a ADC9, pero este siempre me daba lo maximo
+
+ por lo que lo cambia un "pull down" -> ahora con una resistencia a GND
+
+-Mucha luz -> Resistencia LDR baja -> Voltaje en ADC9 alto -> resultado_ADC alto.
+
+-Poca luz/Oscuridad -> Resistencia LDR alta -> Voltaje en ADC9 bajo ->
+ resultado_ADC bajo. Esto concuerda con tu lógica de que si resultado_ADC es bajo,
+  enciendes el LED.
+
+
 */
 
 static uint16_t HYSTERESIS = 204;

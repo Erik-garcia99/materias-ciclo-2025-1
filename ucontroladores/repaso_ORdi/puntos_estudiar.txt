@@ -151,3 +151,148 @@ CTC: frecuencia = F_CPU / (2 * preescaler * (OCR2A + 1)).
 "Retardos no bloqueantes" se refiere a una técnica de programación que permite realizar pausas o esperas sin 
 detener la ejecución del resto del programa. Es clave en sistemas embebidos para mantener la capacidad de respuesta 
 del sistema mientras se gestionan tareas temporizadas. Aquí la explicación detallada:
+
+
+
+
+
+-------------------------------------------------------------------------------
+
+formulas a considerar 
+
+TIMER- conteo 
+
+conocer el #ticks para x tiempo 
+
+F_timer = F_osc / PS -> F_osc = Frecuecinia del oscilador (16MHz) - PS - prescaldor (depende del timer)
+
+F_tikcs = 1/F_timer - cual es la frecueicnia de los ticks del timer 
+
+#ticks = time / F_ticks -> el numero de ticks para que pase (time -  tiempo estimado {numero que quepa en 8 bits para timer0 y timer2})
+
+
+
+-FAST_PWM 
+
+
+cuando TOP = MAX (0xFF - 255)
+
+las frecuencias del PWM solo pueden ser aplicadas las que nos da los prescaladores del TIMER
+
+  F_PWM = Fosc / PS * TOP
+
+  F_PWM = 16MHZ / 8 * 256 = 7812.5 Hz
+
+    F_PWM = 16MHZ / 64 * 256 = 976.56 Hz -> VAMOS A ELEIR ESTE
+
+    F_PWM = 16MHZ / 256 * 256 = 244.14 Hz
+
+    F_PWM = 16MHZ / 1024 * 256 = 61.03 Hz
+
+calcular OCR0A (donde OCR0A indica el diclo de trabajo)
+
+-cycle_duty = (OCRxn + 1) / 256 * 100%
+
+-OCRxn = ((duty_cycle * 256 )/100) - 1
+
+
+-FAST_PWM cunado TOP = OCRxA
+
+-F_PWM = Fosc / (PS * (OCRxA + 1))
+
+-OCRxA = (Focs / (F_PWM * PS )) - 1
+
+- para calcular el ciclo de trabajo seria: 
+
+OCRxB = ((duty_cycle /100) * 256) -1
+
+
+
+
+---
+Corret phase PWM
+
+TOP = MAX -> (0xFF - 255)
+
+cunado TOP es MAX la frecueicnas del PWM estan relacionadas estrechamente con los prescaldores donde OCRxA indica
+el ciclo de trabajo
+
+F_PC_PWM = F_osc / PS * 510 
+
+
+-ciclo de tranajo 
+
+duty_cicle = (OCRxA / 255 ) * 100% -> OCRxA = (duty_cycle * 255 ) / 100
+
+
+
+--
+
+correct phase PWM 
+
+TOP = OCRxA 
+
+cunado el TOP es OCRxA quiere decir que la frecuecnia del PWM es dado por ese registros 
+ahora el ciclode trabajo sigue siendo la misma formual pero ahora esta definido por OCRxB 
+
+
+->frecueicnias 
+
+F_PWM = F_osc / PS * 2 * OCRxA -> OCRxA = F_osc / 2 * PS * F_PWM 
+
+-> ciclo de trabajo
+
+duty_cycle = (OCRxB / OCRxA) * 100% -> OCRxB = (duty_cycle * 0CRxA) / 100 
+
+--------------------------------------
+
+ADC
+
+
+->como leer los datos cunado ADLAR = 0 - los 8 bits menos significativos estan en ADCL y 2 bit MSB en ADCH
+
+la lectura seria como 
+
+uint8_t high = ADCH;
+uint8_t low = ADCL;
+
+uint16_t resultado = (hight << 8) | low;
+
+->supongamos que en una lectrua leemos 1023 -> < 11 1111 1111 >
+
+-por lo que tenemos 
+
+-> ADCL = 1111 1111 - (0xFF)
+-> ADCH = 0000 0011 - (0x03)
+
+-> por lo que lo que hacemos es que la parte alta la recorremos 8 espacios dejando espacio para introducir ADCL
+
+-> 0x03 << 8 -> 0000 0011 0000 00000 -> recordando que es una varibale de 16 bits
+
+por lo que ahora: 
+
+-> 0x0300 | 0x00FF = 0x03FF -> 1023 como resultado de los 10 bits del ADC
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+

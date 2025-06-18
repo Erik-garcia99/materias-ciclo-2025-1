@@ -39,7 +39,7 @@ void FAST_PWM_init(void){
 
     formula calcular la frecueicnia <- definida por el prescldor
 
-    F_PWM = Fosc / PS *256 = 16MHz / 1024 * 256 = 61.03Hz
+    F_PWM = Fosc / PS *256 -> 16MHz / 1024 * 256 = 61.03Hz
 
 
     -----------
