@@ -1,41 +1,41 @@
 /*
 ejercicio :
 
-Ejercicio 2: Luz de Emergencia Automática (Hazard inteligente)
-Objetivo: Diseñar un sistema de luz de emergencia para un vehículo que
-se active automáticamente en función de la detección de una posible frenada
-repentina (simulada con un sensor), y que también permita activación manual.
+Ejercicio 2: Luz de Emergencia AutomÃ¡tica (Hazard inteligente)
+Objetivo: DiseÃ±ar un sistema de luz de emergencia para un vehÃ­culo que
+se active automÃ¡ticamente en funciÃ³n de la detecciÃ³n de una posible frenada
+repentina (simulada con un sensor), y que tambiÃ©n permita activaciÃ³n manual.
 
 Requerimientos
 Entradas:
 
-Botón conectado a PD2 (modo manual de emergencia).
+BotÃ³n conectado a PD2 (modo manual de emergencia).
 
-Potenciómetro conectado a ADC0 (simula sensor de aceleración/frenado).
+PotenciÃ³metro conectado a ADC0 (simula sensor de aceleraciÃ³n/frenado).
 
 Salidas:
 
-LEDs conectados a PORTB (PB0–PB5) que simulan intermitentes de emergencia.
+LEDs conectados a PORTB (PB0â€“PB5) que simulan intermitentes de emergencia.
 
 LED PWM en PB6 (OC0A) que parpadea con brillo variable (advertencia adicional).
 
-Condiciones de Activación:
+Condiciones de ActivaciÃ³n:
 
 Si el valor del ADC es menor a un umbral (ej. < 200), se interpreta como una
-frenada brusca ? Se activa modo emergencia automática.
+frenada brusca â†’ Se activa modo emergencia automÃ¡tica.
 
-Si el botón en PD2 se presiona, se activa modo emergencia manual.
+Si el botÃ³n en PD2 se presiona, se activa modo emergencia manual.
 
 Secuencia de Salida:
 
-En modo emergencia (manual o automática):
+En modo emergencia (manual o automÃ¡tica):
 
 Los LEDs PB0 a PB5 deben parpadear todos juntos cada cierto tiempo (~250 ms).
 
 El LED en PB6 (OC0A) debe parpadear con brillo proporcional al ADC,
-si es emergencia automática. Si es manual, el brillo es constante (ej. 128).
+si es emergencia automÃ¡tica. Si es manual, el brillo es constante (ej. 128).
 
-Si no hay emergencia, todas las salidas deben apagarse.
+Si no hay emergencia, todas las salidasÂ debenÂ apagarse.
 
 
 ------------------------------------------
@@ -264,7 +264,7 @@ uint8_t READ_BTN(){
         }
         lastState = 0;
     } else {
-        lastState = 1; // Botón liberado
+        lastState = 1; // BotÃ³n liberado
     }
 
     return toggle;
@@ -345,7 +345,7 @@ int main(void)
 
     while(1){
 
-        //aqui se va a estar leyendo el pótenciometro o el BTN
+        //aqui se va a estar leyendo el pÃ³tenciometro o el BTN
 
         uint16_t lectura_ADC = READ_ADC();
 

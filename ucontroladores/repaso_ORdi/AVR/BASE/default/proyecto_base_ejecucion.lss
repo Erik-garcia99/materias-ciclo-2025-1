@@ -3,85 +3,89 @@ proyecto_base_ejecucion.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000190  00000000  00000000  00000054  2**1
+  0 .data         00000002  00800200  000002fe  00000392  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000002fe  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .debug_aranges 00000020  00000000  00000000  000001e4  2**0
+  2 .bss          00000005  00800202  00800202  00000394  2**0
+                  ALLOC
+  3 .debug_aranges 00000020  00000000  00000000  00000394  2**0
                   CONTENTS, READONLY, DEBUGGING
-  2 .debug_pubnames 00000028  00000000  00000000  00000204  2**0
+  4 .debug_pubnames 000000b5  00000000  00000000  000003b4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  3 .debug_info   000000e9  00000000  00000000  0000022c  2**0
+  5 .debug_info   00000283  00000000  00000000  00000469  2**0
                   CONTENTS, READONLY, DEBUGGING
-  4 .debug_abbrev 000000af  00000000  00000000  00000315  2**0
+  6 .debug_abbrev 00000187  00000000  00000000  000006ec  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_line   0000013f  00000000  00000000  000003c4  2**0
+  7 .debug_line   00000334  00000000  00000000  00000873  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_frame  00000030  00000000  00000000  00000504  2**2
+  8 .debug_frame  000000a0  00000000  00000000  00000ba8  2**2
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_str    000000ff  00000000  00000000  00000534  2**0
+  9 .debug_str    0000019b  00000000  00000000  00000c48  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_loc    00000041  00000000  00000000  00000633  2**0
+ 10 .debug_loc    0000006f  00000000  00000000  00000de3  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
 
 00000000 <__vectors>:
    0:	0c 94 72 00 	jmp	0xe4	; 0xe4 <__ctors_end>
-   4:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-   8:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-   c:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  10:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  14:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  18:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  1c:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  20:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  24:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  28:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  2c:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  30:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  34:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  38:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  3c:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  40:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  44:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  48:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  4c:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  50:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  54:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  58:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  5c:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  60:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  64:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  68:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  6c:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  70:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  74:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  78:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  7c:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  80:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  84:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  88:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  8c:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  90:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  94:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  98:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  9c:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  a0:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  a4:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  a8:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  ac:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  b0:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  b4:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  b8:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  bc:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  c0:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  c4:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  c8:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  cc:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  d0:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  d4:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  d8:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  dc:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
-  e0:	0c 94 8b 00 	jmp	0x116	; 0x116 <__bad_interrupt>
+   4:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+   8:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+   c:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  10:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  14:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  18:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  1c:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  20:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  24:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  28:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  2c:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  30:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  34:	0c 94 ab 00 	jmp	0x156	; 0x156 <__vector_13>
+  38:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  3c:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  40:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  44:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  48:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  4c:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  50:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  54:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  58:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  5c:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  60:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  64:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  68:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  6c:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  70:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  74:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  78:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  7c:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  80:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  84:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  88:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  8c:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  90:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  94:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  98:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  9c:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  a0:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  a4:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  a8:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  ac:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  b0:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  b4:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  b8:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  bc:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  c0:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  c4:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  c8:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  cc:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  d0:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  d4:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  d8:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  dc:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  e0:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
 
 000000e4 <__ctors_end>:
   e4:	11 24       	eor	r1, r1
@@ -97,137 +101,476 @@ Disassembly of section .text:
   f4:	12 e0       	ldi	r17, 0x02	; 2
   f6:	a0 e0       	ldi	r26, 0x00	; 0
   f8:	b2 e0       	ldi	r27, 0x02	; 2
-  fa:	e0 e9       	ldi	r30, 0x90	; 144
-  fc:	f1 e0       	ldi	r31, 0x01	; 1
+  fa:	ee ef       	ldi	r30, 0xFE	; 254
+  fc:	f2 e0       	ldi	r31, 0x02	; 2
   fe:	00 e0       	ldi	r16, 0x00	; 0
  100:	0b bf       	out	0x3b, r16	; 59
  102:	02 c0       	rjmp	.+4      	; 0x108 <__do_copy_data+0x14>
  104:	07 90       	elpm	r0, Z+
  106:	0d 92       	st	X+, r0
- 108:	a0 30       	cpi	r26, 0x00	; 0
+ 108:	a2 30       	cpi	r26, 0x02	; 2
  10a:	b1 07       	cpc	r27, r17
  10c:	d9 f7       	brne	.-10     	; 0x104 <__do_copy_data+0x10>
- 10e:	0e 94 9f 00 	call	0x13e	; 0x13e <main>
- 112:	0c 94 c6 00 	jmp	0x18c	; 0x18c <_exit>
 
-00000116 <__bad_interrupt>:
- 116:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+0000010e <__do_clear_bss>:
+ 10e:	12 e0       	ldi	r17, 0x02	; 2
+ 110:	a2 e0       	ldi	r26, 0x02	; 2
+ 112:	b2 e0       	ldi	r27, 0x02	; 2
+ 114:	01 c0       	rjmp	.+2      	; 0x118 <.do_clear_bss_start>
 
-0000011a <init_ADC>:
-//inicamos el ADC
+00000116 <.do_clear_bss_loop>:
+ 116:	1d 92       	st	X+, r1
 
-void init_ADC(void){
+00000118 <.do_clear_bss_start>:
+ 118:	a7 30       	cpi	r26, 0x07	; 7
+ 11a:	b1 07       	cpc	r27, r17
+ 11c:	e1 f7       	brne	.-8      	; 0x116 <.do_clear_bss_loop>
+ 11e:	0e 94 47 01 	call	0x28e	; 0x28e <main>
+ 122:	0c 94 7d 01 	jmp	0x2fa	; 0x2fa <_exit>
 
-    //ajustado a la drecha, VCC como voltaje de referencia, ADC9
-    ADMUX = (1<<REFS0) | (1<<MUX0);
- 11a:	81 e4       	ldi	r24, 0x41	; 65
- 11c:	80 93 7c 00 	sts	0x007C, r24
-    //  ADC0 y FREE RUNNER
-    ADCSRB |= (1<<MUX5);
- 120:	eb e7       	ldi	r30, 0x7B	; 123
- 122:	f0 e0       	ldi	r31, 0x00	; 0
- 124:	80 81       	ld	r24, Z
- 126:	88 60       	ori	r24, 0x08	; 8
- 128:	80 83       	st	Z, r24
-    ADCSRB &=~(7<<ADTS0);
- 12a:	80 81       	ld	r24, Z
- 12c:	88 7f       	andi	r24, 0xF8	; 248
- 12e:	80 83       	st	Z, r24
+00000126 <__bad_interrupt>:
+ 126:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
-    PS de 128 es el unico que esta dentro del rango que puede operar el ADC
+0000012a <GPIO_init>:
+void GPIO_init(void){
 
-    habilitamos interrupciones
+
+    //boton conectado a PD2 -> GPIO IN - PULL UP
+
+    DDRD &=~(1<<PD2);
+ 12a:	52 98       	cbi	0x0a, 2	; 10
+    PORTD |=(1<<PD2);
+ 12c:	5a 9a       	sbi	0x0b, 2	; 11
+
+    //leds de salida PUERTO B PB0 - PB5
+    // 0011 1111
+    DDRB |=(0x3F <<PB0); //led que simila las luces de emergencia
+ 12e:	84 b1       	in	r24, 0x04	; 4
+ 130:	8f 63       	ori	r24, 0x3F	; 63
+ 132:	84 b9       	out	0x04, r24	; 4
+
+    //salida del PWM -> el PWM lo haremos con el TIMER0 - 0C0A -> salida -> PB7
+
+    DDRB |=(1<<PB7); //salida del PWM
+ 134:	27 9a       	sbi	0x04, 7	; 4
+}
+ 136:	08 95       	ret
+
+00000138 <TIMER_init>:
+void TIMER_init(void){
+
+
+    //timer que contara cada mS
+
+    TCCR2A = (1<<WGM21); //modo CTC
+ 138:	82 e0       	ldi	r24, 0x02	; 2
+ 13a:	80 93 b0 00 	sts	0x00B0, r24
+
+    #ticks = 1mS / 4 uS = 250 ticks = 1mS
+
     */
-    ADCSRA = (1<<ADEN) | (1<<ADSC) | (1<<ADATE) | (7<<ADPS0) | (1<<ADIF);
- 130:	87 ef       	ldi	r24, 0xF7	; 247
- 132:	80 93 7a 00 	sts	0x007A, r24
+    //PS -> 64
+    TCCR2B = (1<<CS22);
+ 13e:	94 e0       	ldi	r25, 0x04	; 4
+ 140:	90 93 b1 00 	sts	0x00B1, r25
+    OCR2A = 250 -1;
+ 144:	99 ef       	ldi	r25, 0xF9	; 249
+ 146:	90 93 b3 00 	sts	0x00B3, r25
+    TIMSK2 = (1<<OCIE2A); //habilitamos interrupciones
+ 14a:	80 93 70 00 	sts	0x0070, r24
 
-    //ADC9 -> PK1
-    DIDR2 = (1<<ADC9D); //deshabilita la funcion digital del PIN del ADC9
- 136:	82 e0       	ldi	r24, 0x02	; 2
- 138:	80 93 7d 00 	sts	0x007D, r24
+    sei();
+ 14e:	78 94       	sei
+    TCNT2 = 0;
+ 150:	10 92 b2 00 	sts	0x00B2, r1
+
 
 }
- 13c:	08 95       	ret
+ 154:	08 95       	ret
 
-0000013e <main>:
+00000156 <__vector_13>:
+
+
+ISR(TIMER2_COMPA_vect){
+ 156:	1f 92       	push	r1
+ 158:	0f 92       	push	r0
+ 15a:	0f b6       	in	r0, 0x3f	; 63
+ 15c:	0f 92       	push	r0
+ 15e:	11 24       	eor	r1, r1
+ 160:	8f 93       	push	r24
+ 162:	9f 93       	push	r25
+
+    //aumentamos la varibale global que cuenta para los 250mS de parpadeto de los led
+    milis++;
+ 164:	80 91 02 02 	lds	r24, 0x0202
+ 168:	8f 5f       	subi	r24, 0xFF	; 255
+ 16a:	80 93 02 02 	sts	0x0202, r24
+    //usamos lo mismo para el delay del BTN
+    milis_delay++;
+ 16e:	80 91 03 02 	lds	r24, 0x0203
+ 172:	8f 5f       	subi	r24, 0xFF	; 255
+ 174:	80 93 03 02 	sts	0x0203, r24
+
+    sec_1mS++;
+ 178:	80 91 04 02 	lds	r24, 0x0204
+ 17c:	90 91 05 02 	lds	r25, 0x0205
+ 180:	01 96       	adiw	r24, 0x01	; 1
+ 182:	90 93 05 02 	sts	0x0205, r25
+ 186:	80 93 04 02 	sts	0x0204, r24
+}
+ 18a:	9f 91       	pop	r25
+ 18c:	8f 91       	pop	r24
+ 18e:	0f 90       	pop	r0
+ 190:	0f be       	out	0x3f, r0	; 63
+ 192:	0f 90       	pop	r0
+ 194:	1f 90       	pop	r1
+ 196:	18 95       	reti
+
+00000198 <PWM_init>:
+//AHORA PB7 que es la salida del PWM la ocupamos para generar un PWM con un ciclo de trabajo definido por PWM
+
+void PWM_init(void){
+    //PWM con TIMER0
+    //FAST PWM TOP = 0xFF - modo no invertido
+    TCCR0A = (3<<WGM00) | (1<<COM0A1);
+ 198:	83 e8       	ldi	r24, 0x83	; 131
+ 19a:	84 bd       	out	0x24, r24	; 36
+
+    F_TIMER = 16MHz / 64 * 256 = 976.56 ~ 1kHz
+
+    */
+
+    TCCR0B = (3<<CS00);
+ 19c:	83 e0       	ldi	r24, 0x03	; 3
+ 19e:	85 bd       	out	0x25, r24	; 37
+
+    OCR0A = 0; //inicmaos sin ciclo de trabajo
+ 1a0:	17 bc       	out	0x27, r1	; 39
+    TCNT0 =0;
+ 1a2:	16 bc       	out	0x26, r1	; 38
+
+}
+ 1a4:	08 95       	ret
+
+000001a6 <ADC_init>:
+
+    //ahora lo haremos de lectrua a lectura
+    //AVCC - Voltaje de referencia
+    //ADC0
+    //ajusdado a la derecha
+    ADMUX = (1<<REFS0);
+ 1a6:	80 e4       	ldi	r24, 0x40	; 64
+ 1a8:	80 93 7c 00 	sts	0x007C, r24
+    /*
+    prendemos el ADC, limpiamos bandera, PS de 128 = 125000 Hz -> rango aceptable
+    */
+    ADCSRA = (1<<ADEN) | (1<<ADIF) | (7<<ADPS0);
+ 1ac:	87 e9       	ldi	r24, 0x97	; 151
+ 1ae:	80 93 7a 00 	sts	0x007A, r24
+
+    ADCSRB= 0;
+ 1b2:	10 92 7b 00 	sts	0x007B, r1
+
+    DIDR0 = (1<<ADC0D);
+ 1b6:	81 e0       	ldi	r24, 0x01	; 1
+ 1b8:	80 93 7e 00 	sts	0x007E, r24
+}
+ 1bc:	08 95       	ret
+
+000001be <READ_ADC>:
+
+
+    uint16_t lectura;
+
+    //inicia la conversion
+    ADCSRA |= (1<<ADSC);
+ 1be:	80 91 7a 00 	lds	r24, 0x007A
+ 1c2:	80 64       	ori	r24, 0x40	; 64
+ 1c4:	80 93 7a 00 	sts	0x007A, r24
+
+    while(!(ADCSRA & (1<<ADIF))); //espera a que el ADSC se limpie por hardware
+ 1c8:	80 91 7a 00 	lds	r24, 0x007A
+ 1cc:	84 ff       	sbrs	r24, 4
+ 1ce:	fc cf       	rjmp	.-8      	; 0x1c8 <READ_ADC+0xa>
+
+
+
+    uint8_t low = ADCL;
+ 1d0:	20 91 78 00 	lds	r18, 0x0078
+    uint8_t high = ADCH;
+ 1d4:	40 91 79 00 	lds	r20, 0x0079
+
+    lectura = (high << 8) | low;
+
+
+
+    ADCSRA |=(1<<ADIF); //limpiamos la bandera
+ 1d8:	80 91 7a 00 	lds	r24, 0x007A
+ 1dc:	80 61       	ori	r24, 0x10	; 16
+ 1de:	80 93 7a 00 	sts	0x007A, r24
+ 1e2:	94 2f       	mov	r25, r20
+ 1e4:	80 e0       	ldi	r24, 0x00	; 0
+ 1e6:	30 e0       	ldi	r19, 0x00	; 0
+ 1e8:	28 2b       	or	r18, r24
+ 1ea:	39 2b       	or	r19, r25
+
+
+
+    return lectura; //mientras no se termnie la cnovresion envia 0.
+}
+ 1ec:	c9 01       	movw	r24, r18
+ 1ee:	08 95       	ret
+
+000001f0 <READ_BTN>:
+uint8_t READ_BTN(){
+
+    static uint8_t lastState = 1;   // pull-up, estado alto inicial
+    static uint8_t toggle = OFF;
+
+    if (!(PIND & (1 << PD2))) { // Si se presiona (nivel bajo)
+ 1f0:	4a 99       	sbic	0x09, 2	; 9
+ 1f2:	15 c0       	rjmp	.+42     	; 0x21e <READ_BTN+0x2e>
+        if (milis_delay > 50 && lastState == 1) {
+ 1f4:	80 91 03 02 	lds	r24, 0x0203
+ 1f8:	83 33       	cpi	r24, 0x33	; 51
+ 1fa:	70 f0       	brcs	.+28     	; 0x218 <READ_BTN+0x28>
+ 1fc:	80 91 01 02 	lds	r24, 0x0201
+ 200:	81 30       	cpi	r24, 0x01	; 1
+ 202:	51 f4       	brne	.+20     	; 0x218 <READ_BTN+0x28>
+            milis_delay = 0;
+ 204:	10 92 03 02 	sts	0x0203, r1
+            toggle = (toggle == OFF) ? ON : OFF;
+ 208:	90 e0       	ldi	r25, 0x00	; 0
+ 20a:	80 91 00 02 	lds	r24, 0x0200
+ 20e:	81 30       	cpi	r24, 0x01	; 1
+ 210:	09 f0       	breq	.+2      	; 0x214 <READ_BTN+0x24>
+ 212:	91 e0       	ldi	r25, 0x01	; 1
+ 214:	90 93 00 02 	sts	0x0200, r25
+        }
+        lastState = 0;
+ 218:	10 92 01 02 	sts	0x0201, r1
+ 21c:	03 c0       	rjmp	.+6      	; 0x224 <READ_BTN+0x34>
+    } else {
+        lastState = 1; // Botón liberado
+ 21e:	81 e0       	ldi	r24, 0x01	; 1
+ 220:	80 93 01 02 	sts	0x0201, r24
+    }
+
+    return toggle;
+}
+ 224:	80 91 00 02 	lds	r24, 0x0200
+ 228:	08 95       	ret
+
+0000022a <LEDS_SECUECINA>:
+    /*
+    harmeos un switch-case para poder pasar de apago a encendio en los 250 MS
+    */
+    static uint8_t estado_sec = 0; // 0 ON - 1 OF
+
+    if(state == ON || state == ON_ADC){
+ 22a:	88 23       	and	r24, r24
+ 22c:	11 f0       	breq	.+4      	; 0x232 <LEDS_SECUECINA+0x8>
+ 22e:	82 30       	cpi	r24, 0x02	; 2
+ 230:	01 f5       	brne	.+64     	; 0x272 <LEDS_SECUECINA+0x48>
+
+        switch(estado_sec){
+ 232:	80 91 06 02 	lds	r24, 0x0206
+ 236:	88 23       	and	r24, r24
+ 238:	19 f0       	breq	.+6      	; 0x240 <LEDS_SECUECINA+0x16>
+ 23a:	81 30       	cpi	r24, 0x01	; 1
+ 23c:	39 f5       	brne	.+78     	; 0x28c <LEDS_SECUECINA+0x62>
+ 23e:	0d c0       	rjmp	.+26     	; 0x25a <LEDS_SECUECINA+0x30>
+
+            case 0:
+                PORTB |= (0x3F);//prendemos los led
+ 240:	85 b1       	in	r24, 0x05	; 5
+ 242:	8f 63       	ori	r24, 0x3F	; 63
+ 244:	85 b9       	out	0x05, r24	; 5
+
+                if(milis >= 250){
+ 246:	80 91 02 02 	lds	r24, 0x0202
+ 24a:	8a 3f       	cpi	r24, 0xFA	; 250
+ 24c:	f8 f0       	brcs	.+62     	; 0x28c <LEDS_SECUECINA+0x62>
+                    milis =0;
+ 24e:	10 92 02 02 	sts	0x0202, r1
+                    estado_sec = 1; //apagamos
+ 252:	81 e0       	ldi	r24, 0x01	; 1
+ 254:	80 93 06 02 	sts	0x0206, r24
+ 258:	08 95       	ret
+                } break;
+
+            case 1:
+                PORTB &=~(0x3F);
+ 25a:	85 b1       	in	r24, 0x05	; 5
+ 25c:	80 7c       	andi	r24, 0xC0	; 192
+ 25e:	85 b9       	out	0x05, r24	; 5
+
+                if(milis>= 250){
+ 260:	80 91 02 02 	lds	r24, 0x0202
+ 264:	8a 3f       	cpi	r24, 0xFA	; 250
+ 266:	90 f0       	brcs	.+36     	; 0x28c <LEDS_SECUECINA+0x62>
+                    milis = 0;
+ 268:	10 92 02 02 	sts	0x0202, r1
+                    estado_sec = 0; //volvemos a encender
+ 26c:	10 92 06 02 	sts	0x0206, r1
+ 270:	08 95       	ret
+
+        }
+
+
+
+    else if (state == OFF || state == OFF_ADC){
+ 272:	81 30       	cpi	r24, 0x01	; 1
+ 274:	11 f0       	breq	.+4      	; 0x27a <LEDS_SECUECINA+0x50>
+ 276:	83 30       	cpi	r24, 0x03	; 3
+ 278:	49 f4       	brne	.+18     	; 0x28c <LEDS_SECUECINA+0x62>
+
+        //si manda OFF apagsmoa todo
+        PORTB &=~(0x3F);
+ 27a:	85 b1       	in	r24, 0x05	; 5
+ 27c:	80 7c       	andi	r24, 0xC0	; 192
+ 27e:	85 b9       	out	0x05, r24	; 5
+        //aunque no cambiemos, no estamos receteanod el timepo en la ISR por lo que si no
+        //lo hago se irea hasta el OVERFLOW
+        if(milis>= 250){
+ 280:	80 91 02 02 	lds	r24, 0x0202
+ 284:	8a 3f       	cpi	r24, 0xFA	; 250
+ 286:	10 f0       	brcs	.+4      	; 0x28c <LEDS_SECUECINA+0x62>
+            milis =0;
+ 288:	10 92 02 02 	sts	0x0202, r1
+ 28c:	08 95       	ret
+
+0000028e <main>:
+
+
 
 
 int main(void)
 {
-
-    init_ADC();
- 13e:	0e 94 8d 00 	call	0x11a	; 0x11a <init_ADC>
-
-    //habilitamos los puertos para ver el ADC
-
-    DDRA = 0xFF;
- 142:	8f ef       	ldi	r24, 0xFF	; 255
- 144:	81 b9       	out	0x01, r24	; 1
-    DDRC = (1<<PC6) | (1<<PC7);
- 146:	80 ec       	ldi	r24, 0xC0	; 192
- 148:	87 b9       	out	0x07, r24	; 7
-    DDRB = (1<<PB7); //el led que va a prender cuando disminuya el umbral
- 14a:	80 e8       	ldi	r24, 0x80	; 128
- 14c:	84 b9       	out	0x04, r24	; 4
+ 28e:	1f 93       	push	r17
+ 290:	cf 93       	push	r28
+ 292:	df 93       	push	r29
 
     // Insert code
+    GPIO_init();
+ 294:	0e 94 95 00 	call	0x12a	; 0x12a <GPIO_init>
+
+    TIMER_init();
+ 298:	0e 94 9c 00 	call	0x138	; 0x138 <TIMER_init>
+//AHORA PB7 que es la salida del PWM la ocupamos para generar un PWM con un ciclo de trabajo definido por PWM
+
+void PWM_init(void){
+    //PWM con TIMER0
+    //FAST PWM TOP = 0xFF - modo no invertido
+    TCCR0A = (3<<WGM00) | (1<<COM0A1);
+ 29c:	83 e8       	ldi	r24, 0x83	; 131
+ 29e:	84 bd       	out	0x24, r24	; 36
+
+    F_TIMER = 16MHz / 64 * 256 = 976.56 ~ 1kHz
+
+    */
+
+    TCCR0B = (3<<CS00);
+ 2a0:	83 e0       	ldi	r24, 0x03	; 3
+ 2a2:	85 bd       	out	0x25, r24	; 37
+
+    OCR0A = 0; //inicmaos sin ciclo de trabajo
+ 2a4:	17 bc       	out	0x27, r1	; 39
+    TCNT0 =0;
+ 2a6:	16 bc       	out	0x26, r1	; 38
+
+    //ahora lo haremos de lectrua a lectura
+    //AVCC - Voltaje de referencia
+    //ADC0
+    //ajusdado a la derecha
+    ADMUX = (1<<REFS0);
+ 2a8:	80 e4       	ldi	r24, 0x40	; 64
+ 2aa:	80 93 7c 00 	sts	0x007C, r24
+    /*
+    prendemos el ADC, limpiamos bandera, PS de 128 = 125000 Hz -> rango aceptable
+    */
+    ADCSRA = (1<<ADEN) | (1<<ADIF) | (7<<ADPS0);
+ 2ae:	87 e9       	ldi	r24, 0x97	; 151
+ 2b0:	80 93 7a 00 	sts	0x007A, r24
+
+    ADCSRB= 0;
+ 2b4:	10 92 7b 00 	sts	0x007B, r1
+
+    DIDR0 = (1<<ADC0D);
+ 2b8:	81 e0       	ldi	r24, 0x01	; 1
+ 2ba:	80 93 7e 00 	sts	0x007E, r24
+            //si habia algo con ADC lo limpiamos los leds
+
+            //PORTB &=~(0xBF <<PB0);
+
+            LEDS_SECUECINA(ON);
+            OCR0A = 128; //50% de ciclo de trabajo
+ 2be:	10 e8       	ldi	r17, 0x80	; 128
 
     while(1){
 
-        if(ADCSRA & (1<<ADIF)){
- 14e:	80 91 7a 00 	lds	r24, 0x007A
- 152:	84 ff       	sbrs	r24, 4
- 154:	fc cf       	rjmp	.-8      	; 0x14e <main+0x10>
+        //aqui se va a estar leyendo el pótenciometro o el BTN
 
-            uint8_t low = ADCL;
- 156:	80 91 78 00 	lds	r24, 0x0078
-            uint8_t high = ADCH;
- 15a:	30 91 79 00 	lds	r19, 0x0079
+        uint16_t lectura_ADC = READ_ADC();
+ 2c0:	0e 94 df 00 	call	0x1be	; 0x1be <READ_ADC>
+ 2c4:	ec 01       	movw	r28, r24
 
-            uint16_t resultado_ADC = (high << 8) | low;
+        //necesimaos enviar lo que se lee en el BTN a la funcion que actualiza los leds
+        //pero si esta presionado, debemos interrumpir el ADC y darle prioridad
+        //al boton.
+        //BTN me regresa ON o OF
+        uint8_t BTN = READ_BTN();
+ 2c6:	0e 94 f8 00 	call	0x1f0	; 0x1f0 <READ_BTN>
+
+        //le demo de dar prioriad a BTN
+        if(BTN == ON){
+ 2ca:	88 23       	and	r24, r24
+ 2cc:	21 f4       	brne	.+8      	; 0x2d6 <main+0x48>
+
+            //si habia algo con ADC lo limpiamos los leds
+
+            //PORTB &=~(0xBF <<PB0);
+
+            LEDS_SECUECINA(ON);
+ 2ce:	0e 94 15 01 	call	0x22a	; 0x22a <LEDS_SECUECINA>
+            OCR0A = 128; //50% de ciclo de trabajo
+ 2d2:	17 bd       	out	0x27, r17	; 39
+ 2d4:	f5 cf       	rjmp	.-22     	; 0x2c0 <main+0x32>
+            //si no es el BTN sera con ADC
 
 
-            //solo me lo muestra con BITS
-            PORTA = low;
- 15e:	82 b9       	out	0x02, r24	; 2
-            PORTC = (high << PC6);
- 160:	23 2f       	mov	r18, r19
- 162:	22 95       	swap	r18
- 164:	22 0f       	add	r18, r18
- 166:	22 0f       	add	r18, r18
- 168:	20 7c       	andi	r18, 0xC0	; 192
- 16a:	28 b9       	out	0x08, r18	; 8
 
-            if(resultado_ADC > HYSTERESIS){
- 16c:	20 e0       	ldi	r18, 0x00	; 0
- 16e:	90 e0       	ldi	r25, 0x00	; 0
- 170:	82 2b       	or	r24, r18
- 172:	93 2b       	or	r25, r19
- 174:	8d 3c       	cpi	r24, 0xCD	; 205
- 176:	91 05       	cpc	r25, r1
- 178:	10 f0       	brcs	.+4      	; 0x17e <main+0x40>
 
-                PORTB &=~(1<<PB7);
- 17a:	2f 98       	cbi	0x05, 7	; 5
- 17c:	01 c0       	rjmp	.+2      	; 0x180 <main+0x42>
+            if(lectura_ADC < HYSTERESIS){
+ 2d6:	83 e0       	ldi	r24, 0x03	; 3
+ 2d8:	c0 32       	cpi	r28, 0x20	; 32
+ 2da:	d8 07       	cpc	r29, r24
+ 2dc:	48 f4       	brcc	.+18     	; 0x2f0 <main+0x62>
+
+                //SI EL adc baja del umbral activa PIN
+
+                LEDS_SECUECINA(ON_ADC);
+ 2de:	82 e0       	ldi	r24, 0x02	; 2
+ 2e0:	0e 94 15 01 	call	0x22a	; 0x22a <LEDS_SECUECINA>
+                OCR0A = lectura_ADC/4; //ciclo de trabajo adecuado para 8 bits 255
+ 2e4:	d6 95       	lsr	r29
+ 2e6:	c7 95       	ror	r28
+ 2e8:	d6 95       	lsr	r29
+ 2ea:	c7 95       	ror	r28
+ 2ec:	c7 bd       	out	0x27, r28	; 39
+ 2ee:	e8 cf       	rjmp	.-48     	; 0x2c0 <main+0x32>
             }
             else{
-                //mantenerlo apagado
-                PORTB |= 1<<PB7;
- 17e:	2f 9a       	sbi	0x05, 7	; 5
 
-            }
+                LEDS_SECUECINA(OFF_ADC);
+ 2f0:	83 e0       	ldi	r24, 0x03	; 3
+ 2f2:	0e 94 15 01 	call	0x22a	; 0x22a <LEDS_SECUECINA>
+                OCR0A = 0;
+ 2f6:	17 bc       	out	0x27, r1	; 39
+ 2f8:	e3 cf       	rjmp	.-58     	; 0x2c0 <main+0x32>
 
+000002fa <_exit>:
+ 2fa:	f8 94       	cli
 
-            ADCSRA |= (1<<ADIF); //limpiamos la bandera
- 180:	80 91 7a 00 	lds	r24, 0x007A
- 184:	80 61       	ori	r24, 0x10	; 16
- 186:	80 93 7a 00 	sts	0x007A, r24
- 18a:	e1 cf       	rjmp	.-62     	; 0x14e <main+0x10>
-
-0000018c <_exit>:
- 18c:	f8 94       	cli
-
-0000018e <__stop_program>:
- 18e:	ff cf       	rjmp	.-2      	; 0x18e <__stop_program>
+000002fc <__stop_program>:
+ 2fc:	ff cf       	rjmp	.-2      	; 0x2fc <__stop_program>

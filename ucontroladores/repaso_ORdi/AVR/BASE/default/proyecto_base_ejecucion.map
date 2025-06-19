@@ -2,6 +2,8 @@ Archive member included because of file (symbol)
 
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
                               c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o (exit)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
+                              proyecto_base_ejecucion.o (__do_clear_bss)
 
 Memory Configuration
 
@@ -113,7 +115,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x190
+.text           0x00000000      0x2fe
  *(.vectors)
  .vectors       0x00000000       0xe4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
                 0x00000000                __vectors
@@ -153,6 +155,8 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
  *(.init4)
  .init4         0x000000f4       0x1a c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
                 0x000000f4                __do_copy_data
+ .init4         0x0000010e       0x10 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
+                0x0000010e                __do_clear_bss
  *(.init4)
  *(.init5)
  *(.init5)
@@ -163,79 +167,87 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x0000010e        0x8 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
+ .init9         0x0000011e        0x8 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
  *(.init9)
  *(.text)
- .text          0x00000116        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-                0x00000116                __vector_38
-                0x00000116                __vector_22
-                0x00000116                __vector_28
-                0x00000116                __vector_1
-                0x00000116                __vector_32
-                0x00000116                __vector_34
-                0x00000116                __vector_24
-                0x00000116                __vector_12
-                0x00000116                __vector_55
-                0x00000116                __vector_46
-                0x00000116                __bad_interrupt
-                0x00000116                __vector_6
-                0x00000116                __vector_31
-                0x00000116                __vector_35
-                0x00000116                __vector_39
-                0x00000116                __vector_3
-                0x00000116                __vector_23
-                0x00000116                __vector_30
-                0x00000116                __vector_45
-                0x00000116                __vector_25
-                0x00000116                __vector_11
-                0x00000116                __vector_54
-                0x00000116                __vector_13
-                0x00000116                __vector_17
-                0x00000116                __vector_19
-                0x00000116                __vector_56
-                0x00000116                __vector_7
-                0x00000116                __vector_49
-                0x00000116                __vector_41
-                0x00000116                __vector_43
-                0x00000116                __vector_27
-                0x00000116                __vector_5
-                0x00000116                __vector_33
-                0x00000116                __vector_47
-                0x00000116                __vector_52
-                0x00000116                __vector_37
-                0x00000116                __vector_4
-                0x00000116                __vector_44
-                0x00000116                __vector_51
-                0x00000116                __vector_9
-                0x00000116                __vector_2
-                0x00000116                __vector_21
-                0x00000116                __vector_15
-                0x00000116                __vector_36
-                0x00000116                __vector_29
-                0x00000116                __vector_40
-                0x00000116                __vector_8
-                0x00000116                __vector_26
-                0x00000116                __vector_48
-                0x00000116                __vector_14
-                0x00000116                __vector_53
-                0x00000116                __vector_10
-                0x00000116                __vector_50
-                0x00000116                __vector_16
-                0x00000116                __vector_18
-                0x00000116                __vector_20
-                0x00000116                __vector_42
- .text          0x0000011a       0x72 proyecto_base_ejecucion.o
-                0x0000011a                init_ADC
-                0x0000013e                main
- .text          0x0000018c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
-                0x0000018c                . = ALIGN (0x2)
+ .text          0x00000126        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
+                0x00000126                __vector_38
+                0x00000126                __vector_22
+                0x00000126                __vector_28
+                0x00000126                __vector_1
+                0x00000126                __vector_32
+                0x00000126                __vector_34
+                0x00000126                __vector_24
+                0x00000126                __vector_12
+                0x00000126                __vector_55
+                0x00000126                __vector_46
+                0x00000126                __bad_interrupt
+                0x00000126                __vector_6
+                0x00000126                __vector_31
+                0x00000126                __vector_35
+                0x00000126                __vector_39
+                0x00000126                __vector_3
+                0x00000126                __vector_23
+                0x00000126                __vector_30
+                0x00000126                __vector_45
+                0x00000126                __vector_25
+                0x00000126                __vector_11
+                0x00000126                __vector_54
+                0x00000126                __vector_17
+                0x00000126                __vector_19
+                0x00000126                __vector_56
+                0x00000126                __vector_7
+                0x00000126                __vector_49
+                0x00000126                __vector_41
+                0x00000126                __vector_43
+                0x00000126                __vector_27
+                0x00000126                __vector_5
+                0x00000126                __vector_33
+                0x00000126                __vector_47
+                0x00000126                __vector_52
+                0x00000126                __vector_37
+                0x00000126                __vector_4
+                0x00000126                __vector_44
+                0x00000126                __vector_51
+                0x00000126                __vector_9
+                0x00000126                __vector_2
+                0x00000126                __vector_21
+                0x00000126                __vector_15
+                0x00000126                __vector_36
+                0x00000126                __vector_29
+                0x00000126                __vector_40
+                0x00000126                __vector_8
+                0x00000126                __vector_26
+                0x00000126                __vector_48
+                0x00000126                __vector_14
+                0x00000126                __vector_53
+                0x00000126                __vector_10
+                0x00000126                __vector_50
+                0x00000126                __vector_16
+                0x00000126                __vector_18
+                0x00000126                __vector_20
+                0x00000126                __vector_42
+ .text          0x0000012a      0x1d0 proyecto_base_ejecucion.o
+                0x00000198                PWM_init
+                0x00000156                __vector_13
+                0x000001be                READ_ADC
+                0x000001a6                ADC_init
+                0x000001f0                READ_BTN
+                0x0000012a                GPIO_init
+                0x0000028e                main
+                0x00000138                TIMER_init
+                0x0000022a                LEDS_SECUECINA
+ .text          0x000002fa        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
+ .text          0x000002fa        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
+                0x000002fa                . = ALIGN (0x2)
  *(.text.*)
- .text.libgcc   0x0000018c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
-                0x0000018c                . = ALIGN (0x2)
+ .text.libgcc   0x000002fa        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
+ .text.libgcc   0x000002fa        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
+                0x000002fa                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000018c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
-                0x0000018c                exit
-                0x0000018c                _exit
+ .fini9         0x000002fa        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
+                0x000002fa                exit
+                0x000002fa                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -254,42 +266,47 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000018c        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
+ .fini0         0x000002fa        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000190                _etext = .
+                0x000002fe                _etext = .
 
-.data           0x00800200        0x0 load address 0x00000190
+.data           0x00800200        0x2 load address 0x000002fe
                 0x00800200                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800200        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
- .data          0x00800200        0x0 proyecto_base_ejecucion.o
- .data          0x00800200        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
+ .data          0x00800200        0x2 proyecto_base_ejecucion.o
+ .data          0x00800202        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
+ .data          0x00800202        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
  *(.data*)
  *(.rodata)
  *(.rodata*)
  *(.gnu.linkonce.d*)
-                0x00800200                . = ALIGN (0x2)
-                0x00800200                _edata = .
-                0x00800200                PROVIDE (__data_end, .)
+                0x00800202                . = ALIGN (0x2)
+                0x00800202                _edata = .
+                0x00800202                PROVIDE (__data_end, .)
 
-.bss            0x00800200        0x0
-                0x00800200                PROVIDE (__bss_start, .)
+.bss            0x00800202        0x5
+                0x00800202                PROVIDE (__bss_start, .)
  *(.bss)
- .bss           0x00800200        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
- .bss           0x00800200        0x0 proyecto_base_ejecucion.o
- .bss           0x00800200        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
+ .bss           0x00800202        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
+ .bss           0x00800202        0x5 proyecto_base_ejecucion.o
+                0x00800203                milis_delay
+                0x00800202                milis
+                0x00800204                sec_1mS
+ .bss           0x00800207        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
+ .bss           0x00800207        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
  *(.bss*)
  *(COMMON)
-                0x00800200                PROVIDE (__bss_end, .)
-                0x00000190                __data_load_start = LOADADDR (.data)
-                0x00000190                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00800207                PROVIDE (__bss_end, .)
+                0x000002fe                __data_load_start = LOADADDR (.data)
+                0x00000300                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800200        0x0
-                0x00800200                PROVIDE (__noinit_start, .)
+.noinit         0x00800207        0x0
+                0x00800207                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x00800200                PROVIDE (__noinit_end, .)
-                0x00800200                _end = .
-                0x00800200                PROVIDE (__heap_start, .)
+                0x00800207                PROVIDE (__noinit_end, .)
+                0x00800207                _end = .
+                0x00800207                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -346,36 +363,36 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
                 0x00000000       0x20 proyecto_base_ejecucion.o
 
 .debug_pubnames
-                0x00000000       0x28
+                0x00000000       0xb5
  *(.debug_pubnames)
  .debug_pubnames
-                0x00000000       0x28 proyecto_base_ejecucion.o
+                0x00000000       0xb5 proyecto_base_ejecucion.o
 
-.debug_info     0x00000000       0xe9
+.debug_info     0x00000000      0x283
  *(.debug_info)
- .debug_info    0x00000000       0xe9 proyecto_base_ejecucion.o
+ .debug_info    0x00000000      0x283 proyecto_base_ejecucion.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev   0x00000000       0xaf
+.debug_abbrev   0x00000000      0x187
  *(.debug_abbrev)
- .debug_abbrev  0x00000000       0xaf proyecto_base_ejecucion.o
+ .debug_abbrev  0x00000000      0x187 proyecto_base_ejecucion.o
 
-.debug_line     0x00000000      0x13f
+.debug_line     0x00000000      0x334
  *(.debug_line)
- .debug_line    0x00000000      0x13f proyecto_base_ejecucion.o
+ .debug_line    0x00000000      0x334 proyecto_base_ejecucion.o
 
-.debug_frame    0x00000000       0x30
+.debug_frame    0x00000000       0xa0
  *(.debug_frame)
- .debug_frame   0x00000000       0x30 proyecto_base_ejecucion.o
+ .debug_frame   0x00000000       0xa0 proyecto_base_ejecucion.o
 
-.debug_str      0x00000000       0xff
+.debug_str      0x00000000      0x19b
  *(.debug_str)
- .debug_str     0x00000000       0xff proyecto_base_ejecucion.o
-                                0x133 (size before relaxing)
+ .debug_str     0x00000000      0x19b proyecto_base_ejecucion.o
+                                0x1cf (size before relaxing)
 
-.debug_loc      0x00000000       0x41
+.debug_loc      0x00000000       0x6f
  *(.debug_loc)
- .debug_loc     0x00000000       0x41 proyecto_base_ejecucion.o
+ .debug_loc     0x00000000       0x6f proyecto_base_ejecucion.o
 
 .debug_macinfo
  *(.debug_macinfo)

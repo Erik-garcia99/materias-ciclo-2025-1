@@ -20,7 +20,7 @@ void init_GPIO(void){
     //en este vamos a seleccionar un puerto de salida, el PUERTO A es buena opcion
 
     //para poner un pin en salida es con 1
-    DDRA = 0xFF; //contandrra ADL 8 bits de la parte baja
+    DDRB = 0xFF; //contandrra ADL 8 bits de la parte baja
     //PC7-PC6 son los seran para la parte baja con estos 10 bits del ADC
     DDRC = (1<<PC7) | (1<<PC6); //contendra ADCH parte alta del ADC
     //DDRC = 0xFF;
@@ -91,7 +91,7 @@ int main(void)
 
         //pasamos el valor alto al registro de puerto
 
-        PORTA = ADCL;
+        PORTB = ADCL;
         PORTC = (ADCH & 0x03);
 
         //limpiamos la badera de interrupciones, vuelve a inicar a esperar a la sigueitne conversion
