@@ -18,7 +18,7 @@ void softPWM_TM0(void){
 
         OCR0A = (F_cpu / PS * fs_deseada) -1
 
-        OCR = 16MHz / 64 * 10kHz = 25 -1 = 24 - cunado el TIMER
+        OCRxn = 16MHz / 64 * 10kHz = 25 -1 = 24 - cunado el TIMER
         TCNT0  haga match con 10
     */
     //modo CTC
