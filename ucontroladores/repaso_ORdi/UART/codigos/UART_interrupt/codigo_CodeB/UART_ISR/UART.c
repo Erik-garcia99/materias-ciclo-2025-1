@@ -454,6 +454,7 @@ void UART_gets(uint8_t com, char *str){
             str[i++] = c;
         }
         else{
+
             //este hara el efecto de que ya no puede capturar mas
 
             str[i] = '\0';

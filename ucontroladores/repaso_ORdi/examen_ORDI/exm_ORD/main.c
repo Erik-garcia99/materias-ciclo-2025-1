@@ -44,8 +44,8 @@ enum estado{
 volatile uint16_t milis=0; //variable que contara los mS
 volatile uint8_t milis_delay=0;
 
-volatile uint8_t estado_actual;
-volatile uint8_t estado_anterior;
+//este funciona para la actualizacion de leds
+
 
 //ubral para la ilumincacion
 static uint16_t HYSTERESIS_H = 870;
@@ -59,6 +59,8 @@ static uint16_t HYSTERESIS_L = 306;
 30% de intensidad de OCR0A -> 8 bits es 77
 */
 
+//punto de inflexion
+static uint16_t inflexion = 450;
 
 void GPIO_init(void){
 
@@ -108,7 +110,7 @@ void TIMER2_init(void){
 ISR(TIMER2_COMPA_vect){
 
     milis++;
-
+    milis_delay++;
 }
 
 
@@ -125,7 +127,7 @@ void PWM_init(void){
 
     TCCR0B = (3<<CS00);
 
-    OCR0A = 128; //ciclo trabaji abajo
+    OCR0A = 0; //ciclo trabaji abajo
 
     sei();
     TCNT0 =0;
@@ -182,6 +184,105 @@ uint16_t READ_ADC(void){
 
 
 //lecturade los botones
+/*
+uint8_t READ_BTN(void){
+
+    //en este caso estamos leyendo 3 botones
+
+    static uint8_t current_State = None;
+    static uint8_t estable = 1;
+    static uint8_t last_state = None;
+
+
+    if(milis_delay > 50){
+
+        milis = 0;
+        if(!(PINF & (1<<PF2))){
+            last_state = current_State;
+            current_State=hazard;
+            return current_State;
+        }
+        if(!(PINF &(1<<PF1))){
+            //izq
+            last_state = current_State;
+            current_State = left;
+            return current_State;
+        }
+        if(!(PINF & (1<<PF3))){
+
+            last_state = current_State;
+            current_State = rigth;
+            return current_State;
+        }
+
+    }
+    /*
+    //vamos a leer el PIN
+    //digamos que - verde izq -> amarrilo - drch -> azul hazard
+    if(!(PINF & (7<<PF1))){
+
+        //si lee algun boton, no se cual se activa
+
+        if(milis_delay > 50 && estable == 1){
+            milis_delay = 0;
+
+            //presiono izquierda
+            if( !(PINF & (1<<PF2))){
+                last_state = current_State;
+                current_State=hazard;
+                return current_State;
+            }
+            else if( !(PINF & (1<<PF1)) ){
+                last_state = current_State;
+                current_State = left;
+                return current_State;
+            }
+            else if(!(PINF & (1<<PF3))){
+                last_state = current_State;
+                current_State = rigth;
+                return current_State;
+            }
+        }
+        //estaa varibale lo que se encarga es de mantener ese boton presionado
+        estable = 0;
+    }
+    else{
+        estable =1;
+    }
+
+    return current_State;
+
+
+}
+*/
+
+uint8_t READ_BTN(void) {
+    static uint8_t last_state = None;
+    static uint8_t current_state = None;
+    static uint8_t estable = 1;
+
+
+    if (milis_delay > 50) {
+        milis_delay = 0;
+        if (!(PINF & (1 << PF2))) {
+            current_state = hazard;
+        } else if (!(PINF & (1 << PF1))) {
+            current_state = left;
+        } else if (!(PINF & (1 << PF3))) {
+            current_state = rigth;
+        } else {
+            current_state = None;
+        }
+
+        if (current_state != last_state) {
+
+            last_state = current_state;
+            return current_state;
+        }
+    }
+
+    return None; // si no hubo cambio o no presionado
+}
 
 
 
@@ -192,15 +293,18 @@ void Update_Leds(uint8_t state){
 
     //aqui en la lectura debermos dar prioridad a hazard, pero
     //perimo debemos de leer
+    static uint8_t estado_actual = None;
     estado_actual = state;
-    estado_anterior = None;
+    static uint8_t estado_anterior = None;
+
 
     static uint8_t LD1=0,LD2=0,LD3 = 0;
 
     static uint8_t hz_on = 0;
 
 
-    if((estado_actual == left && estado_anterior == rigth) || (estado_actual == rigth || estado_anterior == left)){
+
+    if(estado_actual != estado_anterior){
 
         //en este paso pasamos a apagar todas las luces
 
@@ -213,6 +317,7 @@ void Update_Leds(uint8_t state){
     if(estado_actual == hazard){
 
         estado_anterior = estado_actual;
+
         if(milis >= 500){
 
             milis=0;
@@ -220,13 +325,13 @@ void Update_Leds(uint8_t state){
             if(hz_on == 0){
 
                 PORTK |=(7<<PK0);
-                PORTA |=(7<<PA0);
+                PORTB |=(7<<PB0);
                 hz_on=1;
 
             }
             else{
                 PORTK &=~(7<<PK0);
-                PORTA &=~(7<<PA0);
+                PORTB &=~(7<<PB0);
                 hz_on = 0;
             }
 
@@ -273,9 +378,7 @@ void Update_Leds(uint8_t state){
 
     }
 
-    //este es el que mas mas va costar porque el puerto B esta asociado con PWM
 
-    /*
     if(estado_actual == rigth){
 
 
@@ -314,46 +417,6 @@ void Update_Leds(uint8_t state){
 
         }
 
-    }*/
-
-    if(estado_actual == rigth){
-
-
-        estado_anterior = estado_actual;
-
-        if(milis >= 250){
-
-            milis = 0;
-
-            if(LD1 == 0 && LD2 == 0 && LD3 == 0){
-
-                //podriamos apagar por un momento el PWM
-
-
-                PORTA |=(1<<PA0);
-                LD1 = 1;
-
-            }
-
-            else if(LD1 == 1 && LD2 == 0 && LD3 == 0){
-                PORTA |=(1<<PA1);
-                LD2=1;
-
-            }
-            else if(LD1 == 1 && LD2 == 1 && LD3 == 0){
-
-                PORTA |=(1<<PA2);
-                LD3=1;
-            }
-
-            else if(LD1 == 1 && LD2 == 1 && LD3 == 1){
-
-                PORTA &=~(7<<PA0);
-                LD1 = LD2 = LD3 =0;
-            }
-
-        }
-
     }
 
 
@@ -362,7 +425,7 @@ void Update_Leds(uint8_t state){
 
 
 
-//
+//UMBRAL DEL ADC
 
 
 
@@ -375,15 +438,46 @@ int main(void){
 
     ADC_init();
 
-
+    uint8_t btn;
+    static uint8_t last_btn = None;
 
     while(1){
 
 
         uint16_t lectura_ADC = READ_ADC();
 
-        //OCR0A =128;
-        Update_Leds(hazard);
+        //condiciones para el umbral
+
+        if(lectura_ADC >inflexion){
+            //85% DEL pWM
+
+            OCR0A = 204;
+        }
+
+        if(lectura_ADC < inflexion){
+            OCR0A = 77;//30%
+        }
+
+
+
+        btn=READ_BTN();
+
+
+
+        if(btn != None){
+
+            if(btn == last_btn){
+                last_btn = None;
+            }
+            else{
+                last_btn = btn;
+            }
+        }
+
+
+
+
+        Update_Leds(last_btn);
 
 
     }
