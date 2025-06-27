@@ -1,0 +1,638 @@
+
+pracrica5_prueba.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000010  00800200  000002e8  0000037c  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000002e8  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000004  00800210  00800210  0000038c  2**0
+                  ALLOC
+  3 .debug_aranges 00000040  00000000  00000000  00000390  2**3
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_pubnames 0000007c  00000000  00000000  000003d0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   0000028f  00000000  00000000  0000044c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000124  00000000  00000000  000006db  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   0000025d  00000000  00000000  000007ff  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000060  00000000  00000000  00000a5c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000001cf  00000000  00000000  00000abc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000082  00000000  00000000  00000c8b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 72 00 	jmp	0xe4	; 0xe4 <__ctors_end>
+   4:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+   8:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+   c:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  10:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  14:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  18:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  1c:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  20:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  24:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  28:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  2c:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  30:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  34:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  38:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  3c:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  40:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  44:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  48:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  4c:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  50:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  54:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  58:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  5c:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  60:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  64:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  68:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  6c:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  70:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  74:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  78:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  7c:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  80:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  84:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  88:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  8c:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  90:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  94:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  98:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  9c:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  a0:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  a4:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  a8:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  ac:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  b0:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  b4:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  b8:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  bc:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  c0:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  c4:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  c8:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  cc:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  d0:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  d4:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  d8:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  dc:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+  e0:	0c 94 93 00 	jmp	0x126	; 0x126 <__bad_interrupt>
+
+000000e4 <__ctors_end>:
+  e4:	11 24       	eor	r1, r1
+  e6:	1f be       	out	0x3f, r1	; 63
+  e8:	cf ef       	ldi	r28, 0xFF	; 255
+  ea:	d1 e2       	ldi	r29, 0x21	; 33
+  ec:	de bf       	out	0x3e, r29	; 62
+  ee:	cd bf       	out	0x3d, r28	; 61
+  f0:	00 e0       	ldi	r16, 0x00	; 0
+  f2:	0c bf       	out	0x3c, r16	; 60
+
+000000f4 <__do_copy_data>:
+  f4:	12 e0       	ldi	r17, 0x02	; 2
+  f6:	a0 e0       	ldi	r26, 0x00	; 0
+  f8:	b2 e0       	ldi	r27, 0x02	; 2
+  fa:	e8 ee       	ldi	r30, 0xE8	; 232
+  fc:	f2 e0       	ldi	r31, 0x02	; 2
+  fe:	00 e0       	ldi	r16, 0x00	; 0
+ 100:	0b bf       	out	0x3b, r16	; 59
+ 102:	02 c0       	rjmp	.+4      	; 0x108 <__do_copy_data+0x14>
+ 104:	07 90       	elpm	r0, Z+
+ 106:	0d 92       	st	X+, r0
+ 108:	a0 31       	cpi	r26, 0x10	; 16
+ 10a:	b1 07       	cpc	r27, r17
+ 10c:	d9 f7       	brne	.-10     	; 0x104 <__do_copy_data+0x10>
+
+0000010e <__do_clear_bss>:
+ 10e:	12 e0       	ldi	r17, 0x02	; 2
+ 110:	a0 e1       	ldi	r26, 0x10	; 16
+ 112:	b2 e0       	ldi	r27, 0x02	; 2
+ 114:	01 c0       	rjmp	.+2      	; 0x118 <.do_clear_bss_start>
+
+00000116 <.do_clear_bss_loop>:
+ 116:	1d 92       	st	X+, r1
+
+00000118 <.do_clear_bss_start>:
+ 118:	a4 31       	cpi	r26, 0x14	; 20
+ 11a:	b1 07       	cpc	r27, r17
+ 11c:	e1 f7       	brne	.-8      	; 0x116 <.do_clear_bss_loop>
+ 11e:	0e 94 f2 00 	call	0x1e4	; 0x1e4 <main>
+ 122:	0c 94 72 01 	jmp	0x2e4	; 0x2e4 <_exit>
+
+00000126 <__bad_interrupt>:
+ 126:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000012a <InitPorts>:
+
+void InitPorts(void)
+{
+
+    // 0 configura de entrada en los puertos
+    DDRF &= ~(1 << PF7); // entrada
+ 12a:	87 98       	cbi	0x10, 7	; 16
+    DDRF |= (1 << PF6);  // salida
+ 12c:	86 9a       	sbi	0x10, 6	; 16
+        0000 0000     0000 0000
+        ~1100 0000 -> 0011 1111
+                      0000 0000
+
+    */
+    PORTF |= (1 << PF6); // quiero que constantemente se este sacando un 1 por el pin 6 del puerto, por esa razon lo asigno
+ 12e:	8e 9a       	sbi	0x11, 6	; 17
+    // con un OR
+}
+ 130:	08 95       	ret
+
+00000132 <waitState>:
+    }
+    }
+}
+
+void waitState(uint8_t lectura_PIN)
+{
+ 132:	1f 93       	push	r17
+ 134:	df 93       	push	r29
+ 136:	cf 93       	push	r28
+ 138:	0f 92       	push	r0
+ 13a:	cd b7       	in	r28, 0x3d	; 61
+ 13c:	de b7       	in	r29, 0x3e	; 62
+ 13e:	18 2f       	mov	r17, r24
+ 140:	18 c0       	rjmp	.+48     	; 0x172 <waitState+0x40>
+
+        while (indice < 8 && lectura_PIN == NOT_PRESSED)
+        {
+            //
+
+            DDRF = _CONF_DDR[indice];
+ 142:	e9 81       	ldd	r30, Y+1	; 0x01
+ 144:	f0 e0       	ldi	r31, 0x00	; 0
+ 146:	e8 5f       	subi	r30, 0xF8	; 248
+ 148:	fd 4f       	sbci	r31, 0xFD	; 253
+ 14a:	80 81       	ld	r24, Z
+ 14c:	80 bb       	out	0x10, r24	; 16
+            PORTF = _CONF_PORT[indice];
+ 14e:	e9 81       	ldd	r30, Y+1	; 0x01
+ 150:	f0 e0       	ldi	r31, 0x00	; 0
+ 152:	e0 50       	subi	r30, 0x00	; 0
+ 154:	fe 4f       	sbci	r31, 0xFE	; 254
+ 156:	80 81       	ld	r24, Z
+ 158:	81 bb       	out	0x11, r24	; 17
+            delay(100);
+ 15a:	84 e6       	ldi	r24, 0x64	; 100
+ 15c:	90 e0       	ldi	r25, 0x00	; 0
+ 15e:	0e 94 4f 01 	call	0x29e	; 0x29e <delay>
+            indice++;
+ 162:	89 81       	ldd	r24, Y+1	; 0x01
+ 164:	8f 5f       	subi	r24, 0xFF	; 255
+ 166:	89 83       	std	Y+1, r24	; 0x01
+    volatile uint8_t indice = 0;
+
+    while (1)
+    {
+
+        while (indice < 8 && lectura_PIN == NOT_PRESSED)
+ 168:	89 81       	ldd	r24, Y+1	; 0x01
+ 16a:	88 30       	cpi	r24, 0x08	; 8
+ 16c:	10 f4       	brcc	.+4      	; 0x172 <waitState+0x40>
+ 16e:	11 23       	and	r17, r17
+ 170:	41 f3       	breq	.-48     	; 0x142 <waitState+0x10>
+            PORTF = _CONF_PORT[indice];
+            delay(100);
+            indice++;
+        }
+
+        indice = 0;
+ 172:	19 82       	std	Y+1, r1	; 0x01
+ 174:	f9 cf       	rjmp	.-14     	; 0x168 <waitState+0x36>
+
+00000176 <updateLeds>:
+{
+    // esta funcion debe de devolver estos estados en los cuales se esta haceindo los cambios necesarios para los leds
+
+    // por lo que creo que deberia de ser un switch o esta funcion invocar a otras que haga ese proceso.
+
+    switch (gameState)
+ 176:	81 30       	cpi	r24, 0x01	; 1
+ 178:	19 f4       	brne	.+6      	; 0x180 <updateLeds+0xa>
+    {
+
+    case eWaitForStart:
+    {
+        waitState(lectura_PIN);
+ 17a:	86 2f       	mov	r24, r22
+ 17c:	0e 94 99 00 	call	0x132	; 0x132 <waitState>
+ 180:	08 95       	ret
+
+00000182 <check_Btn>:
+/*
+ok el check btn no esta del todo bien, esto porque
+
+*/
+uint8_t check_Btn(void)
+{
+ 182:	cf 93       	push	r28
+ 184:	df 93       	push	r29
+
+    // el circuoto del boton esta en pull - up, por lo que para verificar si el boton
+    // esta presionado o no, no presiondado = 1 - HIGH
+    //  presionado = 0 - LOW
+
+    if (PINF & (1 << BTN_PIN))
+ 186:	7f 99       	sbic	0x0f, 7	; 15
+ 188:	29 c0       	rjmp	.+82     	; 0x1dc <check_Btn+0x5a>
+        return 0;
+    }
+
+    // PINx lee el estado fisico del pin
+
+    delay(20); // esperar 20 ms antes de actuar
+ 18a:	84 e1       	ldi	r24, 0x14	; 20
+ 18c:	90 e0       	ldi	r25, 0x00	; 0
+ 18e:	0e 94 4f 01 	call	0x29e	; 0x29e <delay>
+
+    if (PINF & (1 << BTN_PIN))
+ 192:	7f 99       	sbic	0x0f, 7	; 15
+ 194:	23 c0       	rjmp	.+70     	; 0x1dc <check_Btn+0x5a>
+ 196:	c0 e0       	ldi	r28, 0x00	; 0
+ 198:	d0 e0       	ldi	r29, 0x00	; 0
+    uint16_t tiempo_presionado = 0;
+
+    while (1)
+    {
+
+        delay(1);
+ 19a:	81 e0       	ldi	r24, 0x01	; 1
+ 19c:	90 e0       	ldi	r25, 0x00	; 0
+ 19e:	0e 94 4f 01 	call	0x29e	; 0x29e <delay>
+        tiempo_presionado++;
+
+        if (PINF & (1 << BTN_PIN))
+ 1a2:	7f 99       	sbic	0x0f, 7	; 15
+ 1a4:	12 c0       	rjmp	.+36     	; 0x1ca <check_Btn+0x48>
+
+    while (1)
+    {
+
+        delay(1);
+        tiempo_presionado++;
+ 1a6:	21 96       	adiw	r28, 0x01	; 1
+            break;
+        }
+
+        // si se superoa el segundo se detecta como largo
+
+        if (tiempo_presionado >= 1000)
+ 1a8:	83 e0       	ldi	r24, 0x03	; 3
+ 1aa:	c8 3e       	cpi	r28, 0xE8	; 232
+ 1ac:	d8 07       	cpc	r29, r24
+ 1ae:	a9 f7       	brne	.-22     	; 0x19a <check_Btn+0x18>
+ 1b0:	04 c0       	rjmp	.+8      	; 0x1ba <check_Btn+0x38>
+        {
+
+            //
+            while (!(PINF & (1 << BTN_PIN)))
+            {
+                delay(1);
+ 1b2:	81 e0       	ldi	r24, 0x01	; 1
+ 1b4:	90 e0       	ldi	r25, 0x00	; 0
+ 1b6:	0e 94 4f 01 	call	0x29e	; 0x29e <delay>
+
+        if (tiempo_presionado >= 1000)
+        {
+
+            //
+            while (!(PINF & (1 << BTN_PIN)))
+ 1ba:	7f 9b       	sbis	0x0f, 7	; 15
+ 1bc:	fa cf       	rjmp	.-12     	; 0x1b2 <check_Btn+0x30>
+            {
+                delay(1);
+            }
+            delay(20);
+ 1be:	84 e1       	ldi	r24, 0x14	; 20
+ 1c0:	90 e0       	ldi	r25, 0x00	; 0
+ 1c2:	0e 94 4f 01 	call	0x29e	; 0x29e <delay>
+ 1c6:	82 e0       	ldi	r24, 0x02	; 2
+ 1c8:	0a c0       	rjmp	.+20     	; 0x1de <check_Btn+0x5c>
+            return LONG_PRESSED;
+        }
+    }
+
+    delay(20);
+ 1ca:	84 e1       	ldi	r24, 0x14	; 20
+ 1cc:	90 e0       	ldi	r25, 0x00	; 0
+ 1ce:	0e 94 4f 01 	call	0x29e	; 0x29e <delay>
+    if (PINF & (1 << BTN_PIN))
+ 1d2:	8f b1       	in	r24, 0x0f	; 15
+ 1d4:	88 1f       	adc	r24, r24
+ 1d6:	88 27       	eor	r24, r24
+ 1d8:	88 1f       	adc	r24, r24
+ 1da:	01 c0       	rjmp	.+2      	; 0x1de <check_Btn+0x5c>
+ 1dc:	80 e0       	ldi	r24, 0x00	; 0
+
+        return SHORT_PRESSED;
+    }
+
+    return 0;
+}
+ 1de:	df 91       	pop	r29
+ 1e0:	cf 91       	pop	r28
+ 1e2:	08 95       	ret
+
+000001e4 <main>:
+
+// Global variable
+uint32_t millis;
+
+int main(void)
+{
+ 1e4:	ef 92       	push	r14
+ 1e6:	ff 92       	push	r15
+ 1e8:	0f 93       	push	r16
+ 1ea:	1f 93       	push	r17
+ 1ec:	cf 93       	push	r28
+ 1ee:	df 93       	push	r29
+    uint16_t countdown = 0;
+    uint16_t countup = 0;
+
+    // varibale para el modod wait para que este contantemente ciclado siempre y cunado no se ha presionado el boton.
+    uint8_t bucle = 1;
+    InitPorts();
+ 1f0:	0e 94 95 00 	call	0x12a	; 0x12a <InitPorts>
+ 1f4:	00 e0       	ldi	r16, 0x00	; 0
+ 1f6:	c0 e0       	ldi	r28, 0x00	; 0
+ 1f8:	d0 e0       	ldi	r29, 0x00	; 0
+ 1fa:	ee 24       	eor	r14, r14
+ 1fc:	ff 24       	eor	r15, r15
+
+    // currentGameState++;
+
+    while (1)
+    {
+        switch (check_Btn())
+ 1fe:	0e 94 c1 00 	call	0x182	; 0x182 <check_Btn>
+ 202:	81 30       	cpi	r24, 0x01	; 1
+ 204:	21 f0       	breq	.+8      	; 0x20e <main+0x2a>
+ 206:	82 30       	cpi	r24, 0x02	; 2
+ 208:	19 f4       	brne	.+6      	; 0x210 <main+0x2c>
+ 20a:	00 e0       	ldi	r16, 0x00	; 0
+ 20c:	30 c0       	rjmp	.+96     	; 0x26e <main+0x8a>
+        {
+        case eBtnShortPressed:
+            currentGameState++;
+ 20e:	0f 5f       	subi	r16, 0xFF	; 255
+        case eBtnLongPressed:
+            currentGameState = eGameRestart;
+            break;
+        }
+
+        switch (currentGameState)
+ 210:	02 30       	cpi	r16, 0x02	; 2
+ 212:	c1 f0       	breq	.+48     	; 0x244 <main+0x60>
+ 214:	03 30       	cpi	r16, 0x03	; 3
+ 216:	18 f4       	brcc	.+6      	; 0x21e <main+0x3a>
+ 218:	01 30       	cpi	r16, 0x01	; 1
+ 21a:	49 f5       	brne	.+82     	; 0x26e <main+0x8a>
+ 21c:	05 c0       	rjmp	.+10     	; 0x228 <main+0x44>
+ 21e:	03 30       	cpi	r16, 0x03	; 3
+ 220:	a9 f0       	breq	.+42     	; 0x24c <main+0x68>
+ 222:	04 30       	cpi	r16, 0x04	; 4
+ 224:	21 f5       	brne	.+72     	; 0x26e <main+0x8a>
+ 226:	1a c0       	rjmp	.+52     	; 0x25c <main+0x78>
+            // por lo que debemos se saber, el como implementar
+
+            // ya se como va esta madre, este va a esperar mientras no se precione el boton este tendra que mostrar la secuencia
+            // de espera, cuendo se presione este se va a detener y <currentGameState> va a incrementar en 1
+            // que dara inicio al juego
+            lectura = check_Btn();
+ 228:	0e 94 c1 00 	call	0x182	; 0x182 <check_Btn>
+ 22c:	18 2f       	mov	r17, r24
+
+            updateLeds(eWaitForStart, lectura);
+ 22e:	81 e0       	ldi	r24, 0x01	; 1
+ 230:	61 2f       	mov	r22, r17
+ 232:	0e 94 bb 00 	call	0x176	; 0x176 <updateLeds>
+
+            if (lectura == SHORT_PRESSED)
+ 236:	11 30       	cpi	r17, 0x01	; 1
+ 238:	d1 f4       	brne	.+52     	; 0x26e <main+0x8a>
+            {
+                bucle = 0;
+                currentGameState++; // cunado se cumple pasamos al sigueinte caso, al inicio del juego
+                PORTF &= ~0xBF;
+ 23a:	81 b3       	in	r24, 0x11	; 17
+ 23c:	80 74       	andi	r24, 0x40	; 64
+ 23e:	81 bb       	out	0x11, r24	; 17
+ 240:	02 e0       	ldi	r16, 0x02	; 2
+ 242:	15 c0       	rjmp	.+42     	; 0x26e <main+0x8a>
+            }
+
+            break;
+        case eStartCount:
+        {
+            countdown--;
+ 244:	21 97       	sbiw	r28, 0x01	; 1
+            if (countdown == 0)
+ 246:	99 f4       	brne	.+38     	; 0x26e <main+0x8a>
+ 248:	03 e0       	ldi	r16, 0x03	; 3
+ 24a:	11 c0       	rjmp	.+34     	; 0x26e <main+0x8a>
+                currentGameState++;
+            break;
+        }
+        case eEndCount:
+        {
+            if (countdown != 0)
+ 24c:	20 97       	sbiw	r28, 0x00	; 0
+ 24e:	11 f0       	breq	.+4      	; 0x254 <main+0x70>
+ 250:	04 e0       	ldi	r16, 0x04	; 4
+ 252:	0d c0       	rjmp	.+26     	; 0x26e <main+0x8a>
+                currentGameState++;
+            else
+                countup++;
+ 254:	08 94       	sec
+ 256:	e1 1c       	adc	r14, r1
+ 258:	f1 1c       	adc	r15, r1
+ 25a:	09 c0       	rjmp	.+18     	; 0x26e <main+0x8a>
+            break;
+        }
+        case eGameOver:
+        {
+            if ((countdown + countup) > TIME_WINDOW)
+ 25c:	c7 01       	movw	r24, r14
+ 25e:	8c 0f       	add	r24, r28
+ 260:	9d 1f       	adc	r25, r29
+ 262:	8d 52       	subi	r24, 0x2D	; 45
+ 264:	91 40       	sbci	r25, 0x01	; 1
+ 266:	10 f4       	brcc	.+4      	; 0x26c <main+0x88>
+ 268:	05 e0       	ldi	r16, 0x05	; 5
+ 26a:	01 c0       	rjmp	.+2      	; 0x26e <main+0x8a>
+ 26c:	06 e0       	ldi	r16, 0x06	; 6
+            break;
+        }
+        }
+
+        //updateLeds(currentGameState, uint8_t lectura);
+        delay(1);
+ 26e:	81 e0       	ldi	r24, 0x01	; 1
+ 270:	90 e0       	ldi	r25, 0x00	; 0
+ 272:	0e 94 4f 01 	call	0x29e	; 0x29e <delay>
+        millis++;
+ 276:	80 91 10 02 	lds	r24, 0x0210
+ 27a:	90 91 11 02 	lds	r25, 0x0211
+ 27e:	a0 91 12 02 	lds	r26, 0x0212
+ 282:	b0 91 13 02 	lds	r27, 0x0213
+ 286:	01 96       	adiw	r24, 0x01	; 1
+ 288:	a1 1d       	adc	r26, r1
+ 28a:	b1 1d       	adc	r27, r1
+ 28c:	80 93 10 02 	sts	0x0210, r24
+ 290:	90 93 11 02 	sts	0x0211, r25
+ 294:	a0 93 12 02 	sts	0x0212, r26
+ 298:	b0 93 13 02 	sts	0x0213, r27
+ 29c:	b0 cf       	rjmp	.-160    	; 0x1fe <main+0x1a>
+
+0000029e <delay>:
+delay:
+
+	; en este tendre que hacer muchos descuentos por esto de
+	;cunado sea 0 y  lo demas
+
+	cpi r24, 0x00 ; 1
+ 29e:	80 30       	cpi	r24, 0x00	; 0
+	breq final ;2 - 1
+ 2a0:	49 f0       	breq	.+18     	; 0x2b4 <final>
+
+	cpi r24, 0x01
+ 2a2:	81 30       	cpi	r24, 0x01	; 1
+	breq un_mSeg; si r24 es 1 ms entonces ira a una subrutina la cual durara
+ 2a4:	41 f0       	breq	.+16     	; 0x2b6 <un_mSeg>
+
+000002a6 <ciclo>:
+	;dira 1ms segun lo que se mando por parametro
+
+
+	ciclo:
+
+		call delay_general
+ 2a6:	0e 94 67 01 	call	0x2ce	; 0x2ce <delay_general>
+
+		sbiw r24, 1 ; 2
+ 2aa:	01 97       	sbiw	r24, 0x01	; 1
+
+		cpi r24, 0x01 ;1
+ 2ac:	81 30       	cpi	r24, 0x01	; 1
+		brne ciclo ; 2 - 1
+ 2ae:	d9 f7       	brne	.-10     	; 0x2a6 <ciclo>
+
+		cpi r24,0x01
+ 2b0:	81 30       	cpi	r24, 0x01	; 1
+		breq un_mSeg ; se cumple siempre
+ 2b2:	09 f0       	breq	.+2      	; 0x2b6 <un_mSeg>
+
+000002b4 <final>:
+
+
+final:
+	; agrego un nop porque al final
+
+	ret
+ 2b4:	08 95       	ret
+
+000002b6 <un_mSeg>:
+	; jmp -> 3 ciclos
+
+	;usaremos de igual r16-r17-r18
+
+
+	ldi r16,2 ; 1
+ 2b6:	02 e0       	ldi	r16, 0x02	; 2
+
+000002b8 <ciclo0_1mS>:
+	ciclo0_1mS:
+		ldi r17,11 ; 1x
+ 2b8:	1b e0       	ldi	r17, 0x0B	; 11
+	...
+
+000002bc <ciclo1_1mS>:
+		nop ; 1x
+
+		ciclo1_1mS:
+			ldi r18, 241 ; 1xy
+ 2bc:	21 ef       	ldi	r18, 0xF1	; 241
+
+000002be <ciclo2_1mS>:
+
+			ciclo2_1mS:
+				dec r18 ; 1xyz
+ 2be:	2a 95       	dec	r18
+				brne ciclo2_1mS ; xy(2z-1)
+ 2c0:	f1 f7       	brne	.-4      	; 0x2be <ciclo2_1mS>
+
+			dec r17 ; 1xy
+ 2c2:	1a 95       	dec	r17
+			brne ciclo1_1mS ;x(2y-1)
+ 2c4:	d9 f7       	brne	.-10     	; 0x2bc <ciclo1_1mS>
+
+		dec r16 ; 1x
+ 2c6:	0a 95       	dec	r16
+		brne ciclo0_1mS ; (2x-1)
+ 2c8:	b9 f7       	brne	.-18     	; 0x2b8 <ciclo0_1mS>
+
+	jmp final
+ 2ca:	0c 94 5a 01 	jmp	0x2b4	; 0x2b4 <final>
+
+000002ce <delay_general>:
+
+	; este no va a durar exactamento delo 16,000 porque va a contar
+	;en su ciclo las comparaciones fuera y al parecer tan solo tendra
+	;en el ultimo que le faltaria 1 de la comparacion que no es correcta
+
+	ldi r16, 115 ; 1
+ 2ce:	03 e7       	ldi	r16, 0x73	; 115
+
+000002d0 <ciclo_0>:
+
+	ciclo_0:
+		ldi r17, 1 ; 1x
+ 2d0:	11 e0       	ldi	r17, 0x01	; 1
+	...
+
+000002d4 <ciclo_1>:
+		nop
+
+		ciclo_1:
+
+			ldi r18, 44 ; 1xy
+ 2d4:	2c e2       	ldi	r18, 0x2C	; 44
+
+000002d6 <ciclo_2>:
+			ciclo_2:
+				dec r18 ; 1zxy
+ 2d6:	2a 95       	dec	r18
+				brne ciclo_2 ; xy(2z-1)
+ 2d8:	f1 f7       	brne	.-4      	; 0x2d6 <ciclo_2>
+
+			dec r17 ; 1xy
+ 2da:	1a 95       	dec	r17
+			brne ciclo_1 ;x(2y-1)
+ 2dc:	d9 f7       	brne	.-10     	; 0x2d4 <ciclo_1>
+
+		dec r16 ; 1x
+ 2de:	0a 95       	dec	r16
+		brne ciclo_0 ;(2x-1)
+ 2e0:	b9 f7       	brne	.-18     	; 0x2d0 <ciclo_0>
+	ret
+ 2e2:	08 95       	ret
+
+000002e4 <_exit>:
+ 2e4:	f8 94       	cli
+
+000002e6 <__stop_program>:
+ 2e6:	ff cf       	rjmp	.-2      	; 0x2e6 <__stop_program>
