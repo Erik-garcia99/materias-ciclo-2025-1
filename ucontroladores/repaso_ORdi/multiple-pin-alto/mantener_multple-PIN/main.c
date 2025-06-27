@@ -2,29 +2,7 @@
 #include<avr/io.h>
 #include<avr/interrupt.h>
 
-/*
-probelam del ORDI
 
-
--> PWM  (PB7)-> con TIMER0 -> ciclo de trabajo definido por el potenciometro
-
--> el PWM les da la señal a los LEDS
-
-botones en PF1-PF3
-
-
-LEDS ->PK0-PK2 <-> PB0-PB2
-
-
-
-
-*/
-
-/*
-parte muy importante
-
-
-*/
 
 
 //variable que indcia el estado en que esta la secueicnia
@@ -53,13 +31,7 @@ static uint16_t HYSTERESIS_H = 870;
 static uint16_t HYSTERESIS_L = 306;
 
 
-/*
-80% de intensidad de OCR0A -> 8 bits es 204
 
-30% de intensidad de OCR0A -> 8 bits es 77
-*/
-
-//punto de inflexion
 static uint16_t inflexion = 450;
 
 void GPIO_init(void){
@@ -446,16 +418,14 @@ int main(void){
 
         uint16_t lectura_ADC = READ_ADC();
 
-        //condiciones para el umbral
 
         if(lectura_ADC >inflexion){
-            //85% DEL pWM
 
             OCR0A = 204;
         }
 
         if(lectura_ADC < inflexion){
-            OCR0A = 77;//30%
+            OCR0A = 77;
         }
 
 
